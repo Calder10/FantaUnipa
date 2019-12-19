@@ -1,0 +1,60 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\title{FantaUnipa}
+\author{Salvatore Calderaro \and Gaspare Casano}
+\usepackage{hyperref}
+\begin{document}
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+\begin{abstract}
+FantaUnipa è un software ludico 
+\end{abstract}
+\newpage
+\section{Introduzione}
+Prova
+\section{Analisi dei requisiti}
+\subsection{Registrazione}
+Danilo è un potenziale "FantaAllenatore" che intende partecipare al torneo FantaUnipa. Quest'ultimo avviando il software visualizzerà una finestra di login, in cui sarà presente  un bottone "registrati" che gli permetterà di registrasi al torneo qualora non lo avesse ancora fatto. Cliccando sul bottone registrati si aprirà un form in cui Danilo dovrà compilare i sequenti campi:
+\begin{itemize}
+\item nome;
+\item cognome;
+\item email;
+\item nickname;
+\item password.
+\end{itemize}
+A runtime verranno effettuati dei check su alcuni campi, in particolare:
+\begin{itemize}
+\item nickname: comparirà una scritta in rosso sotto il campo, nel caso in cui il nickname inserito sia stato gia scelto da un altro utente;
+\item password; comparirà una scritta in rosso sotto il campo, nel caso in cui la password non sia formata da almeno sei caratteri e contenga almeno un numero ed una lettera maiuscola;
+\item mail: comparirà una scritta in rossa sotto il campo, nel caso in cui la mail è stata già utilizzata da un altro utente o se non fa parte del sistema unipa.
+\end{itemize}
+Dopo aver compilato il form, cliccando sul tasto conferma, Danilo avrà compeletato la registrazione e gli comparirà una finestra di dialogo con il seguente messaggio "Registrazione effettuata con successo !".
+\subsection{Creazione squadra tramite asta}
+Danilo, dopo aver inserito il proprio username e la propria password, cliccando sul bottone login accederà alla pagina di creazione della squadra dove sarà presente un form in cui gli sarà chiesto di inserire il nome della squadra (qualora il nome fosse già utilizzato da un altro utente comparirà un messaggio in rosso) e il logo; cliccando sul bottone continua Danilo accederà alla sezione asta.Essa è composta da:
+\begin{itemize}
+\item barra di ricerca: che permette di ricercare un giocatore per nome;
+\item bottone "tutti" che permette di visualizzare la lista completa dei giocatori;
+\item sezione filtri avanzati che permette di effettuare una ricerca per range di prezzo.
+\end{itemize}
+L'asta inzia convenzionalmente dai portieri fino ad arrivare agli attaccanti. Danilo, una volta trovato il giocatore tramite i metodi di ricerca sopra menzionati, lo seleziona ed effettua la puntata cliccando sul bottone "punta". In tempo reale gli verranno notificati - qualora ci fossero - i rilanci degli altri FantaAllenatori. A questo punto, Danilo può scegliere se rilanciare (inserendo la nuova cifra nell'apposito campo e cliccando nuovamente su "Punta") o abbandonare l'asta per quel determinato calciatore cliccando sul bottone "Lascia". Questo processo si ripete fino a quando uno dei FantaAllenatori non si aggiudica il giocatore in questione oppure quando tutti i FantaAllenatori abbandonano l'asta per il giocatore. Nel caso in cui Danilo si aggiudichi un calciatore gli verra mostrata una finestra che gli notificherà il corretto acquisto del giocatore. Se gli altri FantaAllenatori non hanno ancora completato gli acquisti per un determinato ruolo, sara notificato a Danilo un messaggio di attesa. In ogni momento dell'asta Danilo ha la possibilità di monitorare il numero di FantaCrediti rimanenti e i giocatori che ha acquistato fino a quel momento. Quado l'asta terminerà (ovvero quando tutte le FantaSquadre sono state completate) verrà notificato a Danilo un messaggio di completamento dell'asta e verrà rimandato nella sua pagina personale di gestione della rosa.
+\subsection{Visualizzazione informazioni generali}
+Danilo, una volta effettuato l'accesso, visualizzerà una pagina che gli permetterà di accedere ad una serie di informazioni inerenti al torneo a cui sta partecipando. In particolare nella parte sinistra della pagina avremo:
+\begin{itemize}
+\item un bottone "La Mia Rosa" che una volta cliccato gli permetterà di visualizzare la sua rosa al completo suddivisa per ruolo ed eventuali giocatori diffidati, squalificati o infortunati;
+\item un bottone "Squadre" che una volta cliccato gli permetterà di prendere visione delle rose di tutte le altre FantaSquadre in competizione;
+\item un bottone "Calendario" che una volta cliccato gli permetterà di visualizzare le giornate già giocate e le giornate ancora da giocare;
+\item bottone "Classifica" che una volta cliccato gli permetterà di visualizzare la classifica generale del torneo.
+\end{itemize}
+Inoltre, nella parte destra della pagina, Danilo potrà facilmente visualizzare l'ultima giornata giocata e la prossima da giocare.
+\subsection{Schiera formazione}
+Danilo effettuando l'accesso, in fondo alla pagina iniziale troverà il bottone "Schiera Formazione". Cliccando su quest'ultimo verrà rimandato ad una pagina dove potrà selezionare il modulo con cui schierare la sua squadra (ad esempio 4-4-2, 3-5-2, 4-3-3 etc). Una volta scelto il modulo, compariranno sul campo da gioco delle icone disposte in base al modulo che si è scelto. Cliccando su ognuna delle icone, Danilo potrà selezionare il giocatore che intende schierare per quel determinato ruolo tramite un menù a tendina (qualore il giocatore fosse stato già scelto o fosse squalificato o infortunato non sarà selezionabile).Nella parte sottostante della pagina, Danilo potrà selezionare gli eventuali sostiuti. Per completare l'operazione di inserimento dovrà cliccare sul bottone "Salva Formazione" presente in fondo alla pagina.
+\subsection{•}
+\end{document}
