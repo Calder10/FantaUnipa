@@ -10,11 +10,11 @@ public class Director {
 		return this.fantallenatoreBuilder.getFantallenatore();
 	}
 	
-	public void createFantallenatore() {
-		this.fantallenatoreBuilder.addNome();
-		this.fantallenatoreBuilder.addCognome();
-		this.fantallenatoreBuilder.addUsername();
-		this.fantallenatoreBuilder.addPassword();
+	public void createFantallenatore(String nome,String cognome,String username, String password) {
+		this.fantallenatoreBuilder.addNome(nome);
+		this.fantallenatoreBuilder.addCognome(cognome);
+		this.fantallenatoreBuilder.addUsername(username);
+		this.fantallenatoreBuilder.addPassword(password);
 		this.fantallenatoreBuilder.addFantaCrediti();
 	}
 }

@@ -1,7 +1,7 @@
 import java.io.*;
 
 public class  Registrazione {
-	//private FantallenatoreBuilder fantallenatore;
+	private FantallenatoreBuilder fantallenatore;
 	
 	public void salvaUtente(Fantallenatore fantallenatore) throws IOException{
 		try {
@@ -63,5 +63,28 @@ public class  Registrazione {
 			return true;
 		else
 			return false;
+	}
+	
+	public boolean login (String usr, String pwd) throws IOException {
+		boolean ris=false;
+		try {
+			String line="";
+			FileReader f = new FileReader("dati.csv");
+			BufferedReader br = new BufferedReader(f);
+			line=br.readLine();
+			while((line=br.readLine())!=null) {
+				String [] fields = line.split(",");
+				if(fields[2].equals(usr) && fields[3].equals(pwd)) {
+					ris=true;
+					break;
+				}
+				else
+					ris=false;
+			}
+			br.close();
+		}catch(Exception e) {
+			System.out.println("Errore nella lettura del file !");
+		}
+		return ris;
 	}
 }

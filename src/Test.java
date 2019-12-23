@@ -3,7 +3,7 @@ import java.io.IOException;
 public class Test {
 
 	public static void main(String[] args) throws IOException  {
-		
+		/*
 		ConcreteFantallenatoreBuilder a = new ConcreteFantallenatoreBuilder();
 		Director d = new Director(a);
 		d.createFantallenatore();
@@ -18,7 +18,6 @@ public class Test {
 		Fantallenatore f1 = e.getFantallenatore();
 		System.out.println(f1.toString());
 		r.salvaUtente(f1);
-		/*
 		Registrazione r = new Registrazione();
 		boolean ris = r.checkUsername("pippo1925");
 		if(ris==true)
@@ -32,7 +31,7 @@ public class Test {
 		else
 			System.out.println("Password non conforme");
 		*/
-		
+		LoginGUI l = new LoginGUI();
 	}
 
 }

@@ -10,26 +10,26 @@ public class ConcreteFantallenatoreVirtualBuilder implements FantallenatoreBuild
 		this.fantallenatore=new Fantallenatore();
 	}
 	
-	public void addNome() {
+	public void addNome(String nome) {
 		int i = new Random().nextInt(7);
-		String nome = nomi[i];
+		nome = nomi[i];
 		fantallenatore.setNome(nome);
 	}
 	
-	public void addCognome() {
+	public void addCognome(String cognome) {
 		int i = new Random().nextInt(3);
-		String cognome = cognomi[i];
+		cognome = cognomi[i];
 		fantallenatore.setCognome(cognome);
 	}
 	
-	public void addUsername() {
-		String username = fantallenatore.getNome().concat(fantallenatore.getCognome());
+	public void addUsername(String username) {
+		username = fantallenatore.getNome().concat(fantallenatore.getCognome());
 		fantallenatore.setUsername(username);
 	}
 	
-	public void addPassword() {
+	public void addPassword(String pwd) {
 		int i = new Random().nextInt(5);
-		String pwd = password[i];
+		pwd = password[i];
 		fantallenatore.setPassword(pwd);
 	}
 	

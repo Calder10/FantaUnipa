@@ -6,20 +6,20 @@ public class ConcreteFantallenatoreBuilder implements FantallenatoreBuilder{
 		this.fantallenatore=new Fantallenatore();
 	}
 	
-	public void addNome() {
-		fantallenatore.setNome("Pippo");
+	public void addNome(String nome) {
+		fantallenatore.setNome(nome);
 	}
 	
-	public void addCognome() {
-		fantallenatore.setCognome("Rossi");
+	public void addCognome(String cognome) {
+		fantallenatore.setCognome(cognome);
 	}
 	
-	public void addUsername() {
-		fantallenatore.setUsername("Pippo1925");
+	public void addUsername(String username) {
+		fantallenatore.setUsername(username);
 	}
 	
-	public void addPassword() {
-		fantallenatore.setPassword("santozafonte");
+	public void addPassword(String password) {
+		fantallenatore.setPassword(password);
 	}
 	
 	public void addFantaCrediti() {
