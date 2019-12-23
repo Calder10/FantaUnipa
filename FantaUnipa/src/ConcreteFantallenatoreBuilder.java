@@ -23,7 +23,7 @@ public class ConcreteFantallenatoreBuilder implements FantallenatoreBuilder{
 	}
 	
 	public void addFantaCrediti() {
-		fantallenatore.setFantaCrediti(100);
+		fantallenatore.setFantaCrediti(500);
 	}
 	
 	public Fantallenatore getFantallenatore() {

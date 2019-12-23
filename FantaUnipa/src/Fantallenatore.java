@@ -1,5 +1,5 @@
-
-public class Fantallenatore {
+import java.io.*;
+public class Fantallenatore implements Serializable{
 	private String nome;
 	private String cognome;
 	private String username;
