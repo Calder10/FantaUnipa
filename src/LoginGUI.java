@@ -60,12 +60,12 @@ public class LoginGUI extends JFrame {
 		contentPane.add(lblFantaunipa);
 		
 		JLabel lblNewLabel = new JLabel();
-		lblNewLabel.setIcon(new ImageIcon("/home/salvatorecalderaro/eclipse-workspace/FantaUnipa/Immagini/pallone.png"));
+		lblNewLabel.setIcon(new ImageIcon("/home/gaspare/Documenti/GitHub/FantaUnipa/Immagini/pallone.png"));
 		lblNewLabel.setBounds(120, -2, 69, 67);
 		contentPane.add(lblNewLabel);
 		
 		JLabel label = new JLabel();
-		label.setIcon(new ImageIcon("/home/salvatorecalderaro/eclipse-workspace/FantaUnipa/Immagini/pallone.png"));
+		label.setIcon(new ImageIcon("/home/gaspare/Documenti/GitHub/FantaUnipa/Immagini/pallone.png"));
 		label.setBounds(475, -2, 69, 67);
 		contentPane.add(label);
 		

@@ -64,12 +64,12 @@ public class RegistrazioneGUI extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel();
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setIcon(new ImageIcon("/home/salvatorecalderaro/eclipse-workspace/FantaUnipa/Immagini/pallone.png"));
+		lblNewLabel.setIcon(new ImageIcon("/home/gaspare/Documenti/GitHub/FantaUnipa/Immagini/pallone.png"));
 		lblNewLabel.setBounds(45, -2, 69, 67);
 		contentPane.add(lblNewLabel);
 		
 		JLabel label = new JLabel();
-		label.setIcon(new ImageIcon("/home/salvatorecalderaro/eclipse-workspace/FantaUnipa/Immagini/pallone.png"));
+		label.setIcon(new ImageIcon("/home/gaspare/Documenti/GitHub/FantaUnipa/Immagini/pallone.png"));
 		label.setBounds(400, -2, 69, 67);
 		contentPane.add(label);
 		
