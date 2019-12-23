@@ -129,31 +129,36 @@ public class RegistrazioneGUI extends JFrame {
 		buttonRegistrati.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					boolean check_usr = r.checkUsername(textFieldUsername.getText());
-					boolean check_pwd = r.checkPassword(passwordField.getText());
-					if(check_usr==false && check_pwd==false) {
+					String nome=textFieldNome.getText();
+					String cognome=textFieldCognome.getText();
+					String username=textFieldUsername.getText();
+					String pwd=passwordField.getText();
+					boolean campiNonNulli=r.controlloCampiNonNulli(nome, cognome, username, pwd);
+					boolean checkUsr = r.checkUsername(textFieldUsername.getText());
+					boolean checkPwd = r.checkPassword(passwordField.getText());
+					if(campiNonNulli==false)
+						JOptionPane.showMessageDialog(passwordField, "Inserire tutti i campi");
+						
+					if(checkUsr==false && checkPwd==false && campiNonNulli==true) {
 						JOptionPane.showMessageDialog(passwordField, "Username e password non validi");
 						passwordField.setText("");
 						passwordField.setText("");
 					}
-					if(check_usr==false) {
+					if(checkUsr==false) {
 						JOptionPane.showMessageDialog(textFieldUsername, "Username già usato!");
 						textFieldUsername.setText("");
 					}
-					if(check_pwd==false) {
+					if(checkPwd==false && campiNonNulli==true) {
 						JOptionPane.showMessageDialog(passwordField, "La password deve contenere almeno 6 caratteri, contenere almeno una lettera maiuscola e almeno una cifra");
 						passwordField.setText("");
 					}
-					if(check_usr == true && check_pwd==true) {
+					if(checkUsr == true && checkPwd==true) {
 						ConcreteFantallenatoreBuilder a = new ConcreteFantallenatoreBuilder ();
 						Director d = new Director(a);
-						String nome=textFieldNome.getText();
-						String cognome=textFieldCognome.getText();
-						String username=textFieldUsername.getText();
-						String pwd=passwordField.getText();
 						d.createFantallenatore(nome, cognome, username, pwd);
 						Fantallenatore f = d.getFantallenatore();
 						r.salvaUtente(f);
+						r.creaFantallenatoriVirtuali();
 					}
 				} catch (IOException e1) {
 					e1.printStackTrace();

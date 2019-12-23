@@ -25,7 +25,7 @@ public class  Registrazione {
 	
 	
 	public boolean checkUsername(String username) throws IOException{
-		boolean flag = false;
+		boolean flag;
 		try {
 			String line="";
 			FileReader f = new FileReader("dati.csv");
@@ -33,12 +33,13 @@ public class  Registrazione {
 			br.readLine();
 			while((line=br.readLine())!=null) {
 				String [] fields = line.split(",");
-				if(fields[2].equalsIgnoreCase(username)==true) {
+				if(fields[2].equalsIgnoreCase(username)) {
 					flag=false;
 					break;
 				}
-				else
-					flag = true;
+				else {
+					
+				}
 			}
 			br.close();
 		}catch (Exception e) {
@@ -86,5 +87,23 @@ public class  Registrazione {
 			System.out.println("Errore nella lettura del file !");
 		}
 		return ris;
+	}
+	
+	public boolean controlloCampiNonNulli (String nome,String cognome,String username,String password) {
+		if(nome.equalsIgnoreCase("") || cognome.equalsIgnoreCase("") || username.equalsIgnoreCase("") || password.equalsIgnoreCase(""))
+			return false;
+		else
+			return true;
+	}
+	
+	public void creaFantallenatoriVirtuali() throws IOException {
+		ConcreteFantallenatoreVirtualBuilder b = new ConcreteFantallenatoreVirtualBuilder();
+		Director e = new Director(b);
+		for (int i=0;i<5;i++) {
+			String nome="",cognome="",username="",password="";
+			e.createFantallenatore(nome, cognome, username,password);
+			Fantallenatore f = e.getFantallenatore();
+			this.salvaUtente(f);
+		}
 	}
 }
