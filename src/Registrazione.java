@@ -24,28 +24,27 @@ public class Registrazione {
 	}
 
 	public boolean checkUsername(String username) throws IOException {
-		boolean flag = true;
+		boolean ris = true;
+		
 		try {
 			String line = "";
 			FileReader f = new FileReader("dati.csv");
 			BufferedReader br = new BufferedReader(f);
-			br.readLine();
+			line = br.readLine();
 			while ((line = br.readLine()) != null) {
 				String[] fields = line.split(",");
 				if (fields[2].equalsIgnoreCase(username)) {
-					flag = false;
-
-				} else {
-					flag = true;
-
-				}
+					ris = false;
+					break;
+				} else
+					ris = true;
 			}
 			br.close();
 		} catch (Exception e) {
 			System.out.println("Errore nella lettura del file !");
 		}
-
-		return flag;
+		
+		return ris;
 	}
 
 	public boolean checkPassword(String password) {
