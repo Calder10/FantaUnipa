@@ -5,7 +5,7 @@ public class Registrazione {
 
 	public void salvaUtente(Fantallenatore fantallenatore) throws IOException {
 		try {
-			FileWriter fw = new FileWriter("dati.csv", true);
+			FileWriter fw = new FileWriter("dati.csv",true);
 			fw.append(fantallenatore.getNome());
 			fw.append(",");
 			fw.append(fantallenatore.getCognome());
@@ -34,11 +34,7 @@ public class Registrazione {
 				String[] fields = line.split(",");
 				if (fields[2].equalsIgnoreCase(username)) {
 					flag = false;
-
-				} else {
-					flag = true;
-
-				}
+					break;} 
 			}
 			br.close();
 		} catch (Exception e) {
