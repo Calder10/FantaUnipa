@@ -24,7 +24,7 @@ public class Registrazione {
 	}
 
 	public boolean checkUsername(String username) throws IOException {
-		boolean ris = true;
+		boolean flag = true;
 		
 		try {
 			String line = "";
@@ -34,22 +34,16 @@ public class Registrazione {
 			while ((line = br.readLine()) != null) {
 				String[] fields = line.split(",");
 				if (fields[2].equalsIgnoreCase(username)) {
-<<<<<<< HEAD
+
 					flag = false;
-					break;} 
-=======
-					ris = false;
-					break;
-				} else
-					ris = true;
->>>>>>> branch 'master' of https://github.com/Calder10/FantaUnipa.git
+					break;} 	
 			}
 			br.close();
 		} catch (Exception e) {
 			System.out.println("Errore nella lettura del file !");
 		}
 		
-		return ris;
+		return flag;
 	}
 
 	public boolean checkPassword(String password) {
