@@ -134,8 +134,8 @@ public class RegistrazioneGUI extends JFrame {
 					String username=textFieldUsername.getText();
 					String pwd=passwordField.getText();
 					boolean campiNonNulli=r.controlloCampiNonNulli(nome, cognome, username, pwd);
-					boolean checkUsr = r.checkUsername(textFieldUsername.getText());
-					boolean checkPwd = r.checkPassword(passwordField.getText());
+					boolean checkUsr= r.checkUsername(username);
+					boolean checkPwd = r.checkPassword(pwd);
 					if(campiNonNulli==false)
 						JOptionPane.showMessageDialog(passwordField, "Inserire tutti i campi");
 						
@@ -144,10 +144,12 @@ public class RegistrazioneGUI extends JFrame {
 						passwordField.setText("");
 						passwordField.setText("");
 					}
+					
 					if(checkUsr==false) {
 						JOptionPane.showMessageDialog(textFieldUsername, "Username già usato!");
 						textFieldUsername.setText("");
 					}
+					
 					if(checkPwd==false && campiNonNulli==true) {
 						JOptionPane.showMessageDialog(passwordField, "La password deve contenere almeno 6 caratteri, contenere almeno una lettera maiuscola e almeno una cifra");
 						passwordField.setText("");
