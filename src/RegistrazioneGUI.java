@@ -161,6 +161,11 @@ public class RegistrazioneGUI extends JFrame {
 						Fantallenatore f = d.getFantallenatore();
 						r.salvaUtente(f);
 						r.creaFantallenatoriVirtuali();
+						JOptionPane.showMessageDialog(buttonRegistrati, "Registrazione Effettuata con successo !");
+						LoginGUI nextFrame = new LoginGUI();
+						nextFrame.setVisible(true);
+						nextFrame.toFront();
+						setVisible(false);
 					}
 				} catch (IOException e1) {
 					e1.printStackTrace();
