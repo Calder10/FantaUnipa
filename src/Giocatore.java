@@ -1,6 +1,6 @@
 
 public class Giocatore {
-	private String nome;
-	private String cognome;
+	protected String nome;
+	protected String cognome;
 	
 }
