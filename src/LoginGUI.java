@@ -106,7 +106,7 @@ public class LoginGUI extends JFrame {
 				else if(ris==true && existSquadra== true) {
 					System.out.println("PAGINA HOME");
 				}
-				else if(ris=false){
+				else if(ris==false){
 					JOptionPane.showMessageDialog(btnNewButton, "Errore ! Username o password errati !");
 					textField.setText("");
 					passwordField.setText("");
