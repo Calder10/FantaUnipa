@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -25,6 +26,8 @@ public class CreazioneSquadraGUI extends JFrame {
 	private final JLabel lblCreaLaTua = new JLabel("Crea la tua squadra ");
 	private JTextField textFieldNomeSquadra;
 	private String username;
+	private File f;
+	private JFileChooser fc;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -55,6 +58,8 @@ public class CreazioneSquadraGUI extends JFrame {
 
 	public CreazioneSquadraGUI() {
 		super("Creazione della FantaSquadra");
+		Squadra s= new Squadra();
+		fc =  new JFileChooser();
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 679, 452);
@@ -110,18 +115,22 @@ public class CreazioneSquadraGUI extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JFileChooser fc = new JFileChooser();
+			
 				int ris = fc.showOpenDialog(null);
 				if (ris==fc.APPROVE_OPTION) {
 					File f = fc.getSelectedFile();
 					try {
+						
 						image.setIcon(new ImageIcon(ImageIO.read(f)));
+					
 					}catch(IOException ex){
 						ex.printStackTrace();
 					}
 				}
 			}
 		});
+		
+	
 		
 		btnNewButtonContinua.addActionListener(new ActionListener() {
 			@Override
@@ -130,9 +139,10 @@ public class CreazioneSquadraGUI extends JFrame {
 					JOptionPane.showMessageDialog(textFieldNomeSquadra,"Nome Squadra non può essere vuoto");
 				}
 				else {
-					Squadra s = new Squadra();
+				
 					s.setNomeSquadra(textFieldNomeSquadra.getText());
-					//s.setLogo(image);
+					f= fc.getSelectedFile();
+					s.salvaLogo(f);
 					try {
 						s.addNomeSquadraToCsv(username, textFieldNomeSquadra.getText());
 						JOptionPane.showMessageDialog(textFieldNomeSquadra,"OK");

@@ -1,16 +1,20 @@
 import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
+
+import javax.imageio.ImageIO;
+
 import java.io.File;
 
 
 public class Squadra {
 	private Fantallenatore fantallenatore;
 	private String nomeSquadra;
-	private Image logo;
+	private String pathLogo;
 	private List<Portiere> portieri;
 	private List <Difensore> difensori;
 	private List <Centrocampista> centrocampisti;
@@ -27,11 +31,11 @@ public class Squadra {
 	public void setNomeSquadra(String nomeSquadra) {
 		this.nomeSquadra = nomeSquadra;
 	}
-	public Image getLogo() {
-		return logo;
+	public String getPathLogo() {
+		return pathLogo;
 	}
-	public void setLogo(Image logo) {
-		this.logo = logo;
+	public void setPathLogo(String logo) {
+		this.pathLogo = logo;
 	}
 	public List<Portiere> getPortieri() {
 		return portieri;
@@ -89,4 +93,20 @@ public class Squadra {
 		}
 	}
 	
-}
+	public void salvaLogo(File f) {
+		BufferedImage bImage = null;
+        try {
+        	bImage = ImageIO.read(f);
+        	String path = "/Loghi/" +this.nomeSquadra + ".png";
+        	File f1= new File(path);
+        	ImageIO.write(bImage, "png", f1);
+      } catch (IOException e) {
+              System.out.println("Exception occured :" + e.getMessage());
+        }
+       
+   }
+		
+	}
+	
+	
+
