@@ -25,9 +25,6 @@ public class CreazioneSquadraGUI extends JFrame {
 	private final JLabel lblCreaLaTua = new JLabel("Crea la tua squadra ");
 	private JTextField textFieldNomeSquadra;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -41,10 +38,8 @@ public class CreazioneSquadraGUI extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public CreazioneSquadraGUI() {
+		super("Creazione della FantaSquadra");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 679, 452);
@@ -110,7 +105,6 @@ public class CreazioneSquadraGUI extends JFrame {
 		});
 		
 		btnNewButtonContinua.addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(textFieldNomeSquadra.getText().equalsIgnoreCase("")){

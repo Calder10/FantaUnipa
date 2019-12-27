@@ -41,12 +41,14 @@ public class LoginGUI extends JFrame {
 		contentPane.add(lblFantaunipa);
 		
 		JLabel lblNewLabel = new JLabel();
-		lblNewLabel.setIcon(new ImageIcon("Immagini/pallone.png"));
+		ClassLoader cl = this.getClass().getClassLoader();
+		ImageIcon img = new ImageIcon(cl.getResource("Immagini/pallone.png"));
+		lblNewLabel.setIcon(img);
 		lblNewLabel.setBounds(120, -2, 69, 67);
 		contentPane.add(lblNewLabel);
 		
 		JLabel label = new JLabel();
-		label.setIcon(new ImageIcon("Immagini/pallone.png"));
+		label.setIcon(img);
 		label.setBounds(475, -2, 69, 67);
 		contentPane.add(label);
 		
@@ -121,7 +123,6 @@ public class LoginGUI extends JFrame {
 				try {
 					nextFrame = new RegistrazioneGUI();
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				nextFrame.setVisible(true);
@@ -133,3 +134,4 @@ public class LoginGUI extends JFrame {
 		contentPane.add(button);
 	}
 }
+
