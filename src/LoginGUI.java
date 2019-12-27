@@ -23,14 +23,6 @@ public class LoginGUI extends JFrame {
 	private JTextField textField;
 	private JPasswordField passwordField;
 
-	/**
-	 * Launch the application.
-	 */
-	
-
-	/**
-	 * Create the frame.
-	 */
 	public LoginGUI() {
 		super("FantaUnipa");
 		Registrazione r = new Registrazione();
@@ -49,12 +41,12 @@ public class LoginGUI extends JFrame {
 		contentPane.add(lblFantaunipa);
 		
 		JLabel lblNewLabel = new JLabel();
-		lblNewLabel.setIcon(new ImageIcon("/home/salvatorecalderaro/Documenti/GitHub/FantaUnipa/Immagini/pallone.png"));
+		lblNewLabel.setIcon(new ImageIcon("Immagini/pallone.png"));
 		lblNewLabel.setBounds(120, -2, 69, 67);
 		contentPane.add(lblNewLabel);
 		
 		JLabel label = new JLabel();
-		label.setIcon(new ImageIcon("/home/salvatorecalderaro/Documenti/GitHub/FantaUnipa/Immagini/pallone.png"));
+		label.setIcon(new ImageIcon("Immagini/pallone.png"));
 		label.setBounds(475, -2, 69, 67);
 		contentPane.add(label);
 		
