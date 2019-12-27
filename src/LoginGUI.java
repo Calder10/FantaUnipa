@@ -26,18 +26,7 @@ public class LoginGUI extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					LoginGUI frame = new LoginGUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the frame.
@@ -130,7 +119,13 @@ public class LoginGUI extends JFrame {
 		JButton button = new JButton("REGISTRATI");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				RegistrazioneGUI nextFrame = new RegistrazioneGUI();
+				RegistrazioneGUI nextFrame = null;
+				try {
+					nextFrame = new RegistrazioneGUI();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				nextFrame.setVisible(true);
 				nextFrame.toFront();
 				setVisible(false);

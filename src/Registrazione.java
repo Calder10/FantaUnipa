@@ -2,6 +2,17 @@ import java.io.*;
 
 public class Registrazione {
 	private FantallenatoreBuilder fantallenatore;
+	
+	public void createDataFile() throws IOException {
+		File f= new File("dati.csv");
+		if(f.exists()== false) {
+		FileWriter fw = new FileWriter(f);
+		fw.append("Nome,Cognome,Username,Password,FantaCrediti\n");
+		fw.close();
+		}
+		
+		
+	}
 
 	public void salvaUtente(Fantallenatore fantallenatore) throws IOException {
 		try {

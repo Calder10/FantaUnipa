@@ -25,29 +25,15 @@ public class RegistrazioneGUI extends JFrame {
 	private JTextField textFieldUsername;
 	private JPasswordField passwordField;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					RegistrazioneGUI frame = new RegistrazioneGUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	
 	/**
 	 * Create the frame.
 	 * @throws IOException 
 	 * @throws HeadlessException 
 	 */
-	public RegistrazioneGUI() {
+	public RegistrazioneGUI() throws IOException {
 		Registrazione r = new Registrazione();
+		r.createDataFile();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 511, 603);
 		setResizable(false);
@@ -129,6 +115,7 @@ public class RegistrazioneGUI extends JFrame {
 		buttonRegistrati.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
+					
 					String nome=textFieldNome.getText();
 					String cognome=textFieldCognome.getText();
 					String username=textFieldUsername.getText();
