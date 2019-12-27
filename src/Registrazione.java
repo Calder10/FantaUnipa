@@ -2,21 +2,43 @@ import java.io.*;
 
 public class Registrazione {
 	private FantallenatoreBuilder fantallenatore;
-	
+
 	public void createDataFile() throws IOException {
-		File f= new File("dati.csv");
-		if(f.exists()== false) {
-		FileWriter fw = new FileWriter(f);
-		fw.append("Nome,Cognome,Username,Password,FantaCrediti\n");
-		fw.close();
+		File f = new File("dati.csv");
+		if (f.exists() == false) {
+			FileWriter fw = new FileWriter(f);
+			fw.append("Nome,Cognome,Username,Password,Squadra,FantaCrediti\n");
+			fw.close();
 		}
-		
-		
+
+	}
+
+	public boolean existSquadra(String username) {
+		boolean flag = false;
+		try {
+			String line = "";
+			FileReader f = new FileReader("dati.csv");
+			BufferedReader br = new BufferedReader(f);
+			line = br.readLine();
+			while ((line = br.readLine()) != null) {
+				String[] fields = line.split(",");
+				if (fields[2].equalsIgnoreCase(username) && (fields[4].equalsIgnoreCase(""))) {
+
+					flag = false;
+					break;
+				}
+			}
+			br.close();
+		} catch (Exception e) {
+			System.out.println("Errore nella lettura del file !");
+		}
+
+		return flag;
 	}
 
 	public void salvaUtente(Fantallenatore fantallenatore) throws IOException {
 		try {
-			FileWriter fw = new FileWriter("dati.csv",true);
+			FileWriter fw = new FileWriter("dati.csv", true);
 			fw.append(fantallenatore.getNome());
 			fw.append(",");
 			fw.append(fantallenatore.getCognome());
@@ -24,6 +46,8 @@ public class Registrazione {
 			fw.append(fantallenatore.getUsername());
 			fw.append(",");
 			fw.append(fantallenatore.getPassword());
+			fw.append(",");
+			fw.append("");
 			fw.append(",");
 			fw.append(Integer.toString(fantallenatore.getFantaCrediti()));
 			fw.append("\n");
@@ -36,7 +60,7 @@ public class Registrazione {
 
 	public boolean checkUsername(String username) throws IOException {
 		boolean flag = true;
-		
+
 		try {
 			String line = "";
 			FileReader f = new FileReader("dati.csv");
@@ -47,13 +71,14 @@ public class Registrazione {
 				if (fields[2].equalsIgnoreCase(username)) {
 
 					flag = false;
-					break;} 	
+					break;
+				}
 			}
 			br.close();
 		} catch (Exception e) {
 			System.out.println("Errore nella lettura del file !");
 		}
-		
+
 		return flag;
 	}
 

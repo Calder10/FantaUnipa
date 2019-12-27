@@ -90,17 +90,23 @@ public class LoginGUI extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
-				boolean ris=false;
+				boolean ris = false;
+				boolean existSquadra = r.existSquadra(lblUsername.getText() );
 				try {
 					ris=r.login(textField.getText(),passwordField.getText());
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
-				if(ris==true) {
-					JOptionPane.showMessageDialog(btnNewButton, "OK !");
-					System.exit(0);
+				if(ris==true && existSquadra== false) {
+					CreazioneSquadraGUI nextFrame = new CreazioneSquadraGUI();
+					nextFrame.setVisible(true);
+					nextFrame.toFront();
+					setVisible(false);
 				}
-				else {
+				else if(ris==true && existSquadra== true) {
+					System.out.println("PAGINA HOME");
+				}
+				else if(ris=false){
 					JOptionPane.showMessageDialog(btnNewButton, "Errore ! Username o password errati !");
 					textField.setText("");
 					passwordField.setText("");
