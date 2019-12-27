@@ -49,13 +49,15 @@ public class RegistrazioneGUI extends JFrame {
 		contentPane.add(lblFantaunipa);
 		
 		JLabel lblNewLabel = new JLabel();
+		ClassLoader cl = this.getClass().getClassLoader();
+		ImageIcon img = new ImageIcon(cl.getResource("Immagini/pallone.png"));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setIcon(new ImageIcon("Immagini/pallone.png"));
+		lblNewLabel.setIcon(img);
 		lblNewLabel.setBounds(45, -2, 69, 67);
 		contentPane.add(lblNewLabel);
 		
 		JLabel label = new JLabel();
-		label.setIcon(new ImageIcon("Immagini/pallone.png"));
+		label.setIcon(img);
 		label.setBounds(400, -2, 69, 67);
 		contentPane.add(label);
 		

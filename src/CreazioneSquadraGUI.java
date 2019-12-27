@@ -70,7 +70,10 @@ public class CreazioneSquadraGUI extends JFrame {
 		lblScegliIlLogo.setBounds(95, 178, 489, 67);
 		contentPane.add(lblScegliIlLogo);
 		
-		JButton btnNewButtonScegli = new JButton(new ImageIcon("Immagini/icons8-caricare-64.png"));
+		
+		ClassLoader cl = this.getClass().getClassLoader();
+		ImageIcon imgUp = new ImageIcon(cl.getResource("Immagini/icons8-caricare-64.png"));
+		JButton btnNewButtonScegli = new JButton(imgUp);
 		btnNewButtonScegli.setBackground(Color.WHITE);
 		btnNewButtonScegli.setBorder(null);
 		btnNewButtonScegli.setContentAreaFilled(false);
@@ -81,7 +84,8 @@ public class CreazioneSquadraGUI extends JFrame {
 		image.setLocation(289, 211);
 		contentPane.add(image);
 		
-		JButton btnNewButtonContinua = new JButton(new ImageIcon("Immagini/freccia.png"));
+		ImageIcon imgAvanti = new ImageIcon(cl.getResource("Immagini/freccia.png"));
+		JButton btnNewButtonContinua = new JButton(imgAvanti);
 		btnNewButtonContinua.setBackground(Color.WHITE);
 		btnNewButtonContinua.setBorder(null);
 		btnNewButtonContinua.setContentAreaFilled(false);
