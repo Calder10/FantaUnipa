@@ -93,6 +93,7 @@ public class LoginGUI extends JFrame {
 				}
 				if(ris==true && existSquadra== false) {
 					CreazioneSquadraGUI nextFrame = new CreazioneSquadraGUI();
+					nextFrame.setUsername(textField.getText());
 					nextFrame.setVisible(true);
 					nextFrame.toFront();
 					setVisible(false);
