@@ -2450,7 +2450,7 @@
 											"top": 253,
 											"width": 230.2041015625,
 											"height": 13,
-											"text": "-cognomi: String[0..3]",
+											"text": "-cognomi: String[0..7]",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2909,7 +2909,7 @@
 											"top": 462,
 											"width": 282.2041015625,
 											"height": 13,
-											"text": "-fantallenatore: Fantallenatore",
+											"text": "#fantallenatore: Fantallenatore",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2926,7 +2926,7 @@
 											"top": 477,
 											"width": 282.2041015625,
 											"height": 13,
-											"text": "-nomeSquadra: String",
+											"text": "#nomeSquadra: String",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2943,7 +2943,7 @@
 											"top": 492,
 											"width": 282.2041015625,
 											"height": 13,
-											"text": "-portieri: ArrayListi<Portieri>",
+											"text": "#portieri: ArrayListi<Portieri>",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2960,7 +2960,7 @@
 											"top": 507,
 											"width": 282.2041015625,
 											"height": 13,
-											"text": "-centrocampisti: ArrayList<Centrocampisti>",
+											"text": "#centrocampisti: ArrayList<Centrocampisti>",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2977,7 +2977,7 @@
 											"top": 522,
 											"width": 282.2041015625,
 											"height": 13,
-											"text": "-attaccanti: ArrayList<Attaccanti>",
+											"text": "#attaccanti: ArrayList<Attaccanti>",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2994,7 +2994,7 @@
 											"top": 537,
 											"width": 282.2041015625,
 											"height": 13,
-											"text": "-difensori: ArrayList<Difensori>",
+											"text": "#difensori: ArrayList<Difensori>",
 											"horizontalAlignment": 0
 										},
 										{
@@ -3011,7 +3011,7 @@
 											"top": 552,
 											"width": 282.2041015625,
 											"height": 13,
-											"text": "-pathLogo: String",
+											"text": "#pathLogo: String",
 											"horizontalAlignment": 0
 										}
 									],
@@ -4807,6 +4807,321 @@
 							"headQualifiersCompartment": {
 								"$ref": "AAAAAAFvSHcII1haoT4="
 							}
+						},
+						{
+							"_type": "UMLClassView",
+							"_id": "AAAAAAFvS/N9BLu/W/8=",
+							"_parent": {
+								"$ref": "AAAAAAFF+qBtyKM79qY="
+							},
+							"model": {
+								"$ref": "AAAAAAFvS/N9Aru9Omo="
+							},
+							"subViews": [
+								{
+									"_type": "UMLNameCompartmentView",
+									"_id": "AAAAAAFvS/N9BLvAcSg=",
+									"_parent": {
+										"$ref": "AAAAAAFvS/N9BLu/W/8="
+									},
+									"model": {
+										"$ref": "AAAAAAFvS/N9Aru9Omo="
+									},
+									"subViews": [
+										{
+											"_type": "LabelView",
+											"_id": "AAAAAAFvS/N9BbvBx5s=",
+											"_parent": {
+												"$ref": "AAAAAAFvS/N9BLvAcSg="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"height": 13
+										},
+										{
+											"_type": "LabelView",
+											"_id": "AAAAAAFvS/N9BbvCoeg=",
+											"_parent": {
+												"$ref": "AAAAAAFvS/N9BLvAcSg="
+											},
+											"font": "Arial;13;1",
+											"left": 237,
+											"top": 943,
+											"width": 279,
+											"height": 13,
+											"text": "SquadraVirtuale"
+										},
+										{
+											"_type": "LabelView",
+											"_id": "AAAAAAFvS/N9BbvDy7M=",
+											"_parent": {
+												"$ref": "AAAAAAFvS/N9BLvAcSg="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"width": 73.67724609375,
+											"height": 13,
+											"text": "(from Model)"
+										},
+										{
+											"_type": "LabelView",
+											"_id": "AAAAAAFvS/N9BbvEYJ4=",
+											"_parent": {
+												"$ref": "AAAAAAFvS/N9BLvAcSg="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"height": 13,
+											"horizontalAlignment": 1
+										}
+									],
+									"font": "Arial;13;0",
+									"left": 232,
+									"top": 936,
+									"width": 289,
+									"height": 25,
+									"stereotypeLabel": {
+										"$ref": "AAAAAAFvS/N9BbvBx5s="
+									},
+									"nameLabel": {
+										"$ref": "AAAAAAFvS/N9BbvCoeg="
+									},
+									"namespaceLabel": {
+										"$ref": "AAAAAAFvS/N9BbvDy7M="
+									},
+									"propertyLabel": {
+										"$ref": "AAAAAAFvS/N9BbvEYJ4="
+									}
+								},
+								{
+									"_type": "UMLAttributeCompartmentView",
+									"_id": "AAAAAAFvS/N9BrvFHUk=",
+									"_parent": {
+										"$ref": "AAAAAAFvS/N9BLu/W/8="
+									},
+									"model": {
+										"$ref": "AAAAAAFvS/N9Aru9Omo="
+									},
+									"subViews": [
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAFvTCmkQLzKVhA=",
+											"_parent": {
+												"$ref": "AAAAAAFvS/N9BrvFHUk="
+											},
+											"model": {
+												"$ref": "AAAAAAFvTCmjj7y+L4s="
+											},
+											"font": "Arial;13;0",
+											"left": 237,
+											"top": 966,
+											"width": 279,
+											"height": 13,
+											"text": "-nomiSquadra: static  String[0..6]",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAFvTIAQgcK2qCU=",
+											"_parent": {
+												"$ref": "AAAAAAFvS/N9BrvFHUk="
+											},
+											"model": {
+												"$ref": "AAAAAAFvTIAPx8KqI9w="
+											},
+											"font": "Arial;13;0",
+											"left": 237,
+											"top": 981,
+											"width": 279,
+											"height": 13,
+											"text": "-isFree: static boolean[0..6]",
+											"horizontalAlignment": 0
+										}
+									],
+									"font": "Arial;13;0",
+									"left": 232,
+									"top": 961,
+									"width": 289,
+									"height": 38
+								},
+								{
+									"_type": "UMLOperationCompartmentView",
+									"_id": "AAAAAAFvS/N9CbvGdVA=",
+									"_parent": {
+										"$ref": "AAAAAAFvS/N9BLu/W/8="
+									},
+									"model": {
+										"$ref": "AAAAAAFvS/N9Aru9Omo="
+									},
+									"subViews": [
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAFvTICPy8MqwYU=",
+											"_parent": {
+												"$ref": "AAAAAAFvS/N9CbvGdVA="
+											},
+											"model": {
+												"$ref": "AAAAAAFvTICPGsMedNg="
+											},
+											"font": "Arial;13;0",
+											"left": 237,
+											"top": 1004,
+											"width": 279,
+											"height": 13,
+											"text": "+creaSquadreVirtuali()",
+											"horizontalAlignment": 0
+										}
+									],
+									"font": "Arial;13;0",
+									"left": 232,
+									"top": 999,
+									"width": 289,
+									"height": 23
+								},
+								{
+									"_type": "UMLReceptionCompartmentView",
+									"_id": "AAAAAAFvS/N9CbvHrQI=",
+									"_parent": {
+										"$ref": "AAAAAAFvS/N9BLu/W/8="
+									},
+									"model": {
+										"$ref": "AAAAAAFvS/N9Aru9Omo="
+									},
+									"visible": false,
+									"font": "Arial;13;0",
+									"width": 10,
+									"height": 10
+								},
+								{
+									"_type": "UMLTemplateParameterCompartmentView",
+									"_id": "AAAAAAFvS/N9CbvIF6c=",
+									"_parent": {
+										"$ref": "AAAAAAFvS/N9BLu/W/8="
+									},
+									"model": {
+										"$ref": "AAAAAAFvS/N9Aru9Omo="
+									},
+									"visible": false,
+									"font": "Arial;13;0",
+									"width": 10,
+									"height": 10
+								}
+							],
+							"font": "Arial;13;0",
+							"containerChangeable": true,
+							"left": 232,
+							"top": 936,
+							"width": 289,
+							"height": 185,
+							"nameCompartment": {
+								"$ref": "AAAAAAFvS/N9BLvAcSg="
+							},
+							"attributeCompartment": {
+								"$ref": "AAAAAAFvS/N9BrvFHUk="
+							},
+							"operationCompartment": {
+								"$ref": "AAAAAAFvS/N9CbvGdVA="
+							},
+							"receptionCompartment": {
+								"$ref": "AAAAAAFvS/N9CbvHrQI="
+							},
+							"templateParameterCompartment": {
+								"$ref": "AAAAAAFvS/N9CbvIF6c="
+							}
+						},
+						{
+							"_type": "UMLGeneralizationView",
+							"_id": "AAAAAAFvS/PWvLxDO1I=",
+							"_parent": {
+								"$ref": "AAAAAAFF+qBtyKM79qY="
+							},
+							"model": {
+								"$ref": "AAAAAAFvS/PWu7xBtFU="
+							},
+							"subViews": [
+								{
+									"_type": "EdgeLabelView",
+									"_id": "AAAAAAFvS/PWvbxExkU=",
+									"_parent": {
+										"$ref": "AAAAAAFvS/PWvLxDO1I="
+									},
+									"model": {
+										"$ref": "AAAAAAFvS/PWu7xBtFU="
+									},
+									"visible": false,
+									"font": "Arial;13;0",
+									"left": 285,
+									"top": 845,
+									"height": 13,
+									"alpha": 1.5707963267948966,
+									"distance": 15,
+									"hostEdge": {
+										"$ref": "AAAAAAFvS/PWvLxDO1I="
+									},
+									"edgePosition": 1
+								},
+								{
+									"_type": "EdgeLabelView",
+									"_id": "AAAAAAFvS/PWvbxFVU8=",
+									"_parent": {
+										"$ref": "AAAAAAFvS/PWvLxDO1I="
+									},
+									"model": {
+										"$ref": "AAAAAAFvS/PWu7xBtFU="
+									},
+									"visible": null,
+									"font": "Arial;13;0",
+									"left": 271,
+									"top": 851,
+									"height": 13,
+									"alpha": 1.5707963267948966,
+									"distance": 30,
+									"hostEdge": {
+										"$ref": "AAAAAAFvS/PWvLxDO1I="
+									},
+									"edgePosition": 1
+								},
+								{
+									"_type": "EdgeLabelView",
+									"_id": "AAAAAAFvS/PWvbxG/9M=",
+									"_parent": {
+										"$ref": "AAAAAAFvS/PWvLxDO1I="
+									},
+									"model": {
+										"$ref": "AAAAAAFvS/PWu7xBtFU="
+									},
+									"visible": false,
+									"font": "Arial;13;0",
+									"left": 312,
+									"top": 834,
+									"height": 13,
+									"alpha": -1.5707963267948966,
+									"distance": 15,
+									"hostEdge": {
+										"$ref": "AAAAAAFvS/PWvLxDO1I="
+									},
+									"edgePosition": 1
+								}
+							],
+							"font": "Arial;13;0",
+							"head": {
+								"$ref": "AAAAAAFvN53/FBHSij4="
+							},
+							"tail": {
+								"$ref": "AAAAAAFvS/N9BLu/W/8="
+							},
+							"lineStyle": 1,
+							"points": "337:935;262:758",
+							"showVisibility": true,
+							"nameLabel": {
+								"$ref": "AAAAAAFvS/PWvbxExkU="
+							},
+							"stereotypeLabel": {
+								"$ref": "AAAAAAFvS/PWvbxFVU8="
+							},
+							"propertyLabel": {
+								"$ref": "AAAAAAFvS/PWvbxG/9M="
+							}
 						}
 					]
 				},
@@ -6104,7 +6419,7 @@
 							"name": "cognomi",
 							"visibility": "private",
 							"type": "String",
-							"multiplicity": "0..3"
+							"multiplicity": "0..7"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -6381,7 +6696,7 @@
 								"$ref": "AAAAAAFvN53/ERHQ4ks="
 							},
 							"name": "fantallenatore",
-							"visibility": "private",
+							"visibility": "protected",
 							"type": {
 								"$ref": "AAAAAAFvHnlRG8bmKFM="
 							}
@@ -6393,7 +6708,7 @@
 								"$ref": "AAAAAAFvN53/ERHQ4ks="
 							},
 							"name": "nomeSquadra",
-							"visibility": "private",
+							"visibility": "protected",
 							"type": "String"
 						},
 						{
@@ -6403,7 +6718,7 @@
 								"$ref": "AAAAAAFvN53/ERHQ4ks="
 							},
 							"name": "portieri",
-							"visibility": "private",
+							"visibility": "protected",
 							"type": "ArrayListi<Portieri>"
 						},
 						{
@@ -6413,7 +6728,7 @@
 								"$ref": "AAAAAAFvN53/ERHQ4ks="
 							},
 							"name": "centrocampisti",
-							"visibility": "private",
+							"visibility": "protected",
 							"type": "ArrayList<Centrocampisti>"
 						},
 						{
@@ -6423,7 +6738,7 @@
 								"$ref": "AAAAAAFvN53/ERHQ4ks="
 							},
 							"name": "attaccanti",
-							"visibility": "private",
+							"visibility": "protected",
 							"type": "ArrayList<Attaccanti>"
 						},
 						{
@@ -6433,7 +6748,7 @@
 								"$ref": "AAAAAAFvN53/ERHQ4ks="
 							},
 							"name": "difensori",
-							"visibility": "private",
+							"visibility": "protected",
 							"type": "ArrayList<Difensori>"
 						},
 						{
@@ -6443,7 +6758,7 @@
 								"$ref": "AAAAAAFvN53/ERHQ4ks="
 							},
 							"name": "pathLogo",
-							"visibility": "private",
+							"visibility": "protected",
 							"type": "String"
 						}
 					],
@@ -6807,6 +7122,63 @@
 							"target": {
 								"$ref": "AAAAAAFvN7pdTRo8J40="
 							}
+						}
+					]
+				},
+				{
+					"_type": "UMLClass",
+					"_id": "AAAAAAFvS/N9Aru9Omo=",
+					"_parent": {
+						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
+					},
+					"name": "SquadraVirtuale",
+					"ownedElements": [
+						{
+							"_type": "UMLGeneralization",
+							"_id": "AAAAAAFvS/PWu7xBtFU=",
+							"_parent": {
+								"$ref": "AAAAAAFvS/N9Aru9Omo="
+							},
+							"source": {
+								"$ref": "AAAAAAFvS/N9Aru9Omo="
+							},
+							"target": {
+								"$ref": "AAAAAAFvN53/ERHQ4ks="
+							}
+						}
+					],
+					"attributes": [
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAFvTCmjj7y+L4s=",
+							"_parent": {
+								"$ref": "AAAAAAFvS/N9Aru9Omo="
+							},
+							"name": "nomiSquadra",
+							"visibility": "private",
+							"type": "static  String",
+							"multiplicity": "0..6"
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAFvTIAPx8KqI9w=",
+							"_parent": {
+								"$ref": "AAAAAAFvS/N9Aru9Omo="
+							},
+							"name": "isFree",
+							"visibility": "private",
+							"type": "static boolean",
+							"multiplicity": "0..6"
+						}
+					],
+					"operations": [
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAFvTICPGsMedNg=",
+							"_parent": {
+								"$ref": "AAAAAAFvS/N9Aru9Omo="
+							},
+							"name": "creaSquadreVirtuali"
 						}
 					]
 				}
