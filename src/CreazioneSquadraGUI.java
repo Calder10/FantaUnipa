@@ -144,16 +144,12 @@ public class CreazioneSquadraGUI extends JFrame {
 					f= fc.getSelectedFile();
 					s.salvaLogo(f);
 					try {
+						s.addNomeSquadraToCsv(username, textFieldNomeSquadra.getText());
 						s.salvaSquadraSuFile();
+						SquadraVirtuale.creaSquadreVirtuali();
+						JOptionPane.showMessageDialog(textFieldNomeSquadra,"OK");
 					} catch (IOException e2) {
 						e2.printStackTrace();
-					}
-					try {
-						s.addNomeSquadraToCsv(username, textFieldNomeSquadra.getText());
-						JOptionPane.showMessageDialog(textFieldNomeSquadra,"OK");
-						SquadraVirtuale.creaSquadreVirtuali();
-					} catch (IOException e1) {
-						e1.printStackTrace();
 					}
 				}
 			}

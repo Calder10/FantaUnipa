@@ -121,7 +121,9 @@ public class Squadra implements Serializable{
 	public void salvaSquadraSuFile() throws IOException {
 		boolean dest = new File("src/Squadre").mkdir();
 		String pathDest = ("src/Squadre/" + this.nomeSquadra.trim() + ".dat").trim();
-
+		Fantallenatore g = Fantallenatore.getFantallenatoreFromCsv(this.nomeSquadra);
+		this.fantallenatore=g;
+		System.out.println(this.toString());
 		File f = new File(pathDest);
 		FileOutputStream fos = new FileOutputStream(f);
 		try {
@@ -132,5 +134,14 @@ public class Squadra implements Serializable{
 			System.out.println("Errore durante il salvatggio su file !");
 		}
 	}
+
+	@Override
+	public String toString() {
+		return "Squadra [fantallenatore=" + fantallenatore + ", nomeSquadra=" + nomeSquadra + ", pathLogo=" + pathLogo
+				+ ", portieri=" + portieri + ", difensori=" + difensori + ", centrocampisti=" + centrocampisti
+				+ ", attaccanti=" + attaccanti + "]";
+	}
+	
+	
 
 }
