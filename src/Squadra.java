@@ -5,11 +5,10 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
-
 import javax.imageio.ImageIO;
-
 import java.io.File;
-
+import java.nio.file.Files; 
+import java.nio.file.*; 
 
 public class Squadra {
 	private Fantallenatore fantallenatore;
@@ -94,16 +93,16 @@ public class Squadra {
 	}
 	
 	public void salvaLogo(File f) {
-		BufferedImage bImage = null;
+		BufferedImage i = null;
+		//boolean dir = new File("src/Loghi").mkdir();
         try {
-        	bImage = ImageIO.read(f);
-        	String path = "/Loghi/" +this.nomeSquadra + ".png";
-        	File f1= new File(path);
-        	ImageIO.write(bImage, "png", f1);
+        	i = ImageIO.read(f);
+        	String pathDest=("src/Loghi/"+this.nomeSquadra.trim()+".png").trim();
+        	File f1= new File(pathDest);
+        	ImageIO.write(i, "png", f1);
       } catch (IOException e) {
-              System.out.println("Exception occured :" + e.getMessage());
-        }
-       
+              System.out.println("Errore nel salvataggio dell'immagine !");
+        } 
    }
 		
 	}
