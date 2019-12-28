@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class ConcreteFantallenatoreVirtualBuilder implements FantallenatoreBuilder{
 	private String [] nomi= {"Antonio","Salvatore","Franco","Giuseppe","Andrea","Martina","Simone","Danilo"};
-	private String [] cognomi = {"Rossi","Verdi","Bianchi","Neri"};
+	private String [] cognomi = {"Rossi","Verdi","Bianchi","Neri","Gialli","Parrinello","Silvestri","Fontana","Boschetti"};
 	private String [] password = {"abs3yYa","bcwbdbD1b","byufbvuH6fe","ygf8yvbyH8bvf","wyfrywTTv2","g7ywfv78wrv"};
 	private Fantallenatore fantallenatore;
 	
@@ -17,7 +17,7 @@ public class ConcreteFantallenatoreVirtualBuilder implements FantallenatoreBuild
 	}
 	
 	public void addCognome(String cognome) {
-		int i = new Random().nextInt(3);
+		int i = new Random().nextInt(7);
 		cognome = cognomi[i];
 		fantallenatore.setCognome(cognome);
 	}

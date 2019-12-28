@@ -15,13 +15,13 @@ import java.nio.file.Files;
 import java.nio.file.*;
 
 public class Squadra implements Serializable{
-	private Fantallenatore fantallenatore;
-	private String nomeSquadra;
-	private String pathLogo;
-	private List<Portiere> portieri;
-	private List<Difensore> difensori;
-	private List<Centrocampista> centrocampisti;
-	private List<Attaccante> attaccanti;
+	protected Fantallenatore fantallenatore;
+	protected String nomeSquadra;
+	protected String pathLogo;
+	protected List<Portiere> portieri;
+	protected List<Difensore> difensori;
+	protected List<Centrocampista> centrocampisti;
+	protected List<Attaccante> attaccanti;
 
 	public Fantallenatore getFantallenatore() {
 		return fantallenatore;

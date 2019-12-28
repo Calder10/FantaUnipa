@@ -151,6 +151,7 @@ public class CreazioneSquadraGUI extends JFrame {
 					try {
 						s.addNomeSquadraToCsv(username, textFieldNomeSquadra.getText());
 						JOptionPane.showMessageDialog(textFieldNomeSquadra,"OK");
+						SquadraVirtuale.creaSquadreVirtuali();
 					} catch (IOException e1) {
 						e1.printStackTrace();
 					}
