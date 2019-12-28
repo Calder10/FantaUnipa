@@ -4,67 +4,81 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.List;
 import javax.imageio.ImageIO;
 import java.io.File;
-import java.nio.file.Files; 
-import java.nio.file.*; 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.nio.file.Files;
+import java.nio.file.*;
 
-public class Squadra {
+public class Squadra implements Serializable{
 	private Fantallenatore fantallenatore;
 	private String nomeSquadra;
 	private String pathLogo;
 	private List<Portiere> portieri;
-	private List <Difensore> difensori;
-	private List <Centrocampista> centrocampisti;
-	private List <Attaccante> attaccanti;
+	private List<Difensore> difensori;
+	private List<Centrocampista> centrocampisti;
+	private List<Attaccante> attaccanti;
+
 	public Fantallenatore getFantallenatore() {
 		return fantallenatore;
 	}
+
 	public void setFantallenatore(Fantallenatore fantallenatore) {
 		this.fantallenatore = fantallenatore;
 	}
+
 	public String getNomeSquadra() {
 		return nomeSquadra;
 	}
+
 	public void setNomeSquadra(String nomeSquadra) {
 		this.nomeSquadra = nomeSquadra;
 	}
+
 	public String getPathLogo() {
 		return pathLogo;
 	}
+
 	public void setPathLogo(String logo) {
 		this.pathLogo = logo;
 	}
+
 	public List<Portiere> getPortieri() {
 		return portieri;
 	}
+
 	public List<Difensore> getDifensori() {
 		return difensori;
 	}
+
 	public List<Centrocampista> getCentrocampisti() {
 		return centrocampisti;
 	}
+
 	public List<Attaccante> getAttaccanti() {
 		return attaccanti;
 	}
-	
-	public void addNomeSquadraToCsv(String username,String nomeSquadra) throws IOException{
+
+	public void addNomeSquadraToCsv(String username, String nomeSquadra) throws IOException {
 		try {
 			File f = new File("dati.csv");
 			File f1 = new File("dat1.csv");
 			FileReader fr = new FileReader(f);
 			BufferedReader br = new BufferedReader(fr);
-			FileWriter fw  = new FileWriter(f1,true);
-			String line="";
-			String [] fields;
-			line=br.readLine();
+			FileWriter fw = new FileWriter(f1, true);
+			String line = "";
+			String[] fields;
+			line = br.readLine();
 			fw.append(line);
 			fw.append("\n");
-			while((line=br.readLine())!=null) {
-				fields=line.split(",");
-				if(fields[2].equalsIgnoreCase(username) && fields[4].equalsIgnoreCase("")) {
-					fields[4]=nomeSquadra;
+			while ((line = br.readLine()) != null) {
+				fields = line.split(",");
+				if (fields[2].equalsIgnoreCase(username) && fields[4].equalsIgnoreCase("")) {
+					fields[4] = nomeSquadra;
 					fw.append(fields[0]);
 					fw.append(",");
 					fw.append(fields[1]);
@@ -77,35 +91,46 @@ public class Squadra {
 					fw.append(",");
 					fw.append(fields[5]);
 					fw.append("\n");
-				}
-				else {
+				} else {
 					fw.append(line);
 					fw.append("\n");
 				}
 			}
 			br.close();
-			//f.delete();
 			fw.close();
 			f1.renameTo(f);
-		}catch(Exception e) {
+		} catch (Exception e) {
 			System.out.println("Errore nella scrittura su file !");
 		}
 	}
-	
+
 	public void salvaLogo(File f) {
 		BufferedImage i = null;
-		//boolean dir = new File("src/Loghi").mkdir();
-        try {
-        	i = ImageIO.read(f);
-        	String pathDest=("src/Loghi/"+this.nomeSquadra.trim()+".png").trim();
-        	File f1= new File(pathDest);
-        	ImageIO.write(i, "png", f1);
-      } catch (IOException e) {
-              System.out.println("Errore nel salvataggio dell'immagine !");
-        } 
-   }
-		
+		try {
+			boolean dest = new File("src/Loghi").mkdir();
+			i = ImageIO.read(f);
+			String pathDest = ("src/Loghi/" + this.nomeSquadra.trim() + ".png").trim();
+			File f1 = new File(pathDest);
+			ImageIO.write(i, "png", f1);
+			this.pathLogo = pathDest;
+		} catch (IOException e) {
+			System.out.println("Errore nel salvataggio dell'immagine !");
+		}
 	}
-	
-	
 
+	public void salvaSquadraSuFile() throws IOException {
+		boolean dest = new File("src/Squadre").mkdir();
+		String pathDest = ("src/Squadre/" + this.nomeSquadra.trim() + ".dat").trim();
+
+		File f = new File(pathDest);
+		FileOutputStream fos = new FileOutputStream(f);
+		try {
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+			oos.writeObject(this);
+			oos.close();
+		} catch (Exception e) {
+			System.out.println("Errore durante il salvatggio su file !");
+		}
+	}
+
+}

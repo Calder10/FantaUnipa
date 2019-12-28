@@ -144,6 +144,11 @@ public class CreazioneSquadraGUI extends JFrame {
 					f= fc.getSelectedFile();
 					s.salvaLogo(f);
 					try {
+						s.salvaSquadraSuFile();
+					} catch (IOException e2) {
+						e2.printStackTrace();
+					}
+					try {
 						s.addNomeSquadraToCsv(username, textFieldNomeSquadra.getText());
 						JOptionPane.showMessageDialog(textFieldNomeSquadra,"OK");
 					} catch (IOException e1) {

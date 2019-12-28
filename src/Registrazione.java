@@ -27,6 +27,8 @@ public class Registrazione {
 					flag = false;
 					break;
 				}
+				else
+					flag=true;
 			}
 			br.close();
 		} catch (Exception e) {

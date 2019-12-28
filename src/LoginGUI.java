@@ -85,7 +85,7 @@ public class LoginGUI extends JFrame {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
 				boolean ris = false;
-				boolean existSquadra = r.existSquadra(lblUsername.getText() );
+				boolean existSquadra = r.existSquadra(textField.getText() );
 				try {
 					ris=r.login(textField.getText(),passwordField.getText());
 				} catch (IOException e1) {
