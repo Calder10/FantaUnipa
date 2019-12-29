@@ -4919,7 +4919,7 @@
 											"font": "Arial;13;1",
 											"left": 557,
 											"top": 951,
-											"width": 155.6953125,
+											"width": 240.97607421875,
 											"height": 13,
 											"text": "UtilityListaGiocatori"
 										},
@@ -4950,7 +4950,7 @@
 									"font": "Arial;13;0",
 									"left": 552,
 									"top": 944,
-									"width": 165.6953125,
+									"width": 250.97607421875,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFvULtHeiOQlT4="
@@ -4974,11 +4974,98 @@
 									"model": {
 										"$ref": "AAAAAAFvULtHeCOMCcA="
 									},
+									"subViews": [
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAFvUjEJP3lGBU0=",
+											"_parent": {
+												"$ref": "AAAAAAFvULtHeiOUg3U="
+											},
+											"model": {
+												"$ref": "AAAAAAFvUjEI7Xk9F/c="
+											},
+											"font": "Arial;13;0",
+											"left": 557,
+											"top": 974,
+											"width": 240.97607421875,
+											"height": 13,
+											"text": "-pathListaCompleta: static String",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAFvUjH1uHm6eE4=",
+											"_parent": {
+												"$ref": "AAAAAAFvULtHeiOUg3U="
+											},
+											"model": {
+												"$ref": "AAAAAAFvUjH1cHmx5zY="
+											},
+											"font": "Arial;13;0",
+											"left": 557,
+											"top": 989,
+											"width": 240.97607421875,
+											"height": 13,
+											"text": "-pathListaPortieri: static String",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAFvUjJLgHoTsik=",
+											"_parent": {
+												"$ref": "AAAAAAFvULtHeiOUg3U="
+											},
+											"model": {
+												"$ref": "AAAAAAFvUjJLRHoK0Yw="
+											},
+											"font": "Arial;13;0",
+											"left": 557,
+											"top": 1004,
+											"width": 240.97607421875,
+											"height": 13,
+											"text": "-pathListaCentrocampisti: static String",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAFvUjLtS3psuC8=",
+											"_parent": {
+												"$ref": "AAAAAAFvULtHeiOUg3U="
+											},
+											"model": {
+												"$ref": "AAAAAAFvUjLs+Hpj4K0="
+											},
+											"font": "Arial;13;0",
+											"left": 557,
+											"top": 1019,
+											"width": 240.97607421875,
+											"height": 13,
+											"text": "-pathListaAttaccanti: static String",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAFvUjNP9nrFXZM=",
+											"_parent": {
+												"$ref": "AAAAAAFvULtHeiOUg3U="
+											},
+											"model": {
+												"$ref": "AAAAAAFvUjNPvnq8V0E="
+											},
+											"font": "Arial;13;0",
+											"left": 557,
+											"top": 1034,
+											"width": 240.97607421875,
+											"height": 13,
+											"text": "-pathListaDifensori: static String",
+											"horizontalAlignment": 0
+										}
+									],
 									"font": "Arial;13;0",
 									"left": 552,
 									"top": 969,
-									"width": 165.6953125,
-									"height": 10
+									"width": 250.97607421875,
+									"height": 83
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -5001,8 +5088,8 @@
 											},
 											"font": "Arial;13;0",
 											"left": 557,
-											"top": 984,
-											"width": 155.6953125,
+											"top": 1057,
+											"width": 240.97607421875,
 											"height": 13,
 											"text": "+creaLIstaPortieri()",
 											"horizontalAlignment": 0
@@ -5018,8 +5105,8 @@
 											},
 											"font": "Arial;13;0",
 											"left": 557,
-											"top": 999,
-											"width": 155.6953125,
+											"top": 1072,
+											"width": 240.97607421875,
 											"height": 13,
 											"text": "+creaListaDifensori()",
 											"horizontalAlignment": 0
@@ -5035,8 +5122,8 @@
 											},
 											"font": "Arial;13;0",
 											"left": 557,
-											"top": 1014,
-											"width": 155.6953125,
+											"top": 1087,
+											"width": 240.97607421875,
 											"height": 13,
 											"text": "+creaListaCentrocampisti()",
 											"horizontalAlignment": 0
@@ -5052,18 +5139,35 @@
 											},
 											"font": "Arial;13;0",
 											"left": 557,
-											"top": 1029,
-											"width": 155.6953125,
+											"top": 1102,
+											"width": 240.97607421875,
 											"height": 13,
 											"text": "+creaListaAttaccanti()",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAFvUoJJBntLGtA=",
+											"_parent": {
+												"$ref": "AAAAAAFvULtHeiOVfKc="
+											},
+											"model": {
+												"$ref": "AAAAAAFvUoJIQntCdKY="
+											},
+											"font": "Arial;13;0",
+											"left": 557,
+											"top": 1117,
+											"width": 240.97607421875,
+											"height": 13,
+											"text": "+cercaGiocatore(String giocatore, int tipo)",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 552,
-									"top": 979,
-									"width": 165.6953125,
-									"height": 68
+									"top": 1052,
+									"width": 250.97607421875,
+									"height": 83
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -5098,8 +5202,8 @@
 							"containerChangeable": true,
 							"left": 552,
 							"top": 944,
-							"width": 165.6953125,
-							"height": 103,
+							"width": 250.97607421875,
+							"height": 191,
 							"nameCompartment": {
 								"$ref": "AAAAAAFvULtHeSOPWlg="
 							},
@@ -7526,6 +7630,58 @@
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
 					"name": "UtilityListaGiocatori",
+					"attributes": [
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAFvUjEI7Xk9F/c=",
+							"_parent": {
+								"$ref": "AAAAAAFvULtHeCOMCcA="
+							},
+							"name": "pathListaCompleta",
+							"visibility": "private",
+							"type": "static String"
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAFvUjH1cHmx5zY=",
+							"_parent": {
+								"$ref": "AAAAAAFvULtHeCOMCcA="
+							},
+							"name": "pathListaPortieri",
+							"visibility": "private",
+							"type": "static String"
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAFvUjJLRHoK0Yw=",
+							"_parent": {
+								"$ref": "AAAAAAFvULtHeCOMCcA="
+							},
+							"name": "pathListaCentrocampisti",
+							"visibility": "private",
+							"type": "static String"
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAFvUjLs+Hpj4K0=",
+							"_parent": {
+								"$ref": "AAAAAAFvULtHeCOMCcA="
+							},
+							"name": "pathListaAttaccanti",
+							"visibility": "private",
+							"type": "static String"
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAFvUjNPvnq8V0E=",
+							"_parent": {
+								"$ref": "AAAAAAFvULtHeCOMCcA="
+							},
+							"name": "pathListaDifensori",
+							"visibility": "private",
+							"type": "static String"
+						}
+					],
 					"operations": [
 						{
 							"_type": "UMLOperation",
@@ -7558,6 +7714,34 @@
 								"$ref": "AAAAAAFvULtHeCOMCcA="
 							},
 							"name": "creaListaAttaccanti"
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAFvUoJIQntCdKY=",
+							"_parent": {
+								"$ref": "AAAAAAFvULtHeCOMCcA="
+							},
+							"name": "cercaGiocatore",
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAFvUoMe3Hvik/M=",
+									"_parent": {
+										"$ref": "AAAAAAFvUoJIQntCdKY="
+									},
+									"name": "String giocatore",
+									"type": ""
+								},
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAFvUoMe3HvjWDk=",
+									"_parent": {
+										"$ref": "AAAAAAFvUoJIQntCdKY="
+									},
+									"name": "int tipo",
+									"type": ""
+								}
+							]
 						}
 					]
 				}
