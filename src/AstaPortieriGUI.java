@@ -131,7 +131,37 @@ public class AstaPortieriGUI extends JFrame {
 				}
 			}
 		});
+		console.addMouseListener(new MouseListener() {
 
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				if (console.getSelectedText() != null) {
+					String s = console.getSelectedText();
+					System.out.println(s);
+				}
+
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+
+			}
+		});
 		btnNewButtonShowAll.addActionListener(new ActionListener() {
 
 			@Override
@@ -151,37 +181,6 @@ public class AstaPortieriGUI extends JFrame {
 				lblNewLabel_1.setVisible(true);
 				btnNewButtonChoose.setVisible(true);
 
-				console.addMouseListener(new MouseListener() {
-
-					@Override
-					public void mouseReleased(MouseEvent e) {
-						if (console.getSelectedText() != null) {
-							String s = console.getSelectedText();
-							System.out.println(s);
-						}
-
-					}
-
-					@Override
-					public void mouseClicked(MouseEvent e) {
-
-					}
-
-					@Override
-					public void mousePressed(MouseEvent e) {
-
-					}
-
-					@Override
-					public void mouseEntered(MouseEvent e) {
-
-					}
-
-					@Override
-					public void mouseExited(MouseEvent e) {
-
-					}
-				});
 			}
 		});
 
