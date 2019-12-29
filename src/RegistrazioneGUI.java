@@ -25,12 +25,6 @@ public class RegistrazioneGUI extends JFrame {
 	private JTextField textFieldUsername;
 	private JPasswordField passwordField;
 
-	
-	/**
-	 * Create the frame.
-	 * @throws IOException 
-	 * @throws HeadlessException 
-	 */
 	public RegistrazioneGUI() throws IOException {
 		Registrazione r = new Registrazione();
 		r.createDataFile();

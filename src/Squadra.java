@@ -123,7 +123,6 @@ public class Squadra implements Serializable{
 		String pathDest = ("src/Squadre/" + this.nomeSquadra.trim() + ".dat").trim();
 		Fantallenatore g = Fantallenatore.getFantallenatoreFromCsv(this.nomeSquadra);
 		this.fantallenatore=g;
-		System.out.println(this.toString());
 		File f = new File(pathDest);
 		FileOutputStream fos = new FileOutputStream(f);
 		try {

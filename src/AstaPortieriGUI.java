@@ -14,6 +14,10 @@ import java.awt.Font;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+
+import javax.swing.JCheckBox;
+import javax.swing.JTextArea;
 
 public class AstaPortieriGUI extends JFrame {
 
@@ -57,13 +61,37 @@ public class AstaPortieriGUI extends JFrame {
 		contentPane.add(searchable);
 		contentPane.add(searchButton);
 		
+		JButton btnNewButtonShowAll = new JButton("Mostra Tutti");
+		btnNewButtonShowAll.setBounds(31, 112, 108, 47);
+		contentPane.add(btnNewButtonShowAll);
+		
+		JLabel lblNewLabelRis = new JLabel("New label");
+		lblNewLabelRis.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		lblNewLabelRis.setBounds(61, 205, 249, 47);
+		contentPane.add(lblNewLabelRis);
+		
+		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("");
+		chckbxNewCheckBox_1.setBounds(27, 205, 47, 47);
+		
+		contentPane.add(chckbxNewCheckBox_1);
+		
+		
 		
 		searchButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				try {
+					String ris = UtilityListaGiocatori.cercaGiocatore(searchable.getText(), 0);
+					if(ris.equalsIgnoreCase("")==false) {
+						contentPane.add(lblNewLabelRis);
+						contentPane.add(chckbxNewCheckBox_1);
+						lblNewLabelRis.setText(ris);
+						
+					}
+				} catch (IOException e1) {
+					System.out.println("Errore nella lettura da file");
+				}
 			}
 		});
 		
 	}
-	
-	
 }
