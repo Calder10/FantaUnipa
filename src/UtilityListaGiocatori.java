@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.ArrayList;
 
 public class UtilityListaGiocatori {
 	private static String pathListaCompleta = "src/Lista/listaCalciatoriCompleta.csv";
@@ -172,5 +173,64 @@ public class UtilityListaGiocatori {
 
 		return ris;
 
+	}
+
+	public static ArrayList<String> showAllPlayers(int tipo) throws IOException {
+		ArrayList<String> ris = new ArrayList<>();
+		FileReader f = null;
+		BufferedReader br = null;
+		String line = "";
+		String fields[];
+
+		switch (tipo) {
+		case 0:
+			f = new FileReader(pathListaPortieri);
+			br = new BufferedReader(f);
+			line = br.readLine();
+			while ((line = br.readLine()) != null) {
+				fields = line.split(",");
+				ris.add(fields[0]);
+			}
+			br.close();
+			f.close();
+			break;
+		case 1:
+			f = new FileReader(pathListaDifensori);
+			br = new BufferedReader(f);
+			line = br.readLine();
+			while ((line = br.readLine()) != null) {
+				fields = line.split(",");
+				ris.add(fields[0]);
+			}
+			br.close();
+			f.close();
+			break;
+		case 2:
+			f = new FileReader(pathListaCentrocampisti);
+			br = new BufferedReader(f);
+			line = br.readLine();
+			while ((line = br.readLine()) != null) {
+				fields = line.split(",");
+				ris.add(fields[0]);
+			}
+			br.close();
+			f.close();
+			break;
+		case 3:
+			f = new FileReader(pathListaAttaccanti);
+			br = new BufferedReader(f);
+			line = br.readLine();
+			while ((line = br.readLine()) != null) {
+				fields = line.split(",");
+				ris.add(fields[0]);
+			}
+			br.close();
+			f.close();
+			break;
+		default:
+			System.out.println("Scelta non consentita");
+		}
+
+		return ris;
 	}
 }
