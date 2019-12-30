@@ -29,18 +29,7 @@ public class CreazioneSquadraGUI extends JFrame {
 	private File f;
 	private JFileChooser fc;
 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CreazioneSquadraGUI frame = new CreazioneSquadraGUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 	
 	
 	
@@ -56,8 +45,9 @@ public class CreazioneSquadraGUI extends JFrame {
 
 
 
-	public CreazioneSquadraGUI() {
+	public CreazioneSquadraGUI(String username) {
 		super("Creazione della FantaSquadra");
+		this.setUsername(username);
 		Squadra s= new Squadra();
 		fc =  new JFileChooser();
 		setResizable(false);
@@ -147,7 +137,10 @@ public class CreazioneSquadraGUI extends JFrame {
 						s.addNomeSquadraToCsv(username, textFieldNomeSquadra.getText());
 						s.salvaSquadraSuFile();
 						SquadraVirtuale.creaSquadreVirtuali();
-						JOptionPane.showMessageDialog(textFieldNomeSquadra,"OK");
+						AstaPortieriGUI nextFrame = new AstaPortieriGUI(username);
+						nextFrame.setVisible(true);
+						nextFrame.toFront();
+						setVisible(false);
 					} catch (IOException e2) {
 						e2.printStackTrace();
 					}

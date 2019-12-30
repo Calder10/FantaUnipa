@@ -92,7 +92,7 @@ public class LoginGUI extends JFrame {
 					e1.printStackTrace();
 				}
 				if(ris==true && existSquadra== false) {
-					CreazioneSquadraGUI nextFrame = new CreazioneSquadraGUI();
+					CreazioneSquadraGUI nextFrame = new CreazioneSquadraGUI(textField.getText());
 					nextFrame.setUsername(textField.getText());
 					nextFrame.setVisible(true);
 					nextFrame.toFront();

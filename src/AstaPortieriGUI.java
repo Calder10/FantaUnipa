@@ -29,22 +29,28 @@ public class AstaPortieriGUI extends JFrame {
 	private JButton searchButton;
 	private JScrollPane scrollpane;
 	private JTextArea console;
+	private String username;
+	
+	
 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AstaPortieriGUI frame = new AstaPortieriGUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+
+	public String getUsername() {
+		return username;
 	}
 
-	public AstaPortieriGUI() {
+
+
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+
+
+
+	public AstaPortieriGUI(String username) {
 		super("Asta Portieri");
+		this.setUsername(username);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 849, 544);
 		setResizable(false);
@@ -186,7 +192,7 @@ public class AstaPortieriGUI extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				AstaGiocatoreGUI nextFrame = new AstaGiocatoreGUI(lblNewLabelRis.getText());
+				AstaGiocatoreGUI nextFrame = new AstaGiocatoreGUI(username,lblNewLabelRis.getText());
 				nextFrame.setVisible(true);
 				nextFrame.toFront();
 
@@ -197,7 +203,7 @@ public class AstaPortieriGUI extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				AstaGiocatoreGUI nextFrame = new AstaGiocatoreGUI(console.getSelectedText());
+				AstaGiocatoreGUI nextFrame = new AstaGiocatoreGUI(username,console.getSelectedText());
 				nextFrame.setVisible(true);
 				nextFrame.toFront();
 
