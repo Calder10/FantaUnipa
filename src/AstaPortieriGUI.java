@@ -1,7 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.EventQueue;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -20,7 +19,6 @@ import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.sql.Time;
 import java.util.ArrayList;
-
 import javax.swing.JCheckBox;
 import javax.swing.JTextArea;
 
@@ -49,6 +47,7 @@ public class AstaPortieriGUI extends JFrame {
 		super("Asta Portieri");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 849, 544);
+		setResizable(false);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -82,11 +81,6 @@ public class AstaPortieriGUI extends JFrame {
 		console = new JTextArea(15, 15);
 		console.setBounds(6, 0, 794, 291);
 		contentPane.add(console);
-
-		JCheckBox chckbxNewCheckBox = new JCheckBox("");
-		chckbxNewCheckBox.setBounds(30, 220, 28, 23);
-		contentPane.add(chckbxNewCheckBox);
-		chckbxNewCheckBox.setVisible(false);
 		scrollpane = new JScrollPane(console);
 		scrollpane.setEnabled(false);
 		scrollpane.setLocation(20, 207);
@@ -106,7 +100,15 @@ public class AstaPortieriGUI extends JFrame {
 		contentPane.add(btnNewButtonChoose);
 		scrollpane.setVisible(false);
 		btnNewButtonChoose.setVisible(false);
-
+		
+		
+		JButton btnNewButtonChoose1 = new JButton("Scegli");
+		btnNewButtonChoose1.setBounds(250, 205, 121, 47);
+		btnNewButtonChoose1.setVisible(true);
+		contentPane.add(btnNewButtonChoose1);
+		btnNewButtonChoose1.setVisible(false);
+		
+		
 		searchButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				scrollpane.setVisible(false);
@@ -117,11 +119,11 @@ public class AstaPortieriGUI extends JFrame {
 					if (ris.equalsIgnoreCase("") == false) {
 						contentPane.add(lblNewLabelRis);
 						lblNewLabelRis.setText(ris);
+						btnNewButtonChoose1.setVisible(true);
 						lblNewLabelRis.setVisible(true);
-						chckbxNewCheckBox.setVisible(true);
+						
 
 					} else {
-						chckbxNewCheckBox.setVisible(false);
 						lblNewLabelRis.setText("Nessun risultato trovato !");
 						lblNewLabelRis.setVisible(true);
 						searchable.setText("");
@@ -166,8 +168,8 @@ public class AstaPortieriGUI extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				btnNewButtonChoose1.setVisible(false);
 				try {
-					chckbxNewCheckBox.setVisible(false);
 					lblNewLabelRis.setVisible(false);
 					ArrayList<String> ris = UtilityListaGiocatori.showAllPlayers(0);
 					scrollpane.setVisible(true);
