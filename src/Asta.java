@@ -4,21 +4,25 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Set;
+
+import javax.swing.JTextArea;
 
 public class Asta implements SubjectAsta{
 	
 	private Giocatore giocatore ;
 	private Fantallenatore f;
-	int puntataCorrente;
+	private HashMap<String,Integer> puntataCorrente;
 	private ArrayList<ConcreteObserverAsta> obs;
 	
 	
-	public Asta(Giocatore giocatore, int puntataCorrente) throws ClassNotFoundException, IOException {
+	public Asta(Giocatore giocatore) throws ClassNotFoundException, IOException {
 		this.giocatore=giocatore;
-		this.puntataCorrente=puntataCorrente;
 		this.loadFantallenatori();
 	}
 	
+		
 	
 
 	public Giocatore getGiocatore() {
@@ -29,13 +33,19 @@ public class Asta implements SubjectAsta{
 		this.giocatore = giocatore;
 	}
 
-	public int getPuntataCorrente() {
+	
+
+	public HashMap<String, Integer> getPuntataCorrente() {
 		return puntataCorrente;
 	}
 
-	public void setPuntataCorrente(int puntataCorrente) {
+
+
+	public void setPuntataCorrente(HashMap<String, Integer> puntataCorrente) {
 		this.puntataCorrente = puntataCorrente;
 	}
+
+
 
 	public ArrayList<ConcreteObserverAsta> getObs() {
 		return obs;
@@ -47,9 +57,11 @@ public class Asta implements SubjectAsta{
 
 	public void loadFantallenatori() throws IOException, ClassNotFoundException {
 		obs = new ArrayList<ConcreteObserverAsta>();
+		this.puntataCorrente=new HashMap<>();
 		File f = new File("src/Squadre");
 		if(f.isDirectory()) {
 			File [] files = f.listFiles();
+			
 			for(File x : files) {
 				FileInputStream fis = new FileInputStream(x);
 				ObjectInputStream ois = new ObjectInputStream(fis);
@@ -57,12 +69,16 @@ public class Asta implements SubjectAsta{
 				Squadra aus = (Squadra) ois.readObject();
 				o.setSquadra(aus);
 				obs.add(o);
+				String s = aus.getFantallenatore().getUsername();
+				this.puntataCorrente.put(s,0);
 				ois.close();
 				fis.close();
 			}
 		}
 		
 	}
+	
+	
 
 	@Override
 	public void addFantallenatore(Fantallenatore f) {
@@ -71,12 +87,13 @@ public class Asta implements SubjectAsta{
 	}
 
 	@Override
-	public void notifyAllObserver(String username){
+	public void notifyAllObserver(String username,int puntata){
 		for (ConcreteObserverAsta o : obs) {
 			String usr = o.getSquadra().getFantallenatore().getUsername();
 			if(usr.equalsIgnoreCase(username)==false) {
-				o.setPuntata(this.puntataCorrente);
-				System.out.println(o.toString());
+				Integer oldValue = this.puntataCorrente.get(username);
+				this.puntataCorrente.replace(username, oldValue, puntata);
+				//System.out.println(puntataCorrente.toString());
 			}
 		}
 		
@@ -86,6 +103,11 @@ public class Asta implements SubjectAsta{
 	public void removeFantallenatore(Fantallenatore f) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public String stampaPuntata(String username) {
+		String valore = puntataCorrente.get(username).toString();
+		return username+": "+valore+"\n";
 	}
 
 }

@@ -1,7 +1,7 @@
 
 public interface ObserverAsta {
-	public void punta();
-	public void rilancia();
-	public void passa();
+	public void punta(String username,int puntata);
+	public void rilancia(String username);
+	public void passa(String username);
 	
 }
