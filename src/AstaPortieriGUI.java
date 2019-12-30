@@ -100,15 +100,13 @@ public class AstaPortieriGUI extends JFrame {
 		contentPane.add(btnNewButtonChoose);
 		scrollpane.setVisible(false);
 		btnNewButtonChoose.setVisible(false);
-		
-		
+
 		JButton btnNewButtonChoose1 = new JButton("Scegli");
 		btnNewButtonChoose1.setBounds(250, 205, 121, 47);
 		btnNewButtonChoose1.setVisible(true);
 		contentPane.add(btnNewButtonChoose1);
 		btnNewButtonChoose1.setVisible(false);
-		
-		
+
 		searchButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				scrollpane.setVisible(false);
@@ -121,7 +119,6 @@ public class AstaPortieriGUI extends JFrame {
 						lblNewLabelRis.setText(ris);
 						btnNewButtonChoose1.setVisible(true);
 						lblNewLabelRis.setVisible(true);
-						
 
 					} else {
 						lblNewLabelRis.setText("Nessun risultato trovato !");
@@ -139,7 +136,6 @@ public class AstaPortieriGUI extends JFrame {
 			public void mouseReleased(MouseEvent e) {
 				if (console.getSelectedText() != null) {
 					String s = console.getSelectedText();
-					System.out.println(s);
 				}
 
 			}
@@ -182,6 +178,28 @@ public class AstaPortieriGUI extends JFrame {
 				}
 				lblNewLabel_1.setVisible(true);
 				btnNewButtonChoose.setVisible(true);
+
+			}
+		});
+
+		btnNewButtonChoose1.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				AstaGiocatoreGUI nextFrame = new AstaGiocatoreGUI(lblNewLabelRis.getText());
+				nextFrame.setVisible(true);
+				nextFrame.toFront();
+
+			}
+		});
+
+		btnNewButtonChoose.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				AstaGiocatoreGUI nextFrame = new AstaGiocatoreGUI(console.getSelectedText());
+				nextFrame.setVisible(true);
+				nextFrame.toFront();
 
 			}
 		});
