@@ -5616,6 +5616,7 @@
 											"model": {
 												"$ref": "AAAAAAFvViyY1TAxlEE="
 											},
+											"visible": false,
 											"font": "Arial;13;0",
 											"left": 997,
 											"top": 883,
@@ -5635,7 +5636,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 997,
-											"top": 898,
+											"top": 885,
 											"width": 482.091796875,
 											"height": 13,
 											"text": "+notifyAllObserver()",
@@ -5650,9 +5651,10 @@
 											"model": {
 												"$ref": "AAAAAAFvVi12ojEyKco="
 											},
+											"visible": false,
 											"font": "Arial;13;0",
 											"left": 997,
-											"top": 913,
+											"top": 900,
 											"width": 482.091796875,
 											"height": 13,
 											"text": "+removeFantalleantore(ConcreteObserverAsta s)",
@@ -5685,12 +5687,30 @@
 											"model": {
 												"$ref": "AAAAAAFvW98gsUJMHqI="
 											},
+											"visible": false,
 											"font": "Arial;13;0",
 											"left": 997,
-											"top": 928,
+											"top": 900,
 											"width": 482.091796875,
 											"height": 13,
-											"text": "+puntateVirtuali(String username, JTextArea a, JTexField f, JTextButton button)",
+											"text": "+puntateVirtuali(String username, JTextArea a, JTextButton button)",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAFvXHKurkz8luA=",
+											"_parent": {
+												"$ref": "AAAAAAFvVixhXS+2Bn8="
+											},
+											"model": {
+												"$ref": "AAAAAAFvXHKt1Uzwg8g="
+											},
+											"font": "Arial;13;0",
+											"left": 997,
+											"top": 900,
+											"width": 482.091796875,
+											"height": 13,
+											"text": "+loadFantallenatori()",
 											"horizontalAlignment": 0
 										}
 									],
@@ -5698,7 +5718,7 @@
 									"left": 992,
 									"top": 878,
 									"width": 492.091796875,
-									"height": 68
+									"height": 40
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -6019,6 +6039,7 @@
 											"model": {
 												"$ref": "AAAAAAFvVm24wj+yYnM="
 											},
+											"visible": false,
 											"font": "Arial;13;0",
 											"left": 997,
 											"top": 1286,
@@ -6038,7 +6059,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 997,
-											"top": 1301,
+											"top": 1286,
 											"width": 458.24365234375,
 											"height": 13,
 											"text": "+notifyAllFantallenatori()",
@@ -6053,6 +6074,7 @@
 											"model": {
 												"$ref": "AAAAAAFvVm6ndUBvOTo="
 											},
+											"visible": false,
 											"font": "Arial;13;0",
 											"left": 997,
 											"top": 1316,
@@ -6072,7 +6094,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 997,
-											"top": 1331,
+											"top": 1301,
 											"width": 458.24365234375,
 											"height": 13,
 											"text": "+setPuntataCorrente(int puntataCorrente)",
@@ -6089,7 +6111,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 997,
-											"top": 1346,
+											"top": 1316,
 											"width": 458.24365234375,
 											"height": 13,
 											"text": "+getPuntataCorrente(): int",
@@ -6106,7 +6128,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 997,
-											"top": 1361,
+											"top": 1331,
 											"width": 458.24365234375,
 											"height": 13,
 											"text": "+stampaPuntata(String username)",
@@ -6123,10 +6145,27 @@
 											},
 											"font": "Arial;13;0",
 											"left": 997,
-											"top": 1376,
+											"top": 1346,
 											"width": 458.24365234375,
 											"height": 13,
-											"text": "+puntateVirtuali(String username, JTextArea a, JTextField f, JTextButton button)",
+											"text": "+puntateVirtuali(String username, JTextArea a, JTextButton button)",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAFvXHMqAk3kxRQ=",
+											"_parent": {
+												"$ref": "AAAAAAFvVmXoqzYds8s="
+											},
+											"model": {
+												"$ref": "AAAAAAFvXHMpFE3YBVw="
+											},
+											"font": "Arial;13;0",
+											"left": 997,
+											"top": 1361,
+											"width": 458.24365234375,
+											"height": 13,
+											"text": "+loadFantallenatori()",
 											"horizontalAlignment": 0
 										}
 									],
@@ -6134,7 +6173,7 @@
 									"left": 992,
 									"top": 1221,
 									"width": 468.24365234375,
-									"height": 173
+									"height": 158
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -9922,17 +9961,17 @@
 									"_parent": {
 										"$ref": "AAAAAAFvW98gsUJMHqI="
 									},
-									"name": "JTexField f"
-								},
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAFvW+ALXELOveI=",
-									"_parent": {
-										"$ref": "AAAAAAFvW98gsUJMHqI="
-									},
 									"name": "JTextButton button"
 								}
 							]
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAFvXHKt1Uzwg8g=",
+							"_parent": {
+								"$ref": "AAAAAAFvVixhXC+txUM="
+							},
+							"name": "loadFantallenatori"
 						}
 					]
 				},
@@ -10210,8 +10249,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFvW+BR4UPiKZU="
 									},
-									"name": "String username",
-									"type": ""
+									"name": "String username"
 								},
 								{
 									"_type": "UMLParameter",
@@ -10219,8 +10257,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFvW+BR4UPiKZU="
 									},
-									"name": "JTextArea a",
-									"type": ""
+									"name": "JTextArea a"
 								},
 								{
 									"_type": "UMLParameter",
@@ -10228,19 +10265,17 @@
 									"_parent": {
 										"$ref": "AAAAAAFvW+BR4UPiKZU="
 									},
-									"name": "JTextField f",
-									"type": ""
-								},
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAFvW+Fip0RkJJI=",
-									"_parent": {
-										"$ref": "AAAAAAFvW+BR4UPiKZU="
-									},
-									"name": "JTextButton button",
-									"type": ""
+									"name": "JTextButton button"
 								}
 							]
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAFvXHMpFE3YBVw=",
+							"_parent": {
+								"$ref": "AAAAAAFvVmXoqDYUutc="
+							},
+							"name": "loadFantallenatori"
 						}
 					]
 				},
