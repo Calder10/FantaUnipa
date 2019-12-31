@@ -192,9 +192,15 @@ public class AstaPortieriGUI extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				AstaGiocatoreGUI nextFrame = new AstaGiocatoreGUI(username,lblNewLabelRis.getText());
-				nextFrame.setVisible(true);
-				nextFrame.toFront();
+				AstaGiocatoreGUI nextFrame;
+				try {
+					nextFrame = new AstaGiocatoreGUI(username,lblNewLabelRis.getText());
+					nextFrame.setVisible(true);
+					nextFrame.toFront();
+				} catch (ClassNotFoundException | IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 
 			}
 		});
@@ -203,9 +209,15 @@ public class AstaPortieriGUI extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				AstaGiocatoreGUI nextFrame = new AstaGiocatoreGUI(username,console.getSelectedText());
-				nextFrame.setVisible(true);
-				nextFrame.toFront();
+				AstaGiocatoreGUI nextFrame;
+				try {
+					nextFrame = new AstaGiocatoreGUI(username,console.getSelectedText());
+					nextFrame.setVisible(true);
+					nextFrame.toFront();
+				} catch (ClassNotFoundException | IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 
 			}
 		});

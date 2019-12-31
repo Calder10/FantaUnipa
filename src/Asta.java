@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 
+import javax.swing.JButton;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 public class Asta implements SubjectAsta{
 	
@@ -93,21 +95,52 @@ public class Asta implements SubjectAsta{
 			if(usr.equalsIgnoreCase(username)==false) {
 				Integer oldValue = this.puntataCorrente.get(username);
 				this.puntataCorrente.replace(username, oldValue, puntata);
-				//System.out.println(puntataCorrente.toString());
 			}
 			o.setPuntata(this.puntataCorrente);
+			System.out.println(o.toString());
 		}
 	}
 
 	@Override
-	public void removeFantallenatore(Fantallenatore f) {
-		// TODO Auto-generated method stub
+	public void removeFantallenatore(ConcreteObserverAsta o) {
+		
 		
 	}
 	
 	public String stampaPuntata(String username) {
-		String valore = puntataCorrente.get(username).toString();
-		return username+": "+valore+"\n";
+		Set<String> keys  = this.puntataCorrente.keySet();
+		if(keys.contains(username)) {
+			String valore = puntataCorrente.get(username).toString();
+			return username+": "+valore+"\n";
+		}
+		else {
+			return username+" ha rinunciato !\n";
+		}
+	}
+	
+	public void puntateVirtuali(String username,JTextArea textArea,JTextField textField_1,JButton btnNewButtonRilancia) {
+		textArea.setVisible(true);
+		textField_1.setVisible(true);
+		btnNewButtonRilancia.setVisible(true);
+		ArrayList<ConcreteObserverAsta> delete = new ArrayList<>();
+		for(ConcreteObserverAsta o : obs) {
+			String usr=o.getSquadra().getFantallenatore().getUsername();
+			if(username.equalsIgnoreCase(usr)==false){
+				int ris = o.puntaVirtuale(usr);
+				if(ris==0) {
+					delete.add(o);
+					this.notifyAllObserver(usr, ris);
+					textArea.append(this.stampaPuntata(usr));
+				}
+				else {
+					this.notifyAllObserver(usr, ris);
+					textArea.append(this.stampaPuntata(usr));
+				}
+			}
+		}
+		for (ConcreteObserverAsta o : delete) {
+			this.obs.remove(o);
+		}
 	}
 
 }

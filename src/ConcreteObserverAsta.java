@@ -30,26 +30,46 @@ public class ConcreteObserverAsta implements ObserverAsta {
 	}
 
 	@Override
-	public void punta(String username, int puntata) {
-		Integer oldValue = this.puntata.get(username);
-		this.puntata.replace(username, oldValue, puntata);
-
+	public boolean punta(String username, int puntata) {
+		if(this.getPuntata().isEmpty()) {
+			Integer oldValue = this.puntata.get(username);
+			this.puntata.replace(username, oldValue, puntata);
+			return true;
+		}
+		else {
+			int max=Collections.max(this.puntata.values());
+			if(puntata>max) {
+				Integer oldValue = this.puntata.get(username);
+				this.puntata.replace(username, oldValue, puntata);
+				return true;
+			}
+			else return false;
+		}
 	}
-
-	public int puntaVirtuale(String username) throws Exception{
+	
+	@Override
+	public int puntaVirtuale(String username){
 		Integer oldValue = this.puntata.get(username);
 		int fantaCrediti = this.squadra.getFantallenatore().getFantaCrediti();
 		int newPuntata=0;
 		int max=Collections.max(this.puntata.values());
 		int aus;
-		if (fantaCrediti > 0) {
-			while (true) {
-				newPuntata = new Random().nextInt(30);
-				if (newPuntata < max)
+		int s;
+		s = new Random().nextInt(2);
+		if(s==0) {
+			this.passa(username);
+			System.out.println(username + newPuntata);
+		}
+		else {
+			if (fantaCrediti > 0) {
+				while (true) {
 					newPuntata = new Random().nextInt(30);
-				else {
-					this.puntata.replace(username, oldValue, newPuntata);
-					break;
+					if (newPuntata <= max)
+						newPuntata = new Random().nextInt(30);
+					else {
+						this.puntata.replace(username, oldValue, newPuntata);
+						break;
+					}
 				}
 			}
 		}
@@ -57,42 +77,9 @@ public class ConcreteObserverAsta implements ObserverAsta {
 	}
 
 	@Override
-	public void rilancia(String username) {
-		String usr = this.squadra.getFantallenatore().getUsername();
-		if (usr.equalsIgnoreCase(username) == true) {
-			int s;
-			s = new Random().nextInt(1);
-			if (s == 0) {
-				this.passa(username);
-			} else {
-				int fantaCrediti = this.squadra.getFantallenatore().getFantaCrediti();
-				if (fantaCrediti > 0) {
-					while (true) {
-						HashMap.Entry<String, Integer> maxValue = null;
-						for (HashMap.Entry<String, Integer> value : puntata.entrySet()) {
-							if (maxValue == null || value.getValue().compareTo(maxValue.getValue()) > 0) {
-								maxValue = value;
-							}
-						}
-						int newPuntata = new Random().nextInt(30);
-						if (newPuntata < maxValue.getValue())
-							newPuntata = new Random().nextInt(30);
-						else {
-							Integer oldValue = this.puntata.get(username);
-							this.puntata.replace(username, oldValue, newPuntata);
-						}
-
-					}
-				}
-			}
-		}
-
-	}
-
-	@Override
 	public void passa(String username) {
-		Integer oldValue = this.puntata.get(username);
-		this.puntata.replace(username, oldValue, -1);
+		this.puntata.remove(username);
+		
 
 	}
 

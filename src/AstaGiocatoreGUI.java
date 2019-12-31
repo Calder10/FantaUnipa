@@ -5,6 +5,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -33,7 +35,7 @@ public class AstaGiocatoreGUI extends JFrame {
 	}
 
 
-	public AstaGiocatoreGUI(String username,String ris) {
+	public AstaGiocatoreGUI(String username,String ris) throws ClassNotFoundException, IOException {
 		super("Asta in corso");
 		this.setUsername(username);
 		setResizable(false);
@@ -76,33 +78,32 @@ public class AstaGiocatoreGUI extends JFrame {
 		textField_1.setVisible(false);
 		btnNewButtonRilancia.setVisible(false);
 		
+		Giocatore g = (Portiere) new Portiere(ris);
+		Asta a = new Asta(g);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Giocatore g = (Portiere) new Portiere(ris);
+				
 				int puntata=Integer.parseInt(textField.getText());
 				try {
-					Asta a = new Asta(g);
 					ConcreteObserverAsta o = a.getObs().get(0);
-					o.punta(getUsername(), puntata);
-					HashMap<String,Integer> aus = a.getPuntataCorrente();
-					Integer oldValue = aus.get(username);
-					aus.replace(username, oldValue, puntata);
-					a.setPuntataCorrente(aus);
-					a.notifyAllObserver(username,puntata);
-					//o.getPuntata().put(username, puntata);
-					//o.getPuntata().put("pippo", 5);
-					//System.out.println(o.getPuntata().toString());
+					boolean ris=o.punta(getUsername(), puntata);
+					if(ris==true) {
+						HashMap<String,Integer> aus = a.getPuntataCorrente();
+						Integer oldValue = aus.get(username);
+						aus.replace(username, oldValue, puntata);
+						a.setPuntataCorrente(aus);
+						a.notifyAllObserver(username,puntata);
+						a.puntateVirtuali(username,textArea,textField_1,btnNewButtonRilancia);
+					}
+					else {
+						JOptionPane.showMessageDialog(textField, "Puntata non consentita!");
+					}
 					// Fantallenatori virtuali 
-					ConcreteObserverAsta o1 = a.getObs().get(1);
-					String usr=o1.getSquadra().getFantallenatore().getUsername();
-					int ris=o1.puntaVirtuale(usr);
-					a.notifyAllObserver(usr, ris);
-					textArea.setVisible(true);
-					textArea.append(a.stampaPuntata(usr));
-					textField_1.setVisible(true);
-					btnNewButtonRilancia.setVisible(true);
-				} catch (ClassNotFoundException | IOException e1) {
-					e1.printStackTrace();
+					System.out.println(a.getObs().toString());
+					//textArea.setVisible(true);
+					//textArea.append(a.stampaPuntata(username));
+					//textField_1.setVisible(true);
+					//btnNewButtonRilancia.setVisible(true);
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
