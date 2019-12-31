@@ -89,7 +89,6 @@ public class AstaGiocatoreGUI extends JFrame {
 			if (o.getSquadra().getPortieri().size()>0) {
 				btnNewButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-
 						int puntata = Integer.parseInt(textField.getText());
 						try {
 							boolean ris = o.punta(getUsername(), puntata);
@@ -116,6 +115,7 @@ public class AstaGiocatoreGUI extends JFrame {
 										if (key.equalsIgnoreCase(o.getSquadra().getFantallenatore().getUsername())) {
 											o.getSquadra().getFantallenatore().setFantaCrediti(value);
 											o.getSquadra().getPortieri().add((Portiere) g);
+											// implementare un metodo per salvare il giocatore su file .dat
 										}
 									}
 								}
@@ -136,8 +136,11 @@ public class AstaGiocatoreGUI extends JFrame {
 					}
 				});
 			} else {
-
+				a.getObs().remove(o);
 			}
+			
+			if(a.getObs().size()==0)
+				break;
 		}
 	}
 }
