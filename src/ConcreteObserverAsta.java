@@ -37,7 +37,6 @@ public class ConcreteObserverAsta implements ObserverAsta {
 	}
 
 	public int puntaVirtuale(String username) throws Exception{
-		System.out.println(this.puntata.toString());
 		Integer oldValue = this.puntata.get(username);
 		int fantaCrediti = this.squadra.getFantallenatore().getFantaCrediti();
 		int newPuntata=0;

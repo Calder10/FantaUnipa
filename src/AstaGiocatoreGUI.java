@@ -89,15 +89,14 @@ public class AstaGiocatoreGUI extends JFrame {
 					aus.replace(username, oldValue, puntata);
 					a.setPuntataCorrente(aus);
 					a.notifyAllObserver(username,puntata);
-					o.getPuntata().put(username, puntata);
-					o.getPuntata().put("pippo", 5);
-					System.out.println(o.getPuntata().toString());
+					//o.getPuntata().put(username, puntata);
+					//o.getPuntata().put("pippo", 5);
+					//System.out.println(o.getPuntata().toString());
 					// Fantallenatori virtuali 
 					ConcreteObserverAsta o1 = a.getObs().get(1);
 					String usr=o1.getSquadra().getFantallenatore().getUsername();
 					int ris=o1.puntaVirtuale(usr);
 					a.notifyAllObserver(usr, ris);
-					// fare un metodo updatePuntata in ConcreteObserverAsta
 					textArea.setVisible(true);
 					textArea.append(a.stampaPuntata(usr));
 					textField_1.setVisible(true);

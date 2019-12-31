@@ -95,8 +95,8 @@ public class Asta implements SubjectAsta{
 				this.puntataCorrente.replace(username, oldValue, puntata);
 				//System.out.println(puntataCorrente.toString());
 			}
+			o.setPuntata(this.puntataCorrente);
 		}
-		
 	}
 
 	@Override
