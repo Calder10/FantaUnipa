@@ -14,7 +14,6 @@ import javax.swing.JTextField;
 public class Asta implements SubjectAsta{
 	
 	private Giocatore giocatore ;
-	private Fantallenatore f;
 	private HashMap<String,Integer> puntataCorrente;
 	private ArrayList<ConcreteObserverAsta> obs;
 	
@@ -56,8 +55,9 @@ public class Asta implements SubjectAsta{
 	public void setObs(ArrayList<ConcreteObserverAsta> obs) {
 		this.obs = obs;
 	}
-
-	public void loadFantallenatori() throws IOException, ClassNotFoundException {
+	
+	@Override
+	public void loadFantallenatori() throws IOException, ClassNotFoundException{
 		obs = new ArrayList<ConcreteObserverAsta>();
 		this.puntataCorrente=new HashMap<>();
 		File f = new File("src/Squadre");
@@ -83,12 +83,6 @@ public class Asta implements SubjectAsta{
 	
 
 	@Override
-	public void addFantallenatore(Fantallenatore f) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void notifyAllObserver(String username,int puntata){
 		for (ConcreteObserverAsta o : obs) {
 			String usr = o.getSquadra().getFantallenatore().getUsername();
@@ -100,11 +94,6 @@ public class Asta implements SubjectAsta{
 		}
 	}
 
-	@Override
-	public void removeFantallenatore(ConcreteObserverAsta o) {
-		
-		
-	}
 	
 	public String stampaPuntata(String username) {
 		Set<String> keys  = this.puntataCorrente.keySet();

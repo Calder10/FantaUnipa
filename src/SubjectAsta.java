@@ -1,9 +1,10 @@
+import java.io.IOException;
 import java.util.ArrayList;
 
 public interface SubjectAsta {
 	
-	public void addFantallenatore(Fantallenatore f);
+	public void loadFantallenatori() throws IOException,ClassNotFoundException;
 	public void notifyAllObserver(String username,int puntata);
-	public void removeFantallenatore(ConcreteObserverAsta o);
+
 
 }
