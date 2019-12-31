@@ -58,7 +58,6 @@ public class ConcreteObserverAsta implements ObserverAsta {
 		s = new Random().nextInt(2);
 		if(s==0) {
 			this.passa(username);
-			System.out.println(username + newPuntata);
 		}
 		else {
 			if (fantaCrediti > 0) {

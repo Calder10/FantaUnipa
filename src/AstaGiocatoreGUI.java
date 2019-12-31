@@ -1,8 +1,10 @@
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -22,7 +24,7 @@ public class AstaGiocatoreGUI extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	private String username;
-	private JTextField textField_1;
+	private JScrollPane scrollpane;
 	
 	
 	public String getUsername() {
@@ -65,18 +67,22 @@ public class AstaGiocatoreGUI extends JFrame {
 		contentPane.add(textArea);
 		getContentPane().add(textArea);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(354, 272, 98, 44);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		scrollpane = new JScrollPane(textArea);
+		scrollpane.setEnabled(false);
+		scrollpane.setLocation(28, 139);
+		scrollpane.setSize(558, 121);
+		scrollpane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollpane.setPreferredSize(new Dimension(200, 250));
 		
-		JButton btnNewButtonRilancia = new JButton("Rilancia");
-		btnNewButtonRilancia.setBounds(480, 273, 98, 44);
-		contentPane.add(btnNewButtonRilancia);
+	
+		contentPane.add(scrollpane);
+		
+		JButton btnNewButtonRinuncia = new JButton("Rinuncia");
+		btnNewButtonRinuncia.setBounds(480, 273, 98, 44);
+		contentPane.add(btnNewButtonRinuncia);
 		
 		textArea.setVisible(false);
-		textField_1.setVisible(false);
-		btnNewButtonRilancia.setVisible(false);
+		btnNewButtonRinuncia.setVisible(false);
 		
 		Giocatore g = (Portiere) new Portiere(ris);
 		Asta a = new Asta(g);
@@ -93,17 +99,11 @@ public class AstaGiocatoreGUI extends JFrame {
 						aus.replace(username, oldValue, puntata);
 						a.setPuntataCorrente(aus);
 						a.notifyAllObserver(username,puntata);
-						a.puntateVirtuali(username,textArea,textField_1,btnNewButtonRilancia);
+						a.puntateVirtuali(username,textArea,btnNewButtonRinuncia);
 					}
 					else {
 						JOptionPane.showMessageDialog(textField, "Puntata non consentita!");
 					}
-					// Fantallenatori virtuali 
-					System.out.println(a.getObs().toString());
-					//textArea.setVisible(true);
-					//textArea.append(a.stampaPuntata(username));
-					//textField_1.setVisible(true);
-					//btnNewButtonRilancia.setVisible(true);
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

@@ -97,7 +97,6 @@ public class Asta implements SubjectAsta{
 				this.puntataCorrente.replace(username, oldValue, puntata);
 			}
 			o.setPuntata(this.puntataCorrente);
-			System.out.println(o.toString());
 		}
 	}
 
@@ -111,16 +110,15 @@ public class Asta implements SubjectAsta{
 		Set<String> keys  = this.puntataCorrente.keySet();
 		if(keys.contains(username)) {
 			String valore = puntataCorrente.get(username).toString();
-			return username+": "+valore+"\n";
+			return username+": "+valore+"\n\n";
 		}
 		else {
-			return username+" ha rinunciato !\n";
+			return username+" ha rinunciato !\n\n";
 		}
 	}
 	
-	public void puntateVirtuali(String username,JTextArea textArea,JTextField textField_1,JButton btnNewButtonRilancia) {
+	public void puntateVirtuali(String username,JTextArea textArea,JButton btnNewButtonRilancia) {
 		textArea.setVisible(true);
-		textField_1.setVisible(true);
 		btnNewButtonRilancia.setVisible(true);
 		ArrayList<ConcreteObserverAsta> delete = new ArrayList<>();
 		for(ConcreteObserverAsta o : obs) {
