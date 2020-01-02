@@ -4,12 +4,14 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.imageio.ImageIO;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.nio.file.Files;
@@ -155,5 +157,20 @@ public class Squadra implements Serializable{
 	}
 	
 	
-
+	public void updateSquadra() throws IOException {
+		String path = "src/Squadre/"+this.getNomeSquadra()+".dat";
+		String path1 = "src/Squadre/"+this.getNomeSquadra()+"1.dat";
+		File f = new File(path);
+		File f1 = new File(path1);
+		FileOutputStream fos = new FileOutputStream(f1);
+		try {
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+			oos.writeObject((Squadra) this);
+			oos.close();
+		} catch (Exception e) {
+			System.out.println("Errore durante il salvatggio su file !");
+		}
+		fos.close();
+		f1.renameTo(f);
+	}
 }

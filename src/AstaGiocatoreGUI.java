@@ -90,10 +90,10 @@ public class AstaGiocatoreGUI extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				a.prova(textField,getUsername(), textArea, btnNewButtonRinuncia);
+				a.simulaAsta(textField,getUsername(), textArea, btnNewButtonRinuncia);
 				
 			}
 		});
 			
-	}
+	} 
 }

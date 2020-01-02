@@ -11,6 +11,7 @@ public class ConcreteObserverAsta implements ObserverAsta {
 	private HashMap<String, Integer> puntata;
 
 	public ConcreteObserverAsta() {
+		squadra = new Squadra();
 		puntata = new HashMap<String,Integer>();
 	}
 
@@ -32,6 +33,7 @@ public class ConcreteObserverAsta implements ObserverAsta {
 
 	@Override
 	public boolean punta(String username, int puntata) {
+		System.out.println("punta");
 		if(this.getPuntata().isEmpty()) {
 			Integer oldValue = this.puntata.get(username);
 			this.puntata.replace(username, oldValue, puntata);
@@ -50,6 +52,7 @@ public class ConcreteObserverAsta implements ObserverAsta {
 	
 	@Override
 	public int puntaVirtuale(String username){
+		System.out.println("punta virtuale");
 		Integer oldValue = this.puntata.get(username);
 		int fantaCrediti = this.squadra.getFantallenatore().getFantaCrediti();
 		int newPuntata=0;
@@ -57,20 +60,29 @@ public class ConcreteObserverAsta implements ObserverAsta {
 		int aus;
 		int s;
 		s = new Random().nextInt(2);
+		int strat = new Random().nextInt(3);
+		
 		if(s==0) {
 			this.passa(username);
 		}
 		else {
-			if (fantaCrediti > 0) {
-				while (true) {
-					newPuntata = ThreadLocalRandom.current().nextInt(max, 31);
-					if (newPuntata <= max)
-						newPuntata = ThreadLocalRandom.current().nextInt(max, 31);
-					else {
-						this.puntata.replace(username, oldValue, newPuntata);
-						break;
-					}
-				}
+			if(strat==0) {
+				newPuntata=max+1;
+				if(newPuntata>30)
+					this.passa(username);
+				this.puntata.replace(username, oldValue, newPuntata);
+			}
+			if(strat==1) {
+				newPuntata=max+5;
+				if(newPuntata>30)
+					this.passa(username);
+				this.puntata.replace(username, oldValue, newPuntata);
+			}
+			if(strat==2) {
+				newPuntata=max+10;
+				if(newPuntata>30)
+					this.passa(username);
+				this.puntata.replace(username, oldValue, newPuntata);
 			}
 		}
 		return newPuntata;
@@ -78,6 +90,7 @@ public class ConcreteObserverAsta implements ObserverAsta {
 
 	@Override
 	public void passa(String username) {
+		System.out.println("passa");
 		this.puntata.remove(username);
 		
 

@@ -85,6 +85,7 @@ public class Asta implements SubjectAsta{
 
 	@Override
 	public void notifyAllObserver(String username,int puntata){
+		System.out.println("notifyall");
 		for (ConcreteObserverAsta o : obs) {
 			String usr = o.getSquadra().getFantallenatore().getUsername();
 			if(usr.equalsIgnoreCase(username)==false) {
@@ -108,6 +109,7 @@ public class Asta implements SubjectAsta{
 	}
 	
 	public void puntateVirtuali(String username,JTextArea textArea,JButton btnNewButtonRilancia) {
+		System.out.println("puntateVirtuali");
 		textArea.setVisible(true);
 		btnNewButtonRilancia.setVisible(true);
 		ArrayList<ConcreteObserverAsta> delete = new ArrayList<>();
@@ -131,8 +133,14 @@ public class Asta implements SubjectAsta{
 		}
 	}
 	
-	public void prova(JTextField textField,String username,JTextArea textArea, JButton btnNewButtonRinuncia) {
-		ConcreteObserverAsta o = this.getObs().get(0);
+	public void simulaAsta(JTextField textField,String username,JTextArea textArea, JButton btnNewButtonRinuncia) {
+		System.out.println("Prova");
+		ConcreteObserverAsta o =null;
+		for(ConcreteObserverAsta ob : obs) {
+			if(ob.getSquadra().getFantallenatore().getUsername().equalsIgnoreCase(username)) {
+				o=ob;
+			}
+		}
 		if (o.getSquadra().getPortieri().size()<3) {
 			int puntata = Integer.parseInt(textField.getText());
 			try {
@@ -156,14 +164,19 @@ public class Asta implements SubjectAsta{
 						}
 
 						ArrayList<ConcreteObserverAsta> oss = this.getObs();
+						Squadra s;
 						for (ConcreteObserverAsta o1 : oss) {
 							if (key.equalsIgnoreCase(o1.getSquadra().getFantallenatore().getUsername())) {
+								s=o1.getSquadra();
 								o1.getSquadra().getFantallenatore().setFantaCrediti(value);
 								o1.getSquadra().addPortiere((Portiere) this.getGiocatore());
 								System.out.println(o1.getSquadra().getPortieri().toString());
-								// implementare un metodo per salvare il giocatore su file .dat
+								s.updateSquadra();
 							}
 						}
+						
+						
+						
 					}
 				}
 				else {
@@ -176,8 +189,8 @@ public class Asta implements SubjectAsta{
 		else {
 			this.getObs().remove(o);
 		}
+		System.out.println(o.getSquadra().getPortieri().toString());
 		
-		// asta giocatori virtuali 
 		
 	}
 
