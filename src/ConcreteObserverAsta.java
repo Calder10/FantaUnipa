@@ -3,6 +3,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class ConcreteObserverAsta implements ObserverAsta {
 
@@ -62,9 +63,9 @@ public class ConcreteObserverAsta implements ObserverAsta {
 		else {
 			if (fantaCrediti > 0) {
 				while (true) {
-					newPuntata = new Random().nextInt(30);
+					newPuntata = ThreadLocalRandom.current().nextInt(max, 31);
 					if (newPuntata <= max)
-						newPuntata = new Random().nextInt(30);
+						newPuntata = ThreadLocalRandom.current().nextInt(max, 31);
 					else {
 						this.puntata.replace(username, oldValue, newPuntata);
 						break;
