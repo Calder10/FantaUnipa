@@ -86,7 +86,7 @@ public class AstaGiocatoreGUI extends JFrame {
 		Asta a = new Asta(g);
 		ConcreteObserverAsta o = a.getObs().get(0);
 		while (true) {
-			if (o.getSquadra().getPortieri().size()>0) {
+			if (o.getSquadra().getPortieri()==null || o.getSquadra().getPortieri().size()<3) {
 				btnNewButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						int puntata = Integer.parseInt(textField.getText());
