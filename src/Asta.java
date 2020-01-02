@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Set;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -128,6 +129,56 @@ public class Asta implements SubjectAsta{
 		for (ConcreteObserverAsta o : delete) {
 			this.obs.remove(o);
 		}
+	}
+	
+	public void prova(JTextField textField,String username,JTextArea textArea, JButton btnNewButtonRinuncia) {
+		ConcreteObserverAsta o = this.getObs().get(0);
+		if (o.getSquadra().getPortieri().size()<3) {
+			int puntata = Integer.parseInt(textField.getText());
+			try {
+				boolean ris = o.punta(username, puntata);
+				if(ris==true) {
+					HashMap<String, Integer> aus = this.getPuntataCorrente();
+					Integer oldValue = aus.get(username);
+					aus.replace(username, oldValue, puntata);
+					this.setPuntataCorrente(aus);
+					this.notifyAllObserver(username, puntata);
+					this.puntateVirtuali(username, textArea,btnNewButtonRinuncia);
+					int dim = this.getPuntataCorrente().size();
+					if (dim == 1) {
+						String key = "";
+						int value = 0;
+						System.out.println(this.getGiocatore().getNomeGiocatore() + " aggiudicato");
+						Set<String> keys = this.getPuntataCorrente().keySet();
+						for (String s : keys) {
+							key = s;
+							value = this.getPuntataCorrente().get(s);
+						}
+
+						ArrayList<ConcreteObserverAsta> oss = this.getObs();
+						for (ConcreteObserverAsta o1 : oss) {
+							if (key.equalsIgnoreCase(o1.getSquadra().getFantallenatore().getUsername())) {
+								o1.getSquadra().getFantallenatore().setFantaCrediti(value);
+								o1.getSquadra().addPortiere((Portiere) this.getGiocatore());
+								System.out.println(o1.getSquadra().getPortieri().toString());
+								// implementare un metodo per salvare il giocatore su file .dat
+							}
+						}
+					}
+				}
+				else {
+					JOptionPane.showMessageDialog(textField, "Puntata non consentita!");
+				}
+			}catch(Exception e) {
+				System.out.println("Errore");
+			}
+		}
+		else {
+			this.getObs().remove(o);
+		}
+		
+		// asta giocatori virtuali 
+		
 	}
 
 }

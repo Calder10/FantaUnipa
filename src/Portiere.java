@@ -5,4 +5,5 @@ public class Portiere extends Giocatore{
 		super(nomeGiocatore);
 	}
 
+
 }

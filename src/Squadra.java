@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.imageio.ImageIO;
 import java.io.File;
@@ -22,6 +23,14 @@ public class Squadra implements Serializable{
 	protected List<Difensore> difensori;
 	protected List<Centrocampista> centrocampisti;
 	protected List<Attaccante> attaccanti;
+	
+	
+	public Squadra() {
+		this.portieri=new ArrayList<Portiere>();
+		this.difensori=new ArrayList<Difensore>();
+		this.centrocampisti=new ArrayList<Centrocampista>();
+		this.attaccanti=new ArrayList<Attaccante>();
+	}
 
 	public Fantallenatore getFantallenatore() {
 		return fantallenatore;
@@ -132,6 +141,10 @@ public class Squadra implements Serializable{
 		} catch (Exception e) {
 			System.out.println("Errore durante il salvatggio su file !");
 		}
+	}
+	
+	public void addPortiere(Portiere p) {
+		this.portieri.add(p);
 	}
 
 	@Override
