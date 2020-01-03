@@ -118,7 +118,7 @@ public class UtilityListaGiocatori {
 			while ((line = br.readLine()) != null) {
 				fields = line.split(",");
 				if (fields[0].equalsIgnoreCase(giocatore)) {
-					ris = fields[0];
+					ris = line;
 					break;
 				}
 			}
@@ -187,9 +187,12 @@ public class UtilityListaGiocatori {
 			f = new FileReader(pathListaPortieri);
 			br = new BufferedReader(f);
 			line = br.readLine();
+			
 			while ((line = br.readLine()) != null) {
-				fields = line.split(",");
-				ris.add(fields[0]);
+				fields=line.split(",");
+				if(fields[1].equalsIgnoreCase("0")){
+					ris.add(fields[0]);
+				}
 			}
 			br.close();
 			f.close();
@@ -200,7 +203,8 @@ public class UtilityListaGiocatori {
 			line = br.readLine();
 			while ((line = br.readLine()) != null) {
 				fields = line.split(",");
-				ris.add(fields[0]);
+				if(fields[1].equalsIgnoreCase("0"))
+					ris.add(fields[0]);
 			}
 			br.close();
 			f.close();
@@ -211,7 +215,8 @@ public class UtilityListaGiocatori {
 			line = br.readLine();
 			while ((line = br.readLine()) != null) {
 				fields = line.split(",");
-				ris.add(fields[0]);
+				if(fields[1].equalsIgnoreCase("0"))
+					ris.add(fields[0]);
 			}
 			br.close();
 			f.close();
@@ -222,7 +227,8 @@ public class UtilityListaGiocatori {
 			line = br.readLine();
 			while ((line = br.readLine()) != null) {
 				fields = line.split(",");
-				ris.add(fields[0]);
+				if(fields[1].equalsIgnoreCase("0"))
+					ris.add(fields[0]);
 			}
 			br.close();
 			f.close();
@@ -232,5 +238,122 @@ public class UtilityListaGiocatori {
 		}
 
 		return ris;
+	}
+	
+	public static void giocatoreAcquistato(int tipo,String nomeGiocatore) throws IOException {
+		File f = null;
+		File f1 = null;
+		FileReader fr = null;
+		BufferedReader br = null;
+		FileWriter fw = null;
+		String path1=null;
+		String line = "";
+		String fields[];
+
+		switch (tipo) {
+		case 0:
+			f = new File(pathListaPortieri);
+			fr = new FileReader(pathListaPortieri);
+			path1 = "src/Lista/portieri1.csv";
+			br = new BufferedReader(fr);
+			f1 = new File(path1);
+			fw= new FileWriter(f1,true);
+			line = br.readLine();
+			fw.append(line);
+			fw.append("\n");
+			while ((line = br.readLine()) != null) {
+				fields = line.split(",");
+				if(fields[0].equalsIgnoreCase(nomeGiocatore)) {
+					fw.append(fields[0]+",1");
+					fw.append("\n");
+				}
+				else {
+					fw.append(line);
+					fw.append("\n");
+				}
+			}
+			br.close();
+			fw.close();
+			fr.close();
+			f1.renameTo(f);
+			break;
+		case 1:
+			f = new File(pathListaDifensori);
+			fr = new FileReader(pathListaDifensori);
+			path1 = "src/Lista/difensori1.csv";
+			br = new BufferedReader(fr);
+			f1 = new File(path1);
+			fw= new FileWriter(f1,true);
+			line = br.readLine();
+			fw.append(line);
+			fw.append("\n");
+			while ((line = br.readLine()) != null) {
+				fields = line.split(",");
+				if(fields[0].equalsIgnoreCase(nomeGiocatore)) {
+					fw.append(fields[0]+",1");
+					fw.append("\n");
+				}
+				else {
+					fw.append(line);
+					fw.append("\n");
+				}
+			}
+			br.close();
+			fw.close();
+			f1.renameTo(f);
+			break;
+		case 2:
+			f = new File(pathListaCentrocampisti);
+			fr = new FileReader(pathListaCentrocampisti);
+			path1 = "src/Lista/centrocampisti1.csv";
+			br = new BufferedReader(fr);
+			f1 = new File(path1);
+			fw= new FileWriter(f1,true);
+			line = br.readLine();
+			fw.append(line);
+			fw.append("\n");
+			while ((line = br.readLine()) != null) {
+				fields = line.split(",");
+				if(fields[0].equalsIgnoreCase(nomeGiocatore)) {
+					fw.append(fields[0]+",1");
+					fw.append("\n");
+				}
+				else {
+					fw.append(line);
+					fw.append("\n");
+				}
+			}
+			br.close();
+			fw.close();
+			f1.renameTo(f);
+			break;
+		case 3:
+			f = new File(pathListaAttaccanti);
+			fr = new FileReader(pathListaAttaccanti);
+			path1 = "src/Lista/attaccanti1.csv";
+			br = new BufferedReader(fr);
+			f1 = new File(path1);
+			fw= new FileWriter(f1,true);
+			line = br.readLine();
+			fw.append(line);
+			fw.append("\n");
+			while ((line = br.readLine()) != null) {
+				fields = line.split(",");
+				if(fields[0].equalsIgnoreCase(nomeGiocatore)) {
+					fw.append(fields[0]+",1");
+					fw.append("\n");
+				}
+				else {
+					fw.append(line);
+					fw.append("\n");
+				}
+			}
+			br.close();
+			fw.close();
+			f1.renameTo(f);
+			break;
+		default:
+			System.out.println("Scelta non consentita");
+		}
 	}
 }

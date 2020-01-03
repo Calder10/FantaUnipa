@@ -60,29 +60,26 @@ public class ConcreteObserverAsta implements ObserverAsta {
 		int aus;
 		int s;
 		s = new Random().nextInt(2);
-		int strat = new Random().nextInt(3);
+		int strategy = new Random().nextInt(3);
 		
 		if(s==0) {
 			this.passa(username);
 		}
 		else {
-			if(strat==0) {
-				newPuntata=max+1;
-				if(newPuntata>30)
-					this.passa(username);
-				this.puntata.replace(username, oldValue, newPuntata);
-			}
-			if(strat==1) {
-				newPuntata=max+5;
-				if(newPuntata>30)
-					this.passa(username);
-				this.puntata.replace(username, oldValue, newPuntata);
-			}
-			if(strat==2) {
-				newPuntata=max+10;
-				if(newPuntata>30)
-					this.passa(username);
-				this.puntata.replace(username, oldValue, newPuntata);
+			switch(strategy) {
+			case 0: 
+				SoftStrategy softStrategy = new SoftStrategy();
+				newPuntata = softStrategy.puntaVirtuale(this, username, max);
+				break;
+			case 1: 
+				MediumStrategy mediumStrategy = new MediumStrategy();
+				newPuntata = mediumStrategy.puntaVirtuale(this, username, max);
+				break;
+			case 2:
+				HardStrategy hardStrategy = new HardStrategy();
+				newPuntata = hardStrategy.puntaVirtuale(this, username, max);
+				break;
+			default: System.out.println("Scelta non consentita");
 			}
 		}
 		return newPuntata;

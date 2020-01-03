@@ -9,6 +9,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.TextField;
@@ -120,15 +121,21 @@ public class AstaPortieriGUI extends JFrame {
 				btnNewButtonChoose.setVisible(false);
 				try {
 					String ris = UtilityListaGiocatori.cercaGiocatore(searchable.getText(), 0);
-					if (ris.equalsIgnoreCase("") == false) {
+					String [] fields = ris.split(",");
+					if (fields[0].equalsIgnoreCase("") == false && fields[1].equalsIgnoreCase("0")) {
 						contentPane.add(lblNewLabelRis);
-						lblNewLabelRis.setText(ris);
+						lblNewLabelRis.setText(fields[0]);
 						btnNewButtonChoose1.setVisible(true);
 						lblNewLabelRis.setVisible(true);
 
-					} else {
+					} else if(fields[0].equalsIgnoreCase("") == true){
 						lblNewLabelRis.setText("Nessun risultato trovato !");
 						lblNewLabelRis.setVisible(true);
+						searchable.setText("");
+						
+					}
+					else if(fields[1].equalsIgnoreCase("1")) {
+						JOptionPane.showMessageDialog(btnNewButtonChoose1, fields[0]+ " già acquistato !");
 						searchable.setText("");
 					}
 				} catch (IOException e1) {
@@ -197,6 +204,9 @@ public class AstaPortieriGUI extends JFrame {
 					nextFrame = new AstaGiocatoreGUI(username,lblNewLabelRis.getText());
 					nextFrame.setVisible(true);
 					nextFrame.toFront();
+					btnNewButtonChoose1.setVisible(false);
+					lblNewLabelRis.setVisible(false);
+					searchable.setText("");
 				} catch (ClassNotFoundException | IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -214,6 +224,8 @@ public class AstaPortieriGUI extends JFrame {
 					nextFrame = new AstaGiocatoreGUI(username,console.getSelectedText());
 					nextFrame.setVisible(true);
 					nextFrame.toFront();
+					console.setVisible(false);
+					btnNewButtonChoose.setVisible(false);
 				} catch (ClassNotFoundException | IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

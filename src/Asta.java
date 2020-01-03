@@ -1,3 +1,4 @@
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -133,7 +134,7 @@ public class Asta implements SubjectAsta{
 		}
 	}
 	
-	public void simulaAsta(JTextField textField,String username,JTextArea textArea, JButton btnNewButtonRinuncia) {
+	public void simulaAsta(AstaGiocatoreGUI astaGiocatoreGUI, JTextField textField,String username,JTextArea textArea, JButton btnNewButtonRinuncia) {
 		System.out.println("Prova");
 		ConcreteObserverAsta o =null;
 		for(ConcreteObserverAsta ob : obs) {
@@ -172,6 +173,9 @@ public class Asta implements SubjectAsta{
 								o1.getSquadra().addPortiere((Portiere) this.getGiocatore());
 								System.out.println(o1.getSquadra().getPortieri().toString());
 								s.updateSquadra();
+								UtilityListaGiocatori.giocatoreAcquistato(0, this.giocatore.getNomeGiocatore());
+								JOptionPane.showMessageDialog(textField, "Ti sei aggiudicato: "+this.giocatore.getNomeGiocatore());
+								astaGiocatoreGUI.dispose();
 							}
 						}
 						
@@ -190,7 +194,6 @@ public class Asta implements SubjectAsta{
 			this.getObs().remove(o);
 		}
 		System.out.println(o.getSquadra().getPortieri().toString());
-		
 		
 	}
 
