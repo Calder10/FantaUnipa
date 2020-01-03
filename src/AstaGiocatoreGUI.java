@@ -103,11 +103,12 @@ public class AstaGiocatoreGUI extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-			// rimozione da asta puntata corrente
-				// rimozione da OBs 
-				// notify all ;
-				// continua
+			try {
+				a.simulaRinuncia(getUsername(),getAstaGiocatoreGUI());
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			}
 		}); 
 			
