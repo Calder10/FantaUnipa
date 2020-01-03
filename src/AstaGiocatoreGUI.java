@@ -38,6 +38,10 @@ public class AstaGiocatoreGUI extends JFrame {
 		this.username = username;
 	}
 	
+	public AstaGiocatoreGUI getAstaGiocatoreGUI() {
+		return this;
+	}
+	
 	
 	public AstaGiocatoreGUI(String username, String ris) throws ClassNotFoundException, IOException {
 		super("Asta in corso");
@@ -90,10 +94,22 @@ public class AstaGiocatoreGUI extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				a.simulaAsta(textField,getUsername(), textArea, btnNewButtonRinuncia);
+				a.simulaAsta(getAstaGiocatoreGUI(),textField,getUsername(), textArea, btnNewButtonRinuncia);
 				
 			}
 		});
+		
+		btnNewButtonRinuncia.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+			// rimozione da asta puntata corrente
+				// rimozione da OBs 
+				// notify all ;
+				// continua
+			}
+		}); 
 			
 	} 
 }
