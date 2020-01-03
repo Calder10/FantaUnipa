@@ -53,11 +53,12 @@ public class ConcreteObserverAsta implements ObserverAsta {
 	@Override
 	public int puntaVirtuale(String username){
 		System.out.println("punta virtuale");
-		Integer oldValue = this.puntata.get(username);
-		int fantaCrediti = this.squadra.getFantallenatore().getFantaCrediti();
 		int newPuntata=0;
-		int max=Collections.max(this.puntata.values());
-		int aus;
+		int max;
+		if(this.puntata.isEmpty())
+			max=0;
+		else
+			max=Collections.max(this.puntata.values());
 		int s;
 		s = new Random().nextInt(2);
 		int strategy = new Random().nextInt(3);
@@ -84,6 +85,8 @@ public class ConcreteObserverAsta implements ObserverAsta {
 		}
 		return newPuntata;
 	}
+	
+	
 
 	@Override
 	public void passa(String username) {

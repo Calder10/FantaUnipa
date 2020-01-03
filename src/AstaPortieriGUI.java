@@ -46,6 +46,9 @@ public class AstaPortieriGUI extends JFrame {
 		this.username = username;
 	}
 
+	public AstaPortieriGUI getAstaPortieriGUI() {
+		return this;
+	}
 
 
 
@@ -201,7 +204,7 @@ public class AstaPortieriGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				AstaGiocatoreGUI nextFrame;
 				try {
-					nextFrame = new AstaGiocatoreGUI(username,lblNewLabelRis.getText());
+					nextFrame = new AstaGiocatoreGUI(getAstaPortieriGUI(),username,lblNewLabelRis.getText());
 					nextFrame.setVisible(true);
 					nextFrame.toFront();
 					btnNewButtonChoose1.setVisible(false);
@@ -221,7 +224,7 @@ public class AstaPortieriGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				AstaGiocatoreGUI nextFrame;
 				try {
-					nextFrame = new AstaGiocatoreGUI(username,console.getSelectedText());
+					nextFrame = new AstaGiocatoreGUI(getAstaPortieriGUI(),username,console.getSelectedText());
 					nextFrame.setVisible(true);
 					nextFrame.toFront();
 					console.setVisible(false);

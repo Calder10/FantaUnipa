@@ -19,9 +19,9 @@ public class Asta implements SubjectAsta {
 	private HashMap<String, Integer> puntataCorrente;
 	private ArrayList<ConcreteObserverAsta> obs;
 
-	public Asta(Giocatore giocatore) throws ClassNotFoundException, IOException {
+	public Asta(Giocatore giocatore, int tipo) throws ClassNotFoundException, IOException {
 		this.giocatore = giocatore;
-		this.loadFantallenatori();
+		this.loadFantallenatori(tipo);
 	}
 
 	public Giocatore getGiocatore() {
@@ -49,25 +49,98 @@ public class Asta implements SubjectAsta {
 	}
 
 	@Override
-	public void loadFantallenatori() throws IOException, ClassNotFoundException {
+	public void loadFantallenatori(int tipo) throws IOException, ClassNotFoundException {
 		obs = new ArrayList<ConcreteObserverAsta>();
 		this.puntataCorrente = new HashMap<>();
 		File f = new File("src/Squadre");
-		if (f.isDirectory()) {
-			File[] files = f.listFiles();
+		File[] files;
 
-			for (File x : files) {
-				FileInputStream fis = new FileInputStream(x);
-				ObjectInputStream ois = new ObjectInputStream(fis);
-				ConcreteObserverAsta o = new ConcreteObserverAsta();
-				Squadra aus = (Squadra) ois.readObject();
-				o.setSquadra(aus);
-				obs.add(o);
-				String s = aus.getFantallenatore().getUsername();
-				this.puntataCorrente.put(s, 0);
-				ois.close();
-				fis.close();
+		switch (tipo) {
+		case 0:
+			if (f.isDirectory()) {
+				files = f.listFiles();
+
+				for (File x : files) {
+					FileInputStream fis = new FileInputStream(x);
+					ObjectInputStream ois = new ObjectInputStream(fis);
+					ConcreteObserverAsta o = new ConcreteObserverAsta();
+					Squadra aus = (Squadra) ois.readObject();
+					if (aus.getPortieri().size() != 3) {
+						o.setSquadra(aus);
+						obs.add(o);
+						String s = aus.getFantallenatore().getUsername();
+						this.puntataCorrente.put(s, 0);
+						ois.close();
+						fis.close();
+					}
+				}
 			}
+			break;
+
+		case 1:
+			if (f.isDirectory()) {
+				files = f.listFiles();
+
+				for (File x : files) {
+					FileInputStream fis = new FileInputStream(x);
+					ObjectInputStream ois = new ObjectInputStream(fis);
+					ConcreteObserverAsta o = new ConcreteObserverAsta();
+					Squadra aus = (Squadra) ois.readObject();
+					if (aus.getPortieri().size() != 8) {
+						o.setSquadra(aus);
+						obs.add(o);
+						String s = aus.getFantallenatore().getUsername();
+						this.puntataCorrente.put(s, 0);
+						ois.close();
+						fis.close();
+					}
+				}
+			}
+			break;
+		case 2:
+			if (f.isDirectory()) {
+				files = f.listFiles();
+
+				for (File x : files) {
+					FileInputStream fis = new FileInputStream(x);
+					ObjectInputStream ois = new ObjectInputStream(fis);
+					ConcreteObserverAsta o = new ConcreteObserverAsta();
+					Squadra aus = (Squadra) ois.readObject();
+					if (aus.getPortieri().size() != 8) {
+						o.setSquadra(aus);
+						obs.add(o);
+						String s = aus.getFantallenatore().getUsername();
+						this.puntataCorrente.put(s, 0);
+						ois.close();
+						fis.close();
+						
+					}
+				}
+			}
+			break;
+		case 3:
+			if (f.isDirectory()) {
+				files = f.listFiles();
+
+				for (File x : files) {
+					FileInputStream fis = new FileInputStream(x);
+					ObjectInputStream ois = new ObjectInputStream(fis);
+					ConcreteObserverAsta o = new ConcreteObserverAsta();
+					Squadra aus = (Squadra) ois.readObject();
+					if (aus.getPortieri().size() != 6) {
+						o.setSquadra(aus);
+						obs.add(o);
+						String s = aus.getFantallenatore().getUsername();
+						this.puntataCorrente.put(s, 0);
+						ois.close();
+						fis.close();
+						
+					}
+				}
+			}
+			break;
+			
+		default: System.out.println("Scelta non consentita !");
 		}
 
 	}
@@ -118,7 +191,7 @@ public class Asta implements SubjectAsta {
 			this.obs.remove(o);
 		}
 	}
-	
+
 	public void puntateVirtuali(String username) {
 		System.out.println("puntateVirtuali");
 		ArrayList<ConcreteObserverAsta> delete = new ArrayList<>();
@@ -139,8 +212,8 @@ public class Asta implements SubjectAsta {
 		}
 	}
 
-	public void simulaAsta(AstaGiocatoreGUI astaGiocatoreGUI, JTextField textField, String username, JTextArea textArea,
-			JButton btnNewButtonRinuncia) {
+	public void simulaAsta(AstaPortieriGUI astaPortieriGUI, AstaGiocatoreGUI astaGiocatoreGUI, JTextField textField,
+			String username, JTextArea textArea, JButton btnNewButtonRinuncia) {
 		System.out.println("Prova");
 		ConcreteObserverAsta o = null;
 		for (ConcreteObserverAsta ob : obs) {
@@ -175,7 +248,8 @@ public class Asta implements SubjectAsta {
 						for (ConcreteObserverAsta o1 : oss) {
 							if (key.equalsIgnoreCase(o1.getSquadra().getFantallenatore().getUsername())) {
 								s = o1.getSquadra();
-								o1.getSquadra().getFantallenatore().setFantaCrediti(value);
+								int newValue = o1.getSquadra().getFantallenatore().getFantaCrediti() - value;
+								o1.getSquadra().getFantallenatore().setFantaCrediti(newValue);
 								o1.getSquadra().addPortiere((Portiere) this.getGiocatore());
 								System.out.println(o1.getSquadra().getPortieri().toString());
 								s.updateSquadra();
@@ -183,6 +257,14 @@ public class Asta implements SubjectAsta {
 								JOptionPane.showMessageDialog(textField,
 										"Ti sei aggiudicato: " + this.giocatore.getNomeGiocatore());
 								astaGiocatoreGUI.dispose();
+								if (s.getPortieri().size() == 3) {
+									JOptionPane.showMessageDialog(astaGiocatoreGUI, "Asta portieri completata !");
+									this.completaAstaSquadreVirtuali();
+									LoginGUI nextFrame = new LoginGUI();
+									nextFrame.setVisible(true);
+									nextFrame.toFront();
+									astaPortieriGUI.dispose();
+								}
 							}
 						}
 
@@ -191,7 +273,7 @@ public class Asta implements SubjectAsta {
 					JOptionPane.showMessageDialog(textField, "Puntata non consentita!");
 				}
 			} catch (Exception e) {
-				System.out.println("Errore");
+				e.printStackTrace();
 			}
 		} else {
 			this.getObs().remove(o);
@@ -200,7 +282,7 @@ public class Asta implements SubjectAsta {
 
 	}
 
-	public void simulaRinuncia(String username,AstaGiocatoreGUI astaGiocatoreGUI) throws IOException {
+	public void simulaRinuncia(String username, AstaGiocatoreGUI astaGiocatoreGUI) throws IOException {
 		this.getPuntataCorrente().remove(username);
 		ConcreteObserverAsta o = null;
 		for (ConcreteObserverAsta ob : obs) {
@@ -210,7 +292,12 @@ public class Asta implements SubjectAsta {
 		}
 		this.getObs().remove(o);
 		this.notifyAllObserver(username, 0);
+		if(this.getObs().size()==0)
+			System.out.println("Hanno rinunciato tutti !");
+		if(this.getObs().size()==1)
+			System.out.println("Ha vinto !");
 		while (this.obs.size() != 1) {
+			// controllo su quando rimane uno solo 
 			o = this.obs.get(0);
 			int puntata = o.puntaVirtuale(o.getSquadra().getFantallenatore().getUsername());
 			HashMap<String, Integer> aus = this.getPuntataCorrente();
@@ -235,13 +322,15 @@ public class Asta implements SubjectAsta {
 				for (ConcreteObserverAsta o1 : oss) {
 					if (key.equalsIgnoreCase(o1.getSquadra().getFantallenatore().getUsername())) {
 						s = o1.getSquadra();
-						o1.getSquadra().getFantallenatore().setFantaCrediti(value);
+						int newValue = o1.getSquadra().getFantallenatore().getFantaCrediti() - value;
+						o1.getSquadra().getFantallenatore().setFantaCrediti(newValue);
 						o1.getSquadra().addPortiere((Portiere) this.getGiocatore());
 						System.out.println(o1.getSquadra().getFantallenatore().getUsername());
 						System.out.println(o1.getSquadra().getPortieri().toString());
 						s.updateSquadra();
 						UtilityListaGiocatori.giocatoreAcquistato(0, this.giocatore.getNomeGiocatore());
-						String messaggio = o1.getSquadra().getFantallenatore().getUsername()+ " si è aggudicato " +this.giocatore.getNomeGiocatore();
+						String messaggio = o1.getSquadra().getFantallenatore().getUsername() + " si è aggudicato "
+								+ this.giocatore.getNomeGiocatore();
 						JOptionPane.showMessageDialog(astaGiocatoreGUI, messaggio);
 						astaGiocatoreGUI.dispose();
 						break;
@@ -251,6 +340,73 @@ public class Asta implements SubjectAsta {
 
 			}
 		}
+
 	}
 
+	public void completaAstaSquadreVirtuali() throws IOException, ClassNotFoundException {
+		while (true) {
+			int puntata;
+			String nomeGiocatore = UtilityListaGiocatori.randomPlayer(0);
+			Giocatore g = new Portiere(nomeGiocatore);
+			Asta a = new Asta(g, 0);
+			if (a.getObs().size() == 0) {
+				System.out.println("Asta Completata\n");
+				break;
+			}
+			ConcreteObserverAsta o = a.getObs().get(0);
+			String username = o.getSquadra().getFantallenatore().getUsername();
+			if (a.getObs().size() == 1) {
+				ArrayList<ConcreteObserverAsta> oss = a.getObs();
+				Squadra s;
+				for (ConcreteObserverAsta o1 : oss) {
+					s = o1.getSquadra();
+					int newValue = o1.getSquadra().getFantallenatore().getFantaCrediti() - 1;
+					o1.getSquadra().getFantallenatore().setFantaCrediti(newValue);
+					o1.getSquadra().addPortiere((Portiere) a.getGiocatore());
+					System.out.println(a.getGiocatore().getNomeGiocatore() + " aggiudicato");
+					System.out.println(o1.getSquadra().getFantallenatore().getUsername());
+					System.out.println(o1.getSquadra().getPortieri().toString());
+					s.updateSquadra();
+					UtilityListaGiocatori.giocatoreAcquistato(0, a.giocatore.getNomeGiocatore());
+					a.getObs().remove(o1);
+					break;
+				}
+			}
+			else {
+				while(true) {
+					puntata=o.puntaVirtuale(username);
+					a.getPuntataCorrente().put(username,puntata);
+					a.notifyAllObserver(username, puntata);
+					a.puntateVirtuali(username);
+					int dim = a.getPuntataCorrente().size();
+					if (dim == 1) {
+						String key = "";
+						int value = 0;
+						System.out.println(a.getGiocatore().getNomeGiocatore() + " aggiudicato");
+						Set<String> keys = a.getPuntataCorrente().keySet();
+						for (String s : keys) {
+							key = s;
+							value = a.getPuntataCorrente().get(s);
+						}
+						ArrayList<ConcreteObserverAsta> oss = a.getObs();
+						Squadra s;
+						for (ConcreteObserverAsta o1 : oss) {
+							if (key.equalsIgnoreCase(o1.getSquadra().getFantallenatore().getUsername())) {
+								s = o1.getSquadra();
+								int newValue = o1.getSquadra().getFantallenatore().getFantaCrediti() - value;
+								o1.getSquadra().getFantallenatore().setFantaCrediti(newValue);
+								o1.getSquadra().addPortiere((Portiere) a.getGiocatore());
+								System.out.println(o1.getSquadra().getFantallenatore().getUsername());
+								System.out.println(o1.getSquadra().getPortieri().toString());
+								s.updateSquadra();
+								UtilityListaGiocatori.giocatoreAcquistato(0, a.giocatore.getNomeGiocatore());
+								break;
+							}
+						}
+						break;
+					}
+				}
+			}
+		}
+	}
 }

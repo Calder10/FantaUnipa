@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class UtilityListaGiocatori {
 	private static String pathListaCompleta = "src/Lista/listaCalciatoriCompleta.csv";
@@ -187,10 +188,10 @@ public class UtilityListaGiocatori {
 			f = new FileReader(pathListaPortieri);
 			br = new BufferedReader(f);
 			line = br.readLine();
-			
+
 			while ((line = br.readLine()) != null) {
-				fields=line.split(",");
-				if(fields[1].equalsIgnoreCase("0")){
+				fields = line.split(",");
+				if (fields[1].equalsIgnoreCase("0")) {
 					ris.add(fields[0]);
 				}
 			}
@@ -203,7 +204,7 @@ public class UtilityListaGiocatori {
 			line = br.readLine();
 			while ((line = br.readLine()) != null) {
 				fields = line.split(",");
-				if(fields[1].equalsIgnoreCase("0"))
+				if (fields[1].equalsIgnoreCase("0"))
 					ris.add(fields[0]);
 			}
 			br.close();
@@ -215,7 +216,7 @@ public class UtilityListaGiocatori {
 			line = br.readLine();
 			while ((line = br.readLine()) != null) {
 				fields = line.split(",");
-				if(fields[1].equalsIgnoreCase("0"))
+				if (fields[1].equalsIgnoreCase("0"))
 					ris.add(fields[0]);
 			}
 			br.close();
@@ -227,7 +228,7 @@ public class UtilityListaGiocatori {
 			line = br.readLine();
 			while ((line = br.readLine()) != null) {
 				fields = line.split(",");
-				if(fields[1].equalsIgnoreCase("0"))
+				if (fields[1].equalsIgnoreCase("0"))
 					ris.add(fields[0]);
 			}
 			br.close();
@@ -239,14 +240,14 @@ public class UtilityListaGiocatori {
 
 		return ris;
 	}
-	
-	public static void giocatoreAcquistato(int tipo,String nomeGiocatore) throws IOException {
+
+	public static void giocatoreAcquistato(int tipo, String nomeGiocatore) throws IOException {
 		File f = null;
 		File f1 = null;
 		FileReader fr = null;
 		BufferedReader br = null;
 		FileWriter fw = null;
-		String path1=null;
+		String path1 = null;
 		String line = "";
 		String fields[];
 
@@ -257,17 +258,16 @@ public class UtilityListaGiocatori {
 			path1 = "src/Lista/portieri1.csv";
 			br = new BufferedReader(fr);
 			f1 = new File(path1);
-			fw= new FileWriter(f1,true);
+			fw = new FileWriter(f1, true);
 			line = br.readLine();
 			fw.append(line);
 			fw.append("\n");
 			while ((line = br.readLine()) != null) {
 				fields = line.split(",");
-				if(fields[0].equalsIgnoreCase(nomeGiocatore)) {
-					fw.append(fields[0]+",1");
+				if (fields[0].equalsIgnoreCase(nomeGiocatore)) {
+					fw.append(fields[0] + ",1");
 					fw.append("\n");
-				}
-				else {
+				} else {
 					fw.append(line);
 					fw.append("\n");
 				}
@@ -283,17 +283,16 @@ public class UtilityListaGiocatori {
 			path1 = "src/Lista/difensori1.csv";
 			br = new BufferedReader(fr);
 			f1 = new File(path1);
-			fw= new FileWriter(f1,true);
+			fw = new FileWriter(f1, true);
 			line = br.readLine();
 			fw.append(line);
 			fw.append("\n");
 			while ((line = br.readLine()) != null) {
 				fields = line.split(",");
-				if(fields[0].equalsIgnoreCase(nomeGiocatore)) {
-					fw.append(fields[0]+",1");
+				if (fields[0].equalsIgnoreCase(nomeGiocatore)) {
+					fw.append(fields[0] + ",1");
 					fw.append("\n");
-				}
-				else {
+				} else {
 					fw.append(line);
 					fw.append("\n");
 				}
@@ -308,17 +307,16 @@ public class UtilityListaGiocatori {
 			path1 = "src/Lista/centrocampisti1.csv";
 			br = new BufferedReader(fr);
 			f1 = new File(path1);
-			fw= new FileWriter(f1,true);
+			fw = new FileWriter(f1, true);
 			line = br.readLine();
 			fw.append(line);
 			fw.append("\n");
 			while ((line = br.readLine()) != null) {
 				fields = line.split(",");
-				if(fields[0].equalsIgnoreCase(nomeGiocatore)) {
-					fw.append(fields[0]+",1");
+				if (fields[0].equalsIgnoreCase(nomeGiocatore)) {
+					fw.append(fields[0] + ",1");
 					fw.append("\n");
-				}
-				else {
+				} else {
 					fw.append(line);
 					fw.append("\n");
 				}
@@ -333,17 +331,16 @@ public class UtilityListaGiocatori {
 			path1 = "src/Lista/attaccanti1.csv";
 			br = new BufferedReader(fr);
 			f1 = new File(path1);
-			fw= new FileWriter(f1,true);
+			fw = new FileWriter(f1, true);
 			line = br.readLine();
 			fw.append(line);
 			fw.append("\n");
 			while ((line = br.readLine()) != null) {
 				fields = line.split(",");
-				if(fields[0].equalsIgnoreCase(nomeGiocatore)) {
-					fw.append(fields[0]+",1");
+				if (fields[0].equalsIgnoreCase(nomeGiocatore)) {
+					fw.append(fields[0] + ",1");
 					fw.append("\n");
-				}
-				else {
+				} else {
 					fw.append(line);
 					fw.append("\n");
 				}
@@ -355,5 +352,79 @@ public class UtilityListaGiocatori {
 		default:
 			System.out.println("Scelta non consentita");
 		}
+	}
+
+	public static String randomPlayer(int tipo) throws IOException {
+		int s = new Random().nextInt(135);
+		File f = null;
+		FileReader fr = null;
+		BufferedReader br = null;
+		String line = "";
+		String[] fields;
+		String ris = "";
+		int i = 0;
+		switch (tipo) {
+		case 0:
+			f = new File(pathListaPortieri);
+			fr = new FileReader(f);
+			br = new BufferedReader(fr);
+			line = br.readLine();
+			while ((line = br.readLine()) != null) {
+				fields = line.split(",");
+				if (i == s) {
+					ris = fields[0];
+					break;
+				} else
+					i++;
+			}
+			break;
+
+		case 1:
+			f = new File(pathListaDifensori);
+			fr = new FileReader(f);
+			br = new BufferedReader(fr);
+			line = br.readLine();
+			while ((line = br.readLine()) != null) {
+				fields = line.split(",");
+				if (i == s) {
+					ris = fields[0];
+					break;
+				} else
+					i++;
+			}
+			break;
+
+		case 2:
+			f = new File(pathListaCentrocampisti);
+			fr = new FileReader(f);
+			br = new BufferedReader(fr);
+			line = br.readLine();
+			while ((line = br.readLine()) != null) {
+				fields = line.split(",");
+				if (i == s) {
+					ris = fields[0];
+					break;
+				} else
+					i++;
+			}
+			break;
+		case 3:
+			f = new File(pathListaAttaccanti);
+			fr = new FileReader(f);
+			br = new BufferedReader(fr);
+			line = br.readLine();
+			while ((line = br.readLine()) != null) {
+				fields = line.split(",");
+				if (i == s) {
+					ris = fields[0];
+					break;
+				} else
+					i++;
+			}
+			break;
+		default:
+			System.out.println("Scelta non consentita !");
+		}
+		return ris;
 	}
 }

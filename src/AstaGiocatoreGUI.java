@@ -43,7 +43,8 @@ public class AstaGiocatoreGUI extends JFrame {
 	}
 	
 	
-	public AstaGiocatoreGUI(String username, String ris) throws ClassNotFoundException, IOException {
+	
+	public AstaGiocatoreGUI(AstaPortieriGUI astaPortieriGUI,String username, String ris) throws ClassNotFoundException, IOException {
 		super("Asta in corso");
 		this.setUsername(username);
 		setResizable(false);
@@ -89,13 +90,18 @@ public class AstaGiocatoreGUI extends JFrame {
 		textArea.setVisible(false);
 		btnNewButtonRinuncia.setVisible(false);
 		Giocatore g = (Portiere) new Portiere(ris);
-		Asta a = new Asta(g);
+		Asta a = new Asta(g,0);
 		ConcreteObserverAsta o = a.getObs().get(0);
+		int fantaCrediti = o.getSquadra().getFantallenatore().getFantaCrediti();
 		btnNewButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				a.simulaAsta(getAstaGiocatoreGUI(),textField,getUsername(), textArea, btnNewButtonRinuncia);
-				
+				int p = Integer.parseInt(textField.getText());
+				if(p>fantaCrediti) {
+					JOptionPane.showMessageDialog(textField, "Non hai abbastanza FantaCrediti !");
+					textField.setText("");
+				}
+				a.simulaAsta(astaPortieriGUI,getAstaGiocatoreGUI(),textField,getUsername(), textArea, btnNewButtonRinuncia);
 			}
 		});
 		
