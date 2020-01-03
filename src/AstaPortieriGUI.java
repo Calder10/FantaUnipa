@@ -225,7 +225,9 @@ public class AstaPortieriGUI extends JFrame {
 					nextFrame.setVisible(true);
 					nextFrame.toFront();
 					console.setVisible(false);
+					scrollpane.setVisible(false);
 					btnNewButtonChoose.setVisible(false);
+					lblNewLabel_1.setVisible(false);
 				} catch (ClassNotFoundException | IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
