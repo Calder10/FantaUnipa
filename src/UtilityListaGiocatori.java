@@ -355,7 +355,7 @@ public class UtilityListaGiocatori {
 	}
 
 	public static String randomPlayer(int tipo) throws IOException {
-		int s = new Random().nextInt(135);
+		int s = 0;
 		File f = null;
 		FileReader fr = null;
 		BufferedReader br = null;
@@ -369,13 +369,19 @@ public class UtilityListaGiocatori {
 			fr = new FileReader(f);
 			br = new BufferedReader(fr);
 			line = br.readLine();
-			while ((line = br.readLine()) != null) {
-				fields = line.split(",");
-				if (i == s) {
-					ris = fields[0];
-					break;
-				} else
-					i++;
+			while (true) {
+				s = new Random().nextInt(66);
+
+				while ((line = br.readLine()) != null) {
+					fields = line.split(",");
+
+					if (i == s && fields[1].equalsIgnoreCase("0")) {
+						ris = fields[0];
+						break;
+					} else
+						i++;
+				}
+				break;
 			}
 			break;
 
@@ -384,28 +390,39 @@ public class UtilityListaGiocatori {
 			fr = new FileReader(f);
 			br = new BufferedReader(fr);
 			line = br.readLine();
-			while ((line = br.readLine()) != null) {
-				fields = line.split(",");
-				if (i == s) {
-					ris = fields[0];
-					break;
-				} else
-					i++;
+			while (true) {
+				s = new Random().nextInt(191);
+
+				while ((line = br.readLine()) != null) {
+					fields = line.split(",");
+
+					if (i == s && fields[1].equalsIgnoreCase("0")) {
+						ris = fields[0];
+						break;
+					} else
+						i++;
+				}
+				break;
 			}
 			break;
-
 		case 2:
 			f = new File(pathListaCentrocampisti);
 			fr = new FileReader(f);
 			br = new BufferedReader(fr);
 			line = br.readLine();
-			while ((line = br.readLine()) != null) {
-				fields = line.split(",");
-				if (i == s) {
-					ris = fields[0];
-					break;
-				} else
-					i++;
+			while (true) {
+				s = new Random().nextInt(187);
+
+				while ((line = br.readLine()) != null) {
+					fields = line.split(",");
+
+					if (i == s && fields[1].equalsIgnoreCase("0")) {
+						ris = fields[0];
+						break;
+					} else
+						i++;
+				}
+				break;
 			}
 			break;
 		case 3:
@@ -413,13 +430,19 @@ public class UtilityListaGiocatori {
 			fr = new FileReader(f);
 			br = new BufferedReader(fr);
 			line = br.readLine();
-			while ((line = br.readLine()) != null) {
-				fields = line.split(",");
-				if (i == s) {
-					ris = fields[0];
-					break;
-				} else
-					i++;
+			while (true) {
+				s = new Random().nextInt(105);
+
+				while ((line = br.readLine()) != null) {
+					fields = line.split(",");
+
+					if (i == s && fields[1].equalsIgnoreCase("0")) {
+						ris = fields[0];
+						break;
+					} else
+						i++;
+				}
+				break;
 			}
 			break;
 		default:

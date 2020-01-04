@@ -7,8 +7,11 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.ListModel;
+import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import java.awt.Font;
@@ -31,16 +34,12 @@ public class AstaPortieriGUI extends JFrame {
 	private JScrollPane scrollpane;
 	private JTextArea console;
 	private String username;
+	private JList list;
 	
-	
-
 
 	public String getUsername() {
 		return username;
 	}
-
-
-
 
 	public void setUsername(String username) {
 		this.username = username;
@@ -49,8 +48,6 @@ public class AstaPortieriGUI extends JFrame {
 	public AstaPortieriGUI getAstaPortieriGUI() {
 		return this;
 	}
-
-
 
 	public AstaPortieriGUI(String username) {
 		super("Asta Portieri");
@@ -88,7 +85,7 @@ public class AstaPortieriGUI extends JFrame {
 		lblNewLabelRis.setBounds(61, 205, 249, 47);
 		contentPane.add(lblNewLabelRis);
 		lblNewLabelRis.setVisible(false);
-		console = new JTextArea(15, 15);
+		/*console = new JTextArea(15, 15);
 		console.setBounds(6, 0, 794, 291);
 		contentPane.add(console);
 		scrollpane = new JScrollPane(console);
@@ -97,7 +94,7 @@ public class AstaPortieriGUI extends JFrame {
 		scrollpane.setSize(811, 250);
 		scrollpane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollpane.setPreferredSize(new Dimension(200, 250));
-		contentPane.add(scrollpane);
+		contentPane.add(scrollpane);*/
 
 		JLabel lblNewLabel_1 = new JLabel("Seleziona un giocatore");
 		lblNewLabel_1.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
@@ -108,7 +105,7 @@ public class AstaPortieriGUI extends JFrame {
 		JButton btnNewButtonChoose = new JButton("Scegli");
 		btnNewButtonChoose.setBounds(698, 463, 121, 47);
 		contentPane.add(btnNewButtonChoose);
-		scrollpane.setVisible(false);
+		//scrollpane.setVisible(false);
 		btnNewButtonChoose.setVisible(false);
 
 		JButton btnNewButtonChoose1 = new JButton("Scegli");
@@ -116,6 +113,8 @@ public class AstaPortieriGUI extends JFrame {
 		btnNewButtonChoose1.setVisible(true);
 		contentPane.add(btnNewButtonChoose1);
 		btnNewButtonChoose1.setVisible(false);
+		
+
 
 		searchButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -124,21 +123,20 @@ public class AstaPortieriGUI extends JFrame {
 				btnNewButtonChoose.setVisible(false);
 				try {
 					String ris = UtilityListaGiocatori.cercaGiocatore(searchable.getText(), 0);
-					String [] fields = ris.split(",");
+					String[] fields = ris.split(",");
 					if (fields[0].equalsIgnoreCase("") == false && fields[1].equalsIgnoreCase("0")) {
 						contentPane.add(lblNewLabelRis);
 						lblNewLabelRis.setText(fields[0]);
 						btnNewButtonChoose1.setVisible(true);
 						lblNewLabelRis.setVisible(true);
 
-					} else if(fields[0].equalsIgnoreCase("") == true){
+					} else if (fields[0].equalsIgnoreCase("") == true) {
 						lblNewLabelRis.setText("Nessun risultato trovato !");
 						lblNewLabelRis.setVisible(true);
 						searchable.setText("");
-						
-					}
-					else if(fields[1].equalsIgnoreCase("1")) {
-						JOptionPane.showMessageDialog(btnNewButtonChoose1, fields[0]+ " già acquistato !");
+
+					} else if (fields[1].equalsIgnoreCase("1")) {
+						JOptionPane.showMessageDialog(btnNewButtonChoose1, fields[0] + " già acquistato !");
 						searchable.setText("");
 					}
 				} catch (IOException e1) {
@@ -146,19 +144,22 @@ public class AstaPortieriGUI extends JFrame {
 				}
 			}
 		});
-		console.addMouseListener(new MouseListener() {
+		
+		/*console.addMouseListener(new MouseListener() {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				if (console.getSelectedText() != null) {
-					String s = console.getSelectedText();
+					String s= console.getSelectedText();
+					
+
 				}
 
 			}
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-
+				
 			}
 
 			@Override
@@ -175,7 +176,13 @@ public class AstaPortieriGUI extends JFrame {
 			public void mouseExited(MouseEvent e) {
 
 			}
-		});
+		});*/
+		
+		
+		
+		
+		
+		
 		btnNewButtonShowAll.addActionListener(new ActionListener() {
 
 			@Override
@@ -183,17 +190,36 @@ public class AstaPortieriGUI extends JFrame {
 				btnNewButtonChoose1.setVisible(false);
 				try {
 					lblNewLabelRis.setVisible(false);
-					ArrayList<String> ris = UtilityListaGiocatori.showAllPlayers(0);
-					scrollpane.setVisible(true);
-					for (int i = 0; i < ris.size(); i++) {
-						console.append(ris.get(i));
-						console.append("\n");
-					}
+					ArrayList<String> ris=null;
+					ris = UtilityListaGiocatori.showAllPlayers(0);
+					Object [] data=ris.toArray();
+					/*scrollpane.setVisible(true);
+					if (console.getText() != null) {
+						for (int i = 0; i < ris.size(); i++) {
+							console.append(ris.get(i));
+							console.append("\n");
+						}
+
+					}*/
+					list = new JList<Object>(data); //data has type Object[]
+					list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+					list.setLayoutOrientation(JList.VERTICAL);
+					list.setVisibleRowCount(-1);
+				
+
+					JScrollPane listScroller = new JScrollPane(list);
+					listScroller.setPreferredSize(new Dimension(250, 80));
+					//contentPane.add(list);
+					contentPane.add(listScroller);
+					list.setVisible(true);
+					
+					
 				} catch (IOException e1) {
 					System.out.println("Errore nella lettura da file");
 				}
 				lblNewLabel_1.setVisible(true);
 				btnNewButtonChoose.setVisible(true);
+				
 
 			}
 		});
@@ -204,7 +230,7 @@ public class AstaPortieriGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				AstaGiocatoreGUI nextFrame;
 				try {
-					nextFrame = new AstaGiocatoreGUI(getAstaPortieriGUI(),username,lblNewLabelRis.getText());
+					nextFrame = new AstaGiocatoreGUI(getAstaPortieriGUI(), username, lblNewLabelRis.getText());
 					nextFrame.setVisible(true);
 					nextFrame.toFront();
 					btnNewButtonChoose1.setVisible(false);
@@ -224,7 +250,7 @@ public class AstaPortieriGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				AstaGiocatoreGUI nextFrame;
 				try {
-					nextFrame = new AstaGiocatoreGUI(getAstaPortieriGUI(),username,console.getSelectedText());
+					nextFrame = new AstaGiocatoreGUI(getAstaPortieriGUI(), username, console.getSelectedText());
 					nextFrame.setVisible(true);
 					nextFrame.toFront();
 					console.setVisible(false);
