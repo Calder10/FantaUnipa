@@ -279,7 +279,6 @@ public class Asta implements SubjectAsta {
 		} else {
 			this.getObs().remove(o);
 		}
-		System.out.println(o.getSquadra().getPortieri().toString());
 
 	}
 
@@ -319,20 +318,19 @@ public class Asta implements SubjectAsta {
 				astaGiocatoreGUI.dispose();
 				break;
 
-			}
-			else {
-				o=this.obs.get(0);
+			} else {
+				o = this.obs.get(0);
 				username = o.getSquadra().getFantallenatore().getUsername();
 				int puntata = o.puntaVirtuale(username);
-				if(puntata==0)
+				if (puntata == 0)
 					this.obs.remove(o);
 				HashMap<String, Integer> aus = this.getPuntataCorrente();
 				System.out.println(aus.toString());
 				Integer oldValue = aus.get(username);
-				aus.replace(username,oldValue,puntata);
+				aus.replace(username, oldValue, puntata);
 				this.setPuntataCorrente(aus);
-				this.notifyAllObserver(username,puntata);
-				if(this.obs.size()==1) {
+				this.notifyAllObserver(username, puntata);
+				if (this.obs.size() == 1) {
 					ConcreteObserverAsta o1 = this.getObs().get(0);
 					username = o1.getSquadra().getFantallenatore().getUsername();
 					int value = o1.getPuntata().get(username);
@@ -350,8 +348,7 @@ public class Asta implements SubjectAsta {
 					JOptionPane.showMessageDialog(astaGiocatoreGUI, messaggio);
 					astaGiocatoreGUI.dispose();
 					break;
-				}
-				else {
+				} else {
 					this.puntateVirtuali(username);
 				}
 			}
