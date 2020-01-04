@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.Console;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -96,6 +97,7 @@ public class AstaGiocatoreGUI extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				textArea.setText("");
 				int p = Integer.parseInt(textField.getText());
 				if(p>fantaCrediti) {
 					JOptionPane.showMessageDialog(textField, "Non hai abbastanza FantaCrediti !");

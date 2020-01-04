@@ -113,7 +113,7 @@ public class Asta implements SubjectAsta {
 						this.puntataCorrente.put(s, 0);
 						ois.close();
 						fis.close();
-						
+
 					}
 				}
 			}
@@ -134,13 +134,14 @@ public class Asta implements SubjectAsta {
 						this.puntataCorrente.put(s, 0);
 						ois.close();
 						fis.close();
-						
+
 					}
 				}
 			}
 			break;
-			
-		default: System.out.println("Scelta non consentita !");
+
+		default:
+			System.out.println("Scelta non consentita !");
 		}
 
 	}
@@ -292,52 +293,67 @@ public class Asta implements SubjectAsta {
 		}
 		this.getObs().remove(o);
 		this.notifyAllObserver(username, 0);
-		if(this.getObs().size()==0)
-			System.out.println("Hanno rinunciato tutti !");
-		if(this.getObs().size()==1)
-			System.out.println("Ha vinto !");
-		while (this.obs.size() != 1) {
-			// controllo su quando rimane uno solo 
-			o = this.obs.get(0);
-			int puntata = o.puntaVirtuale(o.getSquadra().getFantallenatore().getUsername());
-			HashMap<String, Integer> aus = this.getPuntataCorrente();
-			Integer oldValue = aus.get(username);
-			aus.replace(username, oldValue, puntata);
-			this.setPuntataCorrente(aus);
-			this.notifyAllObserver(username, puntata);
-			this.puntateVirtuali(username);
-			int dim = this.getPuntataCorrente().size();
-			if (dim == 1) {
-				String key = "";
-				int value = 0;
-				System.out.println(this.getGiocatore().getNomeGiocatore() + " aggiudicato");
-				Set<String> keys = this.getPuntataCorrente().keySet();
-				for (String s : keys) {
-					key = s;
-					value = this.getPuntataCorrente().get(s);
-				}
-
-				ArrayList<ConcreteObserverAsta> oss = this.getObs();
+		while (true) {
+			if (this.getObs().size() == 0) {
+				String messaggio = "Hanno rinunciato tutti !";
+				JOptionPane.showMessageDialog(astaGiocatoreGUI, messaggio);
+				astaGiocatoreGUI.dispose();
+				break;
+			}
+			if (this.getObs().size() == 1) {
+				ConcreteObserverAsta o1 = this.getObs().get(0);
+				username = o1.getSquadra().getFantallenatore().getUsername();
+				int value = this.puntataCorrente.get(username);
 				Squadra s;
-				for (ConcreteObserverAsta o1 : oss) {
-					if (key.equalsIgnoreCase(o1.getSquadra().getFantallenatore().getUsername())) {
-						s = o1.getSquadra();
-						int newValue = o1.getSquadra().getFantallenatore().getFantaCrediti() - value;
-						o1.getSquadra().getFantallenatore().setFantaCrediti(newValue);
-						o1.getSquadra().addPortiere((Portiere) this.getGiocatore());
-						System.out.println(o1.getSquadra().getFantallenatore().getUsername());
-						System.out.println(o1.getSquadra().getPortieri().toString());
-						s.updateSquadra();
-						UtilityListaGiocatori.giocatoreAcquistato(0, this.giocatore.getNomeGiocatore());
-						String messaggio = o1.getSquadra().getFantallenatore().getUsername() + " si è aggudicato "
-								+ this.giocatore.getNomeGiocatore();
-						JOptionPane.showMessageDialog(astaGiocatoreGUI, messaggio);
-						astaGiocatoreGUI.dispose();
-						break;
-					}
+				s = o1.getSquadra();
+				int newValue = o1.getSquadra().getFantallenatore().getFantaCrediti() - value;
+				o1.getSquadra().getFantallenatore().setFantaCrediti(newValue);
+				o1.getSquadra().addPortiere((Portiere) this.getGiocatore());
+				System.out.println(username);
+				System.out.println(o1.getSquadra().getPortieri().toString());
+				s.updateSquadra();
+				UtilityListaGiocatori.giocatoreAcquistato(0, this.giocatore.getNomeGiocatore());
+				String messaggio = o1.getSquadra().getFantallenatore().getUsername() + " si è aggudicato "
+						+ this.giocatore.getNomeGiocatore();
+				JOptionPane.showMessageDialog(astaGiocatoreGUI, messaggio);
+				astaGiocatoreGUI.dispose();
+				break;
+
+			}
+			else {
+				o=this.obs.get(0);
+				username = o.getSquadra().getFantallenatore().getUsername();
+				int puntata = o.puntaVirtuale(username);
+				if(puntata==0)
+					this.obs.remove(o);
+				HashMap<String, Integer> aus = this.getPuntataCorrente();
+				System.out.println(aus.toString());
+				Integer oldValue = aus.get(username);
+				aus.replace(username,oldValue,puntata);
+				this.setPuntataCorrente(aus);
+				this.notifyAllObserver(username,puntata);
+				if(this.obs.size()==1) {
+					ConcreteObserverAsta o1 = this.getObs().get(0);
+					username = o1.getSquadra().getFantallenatore().getUsername();
+					int value = o1.getPuntata().get(username);
+					Squadra s;
+					s = o1.getSquadra();
+					int newValue = o1.getSquadra().getFantallenatore().getFantaCrediti() - value;
+					o1.getSquadra().getFantallenatore().setFantaCrediti(newValue);
+					o1.getSquadra().addPortiere((Portiere) this.getGiocatore());
+					System.out.println(username);
+					System.out.println(o1.getSquadra().getPortieri().toString());
+					s.updateSquadra();
+					UtilityListaGiocatori.giocatoreAcquistato(0, this.giocatore.getNomeGiocatore());
+					String messaggio = o1.getSquadra().getFantallenatore().getUsername() + " si è aggudicato "
+							+ this.giocatore.getNomeGiocatore();
+					JOptionPane.showMessageDialog(astaGiocatoreGUI, messaggio);
+					astaGiocatoreGUI.dispose();
 					break;
 				}
-
+				else {
+					this.puntateVirtuali(username);
+				}
 			}
 		}
 
@@ -371,11 +387,10 @@ public class Asta implements SubjectAsta {
 					a.getObs().remove(o1);
 					break;
 				}
-			}
-			else {
-				while(true) {
-					puntata=o.puntaVirtuale(username);
-					a.getPuntataCorrente().put(username,puntata);
+			} else {
+				while (true) {
+					puntata = o.puntaVirtuale(username);
+					a.getPuntataCorrente().put(username, puntata);
 					a.notifyAllObserver(username, puntata);
 					a.puntateVirtuali(username);
 					int dim = a.getPuntataCorrente().size();
