@@ -1,16 +1,7 @@
 Nome,Cognome,Username,Password,Squadra,FantaCrediti
-<<<<<<< HEAD
-Gaspare,Casano,gascas11,Inter2010,Alia,500
-Andrea,Bianchi,AndreaBianchi,bcwbdbD1b,FantaFiorentina,500
-Martina,Gialli,MartinaGialli,byufbvuH6fe,FantaMilan,500
-Andrea,Rossi,AndreaRossi,abs3yYa,FantaJuventus,500
-Simone,Silvestri,SimoneSilvestri,wyfrywTTv2,FantaRoma,500
-Franco,Rossi,FrancoRossi,abs3yYa,FantaInter,500
-=======
-Gaspare,Casano,gascas11,Inter2010,,500
-Andrea,Bianchi,AndreaBianchi,bcwbdbD1b,,500
-Martina,Gialli,MartinaGialli,byufbvuH6fe,,500
-Andrea,Rossi,AndreaRossi,abs3yYa,,500
-Simone,Silvestri,SimoneSilvestri,wyfrywTTv2,,500
-Franco,Rossi,FrancoRossi,abs3yYa,,500
->>>>>>> branch 'master' of https://github.com/Calder10/FantaUnipa.git
+Salvatore,Calderaro,calder10,Inter2010,Alia,500
+Andrea,Parrinello,AndreaParrinello,wyfrywTTv2,FantaInter,500
+Martina,Bianchi,MartinaBianchi,byufbvuH6fe,FantaMilan,500
+Franco,Rossi,FrancoRossi,ygf8yvbyH8bvf,FantaSassuolo,500
+Andrea,Bianchi,AndreaBianchi,ygf8yvbyH8bvf,FantaJuventus,500
+Salvatore,Gialli,SalvatoreGialli,byufbvuH6fe,FantaFiorentina,500

@@ -279,7 +279,6 @@ public class Asta implements SubjectAsta {
 		} else {
 			this.getObs().remove(o);
 		}
-		System.out.println(o.getSquadra().getPortieri().toString());
 
 	}
 

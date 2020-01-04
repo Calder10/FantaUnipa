@@ -85,42 +85,33 @@ public class AstaPortieriGUI extends JFrame {
 		lblNewLabelRis.setBounds(61, 205, 249, 47);
 		contentPane.add(lblNewLabelRis);
 		lblNewLabelRis.setVisible(false);
-		/*console = new JTextArea(15, 15);
-		console.setBounds(6, 0, 794, 291);
-		contentPane.add(console);
-		scrollpane = new JScrollPane(console);
-		scrollpane.setEnabled(false);
-		scrollpane.setLocation(20, 207);
-		scrollpane.setSize(811, 250);
-		scrollpane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollpane.setPreferredSize(new Dimension(200, 250));
-		contentPane.add(scrollpane);*/
-
-		JLabel lblNewLabel_1 = new JLabel("Seleziona un giocatore");
-		lblNewLabel_1.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		lblNewLabel_1.setBounds(30, 471, 249, 23);
-		contentPane.add(lblNewLabel_1);
-		lblNewLabel_1.setVisible(false);
-
-		JButton btnNewButtonChoose = new JButton("Scegli");
-		btnNewButtonChoose.setBounds(698, 463, 121, 47);
-		contentPane.add(btnNewButtonChoose);
-		//scrollpane.setVisible(false);
-		btnNewButtonChoose.setVisible(false);
 
 		JButton btnNewButtonChoose1 = new JButton("Scegli");
 		btnNewButtonChoose1.setBounds(250, 205, 121, 47);
 		btnNewButtonChoose1.setVisible(true);
 		contentPane.add(btnNewButtonChoose1);
-		btnNewButtonChoose1.setVisible(false);
 		
-
+		
+		btnNewButtonChoose1.setVisible(false);
+		//contentPane.add(list);
+		list = new JList();
+		list.setLocation(24, 171);
+		list.setSize(800, 288);
+		list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+		list.setLayoutOrientation(JList.HORIZONTAL_WRAP);
+		scrollpane = new JScrollPane(list);
+		scrollpane.setEnabled(false);
+		scrollpane.setLocation(26, 171);
+		scrollpane.setSize(800, 288);
+		scrollpane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollpane.setPreferredSize(new Dimension(200, 250));
+		contentPane.add(scrollpane);
+		
+		scrollpane.setVisible(false);
 
 		searchButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				scrollpane.setVisible(false);
-				lblNewLabel_1.setVisible(false);
-				btnNewButtonChoose.setVisible(false);
 				try {
 					String ris = UtilityListaGiocatori.cercaGiocatore(searchable.getText(), 0);
 					String[] fields = ris.split(",");
@@ -145,42 +136,6 @@ public class AstaPortieriGUI extends JFrame {
 			}
 		});
 		
-		/*console.addMouseListener(new MouseListener() {
-
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				if (console.getSelectedText() != null) {
-					String s= console.getSelectedText();
-					
-
-				}
-
-			}
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-
-			}
-		});*/
-		
-		
-		
-		
 		
 		
 		btnNewButtonShowAll.addActionListener(new ActionListener() {
@@ -193,33 +148,11 @@ public class AstaPortieriGUI extends JFrame {
 					ArrayList<String> ris=null;
 					ris = UtilityListaGiocatori.showAllPlayers(0);
 					Object [] data=ris.toArray();
-					/*scrollpane.setVisible(true);
-					if (console.getText() != null) {
-						for (int i = 0; i < ris.size(); i++) {
-							console.append(ris.get(i));
-							console.append("\n");
-						}
-
-					}*/
-					list = new JList<Object>(data); //data has type Object[]
-					list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-					list.setLayoutOrientation(JList.VERTICAL);
-					list.setVisibleRowCount(-1);
-				
-
-					JScrollPane listScroller = new JScrollPane(list);
-					listScroller.setPreferredSize(new Dimension(250, 80));
-					//contentPane.add(list);
-					contentPane.add(listScroller);
-					list.setVisible(true);
-					
-					
+					scrollpane.setVisible(true);
+					list.setListData(data);
 				} catch (IOException e1) {
 					System.out.println("Errore nella lettura da file");
 				}
-				lblNewLabel_1.setVisible(true);
-				btnNewButtonChoose.setVisible(true);
-				
 
 			}
 		});
@@ -243,25 +176,49 @@ public class AstaPortieriGUI extends JFrame {
 
 			}
 		});
-
-		btnNewButtonChoose.addActionListener(new ActionListener() {
-
+		
+		list.addMouseListener(new MouseListener() {
+			
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Object o=list.getSelectedValue();
+				String nomeGiocatore= o.toString();
 				AstaGiocatoreGUI nextFrame;
 				try {
-					nextFrame = new AstaGiocatoreGUI(getAstaPortieriGUI(), username, console.getSelectedText());
+					nextFrame = new AstaGiocatoreGUI(getAstaPortieriGUI(), username, nomeGiocatore);
 					nextFrame.setVisible(true);
 					nextFrame.toFront();
-					console.setVisible(false);
+					btnNewButtonChoose1.setVisible(false);
+					lblNewLabelRis.setVisible(false);
 					scrollpane.setVisible(false);
-					btnNewButtonChoose.setVisible(false);
-					lblNewLabel_1.setVisible(false);
 				} catch (ClassNotFoundException | IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-
 			}
 		});
 

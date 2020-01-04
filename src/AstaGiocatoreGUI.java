@@ -38,14 +38,13 @@ public class AstaGiocatoreGUI extends JFrame {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	
+
 	public AstaGiocatoreGUI getAstaGiocatoreGUI() {
 		return this;
 	}
-	
-	
-	
-	public AstaGiocatoreGUI(AstaPortieriGUI astaPortieriGUI,String username, String ris) throws ClassNotFoundException, IOException {
+
+	public AstaGiocatoreGUI(AstaPortieriGUI astaPortieriGUI, String username, String ris)
+			throws ClassNotFoundException, IOException {
 		super("Asta in corso");
 		this.setUsername(username);
 		setResizable(false);
@@ -91,7 +90,7 @@ public class AstaGiocatoreGUI extends JFrame {
 		textArea.setVisible(false);
 		btnNewButtonRinuncia.setVisible(false);
 		Giocatore g = (Portiere) new Portiere(ris);
-		Asta a = new Asta(g,0);
+		Asta a = new Asta(g, 0);
 		ConcreteObserverAsta o = a.getObs().get(0);
 		int fantaCrediti = o.getSquadra().getFantallenatore().getFantaCrediti();
 		btnNewButton.addActionListener(new ActionListener() {
@@ -99,26 +98,27 @@ public class AstaGiocatoreGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				textArea.setText("");
 				int p = Integer.parseInt(textField.getText());
-				if(p>fantaCrediti) {
+				if (p > fantaCrediti) {
 					JOptionPane.showMessageDialog(textField, "Non hai abbastanza FantaCrediti !");
 					textField.setText("");
 				}
-				a.simulaAsta(astaPortieriGUI,getAstaGiocatoreGUI(),textField,getUsername(), textArea, btnNewButtonRinuncia);
+				a.simulaAsta(astaPortieriGUI, getAstaGiocatoreGUI(), textField, getUsername(), textArea,
+						btnNewButtonRinuncia);
 			}
 		});
-		
+
 		btnNewButtonRinuncia.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-			try {
-				a.simulaRinuncia(getUsername(),getAstaGiocatoreGUI());
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				try {
+					a.simulaRinuncia(getUsername(), getAstaGiocatoreGUI());
+				} catch (IOException e1) {
+
+					e1.printStackTrace();
+				}
 			}
-			}
-		}); 
-			
-	} 
+		});
+
+	}
 }
