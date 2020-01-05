@@ -213,7 +213,7 @@ public class Asta implements SubjectAsta {
 		}
 	}
 
-	public void simulaAsta(AstaPortieriGUI astaPortieriGUI, AstaGiocatoreGUI astaGiocatoreGUI, JTextField textField,
+	public void simulaAsta(AstaGUI astaPortieriGUI, AstaGiocatoreGUI astaGiocatoreGUI, JTextField textField,
 			String username, JTextArea textArea, JButton btnNewButtonRinuncia) {
 		System.out.println("Prova");
 		ConcreteObserverAsta o = null;
@@ -237,7 +237,6 @@ public class Asta implements SubjectAsta {
 					if (dim == 1) {
 						String key = "";
 						int value = 0;
-						System.out.println(this.getGiocatore().getNomeGiocatore() + " aggiudicato");
 						Set<String> keys = this.getPuntataCorrente().keySet();
 						for (String s : keys) {
 							key = s;
@@ -358,7 +357,7 @@ public class Asta implements SubjectAsta {
 
 	}
 
-	public void completaAstaSquadreVirtuali() throws IOException, ClassNotFoundException {
+	public void completaAstaSquadreVirtuali() throws IOException, ClassNotFoundException, InterruptedException {
 		while (true) {
 			int puntata;
 			String nomeGiocatore = UtilityListaGiocatori.randomPlayer(0);
@@ -378,7 +377,7 @@ public class Asta implements SubjectAsta {
 					int newValue = o1.getSquadra().getFantallenatore().getFantaCrediti() - 1;
 					o1.getSquadra().getFantallenatore().setFantaCrediti(newValue);
 					o1.getSquadra().addPortiere((Portiere) a.getGiocatore());
-					System.out.println(a.getGiocatore().getNomeGiocatore() + " aggiudicato");
+					System.out.println(a.giocatore.getNomeGiocatore() + " aggiudicato");
 					System.out.println(o1.getSquadra().getFantallenatore().getUsername());
 					System.out.println(o1.getSquadra().getPortieri().toString());
 					s.updateSquadra();

@@ -8,6 +8,8 @@ public class UtilityListaGiocatori {
 	private static String pathListaDifensori = "src/Lista/difensori.csv";
 	private static String pathListaCentrocampisti = "src/Lista/centrocampisti.csv";
 	private static String pathListaAttaccanti = "src/Lista/attaccanti.csv";
+	
+
 
 	public static void creaListaPortieri() throws IOException {
 		boolean dir = new File("src/Lista").mkdir();
@@ -356,33 +358,29 @@ public class UtilityListaGiocatori {
 
 	public static String randomPlayer(int tipo) throws IOException {
 		int s = 0;
+		int i=0;
+		boolean flag = false;
 		File f = null;
 		FileReader fr = null;
 		BufferedReader br = null;
 		String line = "";
 		String[] fields;
 		String ris = "";
-		int i = 0;
+		ArrayList<String> freePlayers ;
 		switch (tipo) {
 		case 0:
 			f = new File(pathListaPortieri);
 			fr = new FileReader(f);
 			br = new BufferedReader(fr);
 			line = br.readLine();
-			while (true) {
-				s = new Random().nextInt(66);
-
-				while ((line = br.readLine()) != null) {
-					fields = line.split(",");
-
-					if (i == s && fields[1].equalsIgnoreCase("0")) {
-						ris = fields[0];
-						break;
-					} else
-						i++;
-				}
-				break;
+			freePlayers = new ArrayList<>();
+			while((line=br.readLine())!=null) {
+				fields=line.split(",");
+				if(fields[1].equalsIgnoreCase("0"))
+					freePlayers.add(fields[0]);
 			}
+			s = new Random().nextInt(freePlayers.size());
+			ris = freePlayers.get(s);
 			break;
 
 		case 1:
@@ -390,60 +388,42 @@ public class UtilityListaGiocatori {
 			fr = new FileReader(f);
 			br = new BufferedReader(fr);
 			line = br.readLine();
-			while (true) {
-				s = new Random().nextInt(191);
-
-				while ((line = br.readLine()) != null) {
-					fields = line.split(",");
-
-					if (i == s && fields[1].equalsIgnoreCase("0")) {
-						ris = fields[0];
-						break;
-					} else
-						i++;
-				}
-				break;
+			freePlayers = new ArrayList<>();
+			while((line=br.readLine())!=null) {
+				fields=line.split(",");
+				if(fields[1].equalsIgnoreCase("0"))
+					freePlayers.add(fields[0]);
 			}
+			s = new Random().nextInt(freePlayers.size());
+			ris = freePlayers.get(s);
 			break;
 		case 2:
 			f = new File(pathListaCentrocampisti);
 			fr = new FileReader(f);
 			br = new BufferedReader(fr);
 			line = br.readLine();
-			while (true) {
-				s = new Random().nextInt(187);
-
-				while ((line = br.readLine()) != null) {
-					fields = line.split(",");
-
-					if (i == s && fields[1].equalsIgnoreCase("0")) {
-						ris = fields[0];
-						break;
-					} else
-						i++;
-				}
-				break;
+			freePlayers = new ArrayList<>();
+			while((line=br.readLine())!=null) {
+				fields=line.split(",");
+				if(fields[1].equalsIgnoreCase("0"))
+					freePlayers.add(fields[0]);
 			}
+			s = new Random().nextInt(freePlayers.size());
+			ris = freePlayers.get(s);
 			break;
 		case 3:
 			f = new File(pathListaAttaccanti);
 			fr = new FileReader(f);
 			br = new BufferedReader(fr);
 			line = br.readLine();
-			while (true) {
-				s = new Random().nextInt(105);
-
-				while ((line = br.readLine()) != null) {
-					fields = line.split(",");
-
-					if (i == s && fields[1].equalsIgnoreCase("0")) {
-						ris = fields[0];
-						break;
-					} else
-						i++;
-				}
-				break;
+			freePlayers = new ArrayList<>();
+			while((line=br.readLine())!=null) {
+				fields=line.split(",");
+				if(fields[1].equalsIgnoreCase("0"))
+					freePlayers.add(fields[0]);
 			}
+			s = new Random().nextInt(freePlayers.size());
+			ris = freePlayers.get(s);
 			break;
 		default:
 			System.out.println("Scelta non consentita !");

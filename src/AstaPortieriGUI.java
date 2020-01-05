@@ -26,13 +26,16 @@ import java.util.ArrayList;
 import javax.swing.JCheckBox;
 import javax.swing.JTextArea;
 
-public class AstaPortieriGUI extends JFrame {
+public class AstaPortieriGUI extends AstaGUI{
 
 	private JPanel contentPane;
 	private JTextField searchable;
 	private JButton searchButton;
 	private JScrollPane scrollpane;
 	private JTextArea console;
+	private JButton btnNewButtonShowAll;
+	private JLabel lblNewLabelRis;
+	private JButton btnNewButtonChoose1;
 	private String username;
 	private JList list;
 	
@@ -76,24 +79,23 @@ public class AstaPortieriGUI extends JFrame {
 		contentPane.add(searchable);
 		contentPane.add(searchButton);
 
-		JButton btnNewButtonShowAll = new JButton("Mostra Tutti");
+		btnNewButtonShowAll = new JButton("Mostra Tutti");
 		btnNewButtonShowAll.setBounds(31, 112, 108, 47);
 		contentPane.add(btnNewButtonShowAll);
 
-		JLabel lblNewLabelRis = new JLabel("");
+		lblNewLabelRis = new JLabel("");
 		lblNewLabelRis.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		lblNewLabelRis.setBounds(61, 205, 249, 47);
 		contentPane.add(lblNewLabelRis);
 		lblNewLabelRis.setVisible(false);
 
-		JButton btnNewButtonChoose1 = new JButton("Scegli");
+		btnNewButtonChoose1 = new JButton("Scegli");
 		btnNewButtonChoose1.setBounds(250, 205, 121, 47);
 		btnNewButtonChoose1.setVisible(true);
 		contentPane.add(btnNewButtonChoose1);
 		
 		
 		btnNewButtonChoose1.setVisible(false);
-		//contentPane.add(list);
 		list = new JList();
 		list.setLocation(24, 171);
 		list.setSize(800, 288);
@@ -216,7 +218,6 @@ public class AstaPortieriGUI extends JFrame {
 					lblNewLabelRis.setVisible(false);
 					scrollpane.setVisible(false);
 				} catch (ClassNotFoundException | IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
