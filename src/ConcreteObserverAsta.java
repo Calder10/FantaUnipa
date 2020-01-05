@@ -51,7 +51,7 @@ public class ConcreteObserverAsta implements ObserverAsta {
 	}
 	
 	@Override
-	public int puntaVirtuale(String username){
+	public int puntaVirtuale(String username,int tipo){
 		System.out.println("punta virtuale");
 		int newPuntata=0;
 		int max;

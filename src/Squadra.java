@@ -17,7 +17,7 @@ import java.io.FileOutputStream;
 import java.nio.file.Files;
 import java.nio.file.*;
 
-public class Squadra implements Serializable{
+public class Squadra implements Serializable {
 	protected Fantallenatore fantallenatore;
 	protected String nomeSquadra;
 	protected String pathLogo;
@@ -25,13 +25,12 @@ public class Squadra implements Serializable{
 	protected List<Difensore> difensori;
 	protected List<Centrocampista> centrocampisti;
 	protected List<Attaccante> attaccanti;
-	
-	
+
 	public Squadra() {
-		this.portieri=new ArrayList<Portiere>();
-		this.difensori=new ArrayList<Difensore>();
-		this.centrocampisti=new ArrayList<Centrocampista>();
-		this.attaccanti=new ArrayList<Attaccante>();
+		this.portieri = new ArrayList<Portiere>();
+		this.difensori = new ArrayList<Difensore>();
+		this.centrocampisti = new ArrayList<Centrocampista>();
+		this.attaccanti = new ArrayList<Attaccante>();
 	}
 
 	public Fantallenatore getFantallenatore() {
@@ -133,7 +132,7 @@ public class Squadra implements Serializable{
 		boolean dest = new File("src/Squadre").mkdir();
 		String pathDest = ("src/Squadre/" + this.nomeSquadra.trim() + ".dat").trim();
 		Fantallenatore g = Fantallenatore.getFantallenatoreFromCsv(this.nomeSquadra);
-		this.fantallenatore=g;
+		this.fantallenatore = g;
 		File f = new File(pathDest);
 		FileOutputStream fos = new FileOutputStream(f);
 		try {
@@ -144,9 +143,27 @@ public class Squadra implements Serializable{
 			System.out.println("Errore durante il salvatggio su file !");
 		}
 	}
-	
-	public void addPortiere(Portiere p) {
-		this.portieri.add(p);
+
+	public void addGiocatore(Giocatore g, int tipo) {
+		switch (tipo) {
+		case 0:
+			this.portieri.add((Portiere) g);
+			break;
+
+		case 1:
+			this.difensori.add((Difensore) g);
+			break;
+
+		case 2:
+			this.centrocampisti.add((Centrocampista) g);
+			break;
+
+		case 3:
+			this.attaccanti.add((Attaccante) g);
+			break;
+		default:
+			System.out.println("Scelta non consentita");
+		}
 	}
 
 	@Override
@@ -155,11 +172,10 @@ public class Squadra implements Serializable{
 				+ ", portieri=" + portieri + ", difensori=" + difensori + ", centrocampisti=" + centrocampisti
 				+ ", attaccanti=" + attaccanti + "]";
 	}
-	
-	
+
 	public void updateSquadra() throws IOException {
-		String path = "src/Squadre/"+this.getNomeSquadra()+".dat";
-		String path1 = "src/Squadre/"+this.getNomeSquadra()+"1.dat";
+		String path = "src/Squadre/" + this.getNomeSquadra() + ".dat";
+		String path1 = "src/Squadre/" + this.getNomeSquadra() + "1.dat";
 		File f = new File(path);
 		File f1 = new File(path1);
 		FileOutputStream fos = new FileOutputStream(f1);

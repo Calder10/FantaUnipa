@@ -28,6 +28,46 @@ public class AstaGiocatoreGUI extends JFrame {
 	private JTextField textField;
 	private String username;
 	private JScrollPane scrollpane;
+	public JPanel getContentPane() {
+		return contentPane;
+	}
+
+	public void setContentPane(JPanel contentPane) {
+		this.contentPane = contentPane;
+	}
+
+	public JTextField getTextField() {
+		return textField;
+	}
+
+	public void setTextField(JTextField textField) {
+		this.textField = textField;
+	}
+
+	public JScrollPane getScrollpane() {
+		return scrollpane;
+	}
+
+	public void setScrollpane(JScrollPane scrollpane) {
+		this.scrollpane = scrollpane;
+	}
+
+	public JTextArea getTextArea() {
+		return textArea;
+	}
+
+	public void setTextArea(JTextArea textArea) {
+		this.textArea = textArea;
+	}
+
+	public JButton getBtnNewButtonRinuncia() {
+		return btnNewButtonRinuncia;
+	}
+
+	public void setBtnNewButtonRinuncia(JButton btnNewButtonRinuncia) {
+		this.btnNewButtonRinuncia = btnNewButtonRinuncia;
+	}
+
 	private JTextArea textArea;
 	private JButton btnNewButtonRinuncia;
 
@@ -102,8 +142,7 @@ public class AstaGiocatoreGUI extends JFrame {
 					JOptionPane.showMessageDialog(textField, "Non hai abbastanza FantaCrediti !");
 					textField.setText("");
 				}
-				a.simulaAsta(astaPortieriGUI, getAstaGiocatoreGUI(), textField, getUsername(), textArea,
-						btnNewButtonRinuncia);
+				a.eseguiAsta(astaPortieriGUI, getAstaGiocatoreGUI(), getUsername());
 			}
 		});
 
