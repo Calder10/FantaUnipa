@@ -86,7 +86,7 @@ public class Asta implements SubjectAsta {
 					ObjectInputStream ois = new ObjectInputStream(fis);
 					ConcreteObserverAsta o = new ConcreteObserverAsta();
 					Squadra aus = (Squadra) ois.readObject();
-					if (aus.getPortieri().size() != 8) {
+					if (aus.getDifensori().size() != 8) {
 						o.setSquadra(aus);
 						obs.add(o);
 						String s = aus.getFantallenatore().getUsername();
@@ -106,7 +106,7 @@ public class Asta implements SubjectAsta {
 					ObjectInputStream ois = new ObjectInputStream(fis);
 					ConcreteObserverAsta o = new ConcreteObserverAsta();
 					Squadra aus = (Squadra) ois.readObject();
-					if (aus.getPortieri().size() != 8) {
+					if (aus.getCentrocampisti().size() != 8) {
 						o.setSquadra(aus);
 						obs.add(o);
 						String s = aus.getFantallenatore().getUsername();
@@ -127,7 +127,7 @@ public class Asta implements SubjectAsta {
 					ObjectInputStream ois = new ObjectInputStream(fis);
 					ConcreteObserverAsta o = new ConcreteObserverAsta();
 					Squadra aus = (Squadra) ois.readObject();
-					if (aus.getPortieri().size() != 6) {
+					if (aus.getAttaccanti().size() != 6) {
 						o.setSquadra(aus);
 						obs.add(o);
 						String s = aus.getFantallenatore().getUsername();
