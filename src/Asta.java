@@ -223,9 +223,8 @@ public class Asta implements SubjectAsta {
 		}
 	}
 
-	public void simulaAsta(ConcreteObserverAsta o, AstaGUI astaPortieriGUI, AstaGiocatoreGUI astaGiocatoreGUI,
-			String username) {
-		int puntata = Integer.parseInt(astaGiocatoreGUI.getTextField().getText());
+	public void simulaAsta(ConcreteObserverAsta o,AstaGUI astaGUI, AstaGiocatoreGUI astaGiocatoreGUI, String username, JTextField textField, JTextArea textArea, JButton btnNewButtonRinuncia) {
+		int puntata = Integer.parseInt(astaGiocatoreGUI.textField.getText());
 		try {
 			boolean ris = o.punta(username, puntata);
 			if (ris == true) {
@@ -234,8 +233,7 @@ public class Asta implements SubjectAsta {
 				aus.replace(username, oldValue, puntata);
 				this.setPuntataCorrente(aus);
 				this.notifyAllObserver(username, puntata);
-				this.puntateVirtuali(username, astaGiocatoreGUI.getTextArea(),
-						astaGiocatoreGUI.getBtnNewButtonRinuncia());
+				this.puntateVirtuali(username, textArea,btnNewButtonRinuncia);
 				int dim = this.getPuntataCorrente().size();
 				if (dim == 1) {
 					String key = "";
@@ -257,23 +255,52 @@ public class Asta implements SubjectAsta {
 							System.out.println(o1.getSquadra().getPortieri().toString());
 							s.updateSquadra();
 							UtilityListaGiocatori.giocatoreAcquistato(0, this.giocatore.getNomeGiocatore());
-							JOptionPane.showMessageDialog(astaGiocatoreGUI.getTextField(),
+							JOptionPane.showMessageDialog(astaGiocatoreGUI.textField,
 									"Ti sei aggiudicato: " + this.giocatore.getNomeGiocatore());
 							astaGiocatoreGUI.dispose();
-							if (s.getPortieri().size() == 3) {
-								JOptionPane.showMessageDialog(astaGiocatoreGUI, "Asta portieri completata !");
-								this.completaAstaSquadreVirtuali(this.tipo);
-								LoginGUI nextFrame = new LoginGUI();
-								nextFrame.setVisible(true);
-								nextFrame.toFront();
-								astaPortieriGUI.dispose();
+							AstaGUI nextFrame1;
+							switch(this.tipo) {
+							case 0:
+								if (s.getPortieri().size() == 3) {
+									JOptionPane.showMessageDialog(astaGiocatoreGUI, "Asta portieri completata !");
+									this.completaAstaSquadreVirtuali(this.tipo);
+									astaGUI.dispose();
+									nextFrame1 = (AstaGUI) new AstaDifensoriGUI(username);
+									nextFrame1.setVisible(true);
+									nextFrame1.toFront();
+
+								}
+								break;
+								
+							case 1:
+								if (s.getDifensori().size() == 8) {
+									JOptionPane.showMessageDialog(astaGiocatoreGUI, "Asta difensori completata !");
+									this.completaAstaSquadreVirtuali(this.tipo);
+									astaGUI.dispose();
+								}
+								break;
+							case 2:
+								if (s.getCentrocampisti().size() == 8) {
+									JOptionPane.showMessageDialog(astaGiocatoreGUI, "Asta portieri completata !");
+									this.completaAstaSquadreVirtuali(this.tipo);
+									astaGUI.dispose();
+								}
+								break;
+							
+							case 3:
+								if (s.getAttaccanti().size() == 6) {
+									JOptionPane.showMessageDialog(astaGiocatoreGUI, "Asta portieri completata !");
+									this.completaAstaSquadreVirtuali(this.tipo);
+									astaGUI.dispose();
+								}
+								break;
 							}
 						}
 					}
 
 				}
 			} else {
-				JOptionPane.showMessageDialog(astaGiocatoreGUI.getTextField(), "Puntata non consentita!");
+				JOptionPane.showMessageDialog(astaGiocatoreGUI.textField, "Puntata non consentita!");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -281,7 +308,8 @@ public class Asta implements SubjectAsta {
 
 	}
 
-	public void eseguiAsta(AstaGUI astaPortieriGUI, AstaGiocatoreGUI astaGiocatoreGUI, String username) {
+	public void eseguiAsta(AstaGUI astaGUI, AstaGiocatoreGUI astaGiocatoreGUI,JTextField textField, String username, JTextArea textArea,
+			JButton btnNewButtonRinuncia) {
 		System.out.println("Prova");
 		ConcreteObserverAsta o = null;
 		for (ConcreteObserverAsta ob : obs) {
@@ -292,14 +320,14 @@ public class Asta implements SubjectAsta {
 		switch (this.tipo) {
 		case 0:
 			if (o.getSquadra().getPortieri().size() < 3) {
-				this.simulaAsta(o, astaPortieriGUI, astaGiocatoreGUI, username);
+				this.simulaAsta(o, astaGUI, astaGiocatoreGUI, username, textField,textArea, btnNewButtonRinuncia);
 			} else {
 				this.getObs().remove(o);
 			}
 			break;
 		case 1:
 			if (o.getSquadra().getDifensori().size() < 8) {
-				this.simulaAsta(o, astaPortieriGUI, astaGiocatoreGUI, username);
+				this.simulaAsta(o, astaGUI, astaGiocatoreGUI, username, textField,textArea, btnNewButtonRinuncia);
 			} else {
 				this.getObs().remove(o);
 			}
@@ -307,7 +335,7 @@ public class Asta implements SubjectAsta {
 
 		case 2:
 			if (o.getSquadra().getCentrocampisti().size() < 8) {
-				this.simulaAsta(o, astaPortieriGUI, astaGiocatoreGUI, username);
+				this.simulaAsta(o, astaGUI, astaGiocatoreGUI, username, textField,textArea, btnNewButtonRinuncia);
 			} else {
 				this.getObs().remove(o);
 			}
@@ -315,7 +343,7 @@ public class Asta implements SubjectAsta {
 
 		case 3:
 			if (o.getSquadra().getPortieri().size() < 6) {
-				this.simulaAsta(o, astaPortieriGUI, astaGiocatoreGUI, username);
+				this.simulaAsta(o, astaGUI, astaGiocatoreGUI, username, textField,textArea, btnNewButtonRinuncia);
 			} else {
 				this.getObs().remove(o);
 			}

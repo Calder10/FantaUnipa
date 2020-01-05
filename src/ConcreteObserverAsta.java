@@ -70,15 +70,15 @@ public class ConcreteObserverAsta implements ObserverAsta {
 			switch(strategy) {
 			case 0: 
 				SoftStrategy softStrategy = new SoftStrategy();
-				newPuntata = softStrategy.puntaVirtuale(this, username, max);
+				newPuntata = softStrategy.puntaVirtuale(this, username, max,strategy);
 				break;
 			case 1: 
 				MediumStrategy mediumStrategy = new MediumStrategy();
-				newPuntata = mediumStrategy.puntaVirtuale(this, username, max);
+				newPuntata = mediumStrategy.puntaVirtuale(this, username, max,strategy);
 				break;
 			case 2:
 				HardStrategy hardStrategy = new HardStrategy();
-				newPuntata = hardStrategy.puntaVirtuale(this, username, max);
+				newPuntata = hardStrategy.puntaVirtuale(this, username, max,strategy);
 				break;
 			default: System.out.println("Scelta non consentita");
 			}

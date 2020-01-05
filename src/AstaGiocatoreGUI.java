@@ -24,52 +24,23 @@ import javax.swing.JTextArea;
 
 public class AstaGiocatoreGUI extends JFrame {
 
-	private JPanel contentPane;
-	private JTextField textField;
-	private String username;
-	private JScrollPane scrollpane;
-	public JPanel getContentPane() {
-		return contentPane;
+	protected JPanel contentPane;
+	protected JTextField textField;
+	protected String username;
+	protected JScrollPane scrollpane;
+	protected JTextArea textArea;
+	protected JButton btnNewButtonRinuncia;
+	protected int tipo;
+	
+	
+	public int getTipo() {
+		return tipo;
 	}
 
-	public void setContentPane(JPanel contentPane) {
-		this.contentPane = contentPane;
+	public void setTipo(int tipo) {
+		this.tipo = tipo;
 	}
 
-	public JTextField getTextField() {
-		return textField;
-	}
-
-	public void setTextField(JTextField textField) {
-		this.textField = textField;
-	}
-
-	public JScrollPane getScrollpane() {
-		return scrollpane;
-	}
-
-	public void setScrollpane(JScrollPane scrollpane) {
-		this.scrollpane = scrollpane;
-	}
-
-	public JTextArea getTextArea() {
-		return textArea;
-	}
-
-	public void setTextArea(JTextArea textArea) {
-		this.textArea = textArea;
-	}
-
-	public JButton getBtnNewButtonRinuncia() {
-		return btnNewButtonRinuncia;
-	}
-
-	public void setBtnNewButtonRinuncia(JButton btnNewButtonRinuncia) {
-		this.btnNewButtonRinuncia = btnNewButtonRinuncia;
-	}
-
-	private JTextArea textArea;
-	private JButton btnNewButtonRinuncia;
 
 	public String getUsername() {
 		return username;
@@ -83,10 +54,11 @@ public class AstaGiocatoreGUI extends JFrame {
 		return this;
 	}
 
-	public AstaGiocatoreGUI(AstaPortieriGUI astaPortieriGUI, String username, String ris)
+	public AstaGiocatoreGUI(AstaGUI astaGUI, String username, String ris,int tipo)
 			throws ClassNotFoundException, IOException {
 		super("Asta in corso");
 		this.setUsername(username);
+		this.setTipo(tipo);
 		setResizable(false);
 		setBounds(100, 100, 615, 355);
 		contentPane = new JPanel();
@@ -96,8 +68,9 @@ public class AstaGiocatoreGUI extends JFrame {
 
 		JLabel lblNewLabel = new JLabel("Asta in corso per " + ris);
 		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		lblNewLabel.setBounds(167, 32, 281, 39);
+		lblNewLabel.setBounds(167, 32, 350, 39);
 		contentPane.add(lblNewLabel);
+
 
 		textField = new JTextField();
 		textField.setBounds(205, 83, 98, 44);
@@ -112,12 +85,12 @@ public class AstaGiocatoreGUI extends JFrame {
 		JTextArea textArea = new JTextArea();
 		textArea.setBounds(31, 135, 552, 123);
 		contentPane.add(textArea);
-		getContentPane().add(textArea);
+		//getContentPane().add(textArea);
 
 		scrollpane = new JScrollPane(textArea);
 		scrollpane.setEnabled(false);
-		scrollpane.setLocation(28, 139);
-		scrollpane.setSize(558, 121);
+		scrollpane.setLocation(20, 139);
+		scrollpane.setSize(581, 121);
 		scrollpane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollpane.setPreferredSize(new Dimension(200, 250));
 
@@ -129,7 +102,24 @@ public class AstaGiocatoreGUI extends JFrame {
 
 		textArea.setVisible(false);
 		btnNewButtonRinuncia.setVisible(false);
-		Giocatore g = (Portiere) new Portiere(ris);
+		Giocatore g = null;
+		switch(this.tipo) {
+		case 0:
+			g = (Portiere) new Portiere(ris);
+			break;
+		
+		case 1:
+			g = (Difensore) new Difensore(ris);
+			break;
+			
+		case 2:
+			g = (Centrocampista) new Centrocampista(ris);
+			break;
+		
+		case 3: 
+			g = (Attaccante) new Attaccante(ris);
+			break;
+		}
 		Asta a = new Asta(g, 0);
 		ConcreteObserverAsta o = a.getObs().get(0);
 		int fantaCrediti = o.getSquadra().getFantallenatore().getFantaCrediti();
@@ -142,7 +132,8 @@ public class AstaGiocatoreGUI extends JFrame {
 					JOptionPane.showMessageDialog(textField, "Non hai abbastanza FantaCrediti !");
 					textField.setText("");
 				}
-				a.eseguiAsta(astaPortieriGUI, getAstaGiocatoreGUI(), getUsername());
+				a.eseguiAsta(astaGUI, getAstaGiocatoreGUI(), textField, getUsername(), textArea,
+						btnNewButtonRinuncia);
 			}
 		});
 

@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import javax.swing.JCheckBox;
 import javax.swing.JTextArea;
 
-public class AstaPortieriGUI extends AstaGUI{
+public class AstaDifensoriGUI extends AstaGUI{
 
 	private JPanel contentPane;
 	private JTextField searchable;
@@ -48,12 +48,12 @@ public class AstaPortieriGUI extends AstaGUI{
 		this.username = username;
 	}
 
-	public AstaPortieriGUI getAstaPortieriGUI() {
+	public AstaDifensoriGUI getAstaDifensoriGUI() {
 		return this;
 	}
 
-	public AstaPortieriGUI(String username) {
-		super("Asta Portieri");
+	public AstaDifensoriGUI(String username) {
+		super("Asta Difensori");
 		this.setUsername(username);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 849, 544);
@@ -63,7 +63,7 @@ public class AstaPortieriGUI extends AstaGUI{
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("Asta Portieri in corso.....");
+		JLabel lblNewLabel = new JLabel("Asta Difensori in corso.....");
 		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 30));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(173, 6, 502, 36);
@@ -115,7 +115,7 @@ public class AstaPortieriGUI extends AstaGUI{
 			public void actionPerformed(ActionEvent e) {
 				scrollpane.setVisible(false);
 				try {
-					String ris = UtilityListaGiocatori.cercaGiocatore(searchable.getText(), 0);
+					String ris = UtilityListaGiocatori.cercaGiocatore(searchable.getText(), 1);
 					String[] fields = ris.split(",");
 					if (fields[0].equalsIgnoreCase("") == false && fields[1].equalsIgnoreCase("0")) {
 						contentPane.add(lblNewLabelRis);
@@ -148,7 +148,7 @@ public class AstaPortieriGUI extends AstaGUI{
 				try {
 					lblNewLabelRis.setVisible(false);
 					ArrayList<String> ris=null;
-					ris = UtilityListaGiocatori.showAllPlayers(0);
+					ris = UtilityListaGiocatori.showAllPlayers(1);
 					Object [] data=ris.toArray();
 					scrollpane.setVisible(true);
 					list.setListData(data);
@@ -165,14 +165,13 @@ public class AstaPortieriGUI extends AstaGUI{
 			public void actionPerformed(ActionEvent e) {
 				AstaGiocatoreGUI nextFrame;
 				try {
-					nextFrame = new AstaGiocatoreGUI(getAstaPortieriGUI(), username, lblNewLabelRis.getText(),0);
+					nextFrame = new AstaGiocatoreGUI(getAstaDifensoriGUI(), username, lblNewLabelRis.getText(),1);
 					nextFrame.setVisible(true);
 					nextFrame.toFront();
 					btnNewButtonChoose1.setVisible(false);
 					lblNewLabelRis.setVisible(false);
 					searchable.setText("");
 				} catch (ClassNotFoundException | IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 
@@ -211,7 +210,7 @@ public class AstaPortieriGUI extends AstaGUI{
 				String nomeGiocatore= o.toString();
 				AstaGiocatoreGUI nextFrame;
 				try {
-					nextFrame = new AstaGiocatoreGUI(getAstaPortieriGUI(), username, nomeGiocatore,0);
+					nextFrame = new AstaGiocatoreGUI(getAstaDifensoriGUI(), username, nomeGiocatore,1);
 					nextFrame.setVisible(true);
 					nextFrame.toFront();
 					btnNewButtonChoose1.setVisible(false);

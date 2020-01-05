@@ -20,6 +20,7 @@ import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import java.io.*;
 import java.awt.Color;
+
 public class CreazioneSquadraGUI extends JFrame {
 
 	private JPanel contentPane;
@@ -29,27 +30,19 @@ public class CreazioneSquadraGUI extends JFrame {
 	private File f;
 	private JFileChooser fc;
 
-	
-	
-	
-	
 	public String getUsername() {
 		return username;
 	}
-
-
 
 	public void setUsername(String username) {
 		this.username = username;
 	}
 
-
-
 	public CreazioneSquadraGUI(String username) {
 		super("Creazione della FantaSquadra");
 		this.setUsername(username);
-		Squadra s= new Squadra();
-		fc =  new JFileChooser();
+		Squadra s = new Squadra();
+		fc = new JFileChooser();
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 679, 452);
@@ -61,26 +54,25 @@ public class CreazioneSquadraGUI extends JFrame {
 		lblCreaLaTua.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCreaLaTua.setBounds(164, 12, 350, 55);
 		contentPane.add(lblCreaLaTua);
-		
+
 		JLabel lblNewLabel = new JLabel("Inserire il nome della FantaSquadra");
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 20));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(135, 59, 409, 67);
 		contentPane.add(lblNewLabel);
-		
+
 		textFieldNomeSquadra = new JTextField();
 		textFieldNomeSquadra.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldNomeSquadra.setBounds(200, 118, 278, 55);
 		contentPane.add(textFieldNomeSquadra);
 		textFieldNomeSquadra.setColumns(10);
-		
+
 		JLabel lblScegliIlLogo = new JLabel("Scegli il logo della tua FantaSquadra");
 		lblScegliIlLogo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblScegliIlLogo.setFont(new Font("Dialog", Font.BOLD, 20));
 		lblScegliIlLogo.setBounds(95, 178, 489, 67);
 		contentPane.add(lblScegliIlLogo);
-		
-		
+
 		ClassLoader cl = this.getClass().getClassLoader();
 		ImageIcon imgUp = new ImageIcon(cl.getResource("Immagini/icons8-caricare-64.png"));
 		JButton btnNewButtonScegli = new JButton(imgUp);
@@ -93,7 +85,7 @@ public class CreazioneSquadraGUI extends JFrame {
 		image.setSize(108, 100);
 		image.setLocation(289, 211);
 		contentPane.add(image);
-		
+
 		ImageIcon imgAvanti = new ImageIcon(cl.getResource("Immagini/freccia.png"));
 		JButton btnNewButtonContinua = new JButton(imgAvanti);
 		btnNewButtonContinua.setBackground(Color.WHITE);
@@ -102,51 +94,52 @@ public class CreazioneSquadraGUI extends JFrame {
 		btnNewButtonContinua.setBounds(494, 311, 173, 92);
 		contentPane.add(btnNewButtonContinua);
 		btnNewButtonScegli.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-			
+
 				int ris = fc.showOpenDialog(null);
-				if (ris==fc.APPROVE_OPTION) {
+				if (ris == fc.APPROVE_OPTION) {
 					File f = fc.getSelectedFile();
 					try {
-						
+
 						image.setIcon(new ImageIcon(ImageIO.read(f)));
-					
-					}catch(IOException ex){
+
+					} catch (IOException ex) {
 						ex.printStackTrace();
 					}
 				}
 			}
 		});
-		
-	
-		
+
 		btnNewButtonContinua.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(textFieldNomeSquadra.getText().equalsIgnoreCase("")){
-					JOptionPane.showMessageDialog(textFieldNomeSquadra,"Nome Squadra non può essere vuoto");
-				}
-				else {
-				
+				if (textFieldNomeSquadra.getText().equalsIgnoreCase("")) {
+					JOptionPane.showMessageDialog(textFieldNomeSquadra, "Nome Squadra non può essere vuoto");
+				} else {
+
 					s.setNomeSquadra(textFieldNomeSquadra.getText());
-					f= fc.getSelectedFile();
+					f = fc.getSelectedFile();
 					s.salvaLogo(f);
 					try {
 						s.addNomeSquadraToCsv(username, textFieldNomeSquadra.getText());
 						s.salvaSquadraSuFile();
 						SquadraVirtuale.creaSquadreVirtuali();
-						AstaPortieriGUI nextFrame = new AstaPortieriGUI(username);
-						nextFrame.setVisible(true);
-						nextFrame.toFront();
-						setVisible(false);
+						AstaGUI nextFrame;
+
+								nextFrame = new AstaPortieriGUI(username);
+								nextFrame.setVisible(true);
+								nextFrame.toFront();
+								setVisible(false);
+						
+
 					} catch (IOException e2) {
 						e2.printStackTrace();
-					}
+					} 
 				}
 			}
 		});
-		
+
 	}
 }
