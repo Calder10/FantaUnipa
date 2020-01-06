@@ -33,7 +33,6 @@ public class ConcreteObserverAsta implements ObserverAsta {
 
 	@Override
 	public boolean punta(String username, int puntata) {
-		System.out.println("punta");
 		if(this.getPuntata().isEmpty()) {
 			Integer oldValue = this.puntata.get(username);
 			this.puntata.replace(username, oldValue, puntata);
@@ -52,7 +51,6 @@ public class ConcreteObserverAsta implements ObserverAsta {
 	
 	@Override
 	public int puntaVirtuale(String username,int tipo){
-		System.out.println("punta virtuale");
 		int newPuntata=0;
 		int max;
 		if(this.puntata.isEmpty())
