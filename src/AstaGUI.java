@@ -8,16 +8,10 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public abstract class AstaGUI extends JFrame{
-	private JPanel contentPane;
-	private JTextField searchable;
-	private JButton searchButton;
-	private JScrollPane scrollpane;
-	private JTextArea console;
-	private JButton btnNewButtonShowAll;
-	private JLabel lblNewLabelRis;
-	private JButton btnNewButtonChoose1;
+	
+	
 	private String username;
-	private JList list;
+
 	
 
 	public String getUsername() {
@@ -33,6 +27,6 @@ public abstract class AstaGUI extends JFrame{
 	}
 
 	public AstaGUI(String s) {
-		super();
+		super(s);
 	}
 }

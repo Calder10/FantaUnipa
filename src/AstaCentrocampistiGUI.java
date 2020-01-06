@@ -1,32 +1,28 @@
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.EventQueue;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.ListModel;
-import javax.swing.ListSelectionModel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
-import javax.swing.SwingConstants;
 import java.awt.Font;
-import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
-import java.sql.Time;
 import java.util.ArrayList;
-import javax.swing.JCheckBox;
-import javax.swing.JTextArea;
 
-public class AstaDifensoriGUI extends AstaGUI{
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+
+public class AstaCentrocampistiGUI extends AstaGUI {
 
 	private JPanel contentPane1;
 	private JTextField searchable1;
@@ -48,12 +44,12 @@ public class AstaDifensoriGUI extends AstaGUI{
 		this.username1 = username1;
 	}
 
-	public AstaDifensoriGUI getAstaDifensoriGUI() {
+	public AstaCentrocampistiGUI getAstaCentrocampistiGUI() {
 		return this;
 	}
 
-	public AstaDifensoriGUI(String username1) {
-		super("Asta Difensori");
+	public AstaCentrocampistiGUI(String username1) {
+		super("Asta Centrocampisti");
 		this.setusername1(username1);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 849, 544);
@@ -63,7 +59,7 @@ public class AstaDifensoriGUI extends AstaGUI{
 		setContentPane(contentPane1);
 		contentPane1.setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("Asta Difensori in corso.....");
+		JLabel lblNewLabel = new JLabel("Asta Centrocampisti in corso.....");
 		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 30));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(173, 6, 502, 36);
@@ -115,7 +111,7 @@ public class AstaDifensoriGUI extends AstaGUI{
 			public void actionPerformed(ActionEvent e) {
 				scrollpane1.setVisible(false);
 				try {
-					String ris = UtilityListaGiocatori.cercaGiocatore(searchable1.getText(), 1);
+					String ris = UtilityListaGiocatori.cercaGiocatore(searchable1.getText(), 2);
 					String[] fields = ris.split(",");
 					if (fields[0].equalsIgnoreCase("") == false && fields[1].equalsIgnoreCase("0")) {
 						contentPane1.add(lblNewLabelRis1);
@@ -148,7 +144,7 @@ public class AstaDifensoriGUI extends AstaGUI{
 				try {
 					lblNewLabelRis1.setVisible(false);
 					ArrayList<String> ris=null;
-					ris = UtilityListaGiocatori.showAllPlayers(1);
+					ris = UtilityListaGiocatori.showAllPlayers(2);
 					Object [] data=ris.toArray();
 					scrollpane1.setVisible(true);
 					list1.setListData(data);
@@ -165,7 +161,7 @@ public class AstaDifensoriGUI extends AstaGUI{
 			public void actionPerformed(ActionEvent e) {
 				AstaGiocatoreGUI nextFrame;
 				try {
-					nextFrame = new AstaGiocatoreGUI(getAstaDifensoriGUI(), username1, lblNewLabelRis1.getText(),1);
+					nextFrame = new AstaGiocatoreGUI(getAstaCentrocampistiGUI(), username1, lblNewLabelRis1.getText(),2);
 					nextFrame.setVisible(true);
 					nextFrame.toFront();
 					btnNewButtonChoose.setVisible(false);
@@ -210,7 +206,7 @@ public class AstaDifensoriGUI extends AstaGUI{
 				String nomeGiocatore= o.toString();
 				AstaGiocatoreGUI nextFrame;
 				try {
-					nextFrame = new AstaGiocatoreGUI(getAstaDifensoriGUI(), username1, nomeGiocatore,1);
+					nextFrame = new AstaGiocatoreGUI(getAstaCentrocampistiGUI(), username1, nomeGiocatore,2);
 					nextFrame.setVisible(true);
 					nextFrame.toFront();
 					btnNewButtonChoose.setVisible(false);
@@ -223,4 +219,5 @@ public class AstaDifensoriGUI extends AstaGUI{
 		});
 
 	}
+
 }

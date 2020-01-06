@@ -59,6 +59,23 @@ public class Registrazione {
 			System.out.println("Errore nella scrittura su file !");
 		}
 	}
+	
+	public static String getFantaCreditiFromCsv(String username) throws IOException {
+		String ris= "";
+		String line = "";
+		FileReader f = new FileReader("dati.csv");
+		BufferedReader br = new BufferedReader(f);
+		line = br.readLine();
+		while ((line = br.readLine()) != null) {
+			String[] fields = line.split(",");
+			if (fields[2].equalsIgnoreCase(username)) {
+				ris=fields[4];
+				break;
+			}
+		
+	}
+		return ris;	
+	}
 
 	public boolean checkUsername(String username) throws IOException {
 		boolean flag = true;

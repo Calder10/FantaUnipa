@@ -135,7 +135,7 @@ public class UtilityListaGiocatori {
 			while ((line = br.readLine()) != null) {
 				fields = line.split(",");
 				if (fields[0].equalsIgnoreCase(giocatore)) {
-					ris = fields[0];
+					ris = line;
 					break;
 				}
 			}
@@ -149,7 +149,7 @@ public class UtilityListaGiocatori {
 			while ((line = br.readLine()) != null) {
 				fields = line.split(",");
 				if (fields[0].equalsIgnoreCase(giocatore)) {
-					ris = fields[0];
+					ris = line;
 					break;
 				}
 			}
@@ -163,7 +163,7 @@ public class UtilityListaGiocatori {
 			while ((line = br.readLine()) != null) {
 				fields = line.split(",");
 				if (fields[0].equalsIgnoreCase(giocatore)) {
-					ris = fields[0];
+					ris = line;
 					break;
 				}
 			}
@@ -301,6 +301,7 @@ public class UtilityListaGiocatori {
 			}
 			br.close();
 			fw.close();
+			fr.close();
 			f1.renameTo(f);
 			break;
 		case 2:
@@ -325,6 +326,7 @@ public class UtilityListaGiocatori {
 			}
 			br.close();
 			fw.close();
+			fr.close();
 			f1.renameTo(f);
 			break;
 		case 3:
@@ -349,6 +351,7 @@ public class UtilityListaGiocatori {
 			}
 			br.close();
 			fw.close();
+			fr.close();
 			f1.renameTo(f);
 			break;
 		default:
