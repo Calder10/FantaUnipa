@@ -70,7 +70,7 @@ public class Registrazione {
 			String[] fields = line.split(",");
 			if (fields[2].equalsIgnoreCase(username)) {
 				ris=fields[4];
-				break;
+				 break;
 			}
 		
 	}
