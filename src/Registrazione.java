@@ -61,7 +61,7 @@ public class Registrazione {
 	}
 	
 	public static String getFantaCreditiFromCsv(String username) throws IOException {
-		String ris= "";
+		String ris = "";
 		String line = "";
 		FileReader f = new FileReader("dati.csv");
 		BufferedReader br = new BufferedReader(f);
@@ -69,12 +69,12 @@ public class Registrazione {
 		while ((line = br.readLine()) != null) {
 			String[] fields = line.split(",");
 			if (fields[2].equalsIgnoreCase(username)) {
-				ris=fields[4];
-				 break;
+				ris = fields[5];
+				break;
 			}
-		
-	}
-		return ris;	
+
+		}
+		return ris;
 	}
 
 	public boolean checkUsername(String username) throws IOException {

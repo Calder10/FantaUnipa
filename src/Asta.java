@@ -534,18 +534,15 @@ public class Asta implements SubjectAsta {
 			if (fields[2].equalsIgnoreCase(username)) {
 				fw.append(fields[0]);
 				fw.append(",");
-				fw.append("\n");
 				fw.append(fields[1]);
 				fw.append(",");
-				fw.append("\n");
 				fw.append(fields[2]);
 				fw.append(",");
-				fw.append("\n");
 				fw.append(fields[3]);
 				fw.append(",");
-				fw.append("\n");
-				fw.append(fantacrediti);
+				fw.append(fields[4]);
 				fw.append(",");
+				fw.append(fantacrediti);
 				fw.append("\n");
 			} else {
 				fw.append(line);

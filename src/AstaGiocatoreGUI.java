@@ -95,6 +95,12 @@ public class AstaGiocatoreGUI extends JFrame {
 		scrollpane.setPreferredSize(new Dimension(200, 250));
 
 		contentPane.add(scrollpane);
+		
+		String fantacrediti= Registrazione.getFantaCreditiFromCsv(username);
+		JLabel lblFantacreditiRimanenti = new JLabel("Fantacrediti rimanenti: " + fantacrediti);
+		lblFantacreditiRimanenti.setFont(new Font("Dialog", Font.PLAIN, 20));
+		lblFantacreditiRimanenti.setBounds(30, 272, 432, 34);
+		contentPane.add(lblFantacreditiRimanenti);
 
 		JButton btnNewButtonRinuncia = new JButton("Rinuncia");
 		btnNewButtonRinuncia.setBounds(480, 273, 98, 44);
