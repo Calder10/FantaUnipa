@@ -126,7 +126,7 @@ public class AstaGiocatoreGUI extends JFrame {
 			g = (Attaccante) new Attaccante(ris);
 			break;
 		}
-		Asta a = new Asta(g, 0);
+		Asta a = new Asta(g, tipo);
 		ConcreteObserverAsta o = a.getObs().get(0);
 		int fantaCrediti = o.getSquadra().getFantallenatore().getFantaCrediti();
 		btnNewButton.addActionListener(new ActionListener() {
