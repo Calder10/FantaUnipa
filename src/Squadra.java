@@ -8,8 +8,14 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import javax.imageio.ImageIO;
+import javax.sound.sampled.Line;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -189,4 +195,40 @@ public class Squadra implements Serializable {
 		fos.close();
 		f1.renameTo(f);
 	}
+
+	public static Squadra getSquadraFromFile(String username) throws IOException {
+		String nomeSquadra;
+		String pathSquadra;
+		Squadra squadra = null;
+		List<List<String>> values = null;
+		try (Stream<String> stream = Files.lines(Paths.get("dati.csv"))) {
+
+			values = stream.skip(1).filter(line -> line.contains(username)).map(line -> Arrays.asList(line.split(",")))
+					.collect(Collectors.toList());
+		} catch (IOException e) {
+			System.out.println("Errore nella lettura del file");
+		}
+		nomeSquadra = values.get(0).get(4);
+		List<String> result = null;
+		try (Stream<Path> walk = Files.walk(Paths.get("src/Squadre"))) {
+
+			result = walk.map(x -> x.toString()).filter(f -> f.contains(nomeSquadra)).collect(Collectors.toList());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		pathSquadra = result.get(0);
+		File f = new File(pathSquadra);
+		FileInputStream fis = new FileInputStream(f);
+		ObjectInputStream ois = new ObjectInputStream(fis);
+		try {
+			squadra = (Squadra) ois.readObject();
+			ois.close();
+			fis.close();
+		} catch (ClassNotFoundException | IOException e) {
+			e.printStackTrace();
+			System.out.println("Errore nella lettura da file !");
+		}
+		return squadra;
+	}
+
 }
