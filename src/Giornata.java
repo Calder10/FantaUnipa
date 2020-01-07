@@ -1,20 +1,27 @@
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Giornata extends Torneo{
+public class Giornata implements Serializable{
 
-
-	private ArrayList<Partita> partite;
+	private Partite partite;
 	
-
-	public void addGiornata() {
-		giornate.add(this);
-		
+	public Giornata(Partite partite) {
+		this.partite=partite;
 	}
 
-	public void addPartita(Partita p) {
-		this.partite.add(p);
+	public Partite getPartite() {
+		return partite;
+	}
+
+	public void setPartite(Partite partite) {
+		this.partite = partite;
+	}
+
+	@Override
+	public String toString() {
+		return "Giornata [partite=" + partite + "]";
 	}
 	
-
+	
 }

@@ -1,5 +1,3 @@
-Singleton: creazione torneo
-facade: creazione del torneo con tutte le sue componenti
 AbstractFactory: AstaGUI (AstaPortiereGUI, AstaDifensoreGUI etc.
 Giocatore: AbstractFactory,FactoryMethod
 Formazione: FactoryMethod
