@@ -23,13 +23,13 @@ public class RosaGUI extends JFrame {
 
 	public RosaGUI(Squadra s) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 200, 800, 415);
+		setBounds(100, 200, 778, 415);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
 		JLabel lblNewLabelNomeSquadra = new JLabel(s.getNomeSquadra());
-		lblNewLabelNomeSquadra.setBounds(314, 6, 171, 36);
+		lblNewLabelNomeSquadra.setBounds(303, 6, 171, 36);
 		lblNewLabelNomeSquadra.setAlignmentY(Component.BOTTOM_ALIGNMENT);
 		lblNewLabelNomeSquadra.setAlignmentX(Component.CENTER_ALIGNMENT);
 		lblNewLabelNomeSquadra.setFont(new Font("Lucida Grande", Font.PLAIN, 30));
@@ -46,10 +46,11 @@ public class RosaGUI extends JFrame {
 		contentPane.add(lblNewLabelLogo);
 		
 		Box verticalBoxPortieri = Box.createVerticalBox();
-		verticalBoxPortieri.setBounds(6, 85, 200, 289);
+		verticalBoxPortieri.setBounds(6, 85, 180, 289);
 		contentPane.add(verticalBoxPortieri);
 		
 		JLabel lblNewLabel = new JLabel("PORTIERI");
+		lblNewLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		verticalBoxPortieri.add(lblNewLabel);
@@ -57,14 +58,15 @@ public class RosaGUI extends JFrame {
 		JTextArea textArea = new JTextArea();
 		textArea.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
 		textArea.setBackground(UIManager.getColor("DesktopIcon.borderRimColor"));
-		textArea.setForeground(Color.WHITE);
+		textArea.setForeground(Color.BLACK);
 		verticalBoxPortieri.add(textArea);
 		
 		Box verticalBoxDifensori = Box.createVerticalBox();
-		verticalBoxDifensori.setBounds(202, 85, 200, 289);
+		verticalBoxDifensori.setBounds(202, 85, 180, 289);
 		contentPane.add(verticalBoxDifensori);
 		
 		JLabel lblDifesnori = new JLabel("DIFENSORI");
+		lblDifesnori.setAlignmentX(Component.CENTER_ALIGNMENT);
 		lblDifesnori.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDifesnori.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		verticalBoxDifensori.add(lblDifesnori);
@@ -75,10 +77,11 @@ public class RosaGUI extends JFrame {
 		verticalBoxDifensori.add(textArea_1);
 		
 		Box verticalBoxCenrrocampisti = Box.createVerticalBox();
-		verticalBoxCenrrocampisti.setBounds(398, 85, 200, 289);
+		verticalBoxCenrrocampisti.setBounds(398, 85, 180, 289);
 		contentPane.add(verticalBoxCenrrocampisti);
 		
 		JLabel lblCentrocampisti = new JLabel("CENTROCAMPISTI");
+		lblCentrocampisti.setAlignmentX(Component.CENTER_ALIGNMENT);
 		lblCentrocampisti.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCentrocampisti.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		verticalBoxCenrrocampisti.add(lblCentrocampisti);
@@ -89,10 +92,11 @@ public class RosaGUI extends JFrame {
 		verticalBoxCenrrocampisti.add(textArea_2);
 		
 		Box verticalBoxAttaccanti = Box.createVerticalBox();
-		verticalBoxAttaccanti.setBounds(594, 85, 200, 289);
+		verticalBoxAttaccanti.setBounds(594, 85, 180, 289);
 		contentPane.add(verticalBoxAttaccanti);
 		
 		JLabel lblAttaccanti = new JLabel("ATTACCANTI");
+		lblAttaccanti.setAlignmentX(Component.CENTER_ALIGNMENT);
 		lblAttaccanti.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAttaccanti.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		verticalBoxAttaccanti.add(lblAttaccanti);
@@ -103,19 +107,19 @@ public class RosaGUI extends JFrame {
 		verticalBoxAttaccanti.add(textArea_3);
 		
 		for(Portiere p : s.portieri) {
-			textArea.setText(p.getNomeGiocatore()+"\n");
+			textArea.append(p.getNomeGiocatore()+"\n");
 		}
 		
 		for(Difensore d : s.difensori) {
-			textArea_1.setText(d.getNomeGiocatore()+"\n");
+			textArea_1.append(d.getNomeGiocatore()+"\n");
 		}
 		
 		for(Centrocampista c : s.centrocampisti) {
-			textArea_2.setText(c.getNomeGiocatore()+"\n");
+			textArea_2.append(c.getNomeGiocatore()+"\n");
 		}
 		
 		for(Attaccante a : s.attaccanti) {
-			textArea_3.setText(a.getNomeGiocatore()+"\n");
+			textArea_3.append(a.getNomeGiocatore()+"\n");
 		}
 
 	}

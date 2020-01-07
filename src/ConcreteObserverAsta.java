@@ -88,7 +88,6 @@ public class ConcreteObserverAsta implements ObserverAsta {
 
 	@Override
 	public void passa(String username) {
-		System.out.println("passa");
 		this.puntata.remove(username);
 		
 

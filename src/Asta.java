@@ -300,6 +300,9 @@ public class Asta implements SubjectAsta {
 									JOptionPane.showMessageDialog(astaGiocatoreGUI, "Asta attaccanti completata !");
 									this.completaAstaSquadreVirtuali(this.tipo);
 									astaGUI.dispose();
+									HomeGUI nextFrame2 = new HomeGUI(username);
+									nextFrame2.setVisible(true);
+									nextFrame2.toFront();
 								}
 								break;
 							}
@@ -318,7 +321,6 @@ public class Asta implements SubjectAsta {
 
 	public void eseguiAsta(AstaGUI astaGUI, AstaGiocatoreGUI astaGiocatoreGUI, JTextField textField, String username,
 			JTextArea textArea, JButton btnNewButtonRinuncia) {
-		System.out.println("Prova");
 		ConcreteObserverAsta o = null;
 		for (ConcreteObserverAsta ob : obs) {
 			if (ob.getSquadra().getFantallenatore().getUsername().equalsIgnoreCase(username)) {
@@ -407,7 +409,6 @@ public class Asta implements SubjectAsta {
 				if (puntata == 0)
 					this.obs.remove(o);
 				HashMap<String, Integer> aus = this.getPuntataCorrente();
-				System.out.println(aus.toString());
 				Integer oldValue = aus.get(username);
 				aus.replace(username, oldValue, puntata);
 				this.setPuntataCorrente(aus);
@@ -462,7 +463,6 @@ public class Asta implements SubjectAsta {
 
 			Asta a = new Asta(g, tipo);
 			if (a.getObs().size() == 0) {
-				System.out.println("Asta Completata\n");
 				break;
 			}
 			ConcreteObserverAsta o = a.getObs().get(0);
