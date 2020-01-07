@@ -9,6 +9,8 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import javax.swing.JButton;
 
@@ -25,35 +27,16 @@ public class HomeGUI extends JFrame {
 		this.username = username;
 	}
 
-	/**
-	 * Launch the application.
-	 */
 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					HomeGUI frame = new HomeGUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-
-	/**
-	 * Create the frame.
-	 * @throws IOException 
-	 */
-	public HomeGUI() throws IOException {
+	public HomeGUI(String username) throws IOException {
+		super("Home");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 915, 488);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		this.username=username;
 		
 		JLabel lblNewLabel = new JLabel("TORNEO FANTAUNIPA");
 		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 30));
@@ -62,14 +45,15 @@ public class HomeGUI extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabelLogo = new JLabel();
+		
 		ClassLoader cl = this.getClass().getClassLoader();
-		ImageIcon img = new ImageIcon(cl.getResource("Immagini/pallone.png"));
+		Squadra squadra = Squadra.getSquadraFromFile(username);
+		Path path = Paths.get(squadra.getPathLogo());
+		ImageIcon img = new ImageIcon(squadra.getPathLogo());
 		lblNewLabelLogo.setIcon(img);
 		lblNewLabelLogo.setBounds(23, 44, 69, 67);
 		contentPane.add(lblNewLabelLogo);
 		
-		//Squadra squadra = Squadra.getSquadraFromFile(getUsername());
-		Squadra squadra = Squadra.getSquadraFromFile("Calder10");
 		JLabel lblNewLabelNomeSquadra = new JLabel();
 		lblNewLabelNomeSquadra.setText(squadra.getNomeSquadra());
 		lblNewLabelNomeSquadra.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
@@ -97,5 +81,12 @@ public class HomeGUI extends JFrame {
 		JButton buttonClassifics = new JButton("Classifica");
 		buttonClassifics.setBounds(23, 325, 128, 47);
 		contentPane.add(buttonClassifics);
+		
+		btnNewButtonLaMiaRosa.addActionListener(
+			e-> {
+				RosaGUI nextFrame=new RosaGUI(squadra);
+				nextFrame.toFront();
+				nextFrame.setVisible(true);
+			});
 	}
 }

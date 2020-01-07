@@ -22,6 +22,7 @@ public class LoginGUI extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	private JPasswordField passwordField;
+	private String username;
 
 	public LoginGUI() {
 		super("FantaUnipa");
@@ -92,6 +93,7 @@ public class LoginGUI extends JFrame {
 					e1.printStackTrace();
 				}
 				if(ris==true && existSquadra== false) {
+					username=textField.getText();
 					CreazioneSquadraGUI nextFrame = new CreazioneSquadraGUI(textField.getText());
 					nextFrame.setUsername(textField.getText());
 					nextFrame.setVisible(true);
@@ -99,7 +101,14 @@ public class LoginGUI extends JFrame {
 					setVisible(false);
 				}
 				else if(ris==true && existSquadra== true) {
-					System.out.println("PAGINA HOME");
+					try {
+						HomeGUI nextFrame = new HomeGUI(textField.getText());
+						nextFrame.toFront();
+						nextFrame.setVisible(true);
+						setVisible(false);
+					} catch (IOException e1) {
+						System.out.println("Errore nella lettura del file !");
+					}
 				}
 				else if(ris==false){
 					JOptionPane.showMessageDialog(btnNewButton, "Errore ! Username o password errati !");
