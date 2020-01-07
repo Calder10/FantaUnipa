@@ -8,13 +8,28 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public  class Torneo implements Serializable{
+public class Torneo implements Serializable {
 	private String nomeTorneo;
 	private ArrayList<Squadra> squadre;
 	private Giornate giornate;
-	//private Classifica classifica;
+	// private Classifica classifica;
 	private static Torneo torneo;
-	
+
+	private Torneo() {
+	}
+
+	public static Torneo getTorneo() throws ClassNotFoundException, IOException {
+		if (torneo == null) {
+			torneo = new Torneo();
+			torneo.nomeTorneo = "FantaUnipa";
+			torneo.uploadSquadre();
+			torneo.giornate = new Giornate(torneo.squadre);
+			// torneo.classifica=new Classifica();
+		}
+
+		return torneo;
+	}
+
 	public String getNomeTorneo() {
 		return nomeTorneo;
 	}
@@ -39,17 +54,21 @@ public  class Torneo implements Serializable{
 		this.giornate = giornate;
 	}
 
-	public static void setTorneo(Torneo torneo) {
-		Torneo.torneo = torneo;
-	}
-	
+	/*
+	 * 
+	 * public Classifica getClassifica() { return classifica; }
+	 * 
+	 * public void setClassifica(Classifica classifica) { this.classifica =
+	 * classifica; }
+	 * 
+	 */
 
 	public void uploadSquadre() throws IOException, ClassNotFoundException {
-		this.squadre=new ArrayList<>();
+		this.squadre = new ArrayList<>();
 		File f = new File("src/Squadre");
-		File[] files=f.listFiles();
-		FileInputStream fis=null;
-		ObjectInputStream ois=null;
+		File[] files = f.listFiles();
+		FileInputStream fis = null;
+		ObjectInputStream ois = null;
 		for (File x : files) {
 			fis = new FileInputStream(x);
 			ois = new ObjectInputStream(fis);
@@ -59,24 +78,8 @@ public  class Torneo implements Serializable{
 		ois.close();
 		fis.close();
 	}
-	
-	private Torneo() {
-	}
-	
-	
-	public static Torneo getTorneo() throws ClassNotFoundException, IOException {
-		if(torneo==null) {
-			torneo = new Torneo();
-			torneo.nomeTorneo="FantaUnipa";
-			torneo.uploadSquadre();
-			torneo.giornate=new Giornate(torneo.squadre);
-			//torneo.classifica=new Classifica();
-		}
-		
-		return torneo;
-	}
-	
-	public void saveTorneo(){
+
+	public void saveTorneo() {
 		File f = new File("src/torneo.dat");
 		FileOutputStream fos;
 		try {
@@ -87,6 +90,7 @@ public  class Torneo implements Serializable{
 			fos.close();
 		} catch (IOException e) {
 			System.out.println("Errore nella scrittura su file !");
-		} 
+		}
 	}
+
 }

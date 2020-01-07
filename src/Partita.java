@@ -7,6 +7,12 @@ public class Partita implements Serializable{
 	//private Formazione formazioneSquadraCasa;
 	//private Formazione formazioneSquadraTrasferta;
 	
+	public Partita (Squadra casa, Squadra trasferta) {
+		this.squadraCasa=casa;
+		this.squadraTrasferta=trasferta;
+		this.risultato=null;
+	}
+	
 	public Squadra getSquadraCasa() {
 		return squadraCasa;
 	}
@@ -48,18 +54,4 @@ public class Partita implements Serializable{
 		this.formazioneSquadraTrasferta = formazioneSquadraTrasferta;
 	}
 	*/
-
-	public Partita (Squadra casa, Squadra trasferta) {
-		this.squadraCasa=casa;
-		this.squadraTrasferta=trasferta;
-		this.risultato=null;
-	}
-
-	@Override
-	public String toString() {
-		return "Partita [squadraCasa=" + squadraCasa + ", squadraTrasferta=" + squadraTrasferta + ", risultato="
-				+ risultato + "]";
-	}
-	
-	
 }

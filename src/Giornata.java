@@ -16,12 +16,5 @@ public class Giornata implements Serializable{
 
 	public void setPartite(Partite partite) {
 		this.partite = partite;
-	}
-
-	@Override
-	public String toString() {
-		return "Giornata [partite=" + partite + "]";
-	}
-	
-	
+	}	
 }
