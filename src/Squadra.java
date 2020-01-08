@@ -214,7 +214,7 @@ public class Squadra implements Serializable {
 
 			result = walk.map(x -> x.toString()).filter(f -> f.contains(nomeSquadra)).collect(Collectors.toList());
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.out.println("Errore nelal lettura del file !");
 		}
 		pathSquadra = result.get(0);
 		File f = new File(pathSquadra);
@@ -229,6 +229,37 @@ public class Squadra implements Serializable {
 			System.out.println("Errore nella lettura da file !");
 		}
 		return squadra;
+	}
+	
+	public static ArrayList<Squadra> getSquadreVirtualiFromFile(String nomeSquadra) throws ClassNotFoundException{
+		ArrayList<Squadra> squadre = new ArrayList<>();
+		List<String> paths=null;
+		try (Stream<Path> walk = Files.walk(Paths.get("src/Squadre"))) {
+			paths = walk.map(x -> x.toString()).filter(f -> f.contains(nomeSquadra)==false).collect(Collectors.toList());
+		} catch (IOException e) {
+			System.out.println("Errore nella lettura del file !");
+		}
+		
+		paths.remove(0);
+		File f = null;
+		FileInputStream fis = null;
+		ObjectInputStream ois = null;
+		Squadra s = null;
+		for(String path : paths) {
+			f = new File(path);
+			try {
+				fis = new FileInputStream(f);
+				ois = new ObjectInputStream(fis);
+				s = (Squadra) ois.readObject();
+				squadre.add(s);
+				ois.close();
+				fis.close();
+			} catch (IOException e) {
+				System.out.println("Errore nella lettura del file !");
+			}
+			
+		}
+		return squadre;
 	}
 
 }

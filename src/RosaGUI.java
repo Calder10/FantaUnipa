@@ -22,14 +22,15 @@ public class RosaGUI extends JFrame {
 	private JPanel contentPane;
 
 	public RosaGUI(Squadra s) {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		super(s.getNomeSquadra());
+		setResizable(false);
 		setBounds(100, 200, 778, 415);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
 		JLabel lblNewLabelNomeSquadra = new JLabel(s.getNomeSquadra());
-		lblNewLabelNomeSquadra.setBounds(303, 6, 171, 36);
+		lblNewLabelNomeSquadra.setBounds(219, 6, 340, 36);
 		lblNewLabelNomeSquadra.setAlignmentY(Component.BOTTOM_ALIGNMENT);
 		lblNewLabelNomeSquadra.setAlignmentX(Component.CENTER_ALIGNMENT);
 		lblNewLabelNomeSquadra.setFont(new Font("Lucida Grande", Font.PLAIN, 30));
@@ -48,6 +49,7 @@ public class RosaGUI extends JFrame {
 		Box verticalBoxPortieri = Box.createVerticalBox();
 		verticalBoxPortieri.setBounds(6, 85, 180, 289);
 		contentPane.add(verticalBoxPortieri);
+		
 		
 		JLabel lblNewLabel = new JLabel("PORTIERI");
 		lblNewLabel.setAlignmentX(Component.CENTER_ALIGNMENT);

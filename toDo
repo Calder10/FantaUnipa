@@ -2,5 +2,3 @@ AbstractFactory: AstaGUI (AstaPortiereGUI, AstaDifensoreGUI etc.
 Giocatore: AbstractFactory,FactoryMethod
 Formazione: FactoryMethod
 ridimensionare i loghi delle squadre 50x50 px
-aggiungere setResizable(false) e super nelle nuove GUI
-aggiungere bottone Esci nella HomeGUI

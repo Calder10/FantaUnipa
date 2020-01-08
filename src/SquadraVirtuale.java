@@ -31,7 +31,7 @@ public class SquadraVirtuale extends Squadra {
 				SquadraVirtuale s = new SquadraVirtuale();
 				s.setNomeSquadra(nomiSquadra[aus]);
 				isFree[aus] = true;
-				String pathLogo = ("src/Loghi" + nomiSquadra[aus].trim() + ".png").trim();
+				String pathLogo = ("src/Loghi/" + nomiSquadra[aus].trim() + ".png").trim();
 				s.setPathLogo(pathLogo);
 				s.addNomeSquadraToCsv(fields[2], nomiSquadra[aus]);
 				s.salvaSquadraSuFile();

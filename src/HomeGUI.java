@@ -30,6 +30,7 @@ public class HomeGUI extends JFrame {
 
 	public HomeGUI(String username) throws IOException {
 		super("Home");
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 915, 488);
 		contentPane = new JPanel();
@@ -88,5 +89,17 @@ public class HomeGUI extends JFrame {
 				nextFrame.toFront();
 				nextFrame.setVisible(true);
 			});
+		
+		buttonSquadre.addActionListener(
+				e-> {
+					SquadreGUI nextFrame;
+					try {
+						nextFrame = new SquadreGUI(squadra.getNomeSquadra());
+						nextFrame.toFront();
+						nextFrame.setVisible(true);
+					} catch (ClassNotFoundException e1) {
+						System.out.println("Errore !");
+					}
+				});
 	}
 }
