@@ -11,6 +11,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import javax.swing.JSpinner;
+import javax.swing.SpinnerListModel;
+
+import java.awt.Font;
+import javax.swing.JComboBox;
+
 public class FormazioneGUI extends JFrame {
 
 	private JPanel contentPane;
@@ -32,11 +38,12 @@ public class FormazioneGUI extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * 
 	 */
 	public FormazioneGUI() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 622, 643);
+		super("Schera Formazione");
+		setResizable(false);
+		setBounds(100, 100, 622, 702);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -46,6 +53,23 @@ public class FormazioneGUI extends JFrame {
 		labelBackgroung.setLocation(6, 6);
 		labelBackgroung.setSize(610, 609);
 		contentPane.add(labelBackgroung);
+		
+		String [] moduli = {"4-4-2","3-4-3","4-3-3","3-5-2"};
+		
+		JLabel lblNewLabel = new JLabel("Scegli il modulo");
+		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
+		lblNewLabel.setBounds(268, 633, 222, 35);
+		contentPane.add(lblNewLabel);
+		
+		JComboBox comboBoxPortiere = new JComboBox();
+		comboBoxPortiere.setBounds(200, 17, 222, 27);
+		contentPane.add(comboBoxPortiere);
+		
+		JComboBox comboBoxModuli = new JComboBox(moduli);
+		comboBoxModuli.setSelectedIndex(3);
+		comboBoxModuli.setBounds(475, 627, 141, 47);
+		contentPane.add(comboBoxModuli);
+		
+		
 	}
-
 }

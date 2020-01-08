@@ -1,3 +1,7 @@
-AbstractFactory: AstaGUI (AstaPortiereGUI, AstaDifensoreGUI etc.
-Giocatore: AbstractFactory,FactoryMethod
-Formazione: FactoryMethod
+Giocatore: AbstractFactory,FactoryMethod (Refactoring)
+GUI schera formazione
+Salvare la formazione nel file
+generare le formazioni delle squadre virtuali e salvarle nel file
+Simulazione Giornata con voti delle prime 5 giornate della Serie A 
+Classifica
+Decretazione vincitore
