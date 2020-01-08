@@ -10,7 +10,7 @@ public class Partita implements Serializable{
 	public Partita (Squadra casa, Squadra trasferta) {
 		this.squadraCasa=casa;
 		this.squadraTrasferta=trasferta;
-		this.risultato=null;
+		this.risultato="- à";
 	}
 	
 	public Squadra getSquadraCasa() {

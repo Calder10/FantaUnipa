@@ -301,6 +301,8 @@ public class Asta implements SubjectAsta {
 									this.completaAstaSquadreVirtuali(this.tipo);
 									astaGUI.dispose();
 									HomeGUI nextFrame2 = new HomeGUI(username);
+									Torneo t = Torneo.getTorneo();
+									t.saveTorneo();
 									nextFrame2.setVisible(true);
 									nextFrame2.toFront();
 								}

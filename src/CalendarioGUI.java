@@ -1,23 +1,16 @@
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import java.awt.Font;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
 import javax.swing.JButton;
+import java.awt.Font;
 
-public class HomeGUI extends JFrame {
+public class CalendarioGUI extends JFrame {
 
 	private JPanel contentPane;
-	private String username;
 	private JPanel panel;
 	private JLabel lblNewLabelGiornata;
 	private JLabel lblNewLabelLogoCasa1;
@@ -36,7 +29,13 @@ public class HomeGUI extends JFrame {
 	private JLabel lblNewLabelRis2;
 	private JLabel lblNewLabelRis3;
 
-	
+	public JPanel getPanel() {
+		return panel;
+	}
+
+	public void setPanel(JPanel panel) {
+		this.panel = panel;
+	}
 	
 	public JPanel getContentPane() {
 		return contentPane;
@@ -170,108 +169,73 @@ public class HomeGUI extends JFrame {
 		this.lblNewLabelRis3 = lblNewLabelRis3;
 	}
 
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
 	
-	
-
-
-	public HomeGUI(String username) throws IOException {
-		super("Home");
+	public CalendarioGUI() {
+		super("Calendario");
 		setResizable(false);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 919, 488);
+		setBounds(100, 100, 731, 321);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		this.username=username;
 		
-		JLabel lblNewLabel = new JLabel("TORNEO FANTAUNIPA");
-		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 30));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(274, 6, 367, 33);
-		contentPane.add(lblNewLabel);
+		JButton btnNewButtonGiornata1 = new JButton("Giornata 1");
+		btnNewButtonGiornata1.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+		btnNewButtonGiornata1.setBounds(6, 6, 154, 46);
+		contentPane.add(btnNewButtonGiornata1);
 		
-		JLabel lblNewLabelLogo = new JLabel();
+		JButton btnNewButtonGiornata2 = new JButton("Giornata 2");
+		btnNewButtonGiornata2.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+		btnNewButtonGiornata2.setBounds(6, 64, 154, 46);
+		contentPane.add(btnNewButtonGiornata2);
 		
-		ClassLoader cl = this.getClass().getClassLoader();
-		Squadra squadra = Squadra.getSquadraFromFile(username);
-		Path path = Paths.get(squadra.getPathLogo());
-		ImageIcon img = new ImageIcon(squadra.getPathLogo());
-		lblNewLabelLogo.setIcon(img);
-		lblNewLabelLogo.setBounds(22, 27, 69, 67);
-		contentPane.add(lblNewLabelLogo);
+		JButton btnNewButtonGiornata3 = new JButton("Giornata 3");
+		btnNewButtonGiornata3.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+		btnNewButtonGiornata3.setBounds(6, 122, 154, 46);
+		contentPane.add(btnNewButtonGiornata3);
 		
-		JLabel lblNewLabelNomeSquadra = new JLabel();
-		lblNewLabelNomeSquadra.setText(squadra.getNomeSquadra());
-		lblNewLabelNomeSquadra.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
-		lblNewLabelNomeSquadra.setBounds(97, 40, 203, 33);
-		contentPane.add(lblNewLabelNomeSquadra);
+		JButton btnNewButtonGiornata4 = new JButton("Giornata 4");
+		btnNewButtonGiornata4.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+		btnNewButtonGiornata4.setBounds(6, 185, 154, 46);
+		contentPane.add(btnNewButtonGiornata4);
 		
-		JLabel lblNewLabelUsername = new JLabel();
-		lblNewLabelUsername.setText("Ciao, "+squadra.getFantallenatore().getUsername());
-		lblNewLabelUsername.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		lblNewLabelUsername.setBounds(721, 2, 216, 47);
-		contentPane.add(lblNewLabelUsername);
-		
-		JButton btnNewButtonLaMiaRosa = new JButton("La mia rosa");
-		btnNewButtonLaMiaRosa.setBounds(23, 148, 128, 47);
-		contentPane.add(btnNewButtonLaMiaRosa);
-		
-		JButton buttonSquadre = new JButton("Squadre");
-		buttonSquadre.setBounds(23, 207, 128, 47);
-		contentPane.add(buttonSquadre);
-		
-		JButton buttonCalendario = new JButton("Caldendario");
-		buttonCalendario.setBounds(23, 266, 128, 47);
-		contentPane.add(buttonCalendario);
-		
-		JButton buttonClassifica = new JButton("Classifica");
-		buttonClassifica.setBounds(23, 325, 128, 47);
-		contentPane.add(buttonClassifica);
-		
-		JButton btnNewButtonScheraFormazione = new JButton("Schera Formazione");
-		btnNewButtonScheraFormazione.setBounds(715, 402, 178, 47);
-		contentPane.add(btnNewButtonScheraFormazione);
+		JButton btnNewButtonGiornata5 = new JButton("Giornata 5");
+		btnNewButtonGiornata5.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+		btnNewButtonGiornata5.setBounds(6, 243, 154, 46);
+		contentPane.add(btnNewButtonGiornata5);
 		
 		panel = new JPanel();
-		panel.setBounds(180, 85, 713, 301);
+		panel.setBounds(172, 6, 553, 283);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		lblNewLabelGiornata = new JLabel("New label");
+		lblNewLabelGiornata = new JLabel();
+		lblNewLabelGiornata.setBounds(200, 5, 152, 25);
 		lblNewLabelGiornata.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		lblNewLabelGiornata.setBounds(280, 6, 152, 25);
 		panel.add(lblNewLabelGiornata);
 		
 		lblNewLabelLogoCasa1 = new JLabel();
-		lblNewLabelLogoCasa1.setBounds(6, 55, 69, 67);
+		lblNewLabelLogoCasa1.setBounds(22, 59, 69, 67);
 		panel.add(lblNewLabelLogoCasa1);
 		
 		lblNewLabelLogoCasa2 = new JLabel();
-		lblNewLabelLogoCasa2.setBounds(6, 131, 69, 67);
+		lblNewLabelLogoCasa2.setBounds(22, 138, 69, 67);
 		panel.add(lblNewLabelLogoCasa2);
 		
 		lblNewLabelLogoCasa3 = new JLabel();
-		lblNewLabelLogoCasa3.setBounds(6, 209, 69, 67);
+		lblNewLabelLogoCasa3.setBounds(22, 210, 69, 67);
 		panel.add(lblNewLabelLogoCasa3);
 		
 		lblNewLabelLogoTrasferta1 = new JLabel();
-		lblNewLabelLogoTrasferta1.setBounds(530, 55, 69, 67);
+		lblNewLabelLogoTrasferta1.setBounds(434, 59, 69, 67);
 		panel.add(lblNewLabelLogoTrasferta1);
 		
 		lblNewLabelLogoTrasferta2 = new JLabel();
-		lblNewLabelLogoTrasferta2.setBounds(530, 131, 69, 67);
+		lblNewLabelLogoTrasferta2.setBounds(434, 138, 69, 67);
 		panel.add(lblNewLabelLogoTrasferta2);
 		
 		lblNewLabelLogoTrasferta3 = new JLabel();
-		lblNewLabelLogoTrasferta3.setBounds(530, 209, 69, 67);
+		lblNewLabelLogoTrasferta3.setBounds(434, 210, 69, 67);
 		panel.add(lblNewLabelLogoTrasferta3);
 		
 		lblNewLabelNomeCasa1 = new JLabel();
@@ -279,11 +243,11 @@ public class HomeGUI extends JFrame {
 		panel.add(lblNewLabelNomeCasa1);
 		
 		lblNewLabelNomeTrasferta1 = new JLabel();
-		lblNewLabelNomeTrasferta1.setBounds(392, 84, 120, 16);
+		lblNewLabelNomeTrasferta1.setBounds(302, 84, 120, 16);
 		panel.add(lblNewLabelNomeTrasferta1);
 		
 		lblNewLabelRis1 = new JLabel();
-		lblNewLabelRis1.setBounds(287, 84, 61, 16);
+		lblNewLabelRis1.setBounds(230, 84, 61, 16);
 		panel.add(lblNewLabelRis1);
 		
 		lblNewLabelNomeCasa2 = new JLabel();
@@ -291,11 +255,11 @@ public class HomeGUI extends JFrame {
 		panel.add(lblNewLabelNomeCasa2);
 		
 		lblNewLabelRis2 = new JLabel();
-		lblNewLabelRis2.setBounds(287, 163, 61, 16);
+		lblNewLabelRis2.setBounds(230, 163, 61, 16);
 		panel.add(lblNewLabelRis2);
 		
 		lblNewLabelNomeTrasferta2 = new JLabel();
-		lblNewLabelNomeTrasferta2.setBounds(392, 163, 120, 16);
+		lblNewLabelNomeTrasferta2.setBounds(302, 163, 120, 16);
 		panel.add(lblNewLabelNomeTrasferta2);
 		
 		lblNewLabelNomeCasa3 = new JLabel();
@@ -303,40 +267,50 @@ public class HomeGUI extends JFrame {
 		panel.add(lblNewLabelNomeCasa3);
 		
 		lblNewLabelRis3 = new JLabel();
-		lblNewLabelRis3.setBounds(287, 235, 61, 16);
+		lblNewLabelRis3.setBounds(230, 235, 61, 16);
 		panel.add(lblNewLabelRis3);
 		
 		lblNewLabelNomeTrasferta3 = new JLabel();
-		lblNewLabelNomeTrasferta3.setBounds(392, 235, 120, 16);
+		lblNewLabelNomeTrasferta3.setBounds(302, 235, 120, 16);
 		panel.add(lblNewLabelNomeTrasferta3);
 		
-		Giornata.visualizzaGiornataDaGiocare(this);
-
 		
-		btnNewButtonLaMiaRosa.addActionListener(
-			e-> {
-				RosaGUI nextFrame=new RosaGUI(squadra);
-				nextFrame.toFront();
-				nextFrame.setVisible(true);
-			});
-		
-		buttonSquadre.addActionListener(
-				e-> {
-					SquadreGUI nextFrame;
-					try {
-						nextFrame = new SquadreGUI(squadra.getNomeSquadra());
-						nextFrame.toFront();
-						nextFrame.setVisible(true);
-					} catch (ClassNotFoundException e1) {
-						System.out.println("Errore !");
-					}
+		btnNewButtonGiornata1.addActionListener(
+				e->{
+					Giornata.visualizzaGiornata(this, 1);
+					this.getPanel().setVisible(true);
 				});
 		
-		buttonCalendario.addActionListener(
+		btnNewButtonGiornata1.addActionListener(
 				e->{
-					CalendarioGUI nextFrame = new CalendarioGUI();
-					nextFrame.toFront();
-					nextFrame.setVisible(true);
+					Giornata.visualizzaGiornata(this, 1);
+					this.getPanel().setVisible(true);
+				});
+		
+		btnNewButtonGiornata2.addActionListener(
+				e->{
+					Giornata.visualizzaGiornata(this, 2);
+					this.getPanel().setVisible(true);
+				});
+		
+		btnNewButtonGiornata3.addActionListener(
+				e->{
+					Giornata.visualizzaGiornata(this, 3);
+					this.getPanel().setVisible(true);
+				});
+		
+		btnNewButtonGiornata4.addActionListener(
+				e->{
+					Giornata.visualizzaGiornata(this, 4);
+					this.getPanel().setVisible(true);
+				});
+		
+		btnNewButtonGiornata5.addActionListener(
+				e->{
+					Giornata.visualizzaGiornata(this, 5);
+					this.getPanel().setVisible(true);
 				});
 	}
+
+
 }
