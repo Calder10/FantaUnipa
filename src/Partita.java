@@ -4,8 +4,8 @@ public class Partita implements Serializable{
 	private Squadra squadraCasa;
 	private Squadra squadraTrasferta;
 	private String risultato;
-	//private Formazione formazioneSquadraCasa;
-	//private Formazione formazioneSquadraTrasferta;
+	private Formazione formazioneSquadraCasa;
+	private Formazione formazioneSquadraTrasferta;
 	
 	public Partita (Squadra casa, Squadra trasferta) {
 		this.squadraCasa=casa;
