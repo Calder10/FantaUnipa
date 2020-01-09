@@ -9,6 +9,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Torneo implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7858483060552979173L;
 	private String nomeTorneo;
 	private ArrayList<Squadra> squadre;
 	private Giornate giornate;

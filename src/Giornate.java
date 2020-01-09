@@ -11,6 +11,10 @@ import javax.swing.JPanel;
 
 public class Giornate implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2567694931019254675L;
 	private ArrayList<Giornata> giornate;
 
 	public Giornate(ArrayList<Squadra> squadre) {

@@ -9,6 +9,10 @@ import javax.swing.ImageIcon;
 
 public class Giornata implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2251213532547137066L;
 	private Partite partite;
 	boolean giocata=false;
 	
@@ -38,7 +42,7 @@ public class Giornata implements Serializable{
 		FileInputStream fis = null;
 		ObjectInputStream  ois =null;
 		Giornata g = null;
-		Torneo t = null;
+		Torneo t;
 		try {
 			f = new File("src/torneo.dat");
 			fis = new FileInputStream(f);
@@ -48,7 +52,8 @@ public class Giornata implements Serializable{
 			ois.close();
 			fis.close();
 		} catch (IOException | ClassNotFoundException e) {
-			System.out.println("Errore nella lettura dal file !");
+			e.printStackTrace();
+			//System.out.println("Errore nella lettura dal file !");
 		}
 		ImageIcon img = null;
 		calendarioGUI.getLblNewLabelGiornata().setText("Giornata "+numeroGiornata);
@@ -102,7 +107,8 @@ public class Giornata implements Serializable{
 			ois.close();
 			fis.close();
 		} catch (IOException | ClassNotFoundException e) {
-			System.out.println("Errore nella lettura dal file !");
+			e.printStackTrace();
+			//System.out.println("Errore nella lettura dal file !");
 		}
 		
 		int i=0;

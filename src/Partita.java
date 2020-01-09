@@ -1,6 +1,10 @@
 import java.io.Serializable;
 
 public class Partita implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8300870919346163806L;
 	private Squadra squadraCasa;
 	private Squadra squadraTrasferta;
 	private String risultato;
@@ -10,7 +14,7 @@ public class Partita implements Serializable{
 	public Partita (Squadra casa, Squadra trasferta) {
 		this.squadraCasa=casa;
 		this.squadraTrasferta=trasferta;
-		this.risultato="- à";
+		this.risultato=" - ";
 	}
 	
 	public Squadra getSquadraCasa() {

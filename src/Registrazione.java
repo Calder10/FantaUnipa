@@ -4,7 +4,7 @@ public class Registrazione {
 	private FantallenatoreBuilder fantallenatore;
 
 	public void createDataFile() throws IOException {
-		File f = new File("dati.csv");
+		File f = new File("src/dati.csv");
 		if (f.exists() == false) {
 			FileWriter fw = new FileWriter(f);
 			fw.append("Nome,Cognome,Username,Password,Squadra,FantaCrediti\n");
@@ -17,7 +17,7 @@ public class Registrazione {
 		boolean flag = false;
 		try {
 			String line = "";
-			FileReader f = new FileReader("dati.csv");
+			FileReader f = new FileReader("src/dati.csv");
 			BufferedReader br = new BufferedReader(f);
 			line = br.readLine();
 			while ((line = br.readLine()) != null) {
@@ -40,7 +40,7 @@ public class Registrazione {
 
 	public void salvaUtente(Fantallenatore fantallenatore) throws IOException {
 		try {
-			FileWriter fw = new FileWriter("dati.csv", true);
+			FileWriter fw = new FileWriter("src/dati.csv", true);
 			fw.append(fantallenatore.getNome());
 			fw.append(",");
 			fw.append(fantallenatore.getCognome());
@@ -63,7 +63,7 @@ public class Registrazione {
 	public static String getFantaCreditiFromCsv(String username) throws IOException {
 		String ris = "";
 		String line = "";
-		FileReader f = new FileReader("dati.csv");
+		FileReader f = new FileReader("src/dati.csv");
 		BufferedReader br = new BufferedReader(f);
 		line = br.readLine();
 		while ((line = br.readLine()) != null) {
@@ -82,7 +82,7 @@ public class Registrazione {
 
 		try {
 			String line = "";
-			FileReader f = new FileReader("dati.csv");
+			FileReader f = new FileReader("src/dati.csv");
 			BufferedReader br = new BufferedReader(f);
 			line = br.readLine();
 			while ((line = br.readLine()) != null) {
@@ -122,7 +122,7 @@ public class Registrazione {
 		boolean ris = false;
 		try {
 			String line = "";
-			FileReader f = new FileReader("dati.csv");
+			FileReader f = new FileReader("src/dati.csv");
 			BufferedReader br = new BufferedReader(f);
 			line = br.readLine();
 			while ((line = br.readLine()) != null) {

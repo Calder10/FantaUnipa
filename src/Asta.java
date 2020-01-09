@@ -300,9 +300,9 @@ public class Asta implements SubjectAsta {
 									JOptionPane.showMessageDialog(astaGiocatoreGUI, "Asta attaccanti completata !");
 									this.completaAstaSquadreVirtuali(this.tipo);
 									astaGUI.dispose();
-									HomeGUI nextFrame2 = new HomeGUI(username);
 									Torneo t = Torneo.getTorneo();
 									t.saveTorneo();
+									HomeGUI nextFrame2 = new HomeGUI(username);
 									nextFrame2.setVisible(true);
 									nextFrame2.toFront();
 								}
@@ -508,6 +508,8 @@ public class Asta implements SubjectAsta {
 								o1.getSquadra().getFantallenatore().setFantaCrediti(newValue);
 								o1.getSquadra().addGiocatore(a.getGiocatore(), a.getTipo());
 								s.updateSquadra();
+								String fantacrediti= String.valueOf(newValue).toString();
+								a.updateFantacreditiCsv(o1.getSquadra().getFantallenatore().getUsername(), fantacrediti);
 								UtilityListaGiocatori.giocatoreAcquistato(a.getTipo(), a.giocatore.getNomeGiocatore());
 								break;
 							}
@@ -517,12 +519,11 @@ public class Asta implements SubjectAsta {
 				}
 			}
 			
-			
 		}
 	}
 	public static void updateFantacreditiCsv(String username, String fantacrediti) throws IOException {
 		
-		File f = new File("dati.csv");
+		File f = new File("src/dati.csv");
 		FileReader fr = new FileReader(f);
 		String path1 = "dati1.csv";
 		BufferedReader br = new BufferedReader(fr);

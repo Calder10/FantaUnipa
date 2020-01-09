@@ -24,6 +24,10 @@ import java.nio.file.Files;
 import java.nio.file.*;
 
 public class Squadra implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1772300263662162498L;
 	protected Fantallenatore fantallenatore;
 	protected String nomeSquadra;
 	protected String pathLogo;
@@ -81,7 +85,7 @@ public class Squadra implements Serializable {
 
 	public void addNomeSquadraToCsv(String username, String nomeSquadra) throws IOException {
 		try {
-			File f = new File("dati.csv");
+			File f = new File("src/dati.csv");
 			File f1 = new File("dat1.csv");
 			FileReader fr = new FileReader(f);
 			BufferedReader br = new BufferedReader(fr);
@@ -201,7 +205,7 @@ public class Squadra implements Serializable {
 		String pathSquadra;
 		Squadra squadra = null;
 		List<List<String>> values = null;
-		try (Stream<String> stream = Files.lines(Paths.get("dati.csv"))) {
+		try (Stream<String> stream = Files.lines(Paths.get("src/dati.csv"))) {
 
 			values = stream.skip(1).filter(line -> line.contains(username)).map(line -> Arrays.asList(line.split(",")))
 					.collect(Collectors.toList());

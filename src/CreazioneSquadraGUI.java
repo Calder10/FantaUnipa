@@ -93,50 +93,44 @@ public class CreazioneSquadraGUI extends JFrame {
 		btnNewButtonContinua.setContentAreaFilled(false);
 		btnNewButtonContinua.setBounds(494, 311, 173, 92);
 		contentPane.add(btnNewButtonContinua);
-		btnNewButtonScegli.addActionListener(new ActionListener() {
+		btnNewButtonScegli.addActionListener(e -> {
+			int ris = fc.showOpenDialog(null);
+			if (ris == fc.APPROVE_OPTION) {
+				File f = fc.getSelectedFile();
+				try {
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
+					image.setIcon(new ImageIcon(ImageIO.read(f)));
 
-				int ris = fc.showOpenDialog(null);
-				if (ris == fc.APPROVE_OPTION) {
-					File f = fc.getSelectedFile();
-					try {
-
-						image.setIcon(new ImageIcon(ImageIO.read(f)));
-
-					} catch (IOException ex) {
-						ex.printStackTrace();
-					}
+				} catch (IOException ex) {
+					ex.printStackTrace();
 				}
 			}
 		});
 
-		btnNewButtonContinua.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if (textFieldNomeSquadra.getText().equalsIgnoreCase("")) {
-					JOptionPane.showMessageDialog(textFieldNomeSquadra, "Nome Squadra non può essere vuoto");
-				} else {
+		btnNewButtonContinua.addActionListener(e -> {
+			if (textFieldNomeSquadra.getText().equalsIgnoreCase("")) {
+				JOptionPane.showMessageDialog(textFieldNomeSquadra, "Nome Squadra non può essere vuoto");
+			} else {
 
-					s.setNomeSquadra(textFieldNomeSquadra.getText());
-					f = fc.getSelectedFile();
-					s.salvaLogo(f);
-					try {
-						s.addNomeSquadraToCsv(username, textFieldNomeSquadra.getText());
-						s.salvaSquadraSuFile();
-						SquadraVirtuale.creaSquadreVirtuali();
-						AstaGUI nextFrame;
+				s.setNomeSquadra(textFieldNomeSquadra.getText());
+				f = fc.getSelectedFile();
+				if (f == null) {
+					JOptionPane.showMessageDialog(btnNewButtonScegli, "Inserire il logo della squadra !");
+				}
+				s.salvaLogo(f);
+				try {
+					s.addNomeSquadraToCsv(username, textFieldNomeSquadra.getText());
+					s.salvaSquadraSuFile();
+					SquadraVirtuale.creaSquadreVirtuali();
+					AstaGUI nextFrame;
 
-								nextFrame = new AstaPortieriGUI(username);
-								nextFrame.setVisible(true);
-								nextFrame.toFront();
-								setVisible(false);
-						
+					nextFrame = new AstaPortieriGUI(username);
+					nextFrame.setVisible(true);
+					nextFrame.toFront();
+					setVisible(false);
 
-					} catch (IOException e2) {
-						e2.printStackTrace();
-					} 
+				} catch (IOException e2) {
+					e2.printStackTrace();
 				}
 			}
 		});

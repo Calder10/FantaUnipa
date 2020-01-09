@@ -6,6 +6,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
+
+
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -17,6 +20,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
+import java.util.regex.Matcher;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -129,31 +133,41 @@ public class AstaGiocatoreGUI extends JFrame {
 		Asta a = new Asta(g, tipo);
 		ConcreteObserverAsta o = a.getObs().get(0);
 		int fantaCrediti = o.getSquadra().getFantallenatore().getFantaCrediti();
-		btnNewButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				textArea.setText("");
-				int p = Integer.parseInt(textField.getText());
-				if (p > fantaCrediti) {
-					JOptionPane.showMessageDialog(textField, "Non hai abbastanza FantaCrediti !");
-					textField.setText("");
-				}
-				a.eseguiAsta(astaGUI, getAstaGiocatoreGUI(), textField, getUsername(), textArea,
-						btnNewButtonRinuncia);
-			}
-		});
+		btnNewButton.addActionListener(
+				e->{
+					textArea.setText("");
+					int p=0;
+					try {
+						p = Integer.parseInt(textField.getText());
+					}
+					catch (NumberFormatException c) {
+						System.out.println("Errore !");
+					}
+					if(p==0) {
+						JOptionPane.showMessageDialog(textField, "Caratteri non ammessi !");
+						textField.setText("");
+					}
+					if (p > fantaCrediti) {
+						JOptionPane.showMessageDialog(textField, "Non hai abbastanza FantaCrediti !");
+						textField.setText("");
+					}
+					if(textField.getText()=="") {
+						JOptionPane.showMessageDialog(textField, "Inserisci la puntata !");
+						textField.setText("");
+					}
+					a.eseguiAsta(astaGUI, getAstaGiocatoreGUI(), textField, getUsername(), textArea,
+							btnNewButtonRinuncia);
+				
+			});
 
-		btnNewButtonRinuncia.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
+		btnNewButtonRinuncia.addActionListener(
+				e->{
 				try {
 					a.simulaRinuncia(getUsername(), getAstaGiocatoreGUI());
 				} catch (IOException e1) {
 
 					e1.printStackTrace();
 				}
-			}
 		});
 
 	}

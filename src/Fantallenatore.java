@@ -1,6 +1,10 @@
 import java.io.*;
 
 public class Fantallenatore implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4128003979802930265L;
 	private String nome;
 	private String cognome;
 	private String username;
@@ -58,7 +62,7 @@ public class Fantallenatore implements Serializable {
 	
 	public static Fantallenatore getFantallenatoreFromCsv(String nomeSquadra) throws IOException {
 		Fantallenatore f = new Fantallenatore();
-		FileReader fr = new FileReader("dati.csv");
+		FileReader fr = new FileReader("src/dati.csv");
 		BufferedReader br = new BufferedReader(fr);
 		String line = br.readLine();
 		while ((line = br.readLine()) != null) {

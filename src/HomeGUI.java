@@ -245,7 +245,7 @@ public class HomeGUI extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		lblNewLabelGiornata = new JLabel("New label");
+		lblNewLabelGiornata = new JLabel("");
 		lblNewLabelGiornata.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		lblNewLabelGiornata.setBounds(280, 6, 152, 25);
 		panel.add(lblNewLabelGiornata);

@@ -5,13 +5,17 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class SquadraVirtuale extends Squadra {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8111726822249143937L;
 	private static String[] nomiSquadra = { "FantaInter", "FantaFiorentina", "FantaJuventus", "FantaMilan",
 			"FantaSassuolo", "FantaRoma", "FantaLazio" };
 	private static boolean[] isFree = { false, false, false, false, false, false, false };
 
 	public static void creaSquadreVirtuali() throws IOException {
 		String line = "";
-		FileReader f = new FileReader("dati.csv");
+		FileReader f = new FileReader("src/dati.csv");
 		BufferedReader br = new BufferedReader(f);
 		line = br.readLine();
 		line = br.readLine();
