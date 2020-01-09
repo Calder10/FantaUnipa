@@ -21,7 +21,7 @@ public class GUI433 extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public GUI433() {
+	public GUI433(String username) {
 		super("Inserimento formazione");
 		setResizable(false);
 		setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);

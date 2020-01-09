@@ -236,9 +236,9 @@ public class HomeGUI extends JFrame {
 		buttonClassifica.setBounds(23, 325, 128, 47);
 		contentPane.add(buttonClassifica);
 		
-		JButton btnNewButtonScheraFormazione = new JButton("Schera Formazione");
-		btnNewButtonScheraFormazione.setBounds(715, 402, 178, 47);
-		contentPane.add(btnNewButtonScheraFormazione);
+		JButton btnNewButtonSchieraFormazione = new JButton("Schiera Formazione");
+		btnNewButtonSchieraFormazione.setBounds(715, 402, 178, 47);
+		contentPane.add(btnNewButtonSchieraFormazione);
 		
 		panel = new JPanel();
 		panel.setBounds(180, 85, 713, 301);
@@ -335,6 +335,13 @@ public class HomeGUI extends JFrame {
 		buttonCalendario.addActionListener(
 				e->{
 					CalendarioGUI nextFrame = new CalendarioGUI();
+					nextFrame.toFront();
+					nextFrame.setVisible(true);
+				});
+		
+		btnNewButtonSchieraFormazione.addActionListener(
+				l->{
+					ScegliFormazioneGUI nextFrame = new ScegliFormazioneGUI(username);
 					nextFrame.toFront();
 					nextFrame.setVisible(true);
 				});

@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Collections;
+
 /**
  * 
  */
@@ -116,5 +119,28 @@ public abstract class Formazione {
 		this.attaccantiRiserva = attaccantiRiserva;
 	}
 	
+	protected static boolean checkFormazione(String p,ArrayList<String> d,ArrayList<String> c,ArrayList<String> a) {
+		int checkDifensori=0;
+		int checkCentrocampisti=0;
+		int checkAttaccanti=0;
+		
+		
+		for (String s : d) {
+			checkDifensori+=Collections.frequency(d, s);
+		}
+			
+		for (String s1 : c) {
+			checkCentrocampisti+=Collections.frequency(c, s1);
+		}
+		
+		for (String s2 : a) {
+			checkAttaccanti+=Collections.frequency(a, s2);
+		}
+		
+		if(checkDifensori==4 && checkCentrocampisti==4 && checkAttaccanti==2)
+			return true;
+		else 
+			return false;
+	}
 	
 }
