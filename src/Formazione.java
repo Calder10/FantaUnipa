@@ -138,34 +138,4 @@ public abstract class Formazione implements Serializable{
 		this.attaccantiRiserva = attaccantiRiserva;
 	}
 	
-	protected static boolean checkFormazione(ArrayList<String> p,ArrayList<String> d,ArrayList<String> c,ArrayList<String> a) {
-		
-		int checkPortieri=0;
-		int checkDifensori=0;
-		int checkCentrocampisti=0;
-		int checkAttaccanti=0;
-		
-		for (String s : p) {
-			checkPortieri+=Collections.frequency(p, s);
-		}
-		
-		
-		for (String s : d) {
-			checkDifensori+=Collections.frequency(d, s);
-		}
-			
-		for (String s1 : c) {
-			checkCentrocampisti+=Collections.frequency(c, s1);
-		}
-		
-		for (String s2 : a) {
-			checkAttaccanti+=Collections.frequency(a, s2);
-		}
-		
-		if(checkPortieri==2 && checkDifensori==6 && checkCentrocampisti==6 && checkAttaccanti==4)
-			return true;
-		else 
-			return false;
-	}
-	
 }

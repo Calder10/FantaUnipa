@@ -238,7 +238,7 @@ public class GUI442 extends JFrame {
 					 
 					 
 					 
-					 boolean ris = Formazione.checkFormazione(p, d, c ,a);
+					 boolean ris = Formazione442.checkFormazione(p, d, c ,a);
 					 
 					 if (ris==false) {
 						 JOptionPane.showMessageDialog(btnNewButtonConferma, "Errore ! Hai inserito lo stesso giocatore più di una volta");

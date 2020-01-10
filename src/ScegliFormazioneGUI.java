@@ -66,19 +66,19 @@ public class ScegliFormazioneGUI extends JFrame {
 							e.printStackTrace();
 						}
 					case "3-4-3":
-						GUI343 nextFrame1 = new GUI343(username,squadra);
+						GUI343 nextFrame1 = new GUI343(username,squadra,numeroGiornata);
 						nextFrame1.toFront();
 						nextFrame1.setVisible(true);
 						this.dispose();
 						break;
 					case "4-3-3":
-						GUI433 nextFrame2 = new GUI433(username,squadra);
+						GUI433 nextFrame2 = new GUI433(username,squadra,numeroGiornata);
 						nextFrame2.toFront();
 						nextFrame2.setVisible(true);
 						this.dispose();
 						break;
 					case "3-5-2":
-						GUI352 nextFrame3 = new GUI352(username,squadra);
+						GUI352 nextFrame3 = new GUI352(username,squadra,numeroGiornata);
 						nextFrame3.toFront();
 						nextFrame3.setVisible(true);
 						this.dispose();
