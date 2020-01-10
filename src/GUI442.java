@@ -14,6 +14,9 @@ import javax.swing.JComboBox;
 import java.awt.Color;
 import java.awt.Dialog.ModalExclusionType;
 import javax.swing.JButton;
+import javax.swing.JList;
+import java.awt.Font;
+import javax.swing.SwingConstants;
 
 /**
  * @author Salvatore Calderaro
@@ -39,7 +42,7 @@ public class GUI442 extends JFrame {
 		setResizable(false);
 		setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 811, 687);
+		setBounds(100, 100, 811, 814);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -141,8 +144,68 @@ public class GUI442 extends JFrame {
 		background.add(attaccante2);
 		
 		JButton btnNewButtonConferma = new JButton("CONFERMA");
-		btnNewButtonConferma.setBounds(641, 607, 164, 52);
+		btnNewButtonConferma.setBounds(647, 688, 164, 52);
 		contentPane.add(btnNewButtonConferma);
+		
+		JLabel lblNewLabel = new JLabel("Seleziona le riserve");
+		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		lblNewLabel.setBounds(16, 618, 212, 37);
+		contentPane.add(lblNewLabel);
+		
+		JComboBox portiereRiserva = new JComboBox(new Object[]{});
+		portiereRiserva.setBackground(Color.WHITE);
+		portiereRiserva.setBounds(6, 681, 144, 27);
+		contentPane.add(portiereRiserva);
+		
+		JComboBox difenoreRiserva1 = new JComboBox(new Object[]{});
+		difenoreRiserva1.setBackground(Color.WHITE);
+		difenoreRiserva1.setBounds(162, 681, 144, 27);
+		contentPane.add(difenoreRiserva1);
+		
+		JComboBox difensoreRiserva2 = new JComboBox(new Object[]{});
+		difensoreRiserva2.setBackground(Color.WHITE);
+		difensoreRiserva2.setBounds(162, 740, 144, 27);
+		contentPane.add(difensoreRiserva2);
+		
+		JComboBox centrocampistaRiserva1 = new JComboBox(new Object[]{});
+		centrocampistaRiserva1.setBackground(Color.WHITE);
+		centrocampistaRiserva1.setBounds(331, 681, 144, 27);
+		contentPane.add(centrocampistaRiserva1);
+		
+		JLabel lblNewLabel_1 = new JLabel("Portiere");
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setBounds(49, 656, 61, 16);
+		contentPane.add(lblNewLabel_1);
+		
+		JLabel lblDi = new JLabel("Difensori");
+		lblDi.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDi.setBounds(199, 656, 61, 16);
+		contentPane.add(lblDi);
+		
+		JLabel lblCentrocampisti = new JLabel("Centrocampisti");
+		lblCentrocampisti.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCentrocampisti.setBounds(349, 656, 115, 16);
+		contentPane.add(lblCentrocampisti);
+		
+		JComboBox centrocampistaRiserva2 = new JComboBox(new Object[]{});
+		centrocampistaRiserva2.setBackground(Color.WHITE);
+		centrocampistaRiserva2.setBounds(331, 740, 144, 27);
+		contentPane.add(centrocampistaRiserva2);
+		
+		JComboBox attaccanteRiserva1 = new JComboBox(new Object[]{});
+		attaccanteRiserva1.setBackground(Color.WHITE);
+		attaccanteRiserva1.setBounds(487, 681, 144, 27);
+		contentPane.add(attaccanteRiserva1);
+		
+		JComboBox attaccanteRiserva2 = new JComboBox(new Object[]{});
+		attaccanteRiserva2.setBackground(Color.WHITE);
+		attaccanteRiserva2.setBounds(487, 740, 144, 27);
+		contentPane.add(attaccanteRiserva2);
+		
+		JLabel lblAttaccanti = new JLabel("Attaccanti");
+		lblAttaccanti.setHorizontalAlignment(SwingConstants.CENTER);
+		lblAttaccanti.setBounds(501, 656, 115, 16);
+		contentPane.add(lblAttaccanti);
 
 		btnNewButtonConferma.addActionListener(
 				e->{
@@ -163,23 +226,26 @@ public class GUI442 extends JFrame {
 					 a.add(attaccante1.getSelectedItem().toString());
 					 a.add(attaccante2.getSelectedItem().toString());
 					 
+					 
+					 portieri.remove(portiere.getSelectedIndex()+1);
+					 difensori.remove(difensore1.getSelectedIndex()+1);
+					 difensori.remove(difensore2.getSelectedIndex()+1);
+					 difensori.remove(difensore3.getSelectedIndex()+1);
+					 difensori.remove(difensore4.getSelectedIndex()+1);
+					 centrocampisti.remove(centrocampista1.getSelectedIndex()+1);
+					 centrocampisti.remove(centrocampista2.getSelectedIndex()+1);
+					 centrocampisti.remove(centrocampista3.getSelectedIndex()+1);
+					 centrocampisti.remove(centrocampista4.getSelectedIndex()+1);
+					 attaccanti.remove(attaccante1.getSelectedIndex()+1);
+					 attaccanti.remove(attaccante2.getSelectedIndex()+1);
+					 
 					 boolean ris = Formazione.checkFormazione(p, d, c ,a);
 					 
 					 if (ris==false) {
 						 JOptionPane.showMessageDialog(btnNewButtonConferma, "Errore ! Hai inserito lo stesso giocatore più di una volta");
 					 }
 					 else {
-						 portieri.remove(portiere.getSelectedIndex()+1);
-						 difensori.remove(difensore1.getSelectedIndex()+1);
-						 difensori.remove(difensore2.getSelectedIndex()+1);
-						 difensori.remove(difensore3.getSelectedIndex()+1);
-						 difensori.remove(difensore4.getSelectedIndex()+1);
-						 centrocampisti.remove(centrocampista1.getSelectedIndex()+1);
-						 centrocampisti.remove(centrocampista2.getSelectedIndex()+1);
-						 centrocampisti.remove(centrocampista3.getSelectedIndex()+1);
-						 centrocampisti.remove(centrocampista4.getSelectedIndex()+1);
-						 attaccanti.remove(attaccante1.getSelectedIndex()+1);
-						 attaccanti.remove(attaccante2.getSelectedIndex()+1);
+						 
 					 }
 				});
 		
