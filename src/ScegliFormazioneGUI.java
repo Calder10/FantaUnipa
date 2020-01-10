@@ -26,7 +26,7 @@ public class ScegliFormazioneGUI extends JFrame {
 	/**
 	 * 
 	 */
-	public ScegliFormazioneGUI(String username) {
+	public ScegliFormazioneGUI(String username,Squadra squadra,int numeroGiornata) {
 		super("Schera Formazione");
 		setResizable(false);
 		setBounds(100, 100, 525, 129);
@@ -57,7 +57,7 @@ public class ScegliFormazioneGUI extends JFrame {
 					case "4-4-2":
 						GUI442 nextFrame;
 						try {
-							nextFrame = new GUI442(username);
+							nextFrame = new GUI442(username,squadra,numeroGiornata);
 							nextFrame.toFront();
 							nextFrame.setVisible(true);
 							this.dispose();
@@ -66,19 +66,19 @@ public class ScegliFormazioneGUI extends JFrame {
 							e.printStackTrace();
 						}
 					case "3-4-3":
-						GUI343 nextFrame1 = new GUI343(username);
+						GUI343 nextFrame1 = new GUI343(username,squadra);
 						nextFrame1.toFront();
 						nextFrame1.setVisible(true);
 						this.dispose();
 						break;
 					case "4-3-3":
-						GUI433 nextFrame2 = new GUI433(username);
+						GUI433 nextFrame2 = new GUI433(username,squadra);
 						nextFrame2.toFront();
 						nextFrame2.setVisible(true);
 						this.dispose();
 						break;
 					case "3-5-2":
-						GUI352 nextFrame3 = new GUI352(username);
+						GUI352 nextFrame3 = new GUI352(username,squadra);
 						nextFrame3.toFront();
 						nextFrame3.setVisible(true);
 						this.dispose();

@@ -41,7 +41,7 @@ public class Partita implements Serializable{
 		this.risultato = risultato;
 	}
 	
-	/*
+	
 	public Formazione getFormazioneSquadraCasa() {
 		return formazioneSquadraCasa;
 	}
@@ -57,5 +57,5 @@ public class Partita implements Serializable{
 	public void setFormazioneSquadraTrasferta(Formazione formazioneSquadraTrasferta) {
 		this.formazioneSquadraTrasferta = formazioneSquadraTrasferta;
 	}
-	*/
+	
 }

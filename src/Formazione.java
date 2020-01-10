@@ -1,5 +1,6 @@
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
 /**
@@ -12,6 +13,17 @@ import java.util.Collections;
  */
 public abstract class Formazione implements Serializable{
 	
+	@Override
+	public String toString() {
+		return "Formazione [portiereTitolare=" + portiereTitolare + ", difensoriTitolari="
+				+ Arrays.toString(difensoriTitolari) + ", centrocampistiTitolari="
+				+ Arrays.toString(centrocampistiTitolari) + ", attaccantiTitolari="
+				+ Arrays.toString(attaccantiTitolari) + ", portiereRiserva=" + portiereRiserva + ", difensoriRiserva="
+				+ Arrays.toString(difensoriRiserva) + ", centrocampistiRiserva="
+				+ Arrays.toString(centrocampistiRiserva) + ", attaccantiRiserva=" + Arrays.toString(attaccantiRiserva)
+				+ "]";
+	}
+
 	/**
 	 * 
 	 */
@@ -27,7 +39,7 @@ public abstract class Formazione implements Serializable{
 	protected Attaccante [] attaccantiRiserva;
 	
 	
-	protected abstract void settaFormazione(ArrayList<String> p, ArrayList<String> d, ArrayList<String> c,ArrayList<String> a);
+	protected abstract void settaFormazione(ArrayList<String> p, ArrayList<String> d, ArrayList<String> c,ArrayList<String> a,Squadra s);
 	/**
 	 * @return the portiereTitolare
 	 */

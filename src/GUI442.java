@@ -37,7 +37,7 @@ public class GUI442 extends JFrame {
 	 * Create the frame.
 	 * @throws IOException 
 	 */
-	public GUI442(String username) throws IOException {
+	public GUI442(String username,Squadra s,int numeroGiornata) throws IOException {
 		super("Inserimento formazione");
 		setResizable(false);
 		setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
@@ -54,7 +54,6 @@ public class GUI442 extends JFrame {
 		background.setBounds(6, 6, 800, 600);
 		contentPane.add(background);
 		
-		Squadra s = Squadra.getSquadraFromFile(username);
 		ArrayList<String> portieri= new ArrayList<>();
 		portieri.add("");
 		for(Portiere p : s.getPortieri()) {
@@ -246,9 +245,8 @@ public class GUI442 extends JFrame {
 					 }
 					 else {
 						 FormazioneFactory factory = new FormazioneFactory();
-						 Formazione f = factory.getFormazione(TipoFormazione.F442,p,d,c,a);
-						 // metodo per salvare la formazione nell'apposita partita;
-						 
+						 Formazione f = factory.getFormazione(TipoFormazione.F442,p,d,c,a,s);
+						 Giornata g = Giornata.setFormazioneGiornata(f, numeroGiornata, s);
 					 }
 				});
 		

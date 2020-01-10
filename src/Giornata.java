@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
@@ -92,12 +93,13 @@ public class Giornata implements Serializable{
 			calendarioGUI.getLblNewLabelRis3().setText(" - ");
 	}
 	
-	public static void visualizzaGiornataDaGiocare(HomeGUI homeGUI) {
+	public static int visualizzaGiornataDaGiocare(HomeGUI homeGUI) {
 		File f = null;
 		FileInputStream fis = null;
 		ObjectInputStream  ois =null;
 		Giornate g = null;
 		Torneo t = null;
+		int numeroGiornata=0;
 		try {
 			f = new File("src/torneo.dat");
 			fis = new FileInputStream(f);
@@ -107,14 +109,14 @@ public class Giornata implements Serializable{
 			ois.close();
 			fis.close();
 		} catch (IOException | ClassNotFoundException e) {
-			e.printStackTrace();
-			//System.out.println("Errore nella lettura dal file !");
+			System.out.println("Errore nella lettura dal file !");
 		}
 		
 		int i=0;
 		for(Giornata x : g.getGiornate()) {
 			if(x.isGiocata()==false) {
 				ImageIcon img = null;
+				numeroGiornata=i;
 				homeGUI.getLblNewLabelGiornata().setText("Giornata "+(i+1));
 				img = new ImageIcon(x.getPartite().getPartite().get(0).getSquadraCasa().getPathLogo());
 				homeGUI.getLblNewLabelLogoCasa1().setIcon(img);
@@ -145,6 +147,29 @@ public class Giornata implements Serializable{
 			else
 				i++;
 		}
+		
+		return numeroGiornata;
+	}
+	
+	public static boolean  Giornata(Formazione f , int numeroGiornata, Squadra s) throws IOException, ClassNotFoundException {
+		File file = new File("src/torneo.dat");
+		FileInputStream fis = new FileInputStream(file);
+		ObjectInputStream oos = new ObjectInputStream(fis);
+		Torneo t = (Torneo) oos.readObject();
+		Giornata g = t.getGiornate().getGiornate().get(numeroGiornata);
+		ArrayList<Partita> p = g.getPartite().getPartite();
+		Partita partita =null;
+		for(Partita x : p) {
+			if(x.getSquadraCasa().getNomeSquadra().equalsIgnoreCase(s.getNomeSquadra())) {
+				x.setFormazioneSquadraCasa(f);
+			}
+			
+			if(x.getSquadraTrasferta().getNomeSquadra().equalsIgnoreCase(s.getNomeSquadra())) {
+				x.setFormazioneSquadraTrasferta(f);
+			}
+		}
+		
+		g.s
 	}
 	
 }

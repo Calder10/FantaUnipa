@@ -310,7 +310,9 @@ public class HomeGUI extends JFrame {
 		lblNewLabelNomeTrasferta3.setBounds(392, 235, 120, 16);
 		panel.add(lblNewLabelNomeTrasferta3);
 		
-		Giornata.visualizzaGiornataDaGiocare(this);
+		
+		
+		int numeroGiornata = Giornata.visualizzaGiornataDaGiocare(this);
 
 		
 		btnNewButtonLaMiaRosa.addActionListener(
@@ -341,7 +343,7 @@ public class HomeGUI extends JFrame {
 		
 		btnNewButtonSchieraFormazione.addActionListener(
 				l->{
-					ScegliFormazioneGUI nextFrame = new ScegliFormazioneGUI(username);
+					ScegliFormazioneGUI nextFrame = new ScegliFormazioneGUI(username,squadra,numeroGiornata);
 					nextFrame.toFront();
 					nextFrame.setVisible(true);
 				});
