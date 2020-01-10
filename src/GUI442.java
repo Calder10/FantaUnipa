@@ -152,22 +152,22 @@ public class GUI442 extends JFrame {
 		lblNewLabel.setBounds(16, 618, 212, 37);
 		contentPane.add(lblNewLabel);
 		
-		JComboBox portiereRiserva = new JComboBox(new Object[]{});
+		JComboBox portiereRiserva = new JComboBox(listaPortieri);
 		portiereRiserva.setBackground(Color.WHITE);
 		portiereRiserva.setBounds(6, 681, 144, 27);
 		contentPane.add(portiereRiserva);
 		
-		JComboBox difenoreRiserva1 = new JComboBox(new Object[]{});
-		difenoreRiserva1.setBackground(Color.WHITE);
-		difenoreRiserva1.setBounds(162, 681, 144, 27);
-		contentPane.add(difenoreRiserva1);
+		JComboBox difensoreRiserva1 = new JComboBox(listaDifensori);
+		difensoreRiserva1.setBackground(Color.WHITE);
+		difensoreRiserva1.setBounds(162, 681, 144, 27);
+		contentPane.add(difensoreRiserva1);
 		
-		JComboBox difensoreRiserva2 = new JComboBox(new Object[]{});
+		JComboBox difensoreRiserva2 = new JComboBox(listaDifensori);
 		difensoreRiserva2.setBackground(Color.WHITE);
 		difensoreRiserva2.setBounds(162, 740, 144, 27);
 		contentPane.add(difensoreRiserva2);
 		
-		JComboBox centrocampistaRiserva1 = new JComboBox(new Object[]{});
+		JComboBox centrocampistaRiserva1 = new JComboBox(listaCentrocampisti);
 		centrocampistaRiserva1.setBackground(Color.WHITE);
 		centrocampistaRiserva1.setBounds(331, 681, 144, 27);
 		contentPane.add(centrocampistaRiserva1);
@@ -187,17 +187,17 @@ public class GUI442 extends JFrame {
 		lblCentrocampisti.setBounds(349, 656, 115, 16);
 		contentPane.add(lblCentrocampisti);
 		
-		JComboBox centrocampistaRiserva2 = new JComboBox(new Object[]{});
+		JComboBox centrocampistaRiserva2 = new JComboBox(listaCentrocampisti);
 		centrocampistaRiserva2.setBackground(Color.WHITE);
 		centrocampistaRiserva2.setBounds(331, 740, 144, 27);
 		contentPane.add(centrocampistaRiserva2);
 		
-		JComboBox attaccanteRiserva1 = new JComboBox(new Object[]{});
+		JComboBox attaccanteRiserva1 = new JComboBox(listaAttaccanti);
 		attaccanteRiserva1.setBackground(Color.WHITE);
 		attaccanteRiserva1.setBounds(487, 681, 144, 27);
 		contentPane.add(attaccanteRiserva1);
 		
-		JComboBox attaccanteRiserva2 = new JComboBox(new Object[]{});
+		JComboBox attaccanteRiserva2 = new JComboBox(listaAttaccanti);
 		attaccanteRiserva2.setBackground(Color.WHITE);
 		attaccanteRiserva2.setBounds(487, 740, 144, 27);
 		contentPane.add(attaccanteRiserva2);
@@ -209,35 +209,35 @@ public class GUI442 extends JFrame {
 
 		btnNewButtonConferma.addActionListener(
 				e->{
-					String p = portiere.getSelectedItem().toString();
+					
+					ArrayList<String> p = new ArrayList<>();
+					p.add(portiere.getSelectedItem().toString());
+					p.add(portiereRiserva.getSelectedItem().toString());
 					ArrayList<String> d = new ArrayList<>();
 					 d.add(difensore1.getSelectedItem().toString());
 					 d.add(difensore2.getSelectedItem().toString());
 					 d.add(difensore3.getSelectedItem().toString());
 					 d.add(difensore4.getSelectedItem().toString());
+					 d.add(difensoreRiserva1.getSelectedItem().toString());
+					 d.add(difensoreRiserva2.getSelectedItem().toString());
 					 
 					 ArrayList<String> c = new ArrayList<>();
 					 c.add(centrocampista1.getSelectedItem().toString());
 					 c.add(centrocampista2.getSelectedItem().toString());
 					 c.add(centrocampista3.getSelectedItem().toString());
 					 c.add(centrocampista4.getSelectedItem().toString());
+					 c.add(centrocampistaRiserva1.getSelectedItem().toString());
+					 c.add(centrocampistaRiserva2.getSelectedItem().toString());
+					 
 					 
 					 ArrayList<String> a = new ArrayList<>();
 					 a.add(attaccante1.getSelectedItem().toString());
 					 a.add(attaccante2.getSelectedItem().toString());
+					 a.add(attaccanteRiserva1.getSelectedItem().toString());
+					 a.add(attaccanteRiserva2.getSelectedItem().toString());
 					 
 					 
-					 portieri.remove(portiere.getSelectedIndex()+1);
-					 difensori.remove(difensore1.getSelectedIndex()+1);
-					 difensori.remove(difensore2.getSelectedIndex()+1);
-					 difensori.remove(difensore3.getSelectedIndex()+1);
-					 difensori.remove(difensore4.getSelectedIndex()+1);
-					 centrocampisti.remove(centrocampista1.getSelectedIndex()+1);
-					 centrocampisti.remove(centrocampista2.getSelectedIndex()+1);
-					 centrocampisti.remove(centrocampista3.getSelectedIndex()+1);
-					 centrocampisti.remove(centrocampista4.getSelectedIndex()+1);
-					 attaccanti.remove(attaccante1.getSelectedIndex()+1);
-					 attaccanti.remove(attaccante2.getSelectedIndex()+1);
+					 
 					 
 					 boolean ris = Formazione.checkFormazione(p, d, c ,a);
 					 
@@ -245,6 +245,9 @@ public class GUI442 extends JFrame {
 						 JOptionPane.showMessageDialog(btnNewButtonConferma, "Errore ! Hai inserito lo stesso giocatore più di una volta");
 					 }
 					 else {
+						 FormazioneFactory factory = new FormazioneFactory();
+						 Formazione f = factory.getFormazione(TipoFormazione.F442,p,d,c,a);
+						 // metodo per salvare la formazione nell'apposita partita;
 						 
 					 }
 				});

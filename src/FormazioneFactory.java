@@ -1,40 +1,39 @@
+import java.util.ArrayList;
 
 /**
  * @author Salvatore Calderaro
  * @author Gaspare Casano
  */
 public class FormazioneFactory {
-	
-	public enum Tipo{
-		F442,F343,F433,F352
-	}
-	
-	
+
 	/**
 	 * @param tipo
 	 * @return
 	 */
-	public Formazione getFormazione(Tipo tipo) {
-		Formazione f=null;
-		switch(tipo) {
+	public Formazione getFormazione(TipoFormazione tipo, ArrayList<String> p, ArrayList<String> d, ArrayList<String> c,
+			ArrayList<String> a) {
+		Formazione f = null;
+		switch (tipo) {
 		case F442:
-			f = new Formazione442();
+			f = new Formazione442(tipo, p, d, c, a);
 			break;
-		
 		case F343:
-			f = new Formazione343();
+			f = new Formazione343(tipo, p, d, c, a);
 			break;
-			
+
 		case F433:
-			f=new Formazione433();
+			f = new Formazione433(tipo, p, d, c, a);
 			break;
+
 		case F352:
-			f=new Formazione352();
+			f = new Formazione352(tipo, p, d, c, a);
 			break;
-		default: System.out.println("Scelta non consentita !");
+
+		default:
+			System.out.println("Scelta non consentita");
 		}
+
 		return f;
 	}
-	
 
 }

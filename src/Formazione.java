@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -9,7 +10,12 @@ import java.util.Collections;
  * @author Salvatore Calderaro
  * @author Gaspare Casano 
  */
-public abstract class Formazione {
+public abstract class Formazione implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -9015693335444170514L;
 	protected Portiere portiereTitolare;
 	protected Difensore [] difensoriTitolari;
 	protected Centrocampista [] centrocampistiTitolari;
@@ -21,7 +27,7 @@ public abstract class Formazione {
 	protected Attaccante [] attaccantiRiserva;
 	
 	
-	protected abstract Formazione creaFormazione();
+	protected abstract void settaFormazione(ArrayList<String> p, ArrayList<String> d, ArrayList<String> c,ArrayList<String> a);
 	/**
 	 * @return the portiereTitolare
 	 */
@@ -119,10 +125,16 @@ public abstract class Formazione {
 		this.attaccantiRiserva = attaccantiRiserva;
 	}
 	
-	protected static boolean checkFormazione(String p,ArrayList<String> d,ArrayList<String> c,ArrayList<String> a) {
+	protected static boolean checkFormazione(ArrayList<String> p,ArrayList<String> d,ArrayList<String> c,ArrayList<String> a) {
+		
+		int checkPortieri=0;
 		int checkDifensori=0;
 		int checkCentrocampisti=0;
 		int checkAttaccanti=0;
+		
+		for (String s : p) {
+			checkPortieri+=Collections.frequency(p, s);
+		}
 		
 		
 		for (String s : d) {
@@ -137,7 +149,7 @@ public abstract class Formazione {
 			checkAttaccanti+=Collections.frequency(a, s2);
 		}
 		
-		if(checkDifensori==4 && checkCentrocampisti==4 && checkAttaccanti==2)
+		if(checkPortieri==2 && checkDifensori==6 && checkCentrocampisti==6 && checkAttaccanti==4)
 			return true;
 		else 
 			return false;

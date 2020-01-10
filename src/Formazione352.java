@@ -1,3 +1,6 @@
+import java.io.Serializable;
+import java.util.ArrayList;
+
 /**
  * 
  */
@@ -6,20 +9,28 @@
  * @author Salvatore Calderaro
  * @author Gaspare Casano
  */
-public class Formazione352 extends Formazione{
+public class Formazione352 extends Formazione implements Serializable{
 	
-	public Formazione352() {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2524469794411334665L;
+
+	public Formazione352(TipoFormazione tipo, ArrayList<String> p, ArrayList<String> d, ArrayList<String> c,ArrayList<String> a) {
 		difensoriTitolari=new Difensore[3];
 		difensoriRiserva=new Difensore[2];
 		centrocampistiTitolari= new Centrocampista [5];
 		centrocampistiRiserva= new Centrocampista [4];
 		attaccantiTitolari=new Attaccante [2];
 		attaccantiRiserva=new Attaccante [2];
+		settaFormazione(p, d, c, a);
+	}
+
+	@Override
+	protected void settaFormazione(ArrayList<String> p, ArrayList<String> d, ArrayList<String> c, ArrayList<String> a) {
+		// TODO Auto-generated method stub
+		
 	}
 	
-	@Override
-	protected Formazione creaFormazione() {
-		Formazione f= new Formazione352();
-		return f;
-	}
+
 }
