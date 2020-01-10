@@ -151,7 +151,7 @@ public class Giornata implements Serializable{
 		return numeroGiornata;
 	}
 	
-	public static boolean  Giornata(Formazione f , int numeroGiornata, Squadra s) throws IOException, ClassNotFoundException {
+	public static boolean  giocaGiornata(Formazione f , int numeroGiornata, Squadra s) throws IOException, ClassNotFoundException {
 		File file = new File("src/torneo.dat");
 		FileInputStream fis = new FileInputStream(file);
 		ObjectInputStream oos = new ObjectInputStream(fis);
