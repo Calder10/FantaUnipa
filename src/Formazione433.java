@@ -1,5 +1,6 @@
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * 
@@ -37,14 +38,131 @@ public class Formazione433 extends Formazione implements Serializable{
 
 	@Override
 	protected void settaFormazione(ArrayList<String> p, ArrayList<String> d, ArrayList<String> c, ArrayList<String> a,Squadra s) {
-		// TODO Auto-generated method stub
+		int i=0;
+		int i1=0;
+		
+		for (String nome : p) {
+			for (Portiere x : s.getPortieri()) {
+				if(nome.equalsIgnoreCase(x.getNomeGiocatore())) {
+					if(i==0) {
+						this.portiereTitolare=x;
+						i++;
+					}
+					else {
+						this.portiereRiserva=x;
+					}
+				}
+			}
+		}
+		
+		
+		i=0;
+		i1=0;
+		for (String nome : d) {
+			for (Difensore x : s.getDifensori()) {
+				if(nome.equalsIgnoreCase(x.getNomeGiocatore())) {
+					if(i<=3) {
+						this.difensoriTitolari[i]=x;
+						i++;
+					}
+					else {
+						this.difensoriRiserva[i1]=x;
+						i1++;
+					}
+				}
+			}
+		}
+		
+		i=0;
+		i1=0;
+		for (String nome : c) {
+			for (Centrocampista x : s.getCentrocampisti()) {
+				if(nome.equalsIgnoreCase(x.getNomeGiocatore())) {
+					if(i<=2) {
+						this.centrocampistiTitolari[i]=x;
+						i++;
+					}
+					else {
+						this.centrocampistiRiserva[i1]=x;
+						i1++;
+					}
+				}
+			}
+		}
+		
+		i=0;
+		i1=0;
+		for (String nome : a) {
+			for (Attaccante x : s.getAttaccanti()) {
+				if(nome.equalsIgnoreCase(x.getNomeGiocatore())) {
+					if(i<=2) {
+						this.attaccantiTitolari[i]=x;
+						i++;
+					}
+					else {
+						this.attaccantiRiserva[i1]=x;
+						i1++;
+					}
+				}
+			}
+		}
+		
 		
 	}
 
 	@Override
 	public Formazione generaFormazioneVirtuale(Squadra s) {
-		// TODO Auto-generated method stub
-		return null;
+		Formazione f = new Formazione433();
+		int i=0;
+		i=new Random().nextInt(s.getPortieri().size()-1);
+		f.portiereTitolare=s.getPortieri().get(i);
+		s.getPortieri().remove(i);
+		
+		i=new Random().nextInt(s.getPortieri().size()-1);
+		f.portiereRiserva=s.getPortieri().get(i);
+		s.getPortieri().remove(i);
+		
+		for (int j=0; j<=3;j++) {
+			i=new Random().nextInt(s.getDifensori().size()-1);
+			f.difensoriTitolari[j]=s.getDifensori().get(i);
+			s.getDifensori().remove(j);
+			
+		}
+		
+		for(int j=0;j<=1;j++) {
+			i=new Random().nextInt(s.getDifensori().size()-1);
+			f.difensoriRiserva[j]=s.getDifensori().get(i);
+			s.getDifensori().remove(j);
+		}
+		
+		
+		for (int j=0; j<=2;j++) {
+			i=new Random().nextInt(s.getCentrocampisti().size()-1);
+			f.centrocampistiTitolari[j]=s.getCentrocampisti().get(i);
+			s.getCentrocampisti().remove(j);
+			
+		}
+		
+		for(int j=0;j<=1;j++) {
+			i=new Random().nextInt(s.getCentrocampisti().size()-1);
+			f.centrocampistiRiserva[j]=s.getCentrocampisti().get(i);
+			s.getCentrocampisti().remove(j);
+		}
+		
+		for (int j=0; j<=2;j++) {
+			i=new Random().nextInt(s.getAttaccanti().size()-1);
+			f.attaccantiTitolari[j]=s.getAttaccanti().get(i);
+			s.getAttaccanti().remove(j);
+			
+		}
+		
+		for(int j=0;j<=1;j++) {
+			i=new Random().nextInt(s.getAttaccanti().size()-1);
+			f.attaccantiRiserva[j]=s.getAttaccanti().get(i);
+			s.getAttaccanti().remove(j);
+		}
+		
+		return f;
 	}
 	
 
