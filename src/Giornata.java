@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.swing.ImageIcon;
 
@@ -158,18 +159,74 @@ public class Giornata implements Serializable{
 		Torneo t = (Torneo) oos.readObject();
 		Giornata g = t.getGiornate().getGiornate().get(numeroGiornata);
 		ArrayList<Partita> p = g.getPartite().getPartite();
+		Formazione fv=null;
 		Partita partita =null;
+		int scelta=0;
 		for(Partita x : p) {
 			if(x.getSquadraCasa().getNomeSquadra().equalsIgnoreCase(s.getNomeSquadra())) {
 				x.setFormazioneSquadraCasa(f);
+			}
+			else {
+				scelta = new Random().nextInt(3);
+				switch(scelta) {
+				case 0 :
+					fv = new Formazione442();
+					fv=fv.generaFormazioneVirtuale(x.getSquadraCasa());
+					break;
+					
+				case 1 :
+					fv = new Formazione343();
+					fv=fv.generaFormazioneVirtuale(x.getSquadraCasa());
+					break;
+					
+				case 2 :
+					fv = new Formazione352();
+					fv=fv.generaFormazioneVirtuale(x.getSquadraCasa());
+					break;
+					
+				case 3 :
+					fv = new Formazione433();
+					fv=fv.generaFormazioneVirtuale(x.getSquadraCasa());
+					break;
+				}
+				x.setFormazioneSquadraCasa(fv);
 			}
 			
 			if(x.getSquadraTrasferta().getNomeSquadra().equalsIgnoreCase(s.getNomeSquadra())) {
 				x.setFormazioneSquadraTrasferta(f);
 			}
+			
+			else {
+				scelta = new Random().nextInt(3);
+				switch(scelta) {
+				case 0 :
+					fv = new Formazione442();
+					fv=fv.generaFormazioneVirtuale(x.getSquadraTrasferta());
+					break;
+					
+				case 1 :
+					fv = new Formazione343();
+					fv=fv.generaFormazioneVirtuale(x.getSquadraTrasferta());
+					break;
+					
+				case 2 :
+					fv = new Formazione352();
+					fv=fv.generaFormazioneVirtuale(x.getSquadraTrasferta());
+					break;
+					
+				case 3 :
+					fv = new Formazione433();
+					fv=fv.generaFormazioneVirtuale(x.getSquadraTrasferta());
+					break;
+				}
+				x.setFormazioneSquadraCasa(fv);
+			}
 		}
 		
-		g.s
+		g.getPartite().setPartite(p);
+		System.out.println(g.getPartite().getPartite().get(0).getFormazioneSquadraCasa().toString());
+		System.out.println(g.getPartite().getPartite().get(0).getFormazioneSquadraTrasferta().toString());
+		return true;
 	}
 	
 }

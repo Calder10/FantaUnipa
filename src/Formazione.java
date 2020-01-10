@@ -40,6 +40,7 @@ public abstract class Formazione implements Serializable{
 	
 	
 	protected abstract void settaFormazione(ArrayList<String> p, ArrayList<String> d, ArrayList<String> c,ArrayList<String> a,Squadra s);
+	public abstract Formazione generaFormazioneVirtuale(Squadra s);
 	/**
 	 * @return the portiereTitolare
 	 */

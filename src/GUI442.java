@@ -246,7 +246,15 @@ public class GUI442 extends JFrame {
 					 else {
 						 FormazioneFactory factory = new FormazioneFactory();
 						 Formazione f = factory.getFormazione(TipoFormazione.F442,p,d,c,a,s);
-						 Giornata g = Giornata.setFormazioneGiornata(f, numeroGiornata, s);
+						 try {
+							boolean ris1 = Giornata.giocaGiornata(f, numeroGiornata, s);
+						} catch (ClassNotFoundException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 					 }
 				});
 		

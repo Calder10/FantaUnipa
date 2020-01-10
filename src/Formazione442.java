@@ -1,5 +1,6 @@
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Random;
 
 
 
@@ -18,6 +19,18 @@ public class Formazione442 extends Formazione  implements Serializable{
 	 */
 	private static final long serialVersionUID = -1411712447765962165L;
 
+	
+	public Formazione442() {
+		difensoriTitolari=new Difensore[4];
+		difensoriRiserva=new Difensore[2];
+		centrocampistiTitolari= new Centrocampista [4];
+		centrocampistiRiserva= new Centrocampista [2];
+		attaccantiTitolari=new Attaccante [2];
+		attaccantiRiserva=new Attaccante [2];
+	}
+	
+	
+	
 	public Formazione442(TipoFormazione tipo,ArrayList<String> p, ArrayList<String> d, ArrayList<String> c,ArrayList<String> a,Squadra s) {
 		difensoriTitolari=new Difensore[4];
 		difensoriRiserva=new Difensore[2];
@@ -101,4 +114,58 @@ public class Formazione442 extends Formazione  implements Serializable{
 		
 	}
 	
+	@Override
+	public  Formazione generaFormazioneVirtuale (Squadra s) {
+		Formazione f = new Formazione442();
+		int i=0;
+		i=new Random().nextInt(s.getPortieri().size()-1);
+		f.portiereTitolare=s.getPortieri().get(i);
+		s.getPortieri().remove(i);
+		
+		i=new Random().nextInt(s.getPortieri().size()-1);
+		f.portiereRiserva=s.getPortieri().get(i);
+		s.getPortieri().remove(i);
+		
+		for (int j=0; j<=3;j++) {
+			i=new Random().nextInt(s.getDifensori().size()-1);
+			f.difensoriTitolari[j]=s.getDifensori().get(i);
+			s.getDifensori().remove(j);
+			
+		}
+		
+		for(int j=0;j<=1;j++) {
+			i=new Random().nextInt(s.getDifensori().size()-1);
+			f.difensoriRiserva[j]=s.getDifensori().get(i);
+			s.getDifensori().remove(j);
+		}
+		
+		
+		for (int j=0; j<=3;j++) {
+			i=new Random().nextInt(s.getCentrocampisti().size()-1);
+			f.centrocampistiTitolari[j]=s.getCentrocampisti().get(i);
+			s.getCentrocampisti().remove(j);
+			
+		}
+		
+		for(int j=0;j<=1;j++) {
+			i=new Random().nextInt(s.getCentrocampisti().size()-1);
+			f.centrocampistiRiserva[j]=s.getCentrocampisti().get(i);
+			s.getCentrocampisti().remove(j);
+		}
+		
+		for (int j=0; j<=1;j++) {
+			i=new Random().nextInt(s.getAttaccanti().size()-1);
+			f.attaccantiTitolari[j]=s.getAttaccanti().get(i);
+			s.getAttaccanti().remove(j);
+			
+		}
+		
+		for(int j=0;j<=1;j++) {
+			i=new Random().nextInt(s.getAttaccanti().size()-1);
+			f.attaccantiRiserva[j]=s.getAttaccanti().get(i);
+			s.getAttaccanti().remove(j);
+		}
+		
+		return f;
+	}
 }
