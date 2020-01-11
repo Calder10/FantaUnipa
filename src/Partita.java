@@ -1,6 +1,8 @@
 import java.io.Serializable;
+import java.util.HashMap;
 
 public class Partita implements Serializable{
+	
 	/**
 	 * 
 	 */
@@ -10,6 +12,39 @@ public class Partita implements Serializable{
 	private String risultato;
 	private Formazione formazioneSquadraCasa;
 	private Formazione formazioneSquadraTrasferta;
+	private HashMap<String,Integer> votiSquadraCasa;
+	
+	
+	/**
+	 * @return the votiSquadraCasa
+	 */
+	public HashMap<String, Integer> getVotiSquadraCasa() {
+		return votiSquadraCasa;
+	}
+
+	/**
+	 * @param votiSquadraCasa the votiSquadraCasa to set
+	 */
+	public void setVotiSquadraCasa(HashMap<String, Integer> votiSquadraCasa) {
+		this.votiSquadraCasa = votiSquadraCasa;
+	}
+
+	/**
+	 * @return the votiSquadraTrasferta
+	 */
+	public HashMap<String, Integer> getVotiSquadraTrasferta() {
+		return votiSquadraTrasferta;
+	}
+
+	/**
+	 * @param votiSquadraTrasferta the votiSquadraTrasferta to set
+	 */
+	public void setVotiSquadraTrasferta(HashMap<String, Integer> votiSquadraTrasferta) {
+		this.votiSquadraTrasferta = votiSquadraTrasferta;
+	}
+
+	private HashMap<String,Integer> votiSquadraTrasferta;
+	
 	
 	public Partita (Squadra casa, Squadra trasferta) {
 		this.squadraCasa=casa;
