@@ -138,4 +138,40 @@ public abstract class Formazione implements Serializable{
 		this.attaccantiRiserva = attaccantiRiserva;
 	}
 	
+	public static ArrayList<String> getNomiGiocatori(Formazione f){
+		ArrayList<String> nomiGiocatori = new ArrayList<>();
+		nomiGiocatori.add(f.getPortiereTitolare().getNomeGiocatore());
+		
+		
+		for(Difensore d : f.getDifensoriTitolari()) {
+			nomiGiocatori.add(d.getNomeGiocatore());
+		}
+		
+		
+		for (Centrocampista c : f.getCentrocampistiTitolari()) {
+			nomiGiocatori.add(c.getNomeGiocatore());
+		}
+		
+	
+		
+		for (Attaccante a : f.getAttaccantiTitolari()) {
+			nomiGiocatori.add(a.getNomeGiocatore());
+		}
+		
+		
+		nomiGiocatori.add(f.getPortiereRiserva().getNomeGiocatore());
+		for(Difensore d : f.getDifensoriRiserva()) {
+			nomiGiocatori.add(d.getNomeGiocatore());
+		}
+		
+		for (Centrocampista c : f.getCentrocampistiRiserva()) {
+			nomiGiocatori.add(c.getNomeGiocatore());
+		}
+		
+		for (Attaccante a : f.getAttaccantiRiserva()) {
+			nomiGiocatori.add(a.getNomeGiocatore());
+		}
+		
+		return nomiGiocatori;
+	}
 }

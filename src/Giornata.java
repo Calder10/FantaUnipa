@@ -161,6 +161,7 @@ public class Giornata implements Serializable{
 		ArrayList<Partita> p = g.getPartite().getPartite();
 		Formazione fv=null;
 		Partita partita =null;
+		int giornata=1;
 		int scelta=0;
 		for(Partita x : p) {
 			if(x.getSquadraCasa().getNomeSquadra().equalsIgnoreCase(s.getNomeSquadra())) {
@@ -219,13 +220,18 @@ public class Giornata implements Serializable{
 					fv=fv.generaFormazioneVirtuale(x.getSquadraTrasferta());
 					break;
 				}
-				x.setFormazioneSquadraCasa(fv);
+				x.setFormazioneSquadraTrasferta(fv);
+				
 			}
+			
+			g.getPartite().setPartite(p);
+			Partita.giocaPartita(x, giornata);
+			System.out.println(x.getRisultato());
+			System.out.println(x.getPanoramicaVotiCasa().toString());
+			System.out.println(x.getPanoramicaVotiTrasferta().toString());
+			giornata++;
+			
 		}
-		
-		g.getPartite().setPartite(p);
-		System.out.println(g.getPartite().getPartite().get(0).getFormazioneSquadraCasa().toString());
-		System.out.println(g.getPartite().getPartite().get(0).getFormazioneSquadraTrasferta().toString());
 		return true;
 	}
 	
