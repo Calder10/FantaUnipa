@@ -140,20 +140,33 @@ public class Partita implements Serializable{
 		double casa =0.0;
 		double trasferta=0.0;
 		Set<String> keys = this.votiSquadraCasa.keySet();
+		int i=1;
 		for(String key : keys) {
 			casa+=this.votiSquadraCasa.get(key);
+			if(i==11) {
+				break;
+			}
+			i++;
 		}
-		
+		i=1;
+		keys = this.votiSquadraTrasferta.keySet();
 		for(String key : keys) {
 			trasferta+=this.votiSquadraTrasferta.get(key);
+			if(i==11) {
+				break;
+			}
+			i++;
 		}
+		
+		
+		
 		
 		this.risultato=casa+ " - " +trasferta;
 	}
 	
 	public static void giocaPartita(Partita partitaDaGiocare,int giornata) {
-		ArrayList<String> formazioneCasa = Formazione.getNomiGiocatori(partitaDaGiocare.getFormazioneSquadraCasa());
-		ArrayList<String> formazioneTrasferta = Formazione.getNomiGiocatori(partitaDaGiocare.getFormazioneSquadraTrasferta());
+		ArrayList<String[]> formazioneCasa = Formazione.getNomiGiocatori(partitaDaGiocare.getFormazioneSquadraCasa());
+		ArrayList<String[]> formazioneTrasferta = Formazione.getNomiGiocatori(partitaDaGiocare.getFormazioneSquadraTrasferta());
 		partitaDaGiocare.setPanoramicaVotiCasa(UtilityVotiGiocatori.creaPanoramicaVoti(formazioneCasa, giornata));
 		partitaDaGiocare.setPanoramicaVotiTrasferta(UtilityVotiGiocatori.creaPanoramicaVoti(formazioneTrasferta,giornata));
 		partitaDaGiocare.setVotiSquadraCasa(UtilityVotiGiocatori.assegnaVoti(formazioneCasa, giornata));
