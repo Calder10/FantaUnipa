@@ -13,6 +13,7 @@ public class Partita implements Serializable{
 	private Formazione formazioneSquadraCasa;
 	private Formazione formazioneSquadraTrasferta;
 	private HashMap<String,Integer> votiSquadraCasa;
+	private HashMap<String,Integer> votiSquadraTrasferta;
 	
 	
 	/**
@@ -43,7 +44,6 @@ public class Partita implements Serializable{
 		this.votiSquadraTrasferta = votiSquadraTrasferta;
 	}
 
-	private HashMap<String,Integer> votiSquadraTrasferta;
 	
 	
 	public Partita (Squadra casa, Squadra trasferta) {
