@@ -46,16 +46,26 @@ public class Partita implements Serializable{
 
 	
 	
+	/**
+	 * @param casa
+	 * @param trasferta
+	 */
 	public Partita (Squadra casa, Squadra trasferta) {
 		this.squadraCasa=casa;
 		this.squadraTrasferta=trasferta;
 		this.risultato=" - ";
 	}
 	
+	/**
+	 * @return
+	 */
 	public Squadra getSquadraCasa() {
 		return squadraCasa;
 	}
 
+	/**
+	 * @param squadraCasa
+	 */
 	public void setSquadraCasa(Squadra squadraCasa) {
 		this.squadraCasa = squadraCasa;
 	}
