@@ -160,7 +160,6 @@ public class Giornata implements Serializable{
 		ObjectInputStream  ois =null;
 		Giornata g = null;
 		Torneo t = null;
-		//int numeroGiornata=0;
 		try {
 			f = new File("src/torneo.dat");
 			fis = new FileInputStream(f);
@@ -210,7 +209,6 @@ public class Giornata implements Serializable{
 		ArrayList<Partita> p = g.getPartite().getPartite();
 		Formazione fv=null;
 		Partita partita =null;
-		int giornata=1;
 		int scelta=0;
 		for(Partita x : p) {
 			if(x.getSquadraCasa().getNomeSquadra().equalsIgnoreCase(s.getNomeSquadra())) {
@@ -273,12 +271,11 @@ public class Giornata implements Serializable{
 				
 			}
 			
-			Partita.giocaPartita(x, giornata);
+			Partita.giocaPartita(x, numeroGiornata);
 		}
 		g.partite.setPartite(p);
-		Giornata.salvaGiornata(g,giornata);
+		Giornata.salvaGiornata(g,numeroGiornata);
 		g.giocata=true;
-		giornata++;
 		return true;
 	}
 	
@@ -297,7 +294,7 @@ public class Giornata implements Serializable{
 		}
 		
 		g.giocata=true;
-		t.getGiornate().getGiornate().set(giornata-1, g);
+		t.getGiornate().getGiornate().set(giornata, g);
 		File f1 = new File("src/torneo1.dat");
 		FileOutputStream fos = new FileOutputStream(f1);
 		ObjectOutputStream oos = new ObjectOutputStream(fos);

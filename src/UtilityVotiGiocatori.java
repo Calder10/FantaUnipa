@@ -136,7 +136,7 @@ public class UtilityVotiGiocatori {
 		int numeroCambi=0;
 		boolean [] cambi= {false,false,false,false,false,false,false};
 		switch (numeroGiornata) {
-		case 1:
+		case 0:
 			for (String[] s : giocatori) {
 				if(i==11) {
 					break;
@@ -161,6 +161,41 @@ public class UtilityVotiGiocatori {
 									voti.put(k, votiRiserva.get(k));
 								}
 								votiRiserva.clear();
+								numeroCambi++;
+							}
+						}
+					}
+					else {
+						voti.put(s[0], voto);
+					}
+				}
+				i++;
+			}
+			break;
+		case 1:
+			for (String[] s : giocatori) {
+				if(i==11) {
+					break;
+				}
+				punteggi = UtilityVotiGiocatori.estraiPunteggi(s[0], numeroGiornata);
+				voto = UtilityVotiGiocatori.calcolaVoto(punteggi);
+				if(numeroCambi==3) {
+					voti.put(s[0], voto);
+					break;
+				}
+				else {
+					if(punteggi.size()==12) {
+						if (punteggi.get(11).equalsIgnoreCase("*")) {
+							votiRiserva= UtilityVotiGiocatori.effettuaCambio(s[1], giocatori, numeroGiornata,cambi);
+							if(votiRiserva.isEmpty()==true) {
+								voto = UtilityVotiGiocatori.calcolaVoto(punteggi);
+								voti.put(s[0], voto);
+							}
+							else {
+								Set<String> keys = votiRiserva.keySet();
+								for(String k : keys) {
+									voti.put(k, votiRiserva.get(k));
+								}
 								numeroCambi++;
 							}
 						}
@@ -243,41 +278,6 @@ public class UtilityVotiGiocatori {
 			}
 			break;
 		case 4:
-			for (String[] s : giocatori) {
-				if(i==11) {
-					break;
-				}
-				punteggi = UtilityVotiGiocatori.estraiPunteggi(s[0], numeroGiornata);
-				voto = UtilityVotiGiocatori.calcolaVoto(punteggi);
-				if(numeroCambi==3) {
-					voti.put(s[0], voto);
-					break;
-				}
-				else {
-					if(punteggi.size()==12) {
-						if (punteggi.get(11).equalsIgnoreCase("*")) {
-							votiRiserva= UtilityVotiGiocatori.effettuaCambio(s[1], giocatori, numeroGiornata,cambi);
-							if(votiRiserva.isEmpty()==true) {
-								voto = UtilityVotiGiocatori.calcolaVoto(punteggi);
-								voti.put(s[0], voto);
-							}
-							else {
-								Set<String> keys = votiRiserva.keySet();
-								for(String k : keys) {
-									voti.put(k, votiRiserva.get(k));
-								}
-								numeroCambi++;
-							}
-						}
-					}
-					else {
-						voti.put(s[0], voto);
-					}
-				}
-				i++;
-			}
-			break;
-		case 5:
 			for (String[] s : giocatori) {
 				if(i==11) {
 					break;
@@ -334,22 +334,22 @@ public class UtilityVotiGiocatori {
 		String path = "";
 		List<String> ris = new ArrayList<>();
 		switch (giornata) {
-		case 1:
+		case 0:
 			path = pathVotiGiornata1;
 			break;
-		case 2:
+		case 1:
 			path = pathVotiGiornata2;
 			break;
 
-		case 3:
+		case 2:
 			path = pathVotiGiornata3;
 			break;
 
-		case 4:
+		case 3:
 			path = pathVotiGiornata4;
 			break;
 
-		case 5:
+		case 4:
 			path = pathVotiGiornata5;
 			break;
 

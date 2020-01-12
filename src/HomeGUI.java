@@ -346,6 +346,8 @@ public class HomeGUI extends JFrame {
 					ScegliFormazioneGUI nextFrame = new ScegliFormazioneGUI(username,squadra,numeroGiornata);
 					nextFrame.toFront();
 					nextFrame.setVisible(true);
+					this.dispose();
+					
 				});
 	}
 }

@@ -166,10 +166,9 @@ public class ResocontoGiornataGUI extends JFrame {
 	
 
 
-	public ResocontoGiornataGUI(int numeroGiornata) throws IOException {
+	public ResocontoGiornataGUI(int numeroGiornata,String username) throws IOException {
 		super("Giornata " +" "+(numeroGiornata+1));
 		setResizable(false);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 924, 429);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -265,7 +264,7 @@ public class ResocontoGiornataGUI extends JFrame {
 				e->{
 					ResocontoVotiGUI nextFrame;
 					try {
-						nextFrame = new ResocontoVotiGUI(numeroGiornata,0);
+						nextFrame = new ResocontoVotiGUI(numeroGiornata,0,username);
 						nextFrame.toFront();
 						nextFrame.setVisible(true);
 					} catch (ClassNotFoundException e1) {
@@ -281,7 +280,7 @@ public class ResocontoGiornataGUI extends JFrame {
 				e->{
 					ResocontoVotiGUI nextFrame;
 					try {
-						nextFrame = new ResocontoVotiGUI(numeroGiornata,1);
+						nextFrame = new ResocontoVotiGUI(numeroGiornata,1,username);
 						nextFrame.toFront();
 						nextFrame.setVisible(true);
 					} catch (ClassNotFoundException e1) {
@@ -294,7 +293,7 @@ public class ResocontoGiornataGUI extends JFrame {
 				e->{
 					ResocontoVotiGUI nextFrame;
 					try {
-						nextFrame = new ResocontoVotiGUI(numeroGiornata,2);
+						nextFrame = new ResocontoVotiGUI(numeroGiornata,2,username);
 						nextFrame.toFront();
 						nextFrame.setVisible(true);
 					} catch (ClassNotFoundException e1) {

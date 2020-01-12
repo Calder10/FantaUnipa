@@ -41,7 +41,6 @@ public class GUI442 extends JFrame {
 		super("Inserimento formazione");
 		setResizable(false);
 		setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 811, 814);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -249,10 +248,11 @@ public class GUI442 extends JFrame {
 						 try {
 							boolean ris1 = Giornata.giocaGiornata(f, numeroGiornata, s);
 							if(ris1==true) {
-								ResocontoGiornataGUI nextFrame = new ResocontoGiornataGUI(numeroGiornata);
+								ResocontoGiornataGUI nextFrame = new ResocontoGiornataGUI(numeroGiornata,username);
 								nextFrame.toFront();
 								nextFrame.setVisible(true);
 								this.dispose();
+			
 							}
 						} catch (ClassNotFoundException e1) {
 							// TODO Auto-generated catch block
