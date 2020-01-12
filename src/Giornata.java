@@ -1,8 +1,10 @@
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
@@ -152,6 +154,53 @@ public class Giornata implements Serializable{
 		return numeroGiornata;
 	}
 	
+	public static void visualizzaResocontoGiornata(ResocontoGiornataGUI homeGUI,int numeroGiornata) {
+		File f = null;
+		FileInputStream fis = null;
+		ObjectInputStream  ois =null;
+		Giornata g = null;
+		Torneo t = null;
+		//int numeroGiornata=0;
+		try {
+			f = new File("src/torneo.dat");
+			fis = new FileInputStream(f);
+			ois = new ObjectInputStream(fis);
+			t=(Torneo) ois.readObject();
+			ois.close();
+			fis.close();
+		} catch (IOException | ClassNotFoundException e) {
+			System.out.println("Errore nella lettura dal file !");
+		}
+		
+		g=t.getGiornate().getGiornate().get(numeroGiornata);
+				ImageIcon img = null;
+				img = new ImageIcon(g.getPartite().getPartite().get(0).getSquadraCasa().getPathLogo());
+				homeGUI.getLblNewLabelLogoCasa1().setIcon(img);
+				img = new ImageIcon(g.getPartite().getPartite().get(0).getSquadraTrasferta().getPathLogo());
+				homeGUI.getLblNewLabelLogoTrasferta1().setIcon(img);
+				homeGUI.getLblNewLabelNomeCasa1().setText(g.getPartite().getPartite().get(0).getSquadraCasa().getNomeSquadra());
+				homeGUI.getLblNewLabelNomeTrasferta1().setText(g.getPartite().getPartite().get(0).getSquadraTrasferta().getNomeSquadra());
+				homeGUI.getLblNewLabelRis1().setText(g.getPartite().getPartite().get(0).getRisultato());
+				
+				img = new ImageIcon(g.getPartite().getPartite().get(1).getSquadraCasa().getPathLogo());
+				homeGUI.getLblNewLabelLogoCasa2().setIcon(img);
+				img = new ImageIcon(g.getPartite().getPartite().get(1).getSquadraTrasferta().getPathLogo());
+				homeGUI.getLblNewLabelLogoTrasferta2().setIcon(img);
+				homeGUI.getLblNewLabelNomeCasa2().setText(g.getPartite().getPartite().get(1).getSquadraCasa().getNomeSquadra());
+				homeGUI.getLblNewLabelNomeTrasferta2().setText(g.getPartite().getPartite().get(1).getSquadraTrasferta().getNomeSquadra());
+				homeGUI.getLblNewLabelRis2().setText(g.getPartite().getPartite().get(1).getRisultato());
+				
+				
+				img = new ImageIcon(g.getPartite().getPartite().get(2).getSquadraCasa().getPathLogo());
+				homeGUI.getLblNewLabelLogoCasa3().setIcon(img);
+				img = new ImageIcon(g.getPartite().getPartite().get(2).getSquadraTrasferta().getPathLogo());
+				homeGUI.getLblNewLabelLogoTrasferta3().setIcon(img);
+				homeGUI.getLblNewLabelNomeCasa3().setText(g.getPartite().getPartite().get(2).getSquadraCasa().getNomeSquadra());
+				homeGUI.getLblNewLabelNomeTrasferta3().setText(g.getPartite().getPartite().get(2).getSquadraTrasferta().getNomeSquadra());
+				homeGUI.getLblNewLabelRis3().setText(g.getPartite().getPartite().get(2).getRisultato());
+	}
+	
+	
 	public static boolean  giocaGiornata(Formazione f , int numeroGiornata, Squadra s) throws IOException, ClassNotFoundException {
 		File file = new File("src/torneo.dat");
 		FileInputStream fis = new FileInputStream(file);
@@ -224,17 +273,38 @@ public class Giornata implements Serializable{
 				
 			}
 			
-			g.getPartite().setPartite(p);
 			Partita.giocaPartita(x, giornata);
-			System.out.println(x.getRisultato());
-			//System.out.println(x.getPanoramicaVotiCasa().toString());
-			//System.out.println(x.getPanoramicaVotiTrasferta().toString());
-			System.out.println(x.getVotiSquadraCasa());
-			System.out.println(x.getVotiSquadraTrasferta());
-			giornata++;
-			
 		}
+		g.partite.setPartite(p);
+		Giornata.salvaGiornata(g,giornata);
+		g.giocata=true;
+		giornata++;
 		return true;
+	}
+	
+	public static void salvaGiornata(Giornata g,int giornata) throws ClassNotFoundException, IOException {
+		File f = new File("src/torneo.dat");
+		FileInputStream fis;
+		Torneo t=null;;
+		try {
+			fis = new FileInputStream(f);
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			t=(Torneo) ois.readObject();
+			ois.close();
+			fis.close();
+		} catch (IOException e) {
+			System.out.println("Errore nella scrittura su file !");
+		}
+		
+		g.giocata=true;
+		t.getGiornate().getGiornate().set(giornata-1, g);
+		File f1 = new File("src/torneo1.dat");
+		FileOutputStream fos = new FileOutputStream(f1);
+		ObjectOutputStream oos = new ObjectOutputStream(fos);
+		oos.writeObject(t);
+		oos.close();
+		fos.close();
+		f1.renameTo(f);
 	}
 	
 }

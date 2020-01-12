@@ -239,6 +239,12 @@ public class GUI343 extends JFrame {
 						 Formazione f = factory.getFormazione(TipoFormazione.F343,p,d,c,a,s);
 						 try {
 							boolean ris1 = Giornata.giocaGiornata(f, numeroGiornata, s);
+							if(ris1==true) {
+								ResocontoGiornataGUI nextFrame = new ResocontoGiornataGUI(numeroGiornata);
+								nextFrame.toFront();
+								nextFrame.setVisible(true);
+								this.dispose();
+							}
 						} catch (ClassNotFoundException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();

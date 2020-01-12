@@ -1,3 +1,7 @@
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -183,5 +187,40 @@ public class Partita implements Serializable{
 		partitaDaGiocare.setVotiSquadraCasa(UtilityVotiGiocatori.assegnaVoti(formazioneCasa, giornata));
 		partitaDaGiocare.setVotiSquadraTrasferta(UtilityVotiGiocatori.assegnaVoti(formazioneTrasferta, giornata));
 		partitaDaGiocare.calcolaRisultato();
+	}
+	
+	public static ArrayList<ArrayList<String>> returnVotiPartita(int numeroGiornata,int numeroPartita) throws ClassNotFoundException {
+		File f = new File("src/torneo.dat");
+		FileInputStream fis;
+		Torneo t=null;;
+		ArrayList<ArrayList<String>> ris = new ArrayList<>();
+		try {
+			fis = new FileInputStream(f);
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			t=(Torneo) ois.readObject();
+			ois.close();
+			fis.close();
+		} catch (IOException e) {
+			System.out.println("Errore nella scrittura su file !");
+		}
+		Partita p=t.getGiornate().getGiornate().get(numeroGiornata).getPartite().getPartite().get(numeroPartita);
+		ArrayList<String> casa = new ArrayList<String>();
+		casa.add(p.getSquadraCasa().getNomeSquadra());
+		Set<String> keys;
+		keys = p.getVotiSquadraCasa().keySet();
+		for(String k : keys) {
+			String voto=k+ " "+p.getVotiSquadraCasa().get(k);
+			casa.add(voto);
+		}
+		ris.add(casa);
+		ArrayList<String> trasferta = new ArrayList<String>();
+		trasferta.add(p.getSquadraTrasferta().getNomeSquadra());
+		keys=p.getVotiSquadraTrasferta().keySet();
+		for(String k : keys) {
+			String voto=k+ " "+p.getVotiSquadraTrasferta().get(k);
+			trasferta.add(voto);
+		}
+		ris.add(trasferta);
+		return ris;
 	}
 }
