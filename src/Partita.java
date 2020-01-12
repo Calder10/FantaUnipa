@@ -139,29 +139,40 @@ public class Partita implements Serializable{
 	public void calcolaRisultato() {
 		double casa =0.0;
 		double trasferta=0.0;
+		int numeriGolCasa=0;
+		int numeriGolTrasferta=0;
 		Set<String> keys = this.votiSquadraCasa.keySet();
-		int i=1;
 		for(String key : keys) {
 			casa+=this.votiSquadraCasa.get(key);
-			if(i==11) {
-				break;
-			}
-			i++;
 		}
-		i=1;
 		keys = this.votiSquadraTrasferta.keySet();
 		for(String key : keys) {
 			trasferta+=this.votiSquadraTrasferta.get(key);
-			if(i==11) {
-				break;
+		}
+		int aus;
+		if(casa>=66.0) {
+			numeriGolCasa=1;
+			aus=72;
+			while(aus<=casa) {
+				numeriGolCasa++;
+				aus+=6;
 			}
-			i++;
+		}
+		aus=0;
+		if(trasferta>=66.0) {
+			numeriGolTrasferta=1;
+			aus=72;
+			while(aus<=trasferta) {
+				numeriGolTrasferta++;
+				aus+=6;
+			}
 		}
 		
 		
 		
-		
-		this.risultato=casa+ " - " +trasferta;
+		System.out.println(casa+ " - " +trasferta);
+		this.risultato=numeriGolCasa+ " - " +numeriGolTrasferta;
+		System.out.println(this.risultato);
 	}
 	
 	public static void giocaPartita(Partita partitaDaGiocare,int giornata) {

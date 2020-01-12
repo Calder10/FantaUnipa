@@ -227,8 +227,10 @@ public class Giornata implements Serializable{
 			g.getPartite().setPartite(p);
 			Partita.giocaPartita(x, giornata);
 			System.out.println(x.getRisultato());
-			System.out.println(x.getPanoramicaVotiCasa().toString());
-			System.out.println(x.getPanoramicaVotiTrasferta().toString());
+			//System.out.println(x.getPanoramicaVotiCasa().toString());
+			//System.out.println(x.getPanoramicaVotiTrasferta().toString());
+			System.out.println(x.getVotiSquadraCasa());
+			System.out.println(x.getVotiSquadraTrasferta());
 			giornata++;
 			
 		}

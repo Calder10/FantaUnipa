@@ -1,6 +1,5 @@
 Simulazione Giornata con voti delle prime 5 giornate della Serie A 
 Classifica
 Decretazione vincitore
-Controllare nimi uguali nella registrazione (dati.csv)
-
-aggiungere all?UML: public static double effettuaCambio(String tipo, ArrayList<String[]> giocatori, int numeroGiornata)
+Controllare nomi uguali nella registrazione (dati.csv)
+aggiungere all'UML: public static double effettuaCambio(String tipo, ArrayList<String[]> giocatori, int numeroGiornata)
