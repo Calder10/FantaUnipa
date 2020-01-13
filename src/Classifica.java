@@ -41,6 +41,10 @@ public class Classifica implements Serializable {
 		}
 
 	}
+	
+	public static void sortClassifica(ArrayList<ArrayList<Object>> c) {
+		c.sort(c);
+	}
 
 	public static void updateClassifica(Giornata g) throws IOException, ClassNotFoundException {
 		File f = new File("src/torneo.dat");
@@ -64,7 +68,8 @@ public class Classifica implements Serializable {
 				if (o.get(2).toString().equalsIgnoreCase(p.getSquadraCasa().getNomeSquadra())) {
 					if (casa == trasferta) {
 						int i = ((Integer) o.get(6)).intValue();
-						o.set(6, i + 1);
+						int val = i+1;
+						o.set(6, val);
 						o.set(4, casa);
 						o.set(5, trasferta);
 						int gf = ((Integer) o.get(4)).intValue();
@@ -74,7 +79,8 @@ public class Classifica implements Serializable {
 
 					if (casa > trasferta) {
 						int i = ((Integer) o.get(6)).intValue();
-						o.set(6, i+3);
+						int val = i+3;
+						o.set(6, val);
 						o.set(4, casa);
 						o.set(5, trasferta);
 						int gf = ((Integer) o.get(4)).intValue();
@@ -84,7 +90,8 @@ public class Classifica implements Serializable {
 
 					if (casa < trasferta) {
 						int i = ((Integer) o.get(6)).intValue();
-						o.set(6, i + 0);
+						int val = i+0;
+						o.set(6, val);
 						o.set(4, casa);
 						o.set(5, trasferta);
 						int gf = ((Integer) o.get(4)).intValue();
@@ -105,7 +112,8 @@ public class Classifica implements Serializable {
 				if (o1.get(2).toString().equalsIgnoreCase(p.getSquadraTrasferta().getNomeSquadra())) {
 					if (casa == trasferta) {
 						int i = ((Integer) o1.get(6)).intValue();
-						o1.set(6, Integer.valueOf((String) o1.get(6)) + 1);
+						int val = i+1;
+						o1.set(6, val);
 						o1.set(4, trasferta);
 						o1.set(5, casa);
 						int gf = ((Integer) o1.get(4)).intValue();
@@ -113,9 +121,10 @@ public class Classifica implements Serializable {
 						o1.set(3, gf-gs);
 					}
 
-					if (casa > trasferta) {
+					if (trasferta>casa) {
 						int i = ((Integer) o1.get(6)).intValue();
-						o1.set(6, i + 0);
+						int val = i+3;
+						o1.set(6, val);
 						o1.set(4, trasferta);
 						o1.set(5, casa);
 						int gf = ((Integer) o1.get(4)).intValue();
@@ -123,9 +132,10 @@ public class Classifica implements Serializable {
 						o1.set(3, gf-gs);
 					}
 					
-					if (casa < trasferta) {
+					if (trasferta<casa) {
 						int i = ((Integer) o1.get(6)).intValue();
-						o1.set(6, i + 0);
+						int val = i+0;
+						o1.set(6, val);
 						o1.set(4, trasferta);
 						o1.set(5, casa);
 						int gf = ((Integer) o1.get(4)).intValue();
