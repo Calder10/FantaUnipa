@@ -205,10 +205,11 @@ public class Giornata implements Serializable{
 		FileInputStream fis = new FileInputStream(file);
 		ObjectInputStream oos = new ObjectInputStream(fis);
 		Torneo t = (Torneo) oos.readObject();
+		oos.close();
+		fis.close();
 		Giornata g = t.getGiornate().getGiornate().get(numeroGiornata);
 		ArrayList<Partita> p = g.getPartite().getPartite();
 		Formazione fv=null;
-		Partita partita =null;
 		int scelta=0;
 		for(Partita x : p) {
 			if(x.getSquadraCasa().getNomeSquadra().equalsIgnoreCase(s.getNomeSquadra())) {
@@ -276,6 +277,7 @@ public class Giornata implements Serializable{
 		g.partite.setPartite(p);
 		Giornata.salvaGiornata(g,numeroGiornata);
 		g.giocata=true;
+		Classifica.updateClassifica(g);
 		return true;
 	}
 	

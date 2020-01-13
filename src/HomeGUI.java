@@ -349,5 +349,18 @@ public class HomeGUI extends JFrame {
 					this.dispose();
 					
 				});
+		
+		buttonClassifica.addActionListener(
+				l->{
+					ClassificaGUI nextFrame;
+					try {
+						nextFrame = new ClassificaGUI();
+						nextFrame.toFront();
+						nextFrame.setVisible(true);
+					} catch (ClassNotFoundException | IOException e1) {
+						
+						System.out.println("Errore");
+					}
+					});
 	}
 }

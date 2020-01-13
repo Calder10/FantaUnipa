@@ -16,7 +16,7 @@ public class Torneo implements Serializable {
 	private String nomeTorneo;
 	private ArrayList<Squadra> squadre;
 	private Giornate giornate;
-	// private Classifica classifica;
+	private Classifica classifica;
 	private static Torneo torneo;
 
 	private Torneo() {
@@ -28,9 +28,8 @@ public class Torneo implements Serializable {
 			torneo.nomeTorneo = "FantaUnipa";
 			torneo.uploadSquadre();
 			torneo.giornate = new Giornate(torneo.squadre);
-			// torneo.classifica=new Classifica();
+			torneo.classifica=new Classifica(torneo.squadre);
 		}
-
 		return torneo;
 	}
 
@@ -58,14 +57,15 @@ public class Torneo implements Serializable {
 		this.giornate = giornate;
 	}
 
-	/*
-	 * 
-	 * public Classifica getClassifica() { return classifica; }
-	 * 
-	 * public void setClassifica(Classifica classifica) { this.classifica =
-	 * classifica; }
-	 * 
-	 */
+	
+
+	public Classifica getClassifica() {
+		return classifica;
+	}
+
+	public void setClassifica(Classifica classifica) {
+		this.classifica = classifica;
+	}
 
 	public void uploadSquadre() throws IOException, ClassNotFoundException {
 		this.squadre = new ArrayList<>();

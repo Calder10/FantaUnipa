@@ -13,6 +13,12 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JTable;
 import java.awt.ScrollPane;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.ArrayList;
 import java.awt.Label;
 
 public class ClassificaGUI extends JFrame {
@@ -20,27 +26,14 @@ public class ClassificaGUI extends JFrame {
 	private JPanel contentPane;
 	private JTable table;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ClassificaGUI frame = new ClassificaGUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
 	 */
-	public ClassificaGUI() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public ClassificaGUI() throws IOException, ClassNotFoundException {
+		super("Classifica");
 		setResizable(false);
 		setBounds(100, 100, 707, 371);
 		contentPane = new JPanel();
@@ -54,17 +47,35 @@ public class ClassificaGUI extends JFrame {
 		lblClassifica.setBounds(232, 12, 243, 36);
 		contentPane.add(lblClassifica);
 		
-		
-		ImageIcon img = new ImageIcon("src/Immagini/pallone.png");
+		File f = new File ("src/torneo.dat");
+		FileInputStream fis = new FileInputStream(f);
+		ObjectInputStream ois = new ObjectInputStream(fis);
+		Torneo t = (Torneo) ois.readObject();
+		ois.close();
+		fis.close();
+		 ArrayList<Object> aus= new ArrayList<Object>();
+		 String [] fields;
+		 ArrayList<ArrayList<Object>> c= t.getClassifica().getClassifica();
+		 int i=0;
 		
 		
 		
 		String [] colonne = new String[]{"POSIZIONE","LOGO","SQUADRA","DR","GS","GF","PUNTI"};
-		Object [][] righe = new Object[] []{{1,img,"Inter",20,30,40,46},{2,img,"Roma",30,20,30,20},};
+		Object [][] data=null;
+		for (ArrayList<Object> o : c) {
+			data[i][0]=o.get(0);
+			data[i][1]= new ImageIcon((String)o.get(1));
+			data[i][2]=o.get(2);
+			data[i][3]=o.get(3);
+			data[i][4]=o.get(4);
+			data[i][5]=o.get(5);
+			data[i][6]=o.get(6);
+			i++;
+		}
 		
 		
 
-		 DefaultTableModel model = new DefaultTableModel(righe, colonne);
+		 DefaultTableModel model = new DefaultTableModel(data, colonne);
 		    JTable table = new JTable(model) {
 		      public Class getColumnClass(int column) {
 		    	  
