@@ -53,15 +53,13 @@ public class ClassificaGUI extends JFrame {
 		Torneo t = (Torneo) ois.readObject();
 		ois.close();
 		fis.close();
-		 ArrayList<Object> aus= new ArrayList<Object>();
-		 String [] fields;
 		 ArrayList<ArrayList<Object>> c= t.getClassifica().getClassifica();
 		 int i=0;
 		
 		
 		
 		String [] colonne = new String[]{"POSIZIONE","LOGO","SQUADRA","DR","GS","GF","PUNTI"};
-		Object [][] data=null;
+		Object [][] data= new Object[6][7];
 		for (ArrayList<Object> o : c) {
 			data[i][0]=o.get(0);
 			data[i][1]= new ImageIcon((String)o.get(1));

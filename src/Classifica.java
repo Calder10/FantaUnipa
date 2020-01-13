@@ -25,6 +25,7 @@ public class Classifica implements Serializable{
 		this.classifica = classifica;
 	}
 	public Classifica(ArrayList<Squadra> squadre) {
+		classifica = new ArrayList<>();
 		int i=1;
 		for(Squadra s: squadre) {
 			ArrayList<Object> aus = new ArrayList<Object>();
@@ -36,7 +37,7 @@ public class Classifica implements Serializable{
 			aus.add(0);
 			aus.add(0);
 			i++;
-			this.classifica.add(aus);
+			this.getClassifica().add(aus);
 		}
 		
 	}
