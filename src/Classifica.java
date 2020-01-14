@@ -111,17 +111,26 @@ public class Classifica implements Serializable {
 				int dr1 = ((Integer) ris.get(i + 1).get(3)).intValue();
 				int dr2 = ((Integer) ris.get(i).get(3)).intValue();
 				if (dr1 > dr2) {
-					ArrayList<Object> aus1 = ris.get(i + 1);
-					ArrayList<Object> aus2 = ris.get(i);
-					aus1.set(0,aus1.get(0));
-					ris.set(i, aus1);
-					aus2.set(0,aus2.get(0));
-					ris.set(i + 1, aus2);
+					ArrayList<Object> succ = ris.get(i+1);
+					ArrayList<Object> corr = ris.get(i);
+					int w= (int) ris.get(i+1).get(0);
+					succ.set(0, corr.get(0));
+					ris.set(i, succ);
+					corr.set(0, w);
+					ris.set(i+1, corr);
 				}
 			}
 		}
 		
 		return ris;
+		/*
+		ArrayList<Object> aus1 = ris.get(i + 1);
+		ArrayList<Object> aus2 = ris.get(i);
+		aus1.set(0,aus2.get(0));
+		ris.set(i+1, aus1);
+		aus2.set(0,aus1.get(0));
+		ris.set(i, aus2);
+		*/
 	}
 
 	public static void updateClassifica(Giornata g) throws IOException, ClassNotFoundException {
@@ -135,8 +144,6 @@ public class Classifica implements Serializable {
 		ArrayList<Partita> partite = g.getPartite().getPartite();
 		String[] fields;
 		ArrayList<ArrayList<Object>> c = t.getClassifica().getClassifica();
-		ArrayList<Object> a = new ArrayList<Object>();
-		ArrayList<Object> b = new ArrayList<Object>();
 		for (Partita p : partite) {
 			fields = p.getRisultato().split("-");
 			int casa = Integer.parseInt(fields[0].trim());
@@ -181,7 +188,7 @@ public class Classifica implements Serializable {
 						o.set(5, trasferta+golSubiti);
 						int gf = ((Integer) o.get(4)).intValue();
 						int gs = ((Integer) o.get(5)).intValue();
-						o.set(3, golFatti-golSubiti);
+						o.set(3, gf-gs);
 					}
 
 				}
