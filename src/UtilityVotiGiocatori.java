@@ -20,12 +20,12 @@ public class UtilityVotiGiocatori {
 	private static String pathVotiGiornata3 = "src/Voti/votiTerzaGiornata.csv";
 	private static String pathVotiGiornata4 = "src/Voti/votiQuartaGiornata.csv";
 	private static String pathVotiGiornata5 = "src/Voti/votiQuintaGiornata.csv";
-	
 
 	public static HashMap<String,Double> effettuaCambio(String tipo, ArrayList<String[]> giocatori, int numeroGiornata,boolean[] cambi) {
 		HashMap<String,Double> voto = new HashMap<>();
 		double aus=0.0;
 		String key="";
+		boolean flag = false;
 		List<String> punteggiRiserva = new ArrayList<>();
 		switch (tipo) {
 		case "P":
@@ -38,86 +38,106 @@ public class UtilityVotiGiocatori {
 			}
 			break;
 		case "D":
-			if(cambi[1]==true){
-				break;
-			}
-			else {
+			if(cambi[1]==false){
 				punteggiRiserva = UtilityVotiGiocatori.estraiPunteggi(giocatori.get(12)[0], numeroGiornata);
 				if (punteggiRiserva.size()==11) {
 					aus = UtilityVotiGiocatori.calcolaVoto(punteggiRiserva);
-					key=punteggiRiserva.get(0);
-					voto.put(key, aus);
-					cambi[1]=true;
-					break;
+					if(aus==0) {
+						punteggiRiserva = UtilityVotiGiocatori.estraiPunteggi(giocatori.get(13)[0], numeroGiornata);
+						if (punteggiRiserva.size()==11) {
+							aus = UtilityVotiGiocatori.calcolaVoto(punteggiRiserva);
+							key=punteggiRiserva.get(0);
+							voto.put(key, aus);
+							cambi[2]=true;
+						}
+					}
+					else {
+						key=punteggiRiserva.get(0);
+						voto.put(key, aus);
+						flag=true;
+						cambi[1]=true;
+					}
 				}
 			}
-			if(cambi[2]==true) {
-				break;
-			}
-			else {
-				punteggiRiserva = UtilityVotiGiocatori.estraiPunteggi(giocatori.get(13)[0], numeroGiornata);
-				if (punteggiRiserva.size()==11) {
-					aus = UtilityVotiGiocatori.calcolaVoto(punteggiRiserva);
-					key=punteggiRiserva.get(0);
-					voto.put(key, aus);
-					cambi[2]=true;
-					break;
+			if(flag=false) {
+				if(cambi[2]==false && cambi[1]==true) {
+					punteggiRiserva = UtilityVotiGiocatori.estraiPunteggi(giocatori.get(13)[0], numeroGiornata);
+					if (punteggiRiserva.size()==11) {
+						aus = UtilityVotiGiocatori.calcolaVoto(punteggiRiserva);
+						key=punteggiRiserva.get(0);
+						voto.put(key, aus);
+						cambi[2]=true;
+					}
 				}
 			}
 			break;
 		case "C":
-			if(cambi[3]==true) {
-				break;
-			}
-			else {
+			if(cambi[3]==false) {
 				punteggiRiserva = UtilityVotiGiocatori.estraiPunteggi(giocatori.get(14)[0], numeroGiornata);
 				if (punteggiRiserva.size()==11) {
 					aus = UtilityVotiGiocatori.calcolaVoto(punteggiRiserva);
-					key=punteggiRiserva.get(0);
-					voto.put(key, aus);
-					cambi[3]=true;
-					break;
+					if(aus==0) {
+						punteggiRiserva = UtilityVotiGiocatori.estraiPunteggi(giocatori.get(15)[0], numeroGiornata);
+						if (punteggiRiserva.size()==11) {
+							aus = UtilityVotiGiocatori.calcolaVoto(punteggiRiserva);
+							key=punteggiRiserva.get(0);
+							voto.put(key, aus);
+							cambi[4]=true;
+						}
+						
+					}
+					else {
+						key=punteggiRiserva.get(0);
+						voto.put(key, aus);
+						cambi[3]=true;
+						flag=true;
+					}
 				}
 			}
-			if(cambi[4]==true) {
-				break;
-			}
-			else {
-				punteggiRiserva = UtilityVotiGiocatori.estraiPunteggi(giocatori.get(15)[0], numeroGiornata);
-				if (punteggiRiserva.size()==11) {
-					aus = UtilityVotiGiocatori.calcolaVoto(punteggiRiserva);
-					key=punteggiRiserva.get(0);
-					voto.put(key, aus);
-					cambi[4]=true;
-					break;
+			if(flag=false) {
+				if(cambi[4]==false && cambi[3]==true) {
+					punteggiRiserva = UtilityVotiGiocatori.estraiPunteggi(giocatori.get(15)[0], numeroGiornata);
+					if (punteggiRiserva.size()==11) {
+						aus = UtilityVotiGiocatori.calcolaVoto(punteggiRiserva);
+						key=punteggiRiserva.get(0);
+						voto.put(key, aus);
+						cambi[4]=true;
+					}
 				}
 			}
 			break;
 		case "A":
-			if(cambi[5]==true) {
-				break;
-			}
-			else {
+			if(cambi[5]==false) {
 				punteggiRiserva = UtilityVotiGiocatori.estraiPunteggi(giocatori.get(16)[0], numeroGiornata);
 				if (punteggiRiserva.size()==11) {
 					aus = UtilityVotiGiocatori.calcolaVoto(punteggiRiserva);
-					key=punteggiRiserva.get(0);
-					voto.put(key, aus);
-					cambi[5]=true;
-					break;
+					if(aus==0) {
+						punteggiRiserva = UtilityVotiGiocatori.estraiPunteggi(giocatori.get(17)[0], numeroGiornata);
+						if (punteggiRiserva.size()==11) {
+							aus = UtilityVotiGiocatori.calcolaVoto(punteggiRiserva);
+							key=punteggiRiserva.get(0);
+							voto.put(key, aus);
+							cambi[6]=true;
+						}
+					}
+					else {
+						key=punteggiRiserva.get(0);
+						voto.put(key, aus);
+						cambi[5]=true;
+						flag=true;
+					}
+					
 				}
 			}
-			if(cambi[6]==true) {
-				break;
-			}
-			else {
-				punteggiRiserva = UtilityVotiGiocatori.estraiPunteggi(giocatori.get(17)[0], numeroGiornata);
-				if (punteggiRiserva.size()==11) {
-					aus = UtilityVotiGiocatori.calcolaVoto(punteggiRiserva);
-					key=punteggiRiserva.get(0);
-					voto.put(key, aus);
-					cambi[6]=true;
-					break;
+			if(flag==false) {
+				if(cambi[6]==false && cambi[5]==true) {
+					punteggiRiserva = UtilityVotiGiocatori.estraiPunteggi(giocatori.get(17)[0], numeroGiornata);
+					if (punteggiRiserva.size()==11) {
+						aus = UtilityVotiGiocatori.calcolaVoto(punteggiRiserva);
+						key=punteggiRiserva.get(0);
+						voto.put(key, aus);
+						cambi[6]=true;
+					}
 				}
 			}
 			break;
@@ -129,43 +149,39 @@ public class UtilityVotiGiocatori {
 
 	public static HashMap<String, Double> assegnaVoti(ArrayList<String[]> giocatori, int numeroGiornata) {
 		HashMap<String, Double> voti = new HashMap<>();
-		HashMap<String,Double> votiRiserva = new HashMap<>();
+		HashMap<String, Double> votiRiserva = new HashMap<>();
 		List<String> punteggi = new ArrayList<>();
-		int i =0;
+		int i = 0;
 		double voto = 0.0;
-		int numeroCambi=0;
-		boolean [] cambi= {false,false,false,false,false,false,false};
+		int numeroCambi = 0;
+		boolean[] cambi = { false, false, false, false, false, false, false };
 		switch (numeroGiornata) {
 		case 0:
 			for (String[] s : giocatori) {
-				if(i==11) {
+				if (i == 11) {
 					break;
 				}
 				punteggi = UtilityVotiGiocatori.estraiPunteggi(s[0], numeroGiornata);
 				voto = UtilityVotiGiocatori.calcolaVoto(punteggi);
-				if(numeroCambi==3) {
+				if (numeroCambi == 3) {
 					voti.put(s[0], voto);
-					break;
-				}
-				else {
-					if(punteggi.size()==12) {
+				} else {
+					if (punteggi.size() == 12) {
 						if (punteggi.get(11).equalsIgnoreCase("*")) {
-							votiRiserva= UtilityVotiGiocatori.effettuaCambio(s[1], giocatori, numeroGiornata,cambi);
-							if(votiRiserva.isEmpty()==true) {
+							votiRiserva = UtilityVotiGiocatori.effettuaCambio(s[1], giocatori, numeroGiornata, cambi);
+							if (votiRiserva.isEmpty() == true) {
 								voto = UtilityVotiGiocatori.calcolaVoto(punteggi);
 								voti.put(s[0], voto);
-							}
-							else {
+							} else {
 								Set<String> keys = votiRiserva.keySet();
-								for(String k : keys) {
+								for (String k : keys) {
 									voti.put(k, votiRiserva.get(k));
 								}
 								votiRiserva.clear();
 								numeroCambi++;
 							}
 						}
-					}
-					else {
+					} else {
 						voti.put(s[0], voto);
 					}
 				}
@@ -174,33 +190,30 @@ public class UtilityVotiGiocatori {
 			break;
 		case 1:
 			for (String[] s : giocatori) {
-				if(i==11) {
+				if (i == 11) {
 					break;
 				}
 				punteggi = UtilityVotiGiocatori.estraiPunteggi(s[0], numeroGiornata);
 				voto = UtilityVotiGiocatori.calcolaVoto(punteggi);
-				if(numeroCambi==3) {
+				if (numeroCambi == 3) {
 					voti.put(s[0], voto);
-					break;
-				}
-				else {
-					if(punteggi.size()==12) {
+
+				} else {
+					if (punteggi.size() == 12) {
 						if (punteggi.get(11).equalsIgnoreCase("*")) {
-							votiRiserva= UtilityVotiGiocatori.effettuaCambio(s[1], giocatori, numeroGiornata,cambi);
-							if(votiRiserva.isEmpty()==true) {
+							votiRiserva = UtilityVotiGiocatori.effettuaCambio(s[1], giocatori, numeroGiornata, cambi);
+							if (votiRiserva.isEmpty() == true) {
 								voto = UtilityVotiGiocatori.calcolaVoto(punteggi);
 								voti.put(s[0], voto);
-							}
-							else {
+							} else {
 								Set<String> keys = votiRiserva.keySet();
-								for(String k : keys) {
+								for (String k : keys) {
 									voti.put(k, votiRiserva.get(k));
 								}
 								numeroCambi++;
 							}
 						}
-					}
-					else {
+					} else {
 						voti.put(s[0], voto);
 					}
 				}
@@ -209,33 +222,29 @@ public class UtilityVotiGiocatori {
 			break;
 		case 2:
 			for (String[] s : giocatori) {
-				if(i==11) {
+				if (i == 11) {
 					break;
 				}
 				punteggi = UtilityVotiGiocatori.estraiPunteggi(s[0], numeroGiornata);
 				voto = UtilityVotiGiocatori.calcolaVoto(punteggi);
-				if(numeroCambi==3) {
+				if (numeroCambi == 3) {
 					voti.put(s[0], voto);
-					break;
-				}
-				else {
-					if(punteggi.size()==12) {
+				} else {
+					if (punteggi.size() == 12) {
 						if (punteggi.get(11).equalsIgnoreCase("*")) {
-							votiRiserva= UtilityVotiGiocatori.effettuaCambio(s[1], giocatori, numeroGiornata,cambi);
-							if(votiRiserva.isEmpty()==true) {
+							votiRiserva = UtilityVotiGiocatori.effettuaCambio(s[1], giocatori, numeroGiornata, cambi);
+							if (votiRiserva.isEmpty() == true) {
 								voto = UtilityVotiGiocatori.calcolaVoto(punteggi);
 								voti.put(s[0], voto);
-							}
-							else {
+							} else {
 								Set<String> keys = votiRiserva.keySet();
-								for(String k : keys) {
+								for (String k : keys) {
 									voti.put(k, votiRiserva.get(k));
 								}
 								numeroCambi++;
 							}
 						}
-					}
-					else {
+					} else {
 						voti.put(s[0], voto);
 					}
 				}
@@ -244,33 +253,29 @@ public class UtilityVotiGiocatori {
 			break;
 		case 3:
 			for (String[] s : giocatori) {
-				if(i==11) {
+				if (i == 11) {
 					break;
 				}
 				punteggi = UtilityVotiGiocatori.estraiPunteggi(s[0], numeroGiornata);
 				voto = UtilityVotiGiocatori.calcolaVoto(punteggi);
-				if(numeroCambi==3) {
+				if (numeroCambi == 3) {
 					voti.put(s[0], voto);
-					break;
-				}
-				else {
-					if(punteggi.size()==12) {
+				} else {
+					if (punteggi.size() == 12) {
 						if (punteggi.get(11).equalsIgnoreCase("*")) {
-							votiRiserva= UtilityVotiGiocatori.effettuaCambio(s[1], giocatori, numeroGiornata,cambi);
-							if(votiRiserva.isEmpty()==true) {
+							votiRiserva = UtilityVotiGiocatori.effettuaCambio(s[1], giocatori, numeroGiornata, cambi);
+							if (votiRiserva.isEmpty() == true) {
 								voto = UtilityVotiGiocatori.calcolaVoto(punteggi);
 								voti.put(s[0], voto);
-							}
-							else {
+							} else {
 								Set<String> keys = votiRiserva.keySet();
-								for(String k : keys) {
+								for (String k : keys) {
 									voti.put(k, votiRiserva.get(k));
 								}
 								numeroCambi++;
 							}
 						}
-					}
-					else {
+					} else {
 						voti.put(s[0], voto);
 					}
 				}
@@ -279,33 +284,29 @@ public class UtilityVotiGiocatori {
 			break;
 		case 4:
 			for (String[] s : giocatori) {
-				if(i==11) {
+				if (i == 11) {
 					break;
 				}
 				punteggi = UtilityVotiGiocatori.estraiPunteggi(s[0], numeroGiornata);
 				voto = UtilityVotiGiocatori.calcolaVoto(punteggi);
-				if(numeroCambi==3) {
+				if (numeroCambi == 3) {
 					voti.put(s[0], voto);
-					break;
-				}
-				else {
-					if(punteggi.size()==12) {
+				} else {
+					if (punteggi.size() == 12) {
 						if (punteggi.get(11).equalsIgnoreCase("*")) {
-							votiRiserva= UtilityVotiGiocatori.effettuaCambio(s[1], giocatori, numeroGiornata,cambi);
-							if(votiRiserva.isEmpty()==true) {
+							votiRiserva = UtilityVotiGiocatori.effettuaCambio(s[1], giocatori, numeroGiornata, cambi);
+							if (votiRiserva.isEmpty() == true) {
 								voto = UtilityVotiGiocatori.calcolaVoto(punteggi);
 								voti.put(s[0], voto);
-							}
-							else {
+							} else {
 								Set<String> keys = votiRiserva.keySet();
-								for(String k : keys) {
+								for (String k : keys) {
 									voti.put(k, votiRiserva.get(k));
 								}
 								numeroCambi++;
 							}
 						}
-					}
-					else {
+					} else {
 						voti.put(s[0], voto);
 					}
 				}

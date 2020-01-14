@@ -40,20 +40,7 @@ public class ResocontoVotiGUI extends JFrame{
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-	     this.addWindowListener(new WindowAdapter(){  
-	            public void windowClosing(WindowEvent e) {
-	            	HomeGUI nextFrame;
-					try {
-						nextFrame = new HomeGUI(username);
-						nextFrame.toFront(); 
-		    			nextFrame.setVisible(true);
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					} 
-	            }  
-	        });   
+		 
 		
 		
 		Box verticalBoxCasa = Box.createVerticalBox();

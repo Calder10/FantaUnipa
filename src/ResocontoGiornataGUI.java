@@ -8,6 +8,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -259,6 +261,20 @@ public class ResocontoGiornataGUI extends JFrame {
 		panel.add(b3);
 		
 		Giornata.visualizzaResocontoGiornata(this, numeroGiornata);
+		
+		this.addWindowListener(new WindowAdapter(){  
+            public void windowClosing(WindowEvent e) {
+            	HomeGUI nextFrame;
+				try {
+					nextFrame = new HomeGUI(username);
+					nextFrame.toFront(); 
+	    			nextFrame.setVisible(true);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} 
+            }  
+        });  
 		
 		b1.addActionListener(
 				e->{
