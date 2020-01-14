@@ -357,7 +357,7 @@ public class HomeGUI extends JFrame {
 		
 		buttonCalendario.addActionListener(
 				e->{
-					CalendarioGUI nextFrame = new CalendarioGUI();
+					CalendarioGUI nextFrame = new CalendarioGUI(username,numeroGiornata);
 					nextFrame.toFront();
 					nextFrame.setVisible(true);
 				});

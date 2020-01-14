@@ -31,8 +31,10 @@ public class CalendarioGUI extends JFrame {
 	private JLabel lblNewLabelRis1;
 	private JLabel lblNewLabelRis2;
 	private JLabel lblNewLabelRis3;
-	private JButton v1;
-
+	private JButton i1;
+	private JButton i2;
+	private JButton i3;
+	
 	public JPanel getPanel() {
 		return panel;
 	}
@@ -173,22 +175,36 @@ public class CalendarioGUI extends JFrame {
 		this.lblNewLabelRis3 = lblNewLabelRis3;
 	}
 	
-	public JButton getV1() {
-		return v1;
+	public JButton getI1() {
+		return i1;
 	}
 
-	public void setV1(JButton v1) {
-		this.v1 = v1;
+	public void setI1(JButton i1) {
+		this.i1 = i1;
+	}
+	
+	public JButton getI2() {
+		return i2;
 	}
 
-	
+	public void setI2(JButton i2) {
+		this.i2 = i2;
+	}
+
+	public JButton getI3() {
+		return i3;
+	}
+
+	public void setI3(JButton i3) {
+		this.i3 = i3;
+	}
 
 
 	
-	public CalendarioGUI() {
+	public CalendarioGUI(String username, int giornata) {
 		super("Calendario");
 		setResizable(false);
-		setBounds(100, 100, 896, 335);
+		setBounds(100, 100, 792, 335);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -219,8 +235,10 @@ public class CalendarioGUI extends JFrame {
 		btnNewButtonGiornata5.setBounds(6, 243, 154, 46);
 		contentPane.add(btnNewButtonGiornata5);
 		
+		
+		
 		panel = new JPanel();
-		panel.setBounds(172, 0, 712, 283);
+		panel.setBounds(172, 0, 620, 283);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -289,10 +307,30 @@ public class CalendarioGUI extends JFrame {
 		lblNewLabelNomeTrasferta3.setBounds(302, 235, 120, 16);
 		panel.add(lblNewLabelNomeTrasferta3);
 		
-		v1 = new JButton("New button");
-		v1.setIcon(new ImageIcon(CalendarioGUI.class.getResource("/Immagini/get_info_13806.png")));
-		v1.setBounds(600, 24, 77, 67);
-		panel.add(v1);
+		
+		i1= new JButton(new ImageIcon(CalendarioGUI.class.getResource("/Immagini/get_info_13806.png")));
+		i1.setBounds(515, 218, 89, 59);
+		panel.add(i1);
+		i1.setBackground(Color.WHITE);
+		i1.setBorder(null);
+		i1.setContentAreaFilled(false);
+		i1.setVisible(false);
+		
+		i2= new JButton(new ImageIcon(CalendarioGUI.class.getResource("/Immagini/get_info_13806.png")));
+		i2.setBounds(515, 133, 89, 59);
+		panel.add(i2);
+		i2.setBackground(Color.WHITE);
+		i2.setBorder(null);
+		i2.setContentAreaFilled(false);
+		i2.setVisible(false);
+		
+		i3= new JButton(new ImageIcon(CalendarioGUI.class.getResource("/Immagini/get_info_13806.png")));
+		i3.setBounds(515, 59, 89, 59);
+		panel.add(i3);
+		i3.setBackground(Color.WHITE);
+		i3.setBorder(null);
+		i3.setContentAreaFilled(false);
+		i3.setVisible(false);
 		
 		
 		btnNewButtonGiornata1.addActionListener(
@@ -329,6 +367,36 @@ public class CalendarioGUI extends JFrame {
 				e->{
 					Giornata.visualizzaGiornata(this, 5);
 					this.getPanel().setVisible(true);
+				});
+		
+		i1.addActionListener(
+				e->{
+					try {
+						ResocontoVotiGUI info1 = new ResocontoVotiGUI(giornata, 0, username);
+					} catch (ClassNotFoundException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				});
+		
+		i2.addActionListener(
+				e->{
+					try {
+						ResocontoVotiGUI info1 = new ResocontoVotiGUI(giornata, 1, username);
+					} catch (ClassNotFoundException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				});
+		
+		i3.addActionListener(
+				e->{
+					try {
+						ResocontoVotiGUI info1 = new ResocontoVotiGUI(giornata, 2, username);
+					} catch (ClassNotFoundException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				});
 	}
 }

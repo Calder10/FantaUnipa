@@ -71,13 +71,12 @@ public class Giornata implements Serializable {
 				.setText(g.getPartite().getPartite().get(0).getSquadraTrasferta().getNomeSquadra());
 		if (g.giocata == true) {
 			calendarioGUI.getLblNewLabelRis1().setText(g.getPartite().getPartite().get(0).getRisultato());
-			// calendarioGUI.getV2().setVisible(true);
-			// calendarioGUI.getV3().setVisible(true);
+			calendarioGUI.getI1().setVisible(true);
+			
 		} else {
 			calendarioGUI.getLblNewLabelRis1().setText(" - ");
-			// alendarioGUI.getV1().setVisible(false);
-			// calendarioGUI.getV2().setVisible(false);
-			// calendarioGUI.getV3().setVisible(false);
+			calendarioGUI.getI1().setVisible(false);
+			
 		}
 
 		img = new ImageIcon(g.getPartite().getPartite().get(1).getSquadraCasa().getPathLogo());
@@ -90,14 +89,10 @@ public class Giornata implements Serializable {
 				.setText(g.getPartite().getPartite().get(1).getSquadraTrasferta().getNomeSquadra());
 		if (g.giocata == true) {
 			calendarioGUI.getLblNewLabelRis2().setText(g.getPartite().getPartite().get(1).getRisultato());
-			calendarioGUI.getV1().setVisible(true);
-			// calendarioGUI.getV2().setVisible(true);
-			// calendarioGUI.getV3().setVisible(true);
+			calendarioGUI.getI2().setVisible(true);
 		} else {
 			calendarioGUI.getLblNewLabelRis2().setText(" - ");
-			calendarioGUI.getV1().setVisible(false);
-			// calendarioGUI.getV2().setVisible(false);
-			// calendarioGUI.getV3().setVisible(false);
+			calendarioGUI.getI2().setVisible(false);
 		}
 
 		img = new ImageIcon(g.getPartite().getPartite().get(2).getSquadraCasa().getPathLogo());
@@ -110,14 +105,11 @@ public class Giornata implements Serializable {
 				.setText(g.getPartite().getPartite().get(2).getSquadraTrasferta().getNomeSquadra());
 		if (g.giocata == true) {
 			calendarioGUI.getLblNewLabelRis3().setText(g.getPartite().getPartite().get(2).getRisultato());
-			calendarioGUI.getV1().setVisible(true);
-			// calendarioGUI.getV2().setVisible(true);
-			// calendarioGUI.getV3().setVisible(true);
-		} else
+			calendarioGUI.getI3().setVisible(true);
+		} else {
 			calendarioGUI.getLblNewLabelRis3().setText(" - ");
-		calendarioGUI.getV1().setVisible(false);
-		// calendarioGUI.getV2().setVisible(false);
-		// calendarioGUI.getV3().setVisible(false);
+			calendarioGUI.getI3().setVisible(false);
+		}
 	}
 
 	public static int visualizzaGiornataDaGiocare(HomeGUI homeGUI) {
