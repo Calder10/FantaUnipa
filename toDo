@@ -1,4 +1,2 @@
-Simulazione Giornata con voti delle prime 5 giornate della Serie A 
-Classifica
-Decretazione vincitore
 Controllare nomi uguali nella registrazione (dati.csv)
+Implemenatare bottone inizia (HomeGUI) ed eliminare torneo.dat, squadre, e risettare dati.csv
