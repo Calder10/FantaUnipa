@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -7,6 +8,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.Font;
+import javax.swing.ImageIcon;
+import javax.swing.Icon;
 
 public class CalendarioGUI extends JFrame {
 
@@ -28,6 +31,7 @@ public class CalendarioGUI extends JFrame {
 	private JLabel lblNewLabelRis1;
 	private JLabel lblNewLabelRis2;
 	private JLabel lblNewLabelRis3;
+	private JButton v1;
 
 	public JPanel getPanel() {
 		return panel;
@@ -168,12 +172,23 @@ public class CalendarioGUI extends JFrame {
 	public void setLblNewLabelRis3(JLabel lblNewLabelRis3) {
 		this.lblNewLabelRis3 = lblNewLabelRis3;
 	}
+	
+	public JButton getV1() {
+		return v1;
+	}
+
+	public void setV1(JButton v1) {
+		this.v1 = v1;
+	}
+
+	
+
 
 	
 	public CalendarioGUI() {
 		super("Calendario");
 		setResizable(false);
-		setBounds(100, 100, 731, 335);
+		setBounds(100, 100, 896, 335);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -205,7 +220,7 @@ public class CalendarioGUI extends JFrame {
 		contentPane.add(btnNewButtonGiornata5);
 		
 		panel = new JPanel();
-		panel.setBounds(172, 6, 553, 283);
+		panel.setBounds(172, 0, 712, 283);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -274,6 +289,11 @@ public class CalendarioGUI extends JFrame {
 		lblNewLabelNomeTrasferta3.setBounds(302, 235, 120, 16);
 		panel.add(lblNewLabelNomeTrasferta3);
 		
+		v1 = new JButton("New button");
+		v1.setIcon(new ImageIcon(CalendarioGUI.class.getResource("/Immagini/get_info_13806.png")));
+		v1.setBounds(600, 24, 77, 67);
+		panel.add(v1);
+		
 		
 		btnNewButtonGiornata1.addActionListener(
 				e->{
@@ -311,6 +331,4 @@ public class CalendarioGUI extends JFrame {
 					this.getPanel().setVisible(true);
 				});
 	}
-
-
 }

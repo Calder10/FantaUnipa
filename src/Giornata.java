@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 
 public class Giornata implements Serializable{
 
@@ -67,10 +68,17 @@ public class Giornata implements Serializable{
 		calendarioGUI.getLblNewLabelLogoTrasferta1().setIcon(img);
 		calendarioGUI.getLblNewLabelNomeCasa1().setText(g.getPartite().getPartite().get(0).getSquadraCasa().getNomeSquadra());
 		calendarioGUI.getLblNewLabelNomeTrasferta1().setText(g.getPartite().getPartite().get(0).getSquadraTrasferta().getNomeSquadra());
-		if(g.getPartite().getPartite().get(0).getRisultato()!=null)
+		if(g.giocata==true) {
 			calendarioGUI.getLblNewLabelRis1().setText(g.getPartite().getPartite().get(0).getRisultato());
-		else
+			//calendarioGUI.getV2().setVisible(true);
+			//calendarioGUI.getV3().setVisible(true);
+		}
+		else {
 			calendarioGUI.getLblNewLabelRis1().setText(" - ");
+			//alendarioGUI.getV1().setVisible(false);
+			//calendarioGUI.getV2().setVisible(false);
+			//calendarioGUI.getV3().setVisible(false);
+		}
 		
 	
 		img = new ImageIcon(g.getPartite().getPartite().get(1).getSquadraCasa().getPathLogo());
@@ -79,10 +87,18 @@ public class Giornata implements Serializable{
 		calendarioGUI.getLblNewLabelLogoTrasferta2().setIcon(img);
 		calendarioGUI.getLblNewLabelNomeCasa2().setText(g.getPartite().getPartite().get(1).getSquadraCasa().getNomeSquadra());
 		calendarioGUI.getLblNewLabelNomeTrasferta2().setText(g.getPartite().getPartite().get(1).getSquadraTrasferta().getNomeSquadra());
-		if(g.getPartite().getPartite().get(1).getRisultato()!=null)
+		if(g.giocata==true) {
 			calendarioGUI.getLblNewLabelRis2().setText(g.getPartite().getPartite().get(1).getRisultato());
-		else
+			calendarioGUI.getV1().setVisible(true);
+			//calendarioGUI.getV2().setVisible(true);
+			//calendarioGUI.getV3().setVisible(true);
+		}
+		else {
 			calendarioGUI.getLblNewLabelRis2().setText(" - ");
+			calendarioGUI.getV1().setVisible(false);
+			//calendarioGUI.getV2().setVisible(false);
+			//calendarioGUI.getV3().setVisible(false);
+		}
 		
 		img = new ImageIcon(g.getPartite().getPartite().get(2).getSquadraCasa().getPathLogo());
 		calendarioGUI.getLblNewLabelLogoCasa3().setIcon(img);
@@ -90,10 +106,17 @@ public class Giornata implements Serializable{
 		calendarioGUI.getLblNewLabelLogoTrasferta3().setIcon(img);
 		calendarioGUI.getLblNewLabelNomeCasa3().setText(g.getPartite().getPartite().get(2).getSquadraCasa().getNomeSquadra());
 		calendarioGUI.getLblNewLabelNomeTrasferta3().setText(g.getPartite().getPartite().get(2).getSquadraTrasferta().getNomeSquadra());
-		if(g.getPartite().getPartite().get(1).getRisultato()!=null)
+		if(g.giocata==true) {
 			calendarioGUI.getLblNewLabelRis3().setText(g.getPartite().getPartite().get(2).getRisultato());
+			calendarioGUI.getV1().setVisible(true);
+			//calendarioGUI.getV2().setVisible(true);
+			//calendarioGUI.getV3().setVisible(true);
+		}
 		else
 			calendarioGUI.getLblNewLabelRis3().setText(" - ");
+			calendarioGUI.getV1().setVisible(false);
+			//calendarioGUI.getV2().setVisible(false);
+			//calendarioGUI.getV3().setVisible(false);
 	}
 	
 	public static int visualizzaGiornataDaGiocare(HomeGUI homeGUI) {
@@ -149,8 +172,10 @@ public class Giornata implements Serializable{
 			}
 			else
 				i++;
+			if(x.giocata==true && i=) {
+				numeroGiornata=-1;
+			}
 		}
-		
 		return numeroGiornata;
 	}
 	

@@ -204,6 +204,13 @@ public class GUI442 extends JFrame {
 		lblAttaccanti.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAttaccanti.setBounds(501, 656, 115, 16);
 		contentPane.add(lblAttaccanti);
+		
+		  JButton btnNewButtonIndietro= new JButton(new ImageIcon(ScegliFormazioneGUI.class.getResource("/Immagini/ic_arrow_back_128_28226.png")));
+	        btnNewButtonIndietro.setBackground(Color.WHITE);
+	        btnNewButtonIndietro.setBorder(null);
+	        btnNewButtonIndietro.setContentAreaFilled(false);
+	        btnNewButtonIndietro.setBounds(12, 720, 57, 47);
+	        contentPane.add(btnNewButtonIndietro);
 
 		btnNewButtonConferma.addActionListener(
 				e->{
@@ -262,6 +269,14 @@ public class GUI442 extends JFrame {
 							e1.printStackTrace();
 						}
 					 }
+				});
+		
+		btnNewButtonIndietro.addActionListener(
+				e->{
+					ScegliFormazioneGUI backFrame = new ScegliFormazioneGUI(username, s, numeroGiornata);
+					backFrame.toFront();
+					backFrame.setVisible(true);
+					this.dispose();
 				});
 		
 	

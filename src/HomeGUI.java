@@ -8,6 +8,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import java.awt.Label;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -35,6 +36,8 @@ public class HomeGUI extends JFrame {
 	private JLabel lblNewLabelRis1;
 	private JLabel lblNewLabelRis2;
 	private JLabel lblNewLabelRis3;
+	private JLabel lblVuoiCominciareUn;
+	private JButton btnNewButtonInizia;
 
 	
 	
@@ -310,9 +313,27 @@ public class HomeGUI extends JFrame {
 		lblNewLabelNomeTrasferta3.setBounds(392, 235, 120, 16);
 		panel.add(lblNewLabelNomeTrasferta3);
 		
+		lblVuoiCominciareUn = new JLabel("VUOI INIZIARE UN NUOVO TORNEO ?");
+		lblVuoiCominciareUn.setFont(new Font("Dialog", Font.BOLD, 30));
+		lblVuoiCominciareUn.setBounds(16, 100, 685, 60);
+		panel.add(lblVuoiCominciareUn);
+		
+		btnNewButtonInizia = new JButton("Inizia");
+		btnNewButtonInizia.setBounds(241, 149, 168, 57);
+		panel.add(btnNewButtonInizia);
+		
+		lblVuoiCominciareUn.setVisible(false);
+		btnNewButtonInizia.setVisible(false);
 		
 		
 		int numeroGiornata = Giornata.visualizzaGiornataDaGiocare(this);
+		
+		if(numeroGiornata==-1) {
+			btnNewButtonSchieraFormazione.setVisible(false);
+			lblVuoiCominciareUn.setVisible(true);
+			btnNewButtonInizia.setVisible(true);
+			
+		}
 
 		
 		btnNewButtonLaMiaRosa.addActionListener(
@@ -362,5 +383,14 @@ public class HomeGUI extends JFrame {
 						System.out.println("Errore");
 					}
 					});
+		
+		btnNewButtonInizia.addActionListener(
+				e->{
+					CreazioneSquadraGUI nextFrame = new CreazioneSquadraGUI(username);
+					nextFrame.toFront();
+					nextFrame.setVisible(true);
+					// metodo cancellazione file
+					this.dispose();
+				});
 	}
 }

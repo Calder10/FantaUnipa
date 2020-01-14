@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -17,6 +18,7 @@ import javax.swing.SpinnerListModel;
 
 import java.awt.Font;
 import javax.swing.JComboBox;
+import java.awt.Color;
 
 public class ScegliFormazioneGUI extends JFrame {
 
@@ -27,9 +29,9 @@ public class ScegliFormazioneGUI extends JFrame {
 	 * 
 	 */
 	public ScegliFormazioneGUI(String username,Squadra squadra,int numeroGiornata) {
-		super("Schera Formazione");
+		super("Schiera Formazione");
 		setResizable(false);
-		setBounds(100, 100, 525, 129);
+		setBounds(100, 100, 483, 114);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -43,14 +45,22 @@ public class ScegliFormazioneGUI extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("Scegli il modulo");
 		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
-		lblNewLabel.setBounds(48, 36, 222, 35);
+		lblNewLabel.setBounds(71, 22, 222, 35);
 		contentPane.add(lblNewLabel);
 		
 		JComboBox comboBoxModuli = new JComboBox(moduli);
 		comboBoxModuli.setSelectedIndex(3);
-		comboBoxModuli.setBounds(331, 30, 141, 47);
+		comboBoxModuli.setBounds(311, 20, 141, 47);
 		contentPane.add(comboBoxModuli);
-	
+		
+		
+        JButton btnNewButtonIndietro= new JButton(new ImageIcon(ScegliFormazioneGUI.class.getResource("/Immagini/ic_arrow_back_128_28226.png")));
+        btnNewButtonIndietro.setBackground(Color.WHITE);
+        btnNewButtonIndietro.setBorder(null);
+        btnNewButtonIndietro.setContentAreaFilled(false);
+        btnNewButtonIndietro.setBounds(12, 0, 57, 47);
+        contentPane.add(btnNewButtonIndietro);
+		
 		comboBoxModuli.addActionListener(
 				l->{
 					switch(comboBoxModuli.getSelectedItem().toString()) {
@@ -84,6 +94,19 @@ public class ScegliFormazioneGUI extends JFrame {
 						this.dispose();
 						break;
 					default: System.out.println("Scelta non consentita\n");
+					}
+				});
+		
+		btnNewButtonIndietro.addActionListener(
+				e->{
+					try {
+						HomeGUI backFrame = new HomeGUI(username);
+						backFrame.toFront();
+						backFrame.setVisible(true);
+						this.dispose();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
 					}
 				});
 	}

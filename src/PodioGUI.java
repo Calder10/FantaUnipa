@@ -7,6 +7,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.awt.Font;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.SwingConstants;
@@ -15,22 +17,7 @@ public class PodioGUI extends JFrame {
 
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					PodioGUI frame = new PodioGUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	
 	/**
 	 * Create the frame.
 	 * @throws IOException 
@@ -73,5 +60,13 @@ public class PodioGUI extends JFrame {
 		label1.setText(podio.get(0));
 		label2.setText(podio.get(1));
 		label3.setText(podio.get(2));
+		
+		this.addWindowListener(new WindowAdapter(){  
+            public void windowClosing(WindowEvent e) {
+            	HomeGUI nextFrame;
+				
+            }  
+        });  
+		
 	}
 }
