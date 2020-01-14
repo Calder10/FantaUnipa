@@ -168,7 +168,7 @@ public class GUI352 extends JFrame {
 		
 		JLabel lblDi = new JLabel("Difensori");
 		lblDi.setHorizontalAlignment(SwingConstants.CENTER);
-		lblDi.setBounds(199, 656, 61, 16);
+		lblDi.setBounds(199, 656, 71, 16);
 		contentPane.add(lblDi);
 		
 		JLabel lblCentrocampisti = new JLabel("Centrocampisti");

@@ -266,10 +266,21 @@ public class ResocontoGiornataGUI extends JFrame {
             public void windowClosing(WindowEvent e) {
             	HomeGUI nextFrame;
 				try {
-					nextFrame = new HomeGUI(username);
-					nextFrame.toFront(); 
-	    			nextFrame.setVisible(true);
+					if(numeroGiornata==2) {
+						PodioGUI nextFrame1 = new PodioGUI();
+						nextFrame1.toFront();
+						nextFrame1.setVisible(true);
+						
+					}
+					else {
+						nextFrame = new HomeGUI(username);
+						nextFrame.toFront(); 
+		    			nextFrame.setVisible(true);
+					}
 				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (ClassNotFoundException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				} 

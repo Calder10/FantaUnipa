@@ -27,7 +27,7 @@ public class SquadreGUI extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("SQUADRE PARTECIPANTI");
 		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 30));
-		lblNewLabel.setBounds(183, 6, 373, 59);
+		lblNewLabel.setBounds(179, 6, 382, 59);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabelLogo2 = new JLabel();

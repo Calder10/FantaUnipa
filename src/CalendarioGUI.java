@@ -173,7 +173,7 @@ public class CalendarioGUI extends JFrame {
 	public CalendarioGUI() {
 		super("Calendario");
 		setResizable(false);
-		setBounds(100, 100, 731, 321);
+		setBounds(100, 100, 731, 335);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);

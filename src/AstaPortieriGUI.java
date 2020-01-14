@@ -80,7 +80,7 @@ public class AstaPortieriGUI extends AstaGUI{
 		contentPane.add(searchButton);
 
 		btnNewButtonShowAll = new JButton("Mostra Tutti");
-		btnNewButtonShowAll.setBounds(31, 112, 108, 47);
+		btnNewButtonShowAll.setBounds(31, 112, 121, 47);
 		contentPane.add(btnNewButtonShowAll);
 
 		lblNewLabelRis = new JLabel("");

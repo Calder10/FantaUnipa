@@ -80,7 +80,7 @@ public class AstaDifensoriGUI extends AstaGUI{
 		contentPane1.add(searchButton1);
 
 		btnNewButtonShowAll1 = new JButton("Mostra Tutti");
-		btnNewButtonShowAll1.setBounds(31, 112, 108, 47);
+		btnNewButtonShowAll1.setBounds(31, 112, 121, 47);
 		contentPane1.add(btnNewButtonShowAll1);
 
 		lblNewLabelRis1 = new JLabel("");

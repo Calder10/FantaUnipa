@@ -123,14 +123,6 @@ public class Classifica implements Serializable {
 		}
 		
 		return ris;
-		/*
-		ArrayList<Object> aus1 = ris.get(i + 1);
-		ArrayList<Object> aus2 = ris.get(i);
-		aus1.set(0,aus2.get(0));
-		ris.set(i+1, aus1);
-		aus2.set(0,aus1.get(0));
-		ris.set(i, aus2);
-		*/
 	}
 
 	public static void updateClassifica(Giornata g) throws IOException, ClassNotFoundException {
@@ -254,5 +246,20 @@ public class Classifica implements Serializable {
 		oos.close();
 		fos.close();
 		f1.renameTo(f);
+	}
+	
+	public static ArrayList<String> returnPodio() throws IOException, ClassNotFoundException{
+		ArrayList<String> podio = new ArrayList<>();
+		File f = new File("src/torneo.dat");
+		FileInputStream fis = new FileInputStream(f);
+		ObjectInputStream ois = new ObjectInputStream(fis);
+		Torneo t = (Torneo) ois.readObject();
+		ois.close();
+		fis.close();
+		podio.add(t.getClassifica().getClassifica().get(0).get(2).toString());
+		podio.add(t.getClassifica().getClassifica().get(1).get(2).toString());
+		podio.add(t.getClassifica().getClassifica().get(2).get(2).toString());
+		return podio;
+		
 	}
 }
