@@ -12,17 +12,17 @@ import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-public class Giornata implements Serializable{
+public class Giornata implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 2251213532547137066L;
 	private Partite partite;
-	boolean giocata=false;
-	
+	boolean giocata = false;
+
 	public Giornata(Partite partite) {
-		this.partite=partite;
+		this.partite = partite;
 	}
 
 	public Partite getPartite() {
@@ -32,200 +32,211 @@ public class Giornata implements Serializable{
 	public void setPartite(Partite partite) {
 		this.partite = partite;
 	}
-	
+
 	public boolean isGiocata() {
 		return this.giocata;
 	}
-	
+
 	public void setGicata(boolean giocata) {
-		this.giocata=giocata;
+		this.giocata = giocata;
 	}
-	
-	
-	public static void visualizzaGiornata(CalendarioGUI calendarioGUI,int numeroGiornata){
+
+	public static void visualizzaGiornata(CalendarioGUI calendarioGUI, int numeroGiornata) {
 		File f = null;
 		FileInputStream fis = null;
-		ObjectInputStream  ois =null;
+		ObjectInputStream ois = null;
 		Giornata g = null;
 		Torneo t;
 		try {
 			f = new File("src/torneo.dat");
 			fis = new FileInputStream(f);
 			ois = new ObjectInputStream(fis);
-			t=(Torneo) ois.readObject();
-			g=t.getGiornate().getGiornate().get(numeroGiornata-1);
+			t = (Torneo) ois.readObject();
+			g = t.getGiornate().getGiornate().get(numeroGiornata - 1);
 			ois.close();
 			fis.close();
 		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
-			//System.out.println("Errore nella lettura dal file !");
+			// System.out.println("Errore nella lettura dal file !");
 		}
 		ImageIcon img = null;
-		calendarioGUI.getLblNewLabelGiornata().setText("Giornata "+numeroGiornata);
+		calendarioGUI.getLblNewLabelGiornata().setText("Giornata " + numeroGiornata);
 		img = new ImageIcon(g.getPartite().getPartite().get(0).getSquadraCasa().getPathLogo());
 		calendarioGUI.getLblNewLabelLogoCasa1().setIcon(img);
 		img = new ImageIcon(g.getPartite().getPartite().get(0).getSquadraTrasferta().getPathLogo());
 		calendarioGUI.getLblNewLabelLogoTrasferta1().setIcon(img);
-		calendarioGUI.getLblNewLabelNomeCasa1().setText(g.getPartite().getPartite().get(0).getSquadraCasa().getNomeSquadra());
-		calendarioGUI.getLblNewLabelNomeTrasferta1().setText(g.getPartite().getPartite().get(0).getSquadraTrasferta().getNomeSquadra());
-		if(g.giocata==true) {
+		calendarioGUI.getLblNewLabelNomeCasa1()
+				.setText(g.getPartite().getPartite().get(0).getSquadraCasa().getNomeSquadra());
+		calendarioGUI.getLblNewLabelNomeTrasferta1()
+				.setText(g.getPartite().getPartite().get(0).getSquadraTrasferta().getNomeSquadra());
+		if (g.giocata == true) {
 			calendarioGUI.getLblNewLabelRis1().setText(g.getPartite().getPartite().get(0).getRisultato());
-			//calendarioGUI.getV2().setVisible(true);
-			//calendarioGUI.getV3().setVisible(true);
-		}
-		else {
+			// calendarioGUI.getV2().setVisible(true);
+			// calendarioGUI.getV3().setVisible(true);
+		} else {
 			calendarioGUI.getLblNewLabelRis1().setText(" - ");
-			//alendarioGUI.getV1().setVisible(false);
-			//calendarioGUI.getV2().setVisible(false);
-			//calendarioGUI.getV3().setVisible(false);
+			// alendarioGUI.getV1().setVisible(false);
+			// calendarioGUI.getV2().setVisible(false);
+			// calendarioGUI.getV3().setVisible(false);
 		}
-		
-	
+
 		img = new ImageIcon(g.getPartite().getPartite().get(1).getSquadraCasa().getPathLogo());
 		calendarioGUI.getLblNewLabelLogoCasa2().setIcon(img);
 		img = new ImageIcon(g.getPartite().getPartite().get(1).getSquadraTrasferta().getPathLogo());
 		calendarioGUI.getLblNewLabelLogoTrasferta2().setIcon(img);
-		calendarioGUI.getLblNewLabelNomeCasa2().setText(g.getPartite().getPartite().get(1).getSquadraCasa().getNomeSquadra());
-		calendarioGUI.getLblNewLabelNomeTrasferta2().setText(g.getPartite().getPartite().get(1).getSquadraTrasferta().getNomeSquadra());
-		if(g.giocata==true) {
+		calendarioGUI.getLblNewLabelNomeCasa2()
+				.setText(g.getPartite().getPartite().get(1).getSquadraCasa().getNomeSquadra());
+		calendarioGUI.getLblNewLabelNomeTrasferta2()
+				.setText(g.getPartite().getPartite().get(1).getSquadraTrasferta().getNomeSquadra());
+		if (g.giocata == true) {
 			calendarioGUI.getLblNewLabelRis2().setText(g.getPartite().getPartite().get(1).getRisultato());
 			calendarioGUI.getV1().setVisible(true);
-			//calendarioGUI.getV2().setVisible(true);
-			//calendarioGUI.getV3().setVisible(true);
-		}
-		else {
+			// calendarioGUI.getV2().setVisible(true);
+			// calendarioGUI.getV3().setVisible(true);
+		} else {
 			calendarioGUI.getLblNewLabelRis2().setText(" - ");
 			calendarioGUI.getV1().setVisible(false);
-			//calendarioGUI.getV2().setVisible(false);
-			//calendarioGUI.getV3().setVisible(false);
+			// calendarioGUI.getV2().setVisible(false);
+			// calendarioGUI.getV3().setVisible(false);
 		}
-		
+
 		img = new ImageIcon(g.getPartite().getPartite().get(2).getSquadraCasa().getPathLogo());
 		calendarioGUI.getLblNewLabelLogoCasa3().setIcon(img);
 		img = new ImageIcon(g.getPartite().getPartite().get(2).getSquadraTrasferta().getPathLogo());
 		calendarioGUI.getLblNewLabelLogoTrasferta3().setIcon(img);
-		calendarioGUI.getLblNewLabelNomeCasa3().setText(g.getPartite().getPartite().get(2).getSquadraCasa().getNomeSquadra());
-		calendarioGUI.getLblNewLabelNomeTrasferta3().setText(g.getPartite().getPartite().get(2).getSquadraTrasferta().getNomeSquadra());
-		if(g.giocata==true) {
+		calendarioGUI.getLblNewLabelNomeCasa3()
+				.setText(g.getPartite().getPartite().get(2).getSquadraCasa().getNomeSquadra());
+		calendarioGUI.getLblNewLabelNomeTrasferta3()
+				.setText(g.getPartite().getPartite().get(2).getSquadraTrasferta().getNomeSquadra());
+		if (g.giocata == true) {
 			calendarioGUI.getLblNewLabelRis3().setText(g.getPartite().getPartite().get(2).getRisultato());
 			calendarioGUI.getV1().setVisible(true);
-			//calendarioGUI.getV2().setVisible(true);
-			//calendarioGUI.getV3().setVisible(true);
-		}
-		else
+			// calendarioGUI.getV2().setVisible(true);
+			// calendarioGUI.getV3().setVisible(true);
+		} else
 			calendarioGUI.getLblNewLabelRis3().setText(" - ");
-			calendarioGUI.getV1().setVisible(false);
-			//calendarioGUI.getV2().setVisible(false);
-			//calendarioGUI.getV3().setVisible(false);
+		calendarioGUI.getV1().setVisible(false);
+		// calendarioGUI.getV2().setVisible(false);
+		// calendarioGUI.getV3().setVisible(false);
 	}
-	
+
 	public static int visualizzaGiornataDaGiocare(HomeGUI homeGUI) {
 		File f = null;
 		FileInputStream fis = null;
-		ObjectInputStream  ois =null;
+		ObjectInputStream ois = null;
 		Giornate g = null;
 		Torneo t = null;
-		int numeroGiornata=0;
+		int flag = 0;
+		int numeroGiornata = 0;
 		try {
 			f = new File("src/torneo.dat");
 			fis = new FileInputStream(f);
 			ois = new ObjectInputStream(fis);
-			t=(Torneo) ois.readObject();
-			g=t.getGiornate();
+			t = (Torneo) ois.readObject();
+			g = t.getGiornate();
 			ois.close();
 			fis.close();
 		} catch (IOException | ClassNotFoundException e) {
 			System.out.println("Errore nella lettura dal file !");
 		}
-		
-		int i=0;
-		for(Giornata x : g.getGiornate()) {
-			if(x.isGiocata()==false) {
+
+		int i = 0;
+		for (Giornata x : g.getGiornate()) {
+			if (x.isGiocata() == false) {
 				ImageIcon img = null;
-				numeroGiornata=i;
-				homeGUI.getLblNewLabelGiornata().setText("Giornata "+(i+1));
+				numeroGiornata = i;
+				homeGUI.getLblNewLabelGiornata().setText("Giornata " + (i + 1));
 				img = new ImageIcon(x.getPartite().getPartite().get(0).getSquadraCasa().getPathLogo());
 				homeGUI.getLblNewLabelLogoCasa1().setIcon(img);
 				img = new ImageIcon(x.getPartite().getPartite().get(0).getSquadraTrasferta().getPathLogo());
 				homeGUI.getLblNewLabelLogoTrasferta1().setIcon(img);
-				homeGUI.getLblNewLabelNomeCasa1().setText(x.getPartite().getPartite().get(0).getSquadraCasa().getNomeSquadra());
-				homeGUI.getLblNewLabelNomeTrasferta1().setText(x.getPartite().getPartite().get(0).getSquadraTrasferta().getNomeSquadra());
+				homeGUI.getLblNewLabelNomeCasa1()
+						.setText(x.getPartite().getPartite().get(0).getSquadraCasa().getNomeSquadra());
+				homeGUI.getLblNewLabelNomeTrasferta1()
+						.setText(x.getPartite().getPartite().get(0).getSquadraTrasferta().getNomeSquadra());
 				homeGUI.getLblNewLabelRis1().setText(" - ");
-				
+
 				img = new ImageIcon(x.getPartite().getPartite().get(1).getSquadraCasa().getPathLogo());
 				homeGUI.getLblNewLabelLogoCasa2().setIcon(img);
 				img = new ImageIcon(x.getPartite().getPartite().get(1).getSquadraTrasferta().getPathLogo());
 				homeGUI.getLblNewLabelLogoTrasferta2().setIcon(img);
-				homeGUI.getLblNewLabelNomeCasa2().setText(x.getPartite().getPartite().get(1).getSquadraCasa().getNomeSquadra());
-				homeGUI.getLblNewLabelNomeTrasferta2().setText(x.getPartite().getPartite().get(1).getSquadraTrasferta().getNomeSquadra());
+				homeGUI.getLblNewLabelNomeCasa2()
+						.setText(x.getPartite().getPartite().get(1).getSquadraCasa().getNomeSquadra());
+				homeGUI.getLblNewLabelNomeTrasferta2()
+						.setText(x.getPartite().getPartite().get(1).getSquadraTrasferta().getNomeSquadra());
 				homeGUI.getLblNewLabelRis2().setText(" - ");
-				
-				
+
 				img = new ImageIcon(x.getPartite().getPartite().get(2).getSquadraCasa().getPathLogo());
 				homeGUI.getLblNewLabelLogoCasa3().setIcon(img);
 				img = new ImageIcon(x.getPartite().getPartite().get(2).getSquadraTrasferta().getPathLogo());
 				homeGUI.getLblNewLabelLogoTrasferta3().setIcon(img);
-				homeGUI.getLblNewLabelNomeCasa3().setText(x.getPartite().getPartite().get(2).getSquadraCasa().getNomeSquadra());
-				homeGUI.getLblNewLabelNomeTrasferta3().setText(x.getPartite().getPartite().get(2).getSquadraTrasferta().getNomeSquadra());
+				homeGUI.getLblNewLabelNomeCasa3()
+						.setText(x.getPartite().getPartite().get(2).getSquadraCasa().getNomeSquadra());
+				homeGUI.getLblNewLabelNomeTrasferta3()
+						.setText(x.getPartite().getPartite().get(2).getSquadraTrasferta().getNomeSquadra());
 				homeGUI.getLblNewLabelRis3().setText(" - ");
 				break;
-			}
-			else
+			} else {
 				i++;
-			if(x.giocata==true && i=) {
-				numeroGiornata=-1;
+				flag++;
 			}
+
+		}
+		if (flag == 5) {
+			numeroGiornata = -1;
 		}
 		return numeroGiornata;
 	}
-	
-	public static void visualizzaResocontoGiornata(ResocontoGiornataGUI homeGUI,int numeroGiornata) {
+
+	public static void visualizzaResocontoGiornata(ResocontoGiornataGUI homeGUI, int numeroGiornata) {
 		File f = null;
 		FileInputStream fis = null;
-		ObjectInputStream  ois =null;
+		ObjectInputStream ois = null;
 		Giornata g = null;
 		Torneo t = null;
 		try {
 			f = new File("src/torneo.dat");
 			fis = new FileInputStream(f);
 			ois = new ObjectInputStream(fis);
-			t=(Torneo) ois.readObject();
+			t = (Torneo) ois.readObject();
 			ois.close();
 			fis.close();
 		} catch (IOException | ClassNotFoundException e) {
 			System.out.println("Errore nella lettura dal file !");
 		}
-		
-		g=t.getGiornate().getGiornate().get(numeroGiornata);
-				ImageIcon img = null;
-				img = new ImageIcon(g.getPartite().getPartite().get(0).getSquadraCasa().getPathLogo());
-				homeGUI.getLblNewLabelLogoCasa1().setIcon(img);
-				img = new ImageIcon(g.getPartite().getPartite().get(0).getSquadraTrasferta().getPathLogo());
-				homeGUI.getLblNewLabelLogoTrasferta1().setIcon(img);
-				homeGUI.getLblNewLabelNomeCasa1().setText(g.getPartite().getPartite().get(0).getSquadraCasa().getNomeSquadra());
-				homeGUI.getLblNewLabelNomeTrasferta1().setText(g.getPartite().getPartite().get(0).getSquadraTrasferta().getNomeSquadra());
-				homeGUI.getLblNewLabelRis1().setText(g.getPartite().getPartite().get(0).getRisultato());
-				
-				img = new ImageIcon(g.getPartite().getPartite().get(1).getSquadraCasa().getPathLogo());
-				homeGUI.getLblNewLabelLogoCasa2().setIcon(img);
-				img = new ImageIcon(g.getPartite().getPartite().get(1).getSquadraTrasferta().getPathLogo());
-				homeGUI.getLblNewLabelLogoTrasferta2().setIcon(img);
-				homeGUI.getLblNewLabelNomeCasa2().setText(g.getPartite().getPartite().get(1).getSquadraCasa().getNomeSquadra());
-				homeGUI.getLblNewLabelNomeTrasferta2().setText(g.getPartite().getPartite().get(1).getSquadraTrasferta().getNomeSquadra());
-				homeGUI.getLblNewLabelRis2().setText(g.getPartite().getPartite().get(1).getRisultato());
-				
-				
-				img = new ImageIcon(g.getPartite().getPartite().get(2).getSquadraCasa().getPathLogo());
-				homeGUI.getLblNewLabelLogoCasa3().setIcon(img);
-				img = new ImageIcon(g.getPartite().getPartite().get(2).getSquadraTrasferta().getPathLogo());
-				homeGUI.getLblNewLabelLogoTrasferta3().setIcon(img);
-				homeGUI.getLblNewLabelNomeCasa3().setText(g.getPartite().getPartite().get(2).getSquadraCasa().getNomeSquadra());
-				homeGUI.getLblNewLabelNomeTrasferta3().setText(g.getPartite().getPartite().get(2).getSquadraTrasferta().getNomeSquadra());
-				homeGUI.getLblNewLabelRis3().setText(g.getPartite().getPartite().get(2).getRisultato());
+
+		g = t.getGiornate().getGiornate().get(numeroGiornata);
+		ImageIcon img = null;
+		img = new ImageIcon(g.getPartite().getPartite().get(0).getSquadraCasa().getPathLogo());
+		homeGUI.getLblNewLabelLogoCasa1().setIcon(img);
+		img = new ImageIcon(g.getPartite().getPartite().get(0).getSquadraTrasferta().getPathLogo());
+		homeGUI.getLblNewLabelLogoTrasferta1().setIcon(img);
+		homeGUI.getLblNewLabelNomeCasa1().setText(g.getPartite().getPartite().get(0).getSquadraCasa().getNomeSquadra());
+		homeGUI.getLblNewLabelNomeTrasferta1()
+				.setText(g.getPartite().getPartite().get(0).getSquadraTrasferta().getNomeSquadra());
+		homeGUI.getLblNewLabelRis1().setText(g.getPartite().getPartite().get(0).getRisultato());
+
+		img = new ImageIcon(g.getPartite().getPartite().get(1).getSquadraCasa().getPathLogo());
+		homeGUI.getLblNewLabelLogoCasa2().setIcon(img);
+		img = new ImageIcon(g.getPartite().getPartite().get(1).getSquadraTrasferta().getPathLogo());
+		homeGUI.getLblNewLabelLogoTrasferta2().setIcon(img);
+		homeGUI.getLblNewLabelNomeCasa2().setText(g.getPartite().getPartite().get(1).getSquadraCasa().getNomeSquadra());
+		homeGUI.getLblNewLabelNomeTrasferta2()
+				.setText(g.getPartite().getPartite().get(1).getSquadraTrasferta().getNomeSquadra());
+		homeGUI.getLblNewLabelRis2().setText(g.getPartite().getPartite().get(1).getRisultato());
+
+		img = new ImageIcon(g.getPartite().getPartite().get(2).getSquadraCasa().getPathLogo());
+		homeGUI.getLblNewLabelLogoCasa3().setIcon(img);
+		img = new ImageIcon(g.getPartite().getPartite().get(2).getSquadraTrasferta().getPathLogo());
+		homeGUI.getLblNewLabelLogoTrasferta3().setIcon(img);
+		homeGUI.getLblNewLabelNomeCasa3().setText(g.getPartite().getPartite().get(2).getSquadraCasa().getNomeSquadra());
+		homeGUI.getLblNewLabelNomeTrasferta3()
+				.setText(g.getPartite().getPartite().get(2).getSquadraTrasferta().getNomeSquadra());
+		homeGUI.getLblNewLabelRis3().setText(g.getPartite().getPartite().get(2).getRisultato());
 	}
-	
-	
-	public static boolean  giocaGiornata(Formazione f , int numeroGiornata, Squadra s) throws IOException, ClassNotFoundException {
+
+	public static boolean giocaGiornata(Formazione f, int numeroGiornata, Squadra s)
+			throws IOException, ClassNotFoundException {
 		File file = new File("src/torneo.dat");
 		FileInputStream fis = new FileInputStream(file);
 		ObjectInputStream oos = new ObjectInputStream(fis);
@@ -234,93 +245,93 @@ public class Giornata implements Serializable{
 		fis.close();
 		Giornata g = t.getGiornate().getGiornate().get(numeroGiornata);
 		ArrayList<Partita> p = g.getPartite().getPartite();
-		Formazione fv=null;
-		int scelta=0;
-		for(Partita x : p) {
-			if(x.getSquadraCasa().getNomeSquadra().equalsIgnoreCase(s.getNomeSquadra())) {
+		Formazione fv = null;
+		int scelta = 0;
+		for (Partita x : p) {
+			if (x.getSquadraCasa().getNomeSquadra().equalsIgnoreCase(s.getNomeSquadra())) {
 				x.setFormazioneSquadraCasa(f);
-			}
-			else {
+			} else {
 				scelta = new Random().nextInt(3);
-				switch(scelta) {
-				case 0 :
+				switch (scelta) {
+				case 0:
 					fv = new Formazione442();
-					fv=fv.generaFormazioneVirtuale(x.getSquadraCasa());
+					fv = fv.generaFormazioneVirtuale(x.getSquadraCasa());
 					break;
-					
-				case 1 :
+
+				case 1:
 					fv = new Formazione343();
-					fv=fv.generaFormazioneVirtuale(x.getSquadraCasa());
+					fv = fv.generaFormazioneVirtuale(x.getSquadraCasa());
 					break;
-					
-				case 2 :
+
+				case 2:
 					fv = new Formazione352();
-					fv=fv.generaFormazioneVirtuale(x.getSquadraCasa());
+					fv = fv.generaFormazioneVirtuale(x.getSquadraCasa());
 					break;
-					
-				case 3 :
+
+				case 3:
 					fv = new Formazione433();
-					fv=fv.generaFormazioneVirtuale(x.getSquadraCasa());
+					fv = fv.generaFormazioneVirtuale(x.getSquadraCasa());
 					break;
 				}
 				x.setFormazioneSquadraCasa(fv);
 			}
-			
-			if(x.getSquadraTrasferta().getNomeSquadra().equalsIgnoreCase(s.getNomeSquadra())) {
+
+			if (x.getSquadraTrasferta().getNomeSquadra().equalsIgnoreCase(s.getNomeSquadra())) {
 				x.setFormazioneSquadraTrasferta(f);
 			}
-			
+
 			else {
 				scelta = new Random().nextInt(3);
-				switch(scelta) {
-				case 0 :
+				switch (scelta) {
+				case 0:
 					fv = new Formazione442();
-					fv=fv.generaFormazioneVirtuale(x.getSquadraTrasferta());
+					fv = fv.generaFormazioneVirtuale(x.getSquadraTrasferta());
 					break;
-					
-				case 1 :
+
+				case 1:
 					fv = new Formazione343();
-					fv=fv.generaFormazioneVirtuale(x.getSquadraTrasferta());
+					fv = fv.generaFormazioneVirtuale(x.getSquadraTrasferta());
 					break;
-					
-				case 2 :
+
+				case 2:
 					fv = new Formazione352();
-					fv=fv.generaFormazioneVirtuale(x.getSquadraTrasferta());
+					fv = fv.generaFormazioneVirtuale(x.getSquadraTrasferta());
 					break;
-					
-				case 3 :
+
+				case 3:
 					fv = new Formazione433();
-					fv=fv.generaFormazioneVirtuale(x.getSquadraTrasferta());
+					fv = fv.generaFormazioneVirtuale(x.getSquadraTrasferta());
 					break;
 				}
 				x.setFormazioneSquadraTrasferta(fv);
-				
+
 			}
-			
+
 			Partita.giocaPartita(x, numeroGiornata);
 		}
 		g.partite.setPartite(p);
-		Giornata.salvaGiornata(g,numeroGiornata);
-		g.giocata=true;
+		Giornata.salvaGiornata(g, numeroGiornata);
+		g.giocata = true;
 		Classifica.updateClassifica(g);
 		return true;
 	}
-	
-	public static void salvaGiornata(Giornata g,int giornata) throws ClassNotFoundException, IOException {
+
+	public static void salvaGiornata(Giornata g, int giornata) throws ClassNotFoundException, IOException {
 		File f = new File("src/torneo.dat");
 		FileInputStream fis;
-		Torneo t=null;;
+		Torneo t = null;
+		;
 		try {
 			fis = new FileInputStream(f);
 			ObjectInputStream ois = new ObjectInputStream(fis);
-			t=(Torneo) ois.readObject();
+			t = (Torneo) ois.readObject();
 			ois.close();
 			fis.close();
 		} catch (IOException e) {
 			System.out.println("Errore nella scrittura su file !");
 		}
-		
-		g.giocata=true;
+
+		g.giocata = true;
 		t.getGiornate().getGiornate().set(giornata, g);
 		File f1 = new File("src/torneo1.dat");
 		FileOutputStream fos = new FileOutputStream(f1);
@@ -330,5 +341,5 @@ public class Giornata implements Serializable{
 		fos.close();
 		f1.renameTo(f);
 	}
-	
+
 }
