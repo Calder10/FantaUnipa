@@ -58,11 +58,12 @@ public class ClassificaGUI extends JFrame {
 		
 		
 		
-		String [] colonne = new String[]{"POSIZIONE","LOGO","SQUADRA","DR","GS","GF","PUNTI"};
+		String [] colonne = new String[]{"POSIZIONE","LOGO","SQUADRA","DR","GF","GS","PUNTI"};
 		Object [][] data= new Object[6][7];
 		for (ArrayList<Object> o : c) {
 			data[i][0]=o.get(0);
-			data[i][1]= new ImageIcon((String)o.get(1));
+			String path = (String) o.get(1);
+			data[i][1]= new ImageIcon(path);
 			data[i][2]=o.get(2);
 			data[i][3]=o.get(3);
 			data[i][4]=o.get(4);
