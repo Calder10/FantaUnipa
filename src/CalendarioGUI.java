@@ -31,9 +31,10 @@ public class CalendarioGUI extends JFrame {
 	private JLabel lblNewLabelRis1;
 	private JLabel lblNewLabelRis2;
 	private JLabel lblNewLabelRis3;
-	private JButton i1;
-	private JButton i2;
 	private JButton i3;
+	private JButton i2;
+	private JButton i1;
+	private int giornataCorrente;
 	
 	public JPanel getPanel() {
 		return panel;
@@ -176,11 +177,11 @@ public class CalendarioGUI extends JFrame {
 	}
 	
 	public JButton getI1() {
-		return i1;
+		return i3;
 	}
 
 	public void setI1(JButton i1) {
-		this.i1 = i1;
+		this.i3 = i1;
 	}
 	
 	public JButton getI2() {
@@ -192,11 +193,11 @@ public class CalendarioGUI extends JFrame {
 	}
 
 	public JButton getI3() {
-		return i3;
+		return i1;
 	}
 
 	public void setI3(JButton i3) {
-		this.i3 = i3;
+		this.i1 = i3;
 	}
 
 
@@ -308,13 +309,13 @@ public class CalendarioGUI extends JFrame {
 		panel.add(lblNewLabelNomeTrasferta3);
 		
 		
-		i1= new JButton(new ImageIcon(CalendarioGUI.class.getResource("/Immagini/get_info_13806.png")));
-		i1.setBounds(515, 218, 89, 59);
-		panel.add(i1);
-		i1.setBackground(Color.WHITE);
-		i1.setBorder(null);
-		i1.setContentAreaFilled(false);
-		i1.setVisible(false);
+		i3= new JButton(new ImageIcon(CalendarioGUI.class.getResource("/Immagini/get_info_13806.png")));
+		i3.setBounds(515, 218, 89, 59);
+		panel.add(i3);
+		i3.setBackground(Color.WHITE);
+		i3.setBorder(null);
+		i3.setContentAreaFilled(false);
+		i3.setVisible(false);
 		
 		i2= new JButton(new ImageIcon(CalendarioGUI.class.getResource("/Immagini/get_info_13806.png")));
 		i2.setBounds(515, 133, 89, 59);
@@ -324,18 +325,20 @@ public class CalendarioGUI extends JFrame {
 		i2.setContentAreaFilled(false);
 		i2.setVisible(false);
 		
-		i3= new JButton(new ImageIcon(CalendarioGUI.class.getResource("/Immagini/get_info_13806.png")));
-		i3.setBounds(515, 59, 89, 59);
-		panel.add(i3);
-		i3.setBackground(Color.WHITE);
-		i3.setBorder(null);
-		i3.setContentAreaFilled(false);
-		i3.setVisible(false);
+		i1= new JButton(new ImageIcon(CalendarioGUI.class.getResource("/Immagini/get_info_13806.png")));
+		i1.setBounds(515, 59, 89, 59);
+		panel.add(i1);
+		i1.setBackground(Color.WHITE);
+		i1.setBorder(null);
+		i1.setContentAreaFilled(false);
+		i1.setVisible(false);
+		
 		
 		
 		btnNewButtonGiornata1.addActionListener(
 				e->{
 					Giornata.visualizzaGiornata(this, 1);
+					giornataCorrente=1;
 					this.getPanel().setVisible(true);
 				});
 		
@@ -343,36 +346,44 @@ public class CalendarioGUI extends JFrame {
 				e->{
 					Giornata.visualizzaGiornata(this, 1);
 					this.getPanel().setVisible(true);
+					this.giornataCorrente=1;
 				});
 		
 		btnNewButtonGiornata2.addActionListener(
 				e->{
 					Giornata.visualizzaGiornata(this, 2);
 					this.getPanel().setVisible(true);
+					this.giornataCorrente=2;
+					
 				});
 		
 		btnNewButtonGiornata3.addActionListener(
 				e->{
 					Giornata.visualizzaGiornata(this, 3);
 					this.getPanel().setVisible(true);
+					this.giornataCorrente=3;
 				});
 		
 		btnNewButtonGiornata4.addActionListener(
 				e->{
 					Giornata.visualizzaGiornata(this, 4);
 					this.getPanel().setVisible(true);
+					this.giornataCorrente=4;
 				});
 		
 		btnNewButtonGiornata5.addActionListener(
 				e->{
 					Giornata.visualizzaGiornata(this, 5);
 					this.getPanel().setVisible(true);
+					this.giornataCorrente=5;
 				});
 		
-		i1.addActionListener(
+		i3.addActionListener(
 				e->{
 					try {
-						ResocontoVotiGUI info1 = new ResocontoVotiGUI(giornata, 0, username);
+						ResocontoVotiGUI info1 = new ResocontoVotiGUI(giornataCorrente-1, 2, username);
+						info1.toFront();
+						info1.setVisible(true);
 					} catch (ClassNotFoundException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -382,17 +393,21 @@ public class CalendarioGUI extends JFrame {
 		i2.addActionListener(
 				e->{
 					try {
-						ResocontoVotiGUI info1 = new ResocontoVotiGUI(giornata, 1, username);
+						ResocontoVotiGUI info1 = new ResocontoVotiGUI(giornataCorrente-1, 1, username);
+						info1.toFront();
+						info1.setVisible(true);
 					} catch (ClassNotFoundException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 				});
 		
-		i3.addActionListener(
+		i1.addActionListener(
 				e->{
 					try {
-						ResocontoVotiGUI info1 = new ResocontoVotiGUI(giornata, 2, username);
+						ResocontoVotiGUI info1 = new ResocontoVotiGUI(giornataCorrente-1, 0, username);
+						info1.toFront();
+						info1.setVisible(true);
 					} catch (ClassNotFoundException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
