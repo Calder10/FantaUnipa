@@ -1,4 +1,3 @@
-/.DS_Store
 /Asta.class
 /AstaAttaccantiGUI$1.class
 /AstaAttaccantiGUI$2.class
@@ -26,6 +25,7 @@
 /Attaccante.class
 /CalendarioGUI.class
 /Centrocampista.class
+/Classifica$1.class
 /Classifica.class
 /ClassificaGUI$1.class
 /ClassificaGUI.class
@@ -43,13 +43,6 @@
 /Formazione433.class
 /Formazione442.class
 /FormazioneFactory.class
-/Immagini/
-/Lista/
-/Loghi/
-/Squadre/
-/Voti/
-/dati.csv
-/torneo.dat
 /GUI343.class
 /GUI352.class
 /GUI433.class
@@ -67,12 +60,14 @@
 /ObserverAsta.class
 /Partita.class
 /Partite.class
+/PodioGUI$1.class
+/PodioGUI.class
 /Portiere.class
 /Registrazione.class
 /RegistrazioneGUI$1.class
 /RegistrazioneGUI.class
+/ResocontoGiornataGUI$1.class
 /ResocontoGiornataGUI.class
-/ResocontoVotiGUI$1.class
 /ResocontoVotiGUI.class
 /RosaGUI.class
 /ScegliFormazioneGUI.class
@@ -87,7 +82,3 @@
 /Torneo.class
 /UtilityListaGiocatori.class
 /UtilityVotiGiocatori.class
-/Classifica$1.class
-/ResocontoGiornataGUI$1.class
-/PodioGUI$1.class
-/PodioGUI.class
