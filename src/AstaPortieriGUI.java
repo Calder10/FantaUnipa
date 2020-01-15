@@ -20,6 +20,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.sql.Time;
 import java.util.ArrayList;
@@ -55,7 +57,7 @@ public class AstaPortieriGUI extends AstaGUI{
 	public AstaPortieriGUI(String username) {
 		super("Asta Portieri");
 		this.setUsername(username);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 849, 544);
 		setResizable(false);
 		contentPane = new JPanel();
@@ -110,6 +112,13 @@ public class AstaPortieriGUI extends AstaGUI{
 		contentPane.add(scrollpane);
 		
 		scrollpane.setVisible(false);
+		
+		this.addWindowListener(new WindowAdapter(){  
+            public void windowClosing(WindowEvent e) {
+            	JOptionPane.showMessageDialog(contentPane, "Asta in corso..!");
+				
+            }  
+        });
 
 		searchButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
