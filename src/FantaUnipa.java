@@ -1,9 +1,5 @@
 import java.awt.EventQueue;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.util.ArrayList;
 
 public class FantaUnipa {
 	public static void main(String[] args) throws IOException {
