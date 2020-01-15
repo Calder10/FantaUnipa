@@ -17,7 +17,7 @@ public class HardStrategy implements AstaStrategy{
 			break;
 		case 1:
 			puntata = max+10;
-			if(puntata>20) {
+			if(puntata>30) {
 				puntata=0;
 				o.passa(username);
 				
@@ -29,7 +29,7 @@ public class HardStrategy implements AstaStrategy{
 			
 		case 2:
 			puntata = max+10;
-			if(puntata>20) {
+			if(puntata>30) {
 				puntata=0;
 				o.passa(username);
 				
@@ -41,7 +41,7 @@ public class HardStrategy implements AstaStrategy{
 			
 		case 3:
 			puntata = max+10;
-			if(puntata>25) {
+			if(puntata>30) {
 				puntata=0;
 				o.passa(username);
 				
