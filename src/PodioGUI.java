@@ -23,7 +23,7 @@ public class PodioGUI extends JFrame {
 	 * @throws IOException 
 	 * @throws ClassNotFoundException 
 	 */
-	public PodioGUI() throws ClassNotFoundException, IOException {
+	public PodioGUI(String username) throws ClassNotFoundException, IOException {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 661, 546);
 		setResizable(false);
@@ -63,7 +63,14 @@ public class PodioGUI extends JFrame {
 		
 		this.addWindowListener(new WindowAdapter(){  
             public void windowClosing(WindowEvent e) {
-            	HomeGUI nextFrame;
+            	try {
+					HomeGUI nextFrame = new HomeGUI(username);
+					nextFrame.toFront();
+					nextFrame.setVisible(true);
+				} catch (IOException e1) {
+					System.out.println("Errore !");
+				}
+            	
 				
             }  
         });  

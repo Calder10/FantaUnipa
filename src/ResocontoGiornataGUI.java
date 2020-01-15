@@ -267,7 +267,7 @@ public class ResocontoGiornataGUI extends JFrame {
             	HomeGUI nextFrame;
 				try {
 					if(numeroGiornata==4) {
-						PodioGUI nextFrame1 = new PodioGUI();
+						PodioGUI nextFrame1 = new PodioGUI(username);
 						nextFrame1.toFront();
 						nextFrame1.setVisible(true);
 						
