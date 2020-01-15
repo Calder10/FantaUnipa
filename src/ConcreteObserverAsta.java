@@ -5,11 +5,22 @@ import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * Classe che concretizza i metodi dell'interfaccia ObserverAsta
+ * @author Salvatore Calderaro
+ * @author Gaspare Casano
+ * 
+ */
+
 public class ConcreteObserverAsta implements ObserverAsta {
 
 	private Squadra squadra;
 	private HashMap<String, Integer> puntata;
 
+
+    /**
+     * Costruttore della classe.
+     */
 	public ConcreteObserverAsta() {
 		squadra = new Squadra();
 		puntata = new HashMap<String,Integer>();
@@ -31,6 +42,12 @@ public class ConcreteObserverAsta implements ObserverAsta {
 		this.squadra = squadra;
 	}
 
+	/**
+	 *Metodo che permette all'utente di effettuare la puntata
+	 *@param username del fantallenatore
+	 *@param puntata del fantallenatore per quel determinato giocatore da acquistare
+	 *@return true se la puntata va a buon fine altrimenti ritorna false
+	 */
 	@Override
 	public boolean punta(String username, int puntata) {
 		if(this.getPuntata().isEmpty()) {
@@ -49,6 +66,12 @@ public class ConcreteObserverAsta implements ObserverAsta {
 		}
 	}
 	
+	/**
+	 *Metodo che permette al fantallenatore virtuale di effettuare una puntata
+	 *@param username del fantallenatore virtuale
+	 *@param tipo indica il ruolo del giocatore per cui puntare
+	 *@return la puntata del fantallenatore virtuale
+	 */
 	@Override
 	public int puntaVirtuale(String username,int tipo){
 		int newPuntata=0;
@@ -86,6 +109,11 @@ public class ConcreteObserverAsta implements ObserverAsta {
 	
 	
 
+	/**
+	 * Metodo che permette al fantallenatore di rinunciare ad un giocatore
+	 * @param username del fantallenatore
+	 *
+	 */
 	@Override
 	public void passa(String username) {
 		this.puntata.remove(username);
@@ -93,6 +121,10 @@ public class ConcreteObserverAsta implements ObserverAsta {
 
 	}
 
+	/**
+	 * Metodo toString
+	 *
+	 */
 	@Override
 	public String toString() {
 		return "ConcreteObserverAsta [squadra=" + squadra + ", puntata=" + puntata + "]";

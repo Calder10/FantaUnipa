@@ -21,6 +21,13 @@ import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.awt.Label;
 
+/**
+ * GUI per la gestione della classifica del torneo
+ * @author Salvatore Calderaro
+ * @author Gaspare Casano
+ * 
+ */
+
 public class ClassificaGUI extends JFrame {
 
 	private JPanel contentPane;

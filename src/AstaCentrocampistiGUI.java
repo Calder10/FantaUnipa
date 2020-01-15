@@ -1,4 +1,6 @@
 import java.awt.BorderLayout;
+
+
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -24,6 +26,14 @@ import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+
+
+/**
+ * GUI per la gestione dell'asta dei centrocampisti
+ * @author Salvatore Calderaro
+ * @author Gaspare Casano
+ * 
+ */
 public class AstaCentrocampistiGUI extends AstaGUI {
 
 	private JPanel contentPane1;
@@ -116,6 +126,7 @@ public class AstaCentrocampistiGUI extends AstaGUI {
             }  
         });
 
+		
 		searchButton1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				scrollpane1.setVisible(false);
@@ -164,6 +175,7 @@ public class AstaCentrocampistiGUI extends AstaGUI {
 			}
 		});
 
+		
 		btnNewButtonChoose.addActionListener(new ActionListener() {
 
 			@Override
@@ -182,6 +194,8 @@ public class AstaCentrocampistiGUI extends AstaGUI {
 
 			}
 		});
+		
+
 		
 		list1.addMouseListener(new MouseListener() {
 			

@@ -20,6 +20,14 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
 
+/**
+ * Classe per la gestione della classifica
+ * @author Salvatore Calderaro
+ * @author Gaspare Casano
+ * 
+ */
+
+
 public class Classifica implements Serializable {
 
 	/**
@@ -35,6 +43,12 @@ public class Classifica implements Serializable {
 	public void setClassifica(ArrayList<ArrayList<Object>> classifica) {
 		this.classifica = classifica;
 	}
+
+	/**
+     * Costruttore della classe.
+     * @param squadre arraylist contenente le squadre partecipanti
+     * 
+     */
 
 	public Classifica(ArrayList<Squadra> squadre) {
 		classifica = new ArrayList<>();
@@ -55,6 +69,11 @@ public class Classifica implements Serializable {
 	}
 	
 	
+	/**
+	 * Metodo che permette di ordinare la mappa contenente la squadra e il punteggio in classifica
+	 * @param punti mappa contenente punti e classifica non ordinata
+	 * @return mappa contenente punti e classifica ordinata
+	 */
 	public static Map<String, Integer> sortByValue(Map<String, Integer> punti) {
 		List<Map.Entry<String, Integer>> list = new LinkedList<Map.Entry<String, Integer>>(punti.entrySet());
 		Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
@@ -71,6 +90,12 @@ public class Classifica implements Serializable {
         return sortedMap;
 	}
 
+	/**
+	 * 
+	 * Metodo che permette di ordinare la classifica generale
+	 * @param c ArrayList di ArrayList contenente la classifica da ordinare
+	 * @return  ArrayList di ArrayList contenente la classifica ordinata
+	 */
 	public static ArrayList<ArrayList<Object>> sortClassifica(ArrayList<ArrayList<Object>> c) {
 		ArrayList<ArrayList<Object>> ris = new ArrayList<>();
 		
@@ -125,6 +150,12 @@ public class Classifica implements Serializable {
 		return ris;
 	}
 
+	/**
+	 * 
+	 * Metodo che permette di aggiornare la classifica in base ai risultati
+	 * @param g Giornata giocata
+	 
+	 */
 	public static void updateClassifica(Giornata g) throws IOException, ClassNotFoundException {
 		File f = new File("src/torneo.dat");
 		FileInputStream fis = new FileInputStream(f);
@@ -248,6 +279,11 @@ public class Classifica implements Serializable {
 		f1.renameTo(f);
 	}
 	
+	/**
+	 * Metodo che ritorna le squadre arrivate nelle prime tre posizioni del torneo
+	 * 
+	 * @return ArrayList contenente le squadre classificatosi nelle prime tre posizioni
+	 */
 	public static ArrayList<String> returnPodio() throws IOException, ClassNotFoundException{
 		ArrayList<String> podio = new ArrayList<>();
 		File f = new File("src/torneo.dat");

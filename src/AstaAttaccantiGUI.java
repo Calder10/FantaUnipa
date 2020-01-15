@@ -24,6 +24,14 @@ import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+
+
+/**
+ * GUI per la gestione dell'asta degli attaccanti
+ * @author Salvatore Calderaro
+ * @author Gaspare Casano
+ * 
+ */
 public class AstaAttaccantiGUI extends AstaGUI {
 
 	private JPanel contentPane1;
@@ -110,7 +118,7 @@ public class AstaAttaccantiGUI extends AstaGUI {
 		scrollpane1.setVisible(false);
 		
 		
-
+	
 		this.addWindowListener(new WindowAdapter(){  
             public void windowClosing(WindowEvent e) {
             	JOptionPane.showMessageDialog(contentPane1, "Asta in corso..!");
@@ -118,7 +126,7 @@ public class AstaAttaccantiGUI extends AstaGUI {
             }  
         });  
 		
-
+	
 		searchButton1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				scrollpane1.setVisible(false);
@@ -147,7 +155,6 @@ public class AstaAttaccantiGUI extends AstaGUI {
 		});
 		
 		
-		
 		btnNewButtonShowAll1.addActionListener(new ActionListener() {
 
 			@Override
@@ -166,7 +173,8 @@ public class AstaAttaccantiGUI extends AstaGUI {
 
 			}
 		});
-
+		
+		
 		btnNewButtonChoose.addActionListener(new ActionListener() {
 
 			@Override
@@ -185,6 +193,7 @@ public class AstaAttaccantiGUI extends AstaGUI {
 
 			}
 		});
+		
 		
 		list1.addMouseListener(new MouseListener() {
 			

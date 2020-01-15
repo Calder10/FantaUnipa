@@ -26,6 +26,13 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
 
+
+/**
+ * GUI per la gestione dell'asta di un determinato giocatore
+ * @author Salvatore Calderaro
+ * @author Gaspare Casano
+ * 
+ */
 public class AstaGiocatoreGUI extends JFrame {
 
 	protected JPanel contentPane;
@@ -133,6 +140,8 @@ public class AstaGiocatoreGUI extends JFrame {
 		Asta a = new Asta(g, tipo);
 		ConcreteObserverAsta o = a.getObs().get(0);
 		int fantaCrediti = o.getSquadra().getFantallenatore().getFantaCrediti();
+		
+	
 		btnNewButton.addActionListener(
 				e->{
 					textArea.setText("");
@@ -160,6 +169,7 @@ public class AstaGiocatoreGUI extends JFrame {
 				
 			});
 
+		
 		btnNewButtonRinuncia.addActionListener(
 				e->{
 				try {

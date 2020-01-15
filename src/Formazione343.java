@@ -3,11 +3,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
-/**
- * 
- */
+
 
 /**
+ * Classe per la gestione del modulo 343
  * @author Salvatore Calderaro
  * @author Gaspare Casano
  */
@@ -18,6 +17,11 @@ public class Formazione343 extends Formazione implements Serializable{
 	 */
 	private static final long serialVersionUID = -1249966855139758L;
 	
+	
+	/**
+     * Costruttore della classe senza parametri.
+     * 
+     */
 	public Formazione343() {
 		difensoriTitolari=new Difensore[3];
 		difensoriRiserva=new Difensore[2];
@@ -26,7 +30,17 @@ public class Formazione343 extends Formazione implements Serializable{
 		attaccantiTitolari=new Attaccante [3];
 		attaccantiRiserva=new Attaccante [2];
 	}
-
+	
+	
+	/**
+	 * Costruttore della classe con parametri
+	 * @param tipo
+	 * @param p
+	 * @param d
+	 * @param c
+	 * @param a
+	 * @param s
+	 */
 	public Formazione343(TipoFormazione tipo, ArrayList<String> p, ArrayList<String> d, ArrayList<String> c,ArrayList<String> a,Squadra s ) {
 		difensoriTitolari=new Difensore[3];
 		difensoriRiserva=new Difensore[2];

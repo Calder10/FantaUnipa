@@ -16,19 +16,35 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+/**
+ * Classe per la gestione dell'asta 
+ * @author Salvatore Calderaro
+ * @author Gaspare Casano
+ * 
+ */
+
 public class Asta implements SubjectAsta {
 
 	private Giocatore giocatore;
 	private HashMap<String, Integer> puntataCorrente;
 	private ArrayList<ConcreteObserverAsta> obs;
 	private int tipo;
+	
 
+    /**
+     * Costruttore della classe.
+     * @param giocatore giocatore partecipante all'asta
+     * @param tipo numero intero a cui è associato il ruolo del giocatore da acquistare
+     */
+
+	
 	public Asta(Giocatore giocatore, int tipo) throws ClassNotFoundException, IOException {
 		this.giocatore = giocatore;
 		this.tipo = tipo;
 		this.loadFantallenatori(tipo);
 	}
 
+	
 	public int getTipo() {
 		return tipo;
 	}
@@ -61,6 +77,11 @@ public class Asta implements SubjectAsta {
 		this.obs = obs;
 	}
 
+	/**
+     * Metodo che carica i fantallentaori che partecipano all'asta dal file Squadre.
+     * @param tipo numero intero a cui è associato il ruolo del giocatore da acquistare
+     * 
+     */
 	@Override
 	public void loadFantallenatori(int tipo) throws IOException, ClassNotFoundException {
 		obs = new ArrayList<ConcreteObserverAsta>();
@@ -159,6 +180,13 @@ public class Asta implements SubjectAsta {
 
 	}
 
+	
+	/**
+     * Metodo che notifica a tutti gli osservatori le puntate dei partecipanti all'asta.
+     * @param username del fantallenatore
+     *  @param  puntata del fantallenatore da notificare agli altri osservatori
+     * 
+     */
 	@Override
 	public void notifyAllObserver(String username, int puntata) {
 		for (ConcreteObserverAsta o : obs) {
@@ -171,6 +199,11 @@ public class Asta implements SubjectAsta {
 		}
 	}
 
+	/**
+	 * Metodo che stampa la puntata corrente di ogni fantallenatore
+	 * @param username del fantallenatore che ha puntato
+	 * @return stringa contenente username del fantallenatore e il valore della sua puntata
+	 */
 	public String stampaPuntata(String username) {
 		Set<String> keys = this.puntataCorrente.keySet();
 		if (keys.contains(username)) {
@@ -181,6 +214,12 @@ public class Asta implements SubjectAsta {
 		}
 	}
 
+	/**
+	 * Metodo che permette agli utenti virtuali di effettuare la loro puntata
+	 * @param username del fantallenatore reale
+	 * @param textArea dove vengono stampate le puntate correnti
+	 * @param btnNewButtonRilancia che permette agli utenti di rinunciare al giocatore in asta
+	 */
 	public void puntateVirtuali(String username, JTextArea textArea, JButton btnNewButtonRilancia) {
 		textArea.setVisible(true);
 		btnNewButtonRilancia.setVisible(true);
@@ -204,6 +243,11 @@ public class Asta implements SubjectAsta {
 		}
 	}
 
+	/**
+	 * Metodo che permette agli utenti virtuali di effettuare la loro puntata
+	 * @param username del fantallenatore reale
+	 *
+	 */
 	public void puntateVirtuali(String username) {
 		ArrayList<ConcreteObserverAsta> delete = new ArrayList<>();
 		for (ConcreteObserverAsta o : obs) {
@@ -223,6 +267,16 @@ public class Asta implements SubjectAsta {
 		}
 	}
 
+	/**
+	 * Medoto che permette di effettuare l'asta tra i fantallenatori
+	 * @param o osservatore che ha effettuato la prima puntata
+	 * @param astaGUI interfaccia grafica che permette di effettuare tutte le operazioni concerni l'asta
+	 * @param astaGiocatoreGUI interfaccia grafica che permette all'utente loggato di effettuare la puntata, eventuali rilanci o rinunciare 
+	 * @param username del fantallenatore che effettua la prima puntata
+	 * @param textField che notifica all'utente quando si è aggiudicato un giocatore o una puntata non consentita
+	 * @param textArea dove vengono stampate le puntate correnti
+	 * @param btnNewButtonRinuncia che permette agli utenti di rinunciare al giocatore in asta
+	 */
 	public void simulaAsta(ConcreteObserverAsta o, AstaGUI astaGUI, AstaGiocatoreGUI astaGiocatoreGUI, String username,
 			JTextField textField, JTextArea textArea, JButton btnNewButtonRinuncia) {
 		int puntata = Integer.parseInt(astaGiocatoreGUI.textField.getText());
@@ -321,6 +375,15 @@ public class Asta implements SubjectAsta {
 
 	}
 
+	/**
+	 * Metodo che permette di eseguire l'asta e rimuove l'utente che ha già terminato di acquistare i calciatori per un determinato ruolo
+	 * @param astaGUI interfaccia grafica che permette di effettuare tutte le operazioni concerni l'asta
+	 * @param astaGiocatoreGUI interfaccia grafica che permette all'utente loggato di effettuare la puntata, eventuali rilanci o rinunciare 
+	 * @param textField che notifica all'utente quando si è aggiudicato un giocatore o una puntata non consentita
+	 * @param textArea dove vengono stampate le puntate correnti
+	 * @param btnNewButtonRinuncia che permette agli utenti di rinunciare al giocatore in asta
+	 * @param username del fantallenatore che effettua la prima puntata
+	 */
 	public void eseguiAsta(AstaGUI astaGUI, AstaGiocatoreGUI astaGiocatoreGUI, JTextField textField, String username,
 			JTextArea textArea, JButton btnNewButtonRinuncia) {
 		ConcreteObserverAsta o = null;
@@ -368,6 +431,12 @@ public class Asta implements SubjectAsta {
 
 	}
 
+	/**
+	 * Metodo che permette all'utente di rinunciare a un determinato giocatore in asta
+	 * @param username dell'utente che rinuncia al giocatore in asta
+	 * @param astaGiocatoreGUI interfaccia grafica che permette all'utente loggato di effettuare la puntata, eventuali rilanci o rinunciare 
+	 * 
+	 */
 	public void simulaRinuncia(String username, AstaGiocatoreGUI astaGiocatoreGUI) throws IOException {
 		this.getPuntataCorrente().remove(username);
 		ConcreteObserverAsta o = null;
@@ -441,6 +510,10 @@ public class Asta implements SubjectAsta {
 
 	}
 
+	/**
+	 * Metodo che permette ai fantallenatori virtuali  di completare la loro asta 
+	 * @param tipo ruolo del giocatore da acqistare
+	 */
 	public void completaAstaSquadreVirtuali(int tipo) throws IOException, ClassNotFoundException {
 		while (true) {
 			int puntata;
@@ -521,6 +594,11 @@ public class Asta implements SubjectAsta {
 			
 		}
 	}
+	/**
+	 * Metodo che aggiorna il numero dei fantacrediti ogni qualvolta un giocatore viene acquistato
+	 * @param username del fantallenatore a cui aggiornare i fantacrediti
+	 * @param fantacrediti da aggiornare
+	 */
 	public static void updateFantacreditiCsv(String username, String fantacrediti) throws IOException {
 		
 		File f = new File("src/dati.csv");

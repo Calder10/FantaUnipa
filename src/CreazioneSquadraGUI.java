@@ -21,6 +21,16 @@ import javax.swing.JFileChooser;
 import java.io.*;
 import java.awt.Color;
 
+
+
+/**
+ * GUI per la creazione delle squadre
+ * @author Salvatore Calderaro
+ * @author Gaspare Casano
+ * 
+ */
+
+
 public class CreazioneSquadraGUI extends JFrame {
 
 	private JPanel contentPane;

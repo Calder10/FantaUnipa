@@ -28,6 +28,14 @@ import java.util.ArrayList;
 import javax.swing.JCheckBox;
 import javax.swing.JTextArea;
 
+
+
+/**
+ * GUI per la gestione dell'asta degli attaccanti
+ * @author Salvatore Calderaro
+ * @author Gaspare Casano
+ * 
+ */
 public class AstaPortieriGUI extends AstaGUI{
 
 	private JPanel contentPane;
@@ -113,6 +121,8 @@ public class AstaPortieriGUI extends AstaGUI{
 		
 		scrollpane.setVisible(false);
 		
+
+		
 		this.addWindowListener(new WindowAdapter(){  
             public void windowClosing(WindowEvent e) {
             	JOptionPane.showMessageDialog(contentPane, "Asta in corso..!");
@@ -120,6 +130,7 @@ public class AstaPortieriGUI extends AstaGUI{
             }  
         });
 
+		
 		searchButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				scrollpane.setVisible(false);
@@ -148,7 +159,8 @@ public class AstaPortieriGUI extends AstaGUI{
 		});
 		
 		
-		
+
+	
 		btnNewButtonShowAll.addActionListener(new ActionListener() {
 
 			@Override
@@ -168,6 +180,7 @@ public class AstaPortieriGUI extends AstaGUI{
 			}
 		});
 
+	
 		btnNewButtonChoose1.addActionListener(new ActionListener() {
 
 			@Override
@@ -188,7 +201,8 @@ public class AstaPortieriGUI extends AstaGUI{
 			}
 		});
 		
-		list.addMouseListener(new MouseListener() {
+		// ascoltatore che permette di selezionare un giocatore dalla lista
+			list.addMouseListener(new MouseListener() {
 			
 			@Override
 			public void mouseReleased(MouseEvent e) {

@@ -1,6 +1,13 @@
 import java.awt.EventQueue;
 import java.io.IOException;
 
+/**
+ * Classe che permette l'esecuzione del software
+ * 
+ * @author Salvatore Calderaro
+ * @author Gaspare Casano
+ * 
+ */
 public class FantaUnipa {
 	public static void main(String[] args) throws IOException {
 		EventQueue.invokeLater(new Runnable() {

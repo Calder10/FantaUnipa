@@ -28,7 +28,14 @@ import java.util.ArrayList;
 import javax.swing.JCheckBox;
 import javax.swing.JTextArea;
 
-public class AstaDifensoriGUI extends AstaGUI{
+
+/**
+ * GUI per la gestione dell'asta dei difensori
+ * @author Salvatore Calderaro
+ * @author Gaspare Casano
+ * 
+ */
+public class AstaDifensoriGUI extends AstaGUI {
 
 	private JPanel contentPane1;
 	private JTextField searchable1;
@@ -40,7 +47,6 @@ public class AstaDifensoriGUI extends AstaGUI{
 	private JButton btnNewButtonChoose;
 	private String username1;
 	private JList list1;
-	
 
 	public String getusername1() {
 		return username1;
@@ -95,8 +101,7 @@ public class AstaDifensoriGUI extends AstaGUI{
 		btnNewButtonChoose.setBounds(250, 205, 121, 47);
 		btnNewButtonChoose.setVisible(true);
 		contentPane1.add(btnNewButtonChoose);
-		
-		
+
 		btnNewButtonChoose.setVisible(false);
 		list1 = new JList();
 		list1.setLocation(24, 171);
@@ -110,16 +115,18 @@ public class AstaDifensoriGUI extends AstaGUI{
 		scrollpane1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollpane1.setPreferredSize(new Dimension(200, 250));
 		contentPane1.add(scrollpane1);
-		
-		scrollpane1.setVisible(false);
-		
-		this.addWindowListener(new WindowAdapter(){  
-            public void windowClosing(WindowEvent e) {
-            	JOptionPane.showMessageDialog(contentPane1, "Asta in corso..!");
-				
-            }  
-        });
 
+		scrollpane1.setVisible(false);
+
+		
+		this.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				JOptionPane.showMessageDialog(contentPane1, "Asta in corso..!");
+
+			}
+		});
+
+		
 		searchButton1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				scrollpane1.setVisible(false);
@@ -148,7 +155,6 @@ public class AstaDifensoriGUI extends AstaGUI{
 		});
 		
 		
-		
 		btnNewButtonShowAll1.addActionListener(new ActionListener() {
 
 			@Override
@@ -156,9 +162,9 @@ public class AstaDifensoriGUI extends AstaGUI{
 				btnNewButtonChoose.setVisible(false);
 				try {
 					lblNewLabelRis1.setVisible(false);
-					ArrayList<String> ris=null;
+					ArrayList<String> ris = null;
 					ris = UtilityListaGiocatori.showAllPlayers(1);
-					Object [] data=ris.toArray();
+					Object[] data = ris.toArray();
 					scrollpane1.setVisible(true);
 					list1.setListData(data);
 				} catch (IOException e1) {
@@ -168,13 +174,14 @@ public class AstaDifensoriGUI extends AstaGUI{
 			}
 		});
 
+		
 		btnNewButtonChoose.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				AstaGiocatoreGUI nextFrame;
 				try {
-					nextFrame = new AstaGiocatoreGUI(getAstaDifensoriGUI(), username1, lblNewLabelRis1.getText(),1);
+					nextFrame = new AstaGiocatoreGUI(getAstaDifensoriGUI(), username1, lblNewLabelRis1.getText(), 1);
 					nextFrame.setVisible(true);
 					nextFrame.toFront();
 					btnNewButtonChoose.setVisible(false);
@@ -186,40 +193,41 @@ public class AstaDifensoriGUI extends AstaGUI{
 
 			}
 		});
-		
+
+	
 		list1.addMouseListener(new MouseListener() {
-			
+
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 			@Override
 			public void mousePressed(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Object o=list1.getSelectedValue();
-				String nomeGiocatore= o.toString();
+				Object o = list1.getSelectedValue();
+				String nomeGiocatore = o.toString();
 				AstaGiocatoreGUI nextFrame;
 				try {
-					nextFrame = new AstaGiocatoreGUI(getAstaDifensoriGUI(), username1, nomeGiocatore,1);
+					nextFrame = new AstaGiocatoreGUI(getAstaDifensoriGUI(), username1, nomeGiocatore, 1);
 					nextFrame.setVisible(true);
 					nextFrame.toFront();
 					btnNewButtonChoose.setVisible(false);

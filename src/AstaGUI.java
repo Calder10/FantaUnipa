@@ -7,6 +7,13 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+
+/**
+ * Superclasse astratta per la gestione dell'asta 
+ * @author Salvatore Calderaro
+ * @author Gaspare Casano
+ * 
+ */
 public abstract class AstaGUI extends JFrame{
 	
 	
@@ -25,6 +32,12 @@ public abstract class AstaGUI extends JFrame{
 	public AstaGUI getAstaGUI() {
 		return this;
 	}
+
+	 /**
+     * Costruttore della classe.
+     * @param s titolo del frame
+     * 
+     */
 
 	public AstaGUI(String s) {
 		super(s);

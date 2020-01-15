@@ -1,5 +1,13 @@
 import java.io.*;
 
+/**
+ * Classe che rappresenta l'entità Fantallenatore
+ * 
+ * @author Salvatore Calderaro
+ * @author Gaspare Casano
+ * 
+ */
+
 public class Fantallenatore implements Serializable {
 	/**
 	 * 
@@ -60,6 +68,11 @@ public class Fantallenatore implements Serializable {
 		this.fantaCrediti = fantaCrediti;
 	}
 	
+	/**
+	 * Metodo che ritorna il fantallenatore dal file
+	 * @param nomeSquadra a cui appartiene il fantallenatore
+	 * @return entità Fantallenatore
+	 */
 	public static Fantallenatore getFantallenatoreFromCsv(String nomeSquadra) throws IOException {
 		Fantallenatore f = new Fantallenatore();
 		FileReader fr = new FileReader("src/dati.csv");

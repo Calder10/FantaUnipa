@@ -11,6 +11,14 @@ import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.Icon;
 
+
+
+/**
+ * GUI per la gestione del calendario delle partite
+ * @author Salvatore Calderaro
+ * @author Gaspare Casano
+ * 
+ */
 public class CalendarioGUI extends JFrame {
 
 	private JPanel contentPane;
