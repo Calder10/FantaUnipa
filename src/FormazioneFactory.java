@@ -1,14 +1,21 @@
 import java.util.ArrayList;
 
 /**
+ * Classe che permette di creare la formazione in base al modulo scelto
  * @author Salvatore Calderaro
  * @author Gaspare Casano
  */
 public class FormazioneFactory {
 
 	/**
-	 * @param tipo
-	 * @return
+	 * Metodo che restituisce la formazione creata
+	 * @param tipo indica il modulo della formazione
+	 * @param p ArrayList dei portieri
+	 * @param d ArrayList dei difensori
+	 * @param c ArrayList dei centrocampisti
+	 * @param a ArrayList degli attaccanti
+	 * @param s squadra su cui settare il modulo
+	 * @return entità Formazione
 	 */
 	public Formazione getFormazione(TipoFormazione tipo, ArrayList<String> p, ArrayList<String> d, ArrayList<String> c,
 			ArrayList<String> a,Squadra s) {

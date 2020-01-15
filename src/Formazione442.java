@@ -3,13 +3,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
-
-
 /**
- * 
- */
-
-/**
+ * Classe per la gestione del modulo 352
  * @author Salvatore Calderaro
  * @author Gaspare Casano
  */
@@ -20,7 +15,10 @@ public class Formazione442 extends Formazione  implements Serializable{
 	 */
 	private static final long serialVersionUID = -1411712447765962165L;
 
-	
+	/**
+     * Costruttore della classe senza parametri.
+     * 
+     */
 	public Formazione442() {
 		difensoriTitolari=new Difensore[4];
 		difensoriRiserva=new Difensore[2];
@@ -31,7 +29,15 @@ public class Formazione442 extends Formazione  implements Serializable{
 	}
 	
 	
-	
+	/**
+	 * Costruttore della classe con parametri
+	 * @param tipo indica il modulo della formazione
+	 * @param p ArrayList dei portieri
+	 * @param d ArrayList dei difensori
+	 * @param c ArrayList dei centrocampisti
+	 * @param a ArrayList degli attaccanti
+	 * @param s squadra su cui settare il modulo
+	 */
 	public Formazione442(TipoFormazione tipo,ArrayList<String> p, ArrayList<String> d, ArrayList<String> c,ArrayList<String> a,Squadra s) {
 		difensoriTitolari=new Difensore[4];
 		difensoriRiserva=new Difensore[2];
@@ -42,6 +48,14 @@ public class Formazione442 extends Formazione  implements Serializable{
 		settaFormazione(p,d,c,a,s);
 	}
 
+	/**
+	 *Modulo che permette di settare la formazione
+	 * @param p ArrayList dei portieri
+	 * @param d ArrayList dei difensori
+	 * @param c ArrayList dei centrocampisti
+	 * @param a ArrayList degli attaccanti
+	 * @param s squadra su cui settare il modulo
+	 */
 	@Override
 	protected void settaFormazione(ArrayList<String> p, ArrayList<String> d, ArrayList<String> c,ArrayList<String> a,Squadra s ) {
 		int i=0;
@@ -115,6 +129,10 @@ public class Formazione442 extends Formazione  implements Serializable{
 		
 	}
 	
+	/**
+	 *Metodo che permette di generare la formazione delle squadre virtuali
+	 *@param s squadra su cui generare la formazione
+	 */
 	@Override
 	public  Formazione generaFormazioneVirtuale (Squadra s) {
 		Formazione f = new Formazione442();
@@ -169,7 +187,14 @@ public class Formazione442 extends Formazione  implements Serializable{
 		
 		return f;
 	}
-	
+	/**
+	 * Metodo che controlla che non ci siano giocatori duplicati con lo stesso nome schierati in campo e che il numero delle riserve sia corretto
+	 * @param p ArrayList dei portieri
+	 * @param d ArrayList dei difensori
+	 * @param c ArrayList dei centrocampisti
+	 * @param a ArrayList degli attaccanti
+	 * @return true se la formazione inserita è corretta, false altrimenti
+	 */
 public static boolean checkFormazione(ArrayList<String> p,ArrayList<String> d,ArrayList<String> c,ArrayList<String> a) {
 		
 		int checkPortieri=0;
