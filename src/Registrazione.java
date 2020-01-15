@@ -158,4 +158,35 @@ public class Registrazione {
 			this.salvaUtente(f);
 		}
 	}
+	
+	public static void resetDati() throws IOException {
+		File f = new File("src/dati.csv");
+		File f1 = new File("src/dati1.csv");
+		FileReader fr = new FileReader(f);
+		BufferedReader br = new BufferedReader(fr);
+		FileWriter fv = new FileWriter(f1,true);
+		String line="";
+		String aus="";
+		String [] fields;
+		while((line=br.readLine())!=null) {
+			fields=line.split(",");
+			fv.append(fields[0]);
+			fv.append(",");
+			fv.append(fields[1]);
+			fv.append(",");
+			fv.append(fields[2]);
+			fv.append(",");
+			fv.append(fields[3]);
+			fv.append(",");
+			fv.append("");
+			fv.append(",");
+			fv.append("500");
+			fv.append(",");
+			fv.append("\n");
+		}
+		fv.close();
+		br.close();
+		fr.close();
+		f1.renameTo(f);
+	}
 }

@@ -96,5 +96,17 @@ public class Torneo implements Serializable {
 			System.out.println("Errore nella scrittura su file !");
 		}
 	}
+	
+	public static void resetTorneo() throws IOException {
+		File dir = new File("src/Squadre");
+		File [] files = dir.listFiles();
+		for (File x : files) {
+			x.delete();
+		}
+		dir.delete();
+		File t = new File("src/torneo.dat");
+		t.delete();
+		Registrazione.resetDati();
+	}
 
 }

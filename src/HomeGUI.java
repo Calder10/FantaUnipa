@@ -389,7 +389,12 @@ public class HomeGUI extends JFrame {
 					CreazioneSquadraGUI nextFrame = new CreazioneSquadraGUI(username);
 					nextFrame.toFront();
 					nextFrame.setVisible(true);
-					// metodo cancellazione file
+					try {
+						Torneo.resetTorneo();
+					} catch (IOException e1) {
+						
+						System.out.println("Errore nella lettura del file");
+					}
 					this.dispose();
 				});
 	}

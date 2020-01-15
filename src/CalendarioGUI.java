@@ -342,12 +342,6 @@ public class CalendarioGUI extends JFrame {
 					this.getPanel().setVisible(true);
 				});
 		
-		btnNewButtonGiornata1.addActionListener(
-				e->{
-					Giornata.visualizzaGiornata(this, 1);
-					this.getPanel().setVisible(true);
-					this.giornataCorrente=1;
-				});
 		
 		btnNewButtonGiornata2.addActionListener(
 				e->{
