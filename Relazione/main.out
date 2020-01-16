@@ -1,7 +1,9 @@
 \BOOKMARK [1][-]{section.1}{Introduzione}{}% 1
-\BOOKMARK [1][-]{section.2}{Analisi dei requisiti}{}% 2
-\BOOKMARK [2][-]{subsection.2.1}{Registrazione}{section.2}% 3
-\BOOKMARK [2][-]{subsection.2.2}{Creazione squadra tramite asta}{section.2}% 4
-\BOOKMARK [2][-]{subsection.2.3}{Visualizzazione informazioni generali}{section.2}% 5
-\BOOKMARK [2][-]{subsection.2.4}{Schiera formazione}{section.2}% 6
-\BOOKMARK [2][-]{subsection.2.5}{\200}{section.2}% 7
+\BOOKMARK [1][-]{section.2}{Analisi e specifica dei requisiti}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Stakeholder principali}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Specifica dei requisiti funzionali}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Specifica dei requisiti NON funzionali}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.4}{Casi d'uso}{section.2}% 6
+\BOOKMARK [3][-]{subsubsection.2.4.1}{Registrazione al sistema}{subsection.2.4}% 7
+\BOOKMARK [3][-]{subsubsection.2.4.2}{Effettuare il login}{subsection.2.4}% 8
+\BOOKMARK [3][-]{subsubsection.2.4.3}{Creazione squadra}{subsection.2.4}% 9

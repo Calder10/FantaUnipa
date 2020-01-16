@@ -19,7 +19,7 @@ FantaUnipa è un software creato per simulare il gioco del fantacalcio. Esso è 
 \end{abstract}
 \newpage
 \section{Introduzione}
-FantaUnipa è un software che permette la simulazione di un torneo del famoso gioco del fantacalcio. Il fantacalcio è un gioco che consiste nel creare e gestire squadre virtuali formate da calciatori reali, scelti fra quelli che giocano il campionato a cui il gioco si riferisce (ad esempio Serie A, Premier League, etc). Il software, dopo che l'utente ha effettuato la registrazione al sistema, crea gli altri cinque utenti virtuali che parteciperanno al torneo. La creazione degli utenti (virtuali e non) è stata implementata mediante l'utilizzo del design pattern strutturale Builder. Questa scelta è giustificata dal fatto che,essendo la classe Fantallenatore formata da diversi attributi, il suo metodo costruttore avrebbe avuto troppi attbuti passati a parametro; l'utilizzo del Builder ci ha permesso di costruire l'oggetto tramite l'utilizzo di appositi metodi per ogni singolo attributo.\\
+FantaUnipa è un software che permette la simulazione di un torneo del famoso gioco del fantacalcio. Il fantacalcio è un gioco che consiste nel creare e gestire squadre virtuali formate da calciatori reali, scelti fra quelli che giocano il campionato a cui il gioco si riferisce (ad esempio Serie A, Premier League, etc). Il software, dopo che l'utente ha effettuato la registrazione al sistema, crea gli altri cinque utenti virtuali che parteciperanno al torneo. La creazione degli utenti (virtuali e non) è stata implementata mediante l'utilizzo del design pattern strutturale \textit{Builder}. Questa scelta è giustificata dal fatto che,essendo la classe Fantallenatore formata da diversi attributi, il suo metodo costruttore avrebbe avuto troppi attbuti passati a parametro; l'utilizzo del Builder ci ha permesso di costruire l'oggetto tramite l'utilizzo di appositi metodi per ogni singolo attributo.\\
 Dopo avere effettuato la registrazione, l'utente dovra inserire il nome e il logo della sua fantasquadra e parallelamente viene effettuata la stessa operazione per gli utenti virtuali. Una volta che tutti gli utenti hanno scelto il nome e il logo della loro fantasquadra inizia l'asta per l'acquisto dei giocatori. Ogni fantallenatore deve acquistare:
 \begin{itemize}
 \item 3 portieri;
@@ -28,45 +28,99 @@ Dopo avere effettuato la registrazione, l'utente dovra inserire il nome e il log
 \item 6 attaccanti.
 \end{itemize}
 Durante le diverse sessioni dell'asta ogni partecipante può puntare, rilanciare o rinuciare a quel determinato giocatore.\\
-L'asta è stata implementata mediante l'utilizzo dei design pattern comportamentali Observer e Strategy. In particolare Observer è stato utilizzato per notificare a tutti i fantallenatori (gli observer) il cambiamento di stato (valore della puntata, o un'eventuale rinuncia) dell'oggetto osservabile (sessione di asta per un determinato calciatore). In questo modo, in ogni momento, ogni fantallenatore è a conoscenza dello stato dell'asta e può decidere se rilanciare o abbandonare l'asta; strategy è stato utilizzato per implementare diverse strategie di rilancio utilizzate dagli utenti virtuali. In particolare è stato possibile cambiare a runtime il tipo di algoritmo da utilizzare in base alla strategia che ha deciso di adottare l'utente virtuale.\\
+L'asta è stata implementata mediante l'utilizzo dei design pattern comportamentali \textit{Observer} e \textit{Strategy}. In particolare Observer è stato utilizzato per notificare a tutti i fantallenatori (gli observer) il cambiamento di stato (valore della puntata, o un'eventuale rinuncia) dell'oggetto osservabile (sessione di asta per un determinato calciatore). In questo modo, in ogni momento, ogni fantallenatore è a conoscenza dello stato dell'asta e può decidere se rilanciare o abbandonare l'asta; strategy è stato utilizzato per implementare diverse strategie di rilancio utilizzate dagli utenti virtuali. In particolare è stato possibile cambiare a runtime il tipo di algoritmo da utilizzare in base alla strategia che ha deciso di adottare l'utente virtuale.\\
 Dopo che tutti gli utenti hanno completato la creazione della propria rosa, il software genera il torneo composto da sei squadre che si sfideranno secondo la modalità del girone all'italiana. Per la creazione del torneo è stato utilizzato il pattern creazionale Singleton ed il pattern strutturale Facade. Il pattern \textit{Singleton} è stato utilizzato per rendere l'entità torneo istanziabile una e una sola volta; \textit{Facade} è stato utilizzato per nascondere ai fantallenatori la  complessita dell'entità torneo e per rendere più facile l'utilizzo dei sottosistemi da cui esso è composto.\\
 Una volta creato il torneo, per ogni giornata, l'utente dovrà inserire la propria formazione scegliendo fra quattro diversi moduli disponibili (4-4-2, 4-3-3, 3-4-4, 3-5-2); la creazione della formazione per tutti gli utenti è stato implementato utilizzando il design pattern creazionale \textit{Factory method} il quale ci ha permesso di creare una classe (FormazioneFactory) che in base al tipo di modulo scelto dall'utente delega la creazione dell'oggetto alla sottoclasse corrispondente al modulo scelto.\\
 Alla fine di ogni giornata l'utente avrà accesso ad una serie di informazioni inerenti il torneo (ad esempio classifica, risultati delle partite giocate etc).\\ Quando si conclude il torneo verranno visualizzate le squadre che si sono classificate nelle prime tre posizioni.
-\section{Analisi dei requisiti}
-\subsection{Registrazione}
-Danilo è un potenziale "FantaAllenatore" che intende partecipare al torneo FantaUnipa. Quest'ultimo avviando il software visualizzerà una finestra di login, in cui sarà presente  un bottone "registrati" che gli permetterà di registrasi al torneo qualora non lo avesse ancora fatto. Cliccando sul bottone registrati si aprirà un form in cui Danilo dovrà compilare i sequenti campi:
+\section{Analisi e specifica dei requisiti}
+\subsection{Stakeholder principali}
+L'unico stakeholder del software FantaUnipa è il fantallenatore, che è colui che utilizza il software per simulare un torneo di fantacalcio. 
+\subsection{Specifica dei requisiti funzionali}
+Di seguito viene riportato l'elenco dei requisiti funzionali del fantallenatore:
 \begin{itemize}
-\item nome;
-\item cognome;
-\item email;
-\item nickname;
-\item password.
+\item registrarsi al sistema;
+\item effettuare il login;
+\item creare la propria fantasquadra;
+\item partecipare all'asta per l'acquisto dei giocatori;
+\item schierare la formazione;
+\item visualizzare il calendario del torneo;
+\item visualizzare la propria rosa;
+\item visualizzare la rosa degli altri fantallenatori;
+\item visualizzare i voti e risultati delle partite precedenti;
+\item visualizzare la classifica del torneo.
 \end{itemize}
-A runtime verranno effettuati dei check su alcuni campi, in particolare:
+\subsection{Specifica dei requisiti NON funzionali}
+Di seguito è riportata l'elenco dei requisiti non funzionali del sistema:
 \begin{itemize}
-\item nickname: comparirà una scritta in rosso sotto il campo, nel caso in cui il nickname inserito sia stato gia scelto da un altro utente;
-\item password; comparirà una scritta in rosso sotto il campo, nel caso in cui la password non sia formata da almeno sei caratteri e contenga almeno un numero ed una lettera maiuscola;
-\item mail: comparirà una scritta in rossa sotto il campo, nel caso in cui la mail è stata già utilizzata da un altro utente o se non fa parte del sistema unipa.
+\item usabilità: l'interfaccia utente è stata implementata cercando di garantire la massima usabilità ed una facile localizzazione dei comandi da utilizzare;
+\item velocità: il software è stato progettato in modo tale da avere tempi di risposta brevi fra un'operazione ed un'altra;
+\item portabilità: il software può essere eseguito su diversi sistemi;
 \end{itemize}
-Dopo aver compilato il form, cliccando sul tasto conferma, Danilo avrà compeletato la registrazione e gli comparirà una finestra di dialogo con il seguente messaggio "Registrazione effettuata con successo !".
-\subsection{Creazione squadra tramite asta}
-Danilo, dopo aver inserito il proprio username e la propria password, cliccando sul bottone login accederà alla pagina di creazione della squadra dove sarà presente un form in cui gli sarà chiesto di inserire il nome della squadra (qualora il nome fosse già utilizzato da un altro utente comparirà un messaggio in rosso) e il logo; cliccando sul bottone continua Danilo accederà alla sezione asta.Essa è composta da:
+\subsection{Casi d'uso}
+\subsubsection{Registrazione al sistema}
+Attore principale: \textbf{Fantallenatore}\\
+\newline
+\textbf{PASSI}
+\begin{enumerate}
+\item clicca sul bottone registrati;
+\item il sistema visualizza il modulo per la registrazione;
+\item l'utente compila tutti campi e preme il tasto registrati;
+\item il sistema acquisisce e controlla i dati;
+\item il sistema mostra un messaggio di conferma e visualizza il modulo di login.
+\end{enumerate}
+\textbf{ESTENSIONI}
+\begin{enumerate}
+\item uno o più campi vuoti: in questo caso viene mostrato all'utente un messaggio di errore e il sistema ritorna al passo 2;
+\item la password non rispetta gli standard definiti dal sistema: in questo verrà mostrato all'utente un messaggio di errore e il sistema ritorna al passo 2;
+\item l'username è stato già utilizzato: in questo caso verrà mostrato all'utente un messaggio di errore e il sistema ritorna al passo 2;
+\end{enumerate}
+\subsubsection{Effettuare il login}
+Attore principale: \textbf{Fantallenatore}\\
+\newline
+\textbf{PASSI}
+\begin{enumerate}
+\item il sistema mostra all'utente il modulo per effettuare il login;
+\item l'utente compila il modulo e clicca sul bottone login;
+\item il sistema acquisisce e controlla i dati;
+\item il sistema visualizza la schermata home del software nel caso in cui il fantallenatore avesse già creato la sua squadra, altrimenti viene visualizzata la schermata per la creazione della squadra.
+\end{enumerate}
+\textbf{ESTENSIONI}
 \begin{itemize}
-\item barra di ricerca: che permette di ricercare un giocatore per nome;
-\item bottone "tutti" che permette di visualizzare la lista completa dei giocatori;
-\item sezione filtri avanzati che permette di effettuare una ricerca per range di prezzo.
+\item campi non validi: in questo caso il sistema visualizza un messaggio d'errore e torna al punto 1.
 \end{itemize}
-L'asta inzia convenzionalmente dai portieri fino ad arrivare agli attaccanti. Danilo, una volta trovato il giocatore tramite i metodi di ricerca sopra menzionati, lo seleziona ed effettua la puntata cliccando sul bottone "punta". In tempo reale gli verranno notificati - qualora ci fossero - i rilanci degli altri FantaAllenatori. A questo punto, Danilo può scegliere se rilanciare (inserendo la nuova cifra nell'apposito campo e cliccando nuovamente su "Punta") o abbandonare l'asta per quel determinato calciatore cliccando sul bottone "Lascia". Questo processo si ripete fino a quando uno dei FantaAllenatori non si aggiudica il giocatore in questione oppure quando tutti i FantaAllenatori abbandonano l'asta per il giocatore. Nel caso in cui Danilo si aggiudichi un calciatore gli verra mostrata una finestra che gli notificherà il corretto acquisto del giocatore. Se gli altri FantaAllenatori non hanno ancora completato gli acquisti per un determinato ruolo, sara notificato a Danilo un messaggio di attesa. In ogni momento dell'asta Danilo ha la possibilità di monitorare il numero di FantaCrediti rimanenti e i giocatori che ha acquistato fino a quel momento. Quado l'asta terminerà (ovvero quando tutte le FantaSquadre sono state completate) verrà notificato a Danilo un messaggio di completamento dell'asta e verrà rimandato nella sua pagina personale di gestione della rosa.
-\subsection{Visualizzazione informazioni generali}
-Danilo, una volta effettuato l'accesso, visualizzerà una pagina che gli permetterà di accedere ad una serie di informazioni inerenti al torneo a cui sta partecipando. In particolare nella parte sinistra della pagina avremo:
+\subsubsection{Creazione squadra}
+Attore principale: \textbf{Fantallenatore}\\
+\newline
+\textbf{PASSI}
+\begin{enumerate}
+\item il sistema visualizza il modulo per la creazione della squadra;
+\item l'utente compila il modulo inserendo il nome della squadra ed il logo;
+\item il sistema acquisisce i dati;
+\item il sistema visualizza la finestra che permetterà all'utente di iniziare l'asta per la creazione della rosa.
+\end{enumerate}
+\textbf{ESTENSIONI}
 \begin{itemize}
-\item un bottone "La Mia Rosa" che una volta cliccato gli permetterà di visualizzare la sua rosa al completo suddivisa per ruolo ed eventuali giocatori diffidati, squalificati o infortunati;
-\item un bottone "Squadre" che una volta cliccato gli permetterà di prendere visione delle rose di tutte le altre FantaSquadre in competizione;
-\item un bottone "Calendario" che una volta cliccato gli permetterà di visualizzare le giornate già giocate e le giornate ancora da giocare;
-\item bottone "Classifica" che una volta cliccato gli permetterà di visualizzare la classifica generale del torneo.
+\item campi vuoti: il sistema visualizza un messaggio di errore e torna al punto 1.
 \end{itemize}
-Inoltre, nella parte destra della pagina, Danilo potrà facilmente visualizzare l'ultima giornata giocata e la prossima da giocare.
-\subsection{Schiera formazione}
-Danilo effettuando l'accesso, in fondo alla pagina iniziale troverà il bottone "Schiera Formazione". Cliccando su quest'ultimo verrà rimandato ad una pagina dove potrà selezionare il modulo con cui schierare la sua squadra (ad esempio 4-4-2, 3-5-2, 4-3-3 etc). Una volta scelto il modulo, compariranno sul campo da gioco delle icone disposte in base al modulo che si è scelto. Cliccando su ognuna delle icone, Danilo potrà selezionare il giocatore che intende schierare per quel determinato ruolo tramite un menù a tendina (qualore il giocatore fosse stato già scelto o fosse squalificato o infortunato non sarà selezionabile).Nella parte sottostante della pagina, Danilo potrà selezionare gli eventuali sostiuti. Per completare l'operazione di inserimento dovrà cliccare sul bottone "Salva Formazione" presente in fondo alla pagina.
-\subsection{•}
+\subsubsection*{Partecipazione all'asta}
+Attore principale: \textbf{Fantallenatore}\\
+\newline
+\textbf{PASSI}
+\begin{enumerate}
+\item il sistema visualizza una finestra che consente all'utente di ricercare i giocatori che intende acquistare
+\item l'utente  a questo punto può:
+\begin{itemize}
+\item inserire il nome del giocatore nell'apposito campo e premere il bottone cerca: in questo caso gli verrà mostrato il nome del giocatore e il bottone scegli
+\item premere il bottone Mostra Tutti e cliccare su uno dei giocatori della lista.
+\end{itemize}
+\item in entrambi i casi precedenti dopo il click il sistema visualizzerà una finestra in cui si svolgeranno le operazioni per l'asta;
+\item l'utente inserisce la puntata e clicca su punta;
+\item il sistema visualizza le puntate degli altri giocatori;
+\item l'utente può decidere se rinunciare cliccando sul bottone rinuncia o se effettuare una nuova puntata.
+\end{enumerate}
+\textbf{ESTENSIONI}
+\begin{itemize}
+\item il giocatore scelto è stato già acquistato oppure l'utente non ha inserito il nome di alcun giocatore: in questo caso viene mostrata una finestra di notifica e il sistema ritorna la punto 1;
+\item puntata non consentita: il sistema mostra una finestra di errore e ritorna al punto 
+\end{itemize}
 \end{document}
