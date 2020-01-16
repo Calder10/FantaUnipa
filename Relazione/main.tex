@@ -42,7 +42,7 @@ Di seguito viene riportato l'elenco dei requisiti funzionali del fantallenatore:
 \item effettuare il login;
 \item creare la propria fantasquadra;
 \item partecipare all'asta per l'acquisto dei giocatori;
-\item schierare la formazione;
+\item gioca partita;
 \item visualizzare il calendario del torneo;
 \item visualizzare la propria rosa;
 \item visualizzare la rosa degli altri fantallenatori;
@@ -121,6 +121,21 @@ Attore principale: \textbf{Fantallenatore}\\
 \textbf{ESTENSIONI}
 \begin{itemize}
 \item il giocatore scelto è stato già acquistato oppure l'utente non ha inserito il nome di alcun giocatore: in questo caso viene mostrata una finestra di notifica e il sistema ritorna la punto 1;
-\item puntata non consentita: il sistema mostra una finestra di errore e ritorna al punto 
+\item puntata non consentita: il sistema mostra una finestra di errore e ritorna al punto 3;
+\item l'utente si aggiudica il giocatore: il sistema visualizza un messaggio di conferma e torna al punto 1.
 \end{itemize}
+\subsection{Gioca partita}
+Attore principale: \textbf{Fantallenatore}\\
+\newline
+\textbf{PASSI}
+\begin{enumerate}
+\item nella schermata Home l'utente clicca sul bottone schiera formazione;
+\item il sistema visualizza una finestra per la scelta del modulo;
+\item l'utente clicca su una delle voci del menù a tendina;
+\item il sistema visualizza una finestra dove l'utente potrà scegliere i singoli giocatori da schierare;
+\item l'utente dopo aver scelto sia i titolari che le riserve clicca su conferma;
+\item il sistema viusualizza una finestra contenente i risultati della giornata e dei bottoni (visualizza voti) che permettono all'utente di visualizzare i voti ottenuti dai giocatori in una determinata partita;
+\item se l'utente clicca su visualizza voti il sistema mostra una finestra con i voti dei giocatori per quella determinata partita;
+\item 
+\end{enumerate}
 \end{document}
