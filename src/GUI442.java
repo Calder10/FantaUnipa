@@ -21,7 +21,7 @@ import javax.swing.JList;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
-/**
+/** GUI che permette l'inserimento della formazione con modulo 4-3-3
  * @author Salvatore Calderaro
  * @author Gaspare Casano
  */
@@ -37,8 +37,9 @@ public class GUI442 extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
-	 * @throws IOException 
+	 * @param username dell'utente che deve schierare la formazione
+	 * @param s squadra  da cui prendere i giocatori per schierare la formazione 
+	 * @param numeroGiornata numero della giornata da giocare s
 	 */
 	public GUI442(String username,Squadra s,int numeroGiornata) throws IOException {
 		super("Inserimento formazione");

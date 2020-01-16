@@ -2,6 +2,10 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Random;
 
+/** Classe per la gestione della lista dei giocatori 
+ * @author Salvatore Calderaro
+ * @author Gaspare Casano
+ */
 public class UtilityListaGiocatori {
 	private static String pathListaCompleta = "src/Lista/listaCalciatoriCompleta.csv";
 	private static String pathListaPortieri = "src/Lista/portieri.csv";
@@ -11,6 +15,9 @@ public class UtilityListaGiocatori {
 	
 
 
+	/** Metodo che crea il file csv contenente i portieri 
+	 * @throws IOException
+	 */
 	public static void creaListaPortieri() throws IOException {
 		boolean dir = new File("src/Lista").mkdir();
 		File f = new File(pathListaPortieri);
@@ -33,6 +40,9 @@ public class UtilityListaGiocatori {
 		fw.close();
 	}
 
+	/** Metodo che crea il file csv contenente i difensori
+	 * @throws IOException
+	 */
 	public static void creaListaDifensori() throws IOException {
 		boolean dir = new File("src/Lista").mkdir();
 		File f = new File(pathListaDifensori);
@@ -54,7 +64,10 @@ public class UtilityListaGiocatori {
 		fr.close();
 		fw.close();
 	}
-
+	
+	/** Metodo che crea il file csv contenente i centrocampisti
+	 * @throws IOException
+	 */
 	public static void creaListaCentrocampisti() throws IOException {
 		boolean dir = new File("src/Lista").mkdir();
 		File f = new File(pathListaCentrocampisti);
@@ -76,7 +89,10 @@ public class UtilityListaGiocatori {
 		fr.close();
 		fw.close();
 	}
-
+	
+	/** Metodo che crea il file csv contenente gli attaccanti
+	 * @throws IOException
+	 */
 	public static void creaListaAttaccanti() throws IOException {
 		boolean dir = new File("src/Lista").mkdir();
 		File f = new File(pathListaAttaccanti);
@@ -99,6 +115,10 @@ public class UtilityListaGiocatori {
 		fw.close();
 	}
 
+	
+	/** Metodo che crea le liste dei giocatori 
+	 * @throws IOException
+	 */
 	public static void creaListe() throws IOException {
 		UtilityListaGiocatori.creaListaPortieri();
 		UtilityListaGiocatori.creaListaDifensori();
@@ -106,6 +126,12 @@ public class UtilityListaGiocatori {
 		UtilityListaGiocatori.creaListaAttaccanti();
 	}
 
+	/** Metod che controlla se un determinato giocatore è presente o meno nelle liste
+	 * @param giocatore nome del giocatore da cercare 
+	 * @param tipo intero che rappresenta il ruolo del calciatore
+	 * @return il nome del calciatore se viene trovato, la stringa vuota altrimenti 
+	 * @throws IOException
+	 */
 	public static String cercaGiocatore(String giocatore, int tipo) throws IOException {
 		String ris = "";
 		FileReader f = null;
@@ -178,6 +204,11 @@ public class UtilityListaGiocatori {
 
 	}
 
+	/** Metodo che restituisce un ArrayList contenente i nomi dei giocatori di un determinato ruolo
+	 * @param tipo intero che rappresenta il tipo del giocatore
+	 * @return ArrayList di stringhe contenente i nomi dei giocatori
+	 * @throws IOException
+	 */
 	public static ArrayList<String> showAllPlayers(int tipo) throws IOException {
 		ArrayList<String> ris = new ArrayList<>();
 		FileReader f = null;
@@ -243,6 +274,11 @@ public class UtilityListaGiocatori {
 		return ris;
 	}
 
+	/** Metodo che modifica il file csv contrassegnando  il giocatore passato a parametro come acquistato
+	 * @param tipo intero che rappresenta il tipo del giocatore 
+	 * @param nomeGiocatore da marcare come acquistato
+	 * @throws IOException
+	 */
 	public static void giocatoreAcquistato(int tipo, String nomeGiocatore) throws IOException {
 		File f = null;
 		File f1 = null;
@@ -359,6 +395,11 @@ public class UtilityListaGiocatori {
 		}
 	}
 
+	/** Metodo che estrae randomicamente un giocatore di un determinato tipo
+	 * @param tipo intero che rappresenta il ruolo del giocatore
+	 * @return
+	 * @throws IOException
+	 */
 	public static String randomPlayer(int tipo) throws IOException {
 		int s = 0;
 		int i=0;

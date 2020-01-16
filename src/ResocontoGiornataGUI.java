@@ -1,3 +1,5 @@
+
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -16,6 +18,11 @@ import java.nio.file.Paths;
 
 import javax.swing.JButton;
 
+/** GUI per la visualizzazione dei risultati di una determinata giornata del torneo.
+ * @author Salvatore Calderaro
+ *@author Gaspare Casano 
+ *
+ */
 public class ResocontoGiornataGUI extends JFrame {
 
 	private JPanel contentPane;

@@ -15,6 +15,11 @@ import java.nio.file.Paths;
 
 import javax.swing.JButton;
 
+/** GUI che permette la gestione della home del software.
+ * @author Calvatore Calderaro
+ * @author Gaspare Casano
+ *
+ */
 public class HomeGUI extends JFrame {
 
 	private JPanel contentPane;
@@ -184,6 +189,10 @@ public class HomeGUI extends JFrame {
 	
 
 
+	/**
+	 * @param username dell'utente che ha effettuato il login
+	 * @throws IOException
+	 */
 	public HomeGUI(String username) throws IOException {
 		super("Home");
 		setResizable(false);

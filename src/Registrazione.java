@@ -1,8 +1,16 @@
 import java.io.*;
 
+
+/** Classe per la gestione delle operazioni di login e registrazione
+ * @author Salvatore Calderaro
+ *@author Gaspare Casano
+ */
 public class Registrazione {
 	private FantallenatoreBuilder fantallenatore;
 
+	/**Metodo che che crea il file CSV dove verranno salvati i dati sia dell'utente che dei fantallenatori virtuali
+	 * @throws IOException
+	 */
 	public void createDataFile() throws IOException {
 		File f = new File("src/dati.csv");
 		if (f.exists() == false) {
@@ -13,6 +21,10 @@ public class Registrazione {
 
 	}
 
+	/** Metodo che controlla se è associata una squadra ad un determinato username
+	 * @param username su cui effettuare il controllo
+	 * @return false se la squadra deve essere ancora inserita, true altrimenti
+	 */
 	public boolean existSquadra(String username) {
 		boolean flag = false;
 		try {
@@ -38,6 +50,10 @@ public class Registrazione {
 		return flag;
 	}
 
+	/** Metodo che salva su file CSV alcune informazioni inerenti il fantallenatore
+	 * @param fantallenatore Fantallenatore da cui prelevare le informazioni da inserire nel file
+	 * @throws IOException
+	 */
 	public void salvaUtente(Fantallenatore fantallenatore) throws IOException {
 		try {
 			FileWriter fw = new FileWriter("src/dati.csv", true);
@@ -60,6 +76,11 @@ public class Registrazione {
 		}
 	}
 	
+	/** Metodo che ritorna i fantacrediti associati ad un determinato username
+	 * @param username su cui effettuare il controllo.
+	 * @return stringa che rappresenta i fantacrediti
+	 * @throws IOException
+	 */
 	public static String getFantaCreditiFromCsv(String username) throws IOException {
 		String ris = "";
 		String line = "";
@@ -77,6 +98,11 @@ public class Registrazione {
 		return ris;
 	}
 
+	/** Metodo che controlla se un determinato username è stato già utilizzato o meno 
+	 * @param username su cui effettuare il controllo 
+	 * @return false se l'username è stato già usato , true altrimenti.
+	 * @throws IOException
+	 */
 	public boolean checkUsername(String username) throws IOException {
 		boolean flag = true;
 
@@ -101,6 +127,10 @@ public class Registrazione {
 		return flag;
 	}
 
+	/** Metodo che controlla se la password rispetta o meno determinati parametri 
+	 * @param password su cui effettuare il controllo
+	 * @return true se la password rispetta i parametri, false altrimenti
+	 */
 	public boolean checkPassword(String password) {
 		int digits = 0;
 		int upper_char = 0;

@@ -3,7 +3,9 @@ import java.util.ArrayList;
 
 public class Partite implements Serializable{
 	/**
-	 * 
+	 * Classe che rappresenta l'entita Partite.
+	 * @author Salvatore Calderaro
+	 * @author Gaspare Casano
 	 */
 	private static final long serialVersionUID = 2576683847895997337L;
 	private ArrayList<Partita> partite;

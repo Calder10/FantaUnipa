@@ -12,6 +12,10 @@ import javax.swing.SwingConstants;
 import javax.swing.Box;
 import java.awt.Component;
 
+/** GUI che visualizza tutte le squadre partecipanti al torneo
+ * @author Salvatore Calderaro
+ * @author Gaspare Casano
+ */
 public class SquadreGUI extends JFrame {
 
 	private JPanel contentPane;

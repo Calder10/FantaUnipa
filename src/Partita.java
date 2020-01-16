@@ -7,11 +7,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 
+/** Classe per la gestione di una singola partita.
+ * @author Salvatore Calderaro
+ * @author Gaspare Casano
+ */
 public class Partita implements Serializable{
 	
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 8300870919346163806L;
 	private Squadra squadraCasa;
 	private Squadra squadraTrasferta;
@@ -23,69 +25,51 @@ public class Partita implements Serializable{
 	private ArrayList<String> panoramicaVotiCasa;
 	private ArrayList<String> panoramicaVotiTrasferta;
 	
-	
-	
-	/**
-	 * @return the panoramicaVotiCasa
-	 */
 	public ArrayList<String> getPanoramicaVotiCasa() {
 		return panoramicaVotiCasa;
 	}
 
-	/**
-	 * @param panoramicaVotiCasa the panoramicaVotiCasa to set
-	 */
+	
 	public void setPanoramicaVotiCasa(ArrayList<String> panoramicaVotiCasa) {
 		this.panoramicaVotiCasa = panoramicaVotiCasa;
 	}
 
-	/**
-	 * @return the panoramicaVotiTrasferta
-	 */
+	
 	public ArrayList<String> getPanoramicaVotiTrasferta() {
 		return panoramicaVotiTrasferta;
 	}
 
-	/**
-	 * @param panoramicaVotiTrasferta the panoramicaVotiTrasferta to set
-	 */
+	
 	public void setPanoramicaVotiTrasferta(ArrayList<String> panoramicaVotiTrasferta) {
 		this.panoramicaVotiTrasferta = panoramicaVotiTrasferta;
 	}
 
-	/**
-	 * @return the votiSquadraCasa
-	 */
+	
 	public HashMap<String, Double> getVotiSquadraCasa() {
 		return votiSquadraCasa;
 	}
 
-	/**
-	 * @param votiSquadraCasa the votiSquadraCasa to set
-	 */
+	
 	public void setVotiSquadraCasa(HashMap<String, Double> votiSquadraCasa) {
 		this.votiSquadraCasa = votiSquadraCasa;
 	}
 
-	/**
-	 * @return the votiSquadraTrasferta
-	 */
+	
 	public HashMap<String, Double> getVotiSquadraTrasferta() {
 		return votiSquadraTrasferta;
 	}
 
-	/**
-	 * @param votiSquadraTrasferta the votiSquadraTrasferta to set
-	 */
+	
 	public void setVotiSquadraTrasferta(HashMap<String, Double> votiSquadraTrasferta) {
 		this.votiSquadraTrasferta = votiSquadraTrasferta;
 	}
 
 	
 	
+	
 	/**
-	 * @param casa
-	 * @param trasferta
+	 * @param casa Squadra che gioca in casa
+	 * @param trasferta squadra che gioca in trasferta
 	 */
 	public Partita (Squadra casa, Squadra trasferta) {
 		this.squadraCasa=casa;
@@ -93,16 +77,10 @@ public class Partita implements Serializable{
 		this.risultato=" - ";
 	}
 	
-	/**
-	 * @return
-	 */
 	public Squadra getSquadraCasa() {
 		return squadraCasa;
 	}
 
-	/**
-	 * @param squadraCasa
-	 */
 	public void setSquadraCasa(Squadra squadraCasa) {
 		this.squadraCasa = squadraCasa;
 	}
@@ -140,6 +118,10 @@ public class Partita implements Serializable{
 		this.formazioneSquadraTrasferta = formazioneSquadraTrasferta;
 	}
 	
+	
+	/**Metodo che calcola il risultato della partita
+	 * 
+	 */
 	public void calcolaRisultato() {
 		double casa =0.0;
 		double trasferta=0.0;
@@ -179,6 +161,11 @@ public class Partita implements Serializable{
 		System.out.println(this.risultato);
 	}
 	
+	
+	/** Metodo simula la partita
+	 * @param partitaDaGiocare partita che deve essere giocata 
+	 * @param giornata numero che rappresenta la giornata a cui fa riferimento la partita da giocare 
+	 */
 	public static void giocaPartita(Partita partitaDaGiocare,int giornata) {
 		ArrayList<String[]> formazioneCasa = Formazione.getNomiGiocatori(partitaDaGiocare.getFormazioneSquadraCasa());
 		ArrayList<String[]> formazioneTrasferta = Formazione.getNomiGiocatori(partitaDaGiocare.getFormazioneSquadraTrasferta());
@@ -189,6 +176,12 @@ public class Partita implements Serializable{
 		partitaDaGiocare.calcolaRisultato();
 	}
 	
+	/** Metodo che ritorna un ArrayList di ArrayList di String contentenente i voti ottenuti dai calciatori in una determinata partita
+	 * @param numeroGiornata  numero della giornata a cui fa riferimento la partita 
+	 * @param numeroPartita numero che rappresenta la partita da giocare 
+	 * @return ArrayList di ArrayList contenente i voti ottenuti dai giocatori in quella determinata partita.
+	 * @throws ClassNotFoundException
+	 */
 	public static ArrayList<ArrayList<String>> returnVotiPartita(int numeroGiornata,int numeroPartita) throws ClassNotFoundException {
 		File f = new File("src/torneo.dat");
 		FileInputStream fis;

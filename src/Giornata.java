@@ -1,3 +1,5 @@
+
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -12,6 +14,15 @@ import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
+/** Classe per la gestione di una singola giornata del torneo
+ * @author Salvatore Calderaro
+ * @author Gaspare Casano
+ *
+ */
+/**
+ * @author salvatorecalderaro
+ *
+ */
 public class Giornata implements Serializable {
 
 	/**
@@ -40,7 +51,12 @@ public class Giornata implements Serializable {
 	public void setGicata(boolean giocata) {
 		this.giocata = giocata;
 	}
-
+	
+	
+	/**Metodo che permette di visualizzare una determinata giornata 
+	 * @param calendarioGUI interfaccia grafica in cui verrà visualizzato un resoconto della gironata
+	 * @param numeroGiornata numero della giornata che si vuole visualizzare
+	 */
 	public static void visualizzaGiornata(CalendarioGUI calendarioGUI, int numeroGiornata) {
 		File f = null;
 		FileInputStream fis = null;
@@ -56,8 +72,7 @@ public class Giornata implements Serializable {
 			ois.close();
 			fis.close();
 		} catch (IOException | ClassNotFoundException e) {
-			e.printStackTrace();
-			// System.out.println("Errore nella lettura dal file !");
+			System.out.println("Errore nella lettura dal file !");
 		}
 		ImageIcon img = null;
 		calendarioGUI.getLblNewLabelGiornata().setText("Giornata " + numeroGiornata);
@@ -111,7 +126,12 @@ public class Giornata implements Serializable {
 			calendarioGUI.getI3().setVisible(false);
 		}
 	}
-
+	
+	
+	/** Metodo che permette di visualizzare la prossima giornata da giocare
+	 * @param homeGUI interfaccia grafica in cui viene visualizzata la giornata da giocare 
+	 * @return numero della giornata, o -1 nel caso in tutte le giornate fossero state già giocate
+	 */
 	public static int visualizzaGiornataDaGiocare(HomeGUI homeGUI) {
 		File f = null;
 		FileInputStream fis = null;
@@ -180,7 +200,11 @@ public class Giornata implements Serializable {
 		return numeroGiornata;
 	}
 
-	public static void visualizzaResocontoGiornata(ResocontoGiornataGUI homeGUI, int numeroGiornata) {
+	/** Metodo che permette di visualizzare il resoconto di una determinata giornata
+	 * @param rs interfaccia grafica dove verrano mostrati i risultati delle partite della giornata
+	 * @param numeroGiornata numero della giornata di cui si vuole visualizzare il resoconto
+	 */
+	public static void visualizzaResocontoGiornata(ResocontoGiornataGUI  rs, int numeroGiornata) {
 		File f = null;
 		FileInputStream fis = null;
 		ObjectInputStream ois = null;
@@ -200,33 +224,41 @@ public class Giornata implements Serializable {
 		g = t.getGiornate().getGiornate().get(numeroGiornata);
 		ImageIcon img = null;
 		img = new ImageIcon(g.getPartite().getPartite().get(0).getSquadraCasa().getPathLogo());
-		homeGUI.getLblNewLabelLogoCasa1().setIcon(img);
+		rs.getLblNewLabelLogoCasa1().setIcon(img);
 		img = new ImageIcon(g.getPartite().getPartite().get(0).getSquadraTrasferta().getPathLogo());
-		homeGUI.getLblNewLabelLogoTrasferta1().setIcon(img);
-		homeGUI.getLblNewLabelNomeCasa1().setText(g.getPartite().getPartite().get(0).getSquadraCasa().getNomeSquadra());
-		homeGUI.getLblNewLabelNomeTrasferta1()
-				.setText(g.getPartite().getPartite().get(0).getSquadraTrasferta().getNomeSquadra());
-		homeGUI.getLblNewLabelRis1().setText(g.getPartite().getPartite().get(0).getRisultato());
+		rs.getLblNewLabelLogoTrasferta1().setIcon(img);
+		rs.getLblNewLabelNomeCasa1().setText(g.getPartite().getPartite().get(0).getSquadraCasa().getNomeSquadra());
+		rs.getLblNewLabelNomeTrasferta1().setText(g.getPartite().getPartite().get(0).getSquadraTrasferta().getNomeSquadra());
+		rs.getLblNewLabelRis1().setText(g.getPartite().getPartite().get(0).getRisultato());
 
 		img = new ImageIcon(g.getPartite().getPartite().get(1).getSquadraCasa().getPathLogo());
-		homeGUI.getLblNewLabelLogoCasa2().setIcon(img);
+		rs.getLblNewLabelLogoCasa2().setIcon(img);
 		img = new ImageIcon(g.getPartite().getPartite().get(1).getSquadraTrasferta().getPathLogo());
-		homeGUI.getLblNewLabelLogoTrasferta2().setIcon(img);
-		homeGUI.getLblNewLabelNomeCasa2().setText(g.getPartite().getPartite().get(1).getSquadraCasa().getNomeSquadra());
-		homeGUI.getLblNewLabelNomeTrasferta2()
+		rs.getLblNewLabelLogoTrasferta2().setIcon(img);
+		rs.getLblNewLabelNomeCasa2().setText(g.getPartite().getPartite().get(1).getSquadraCasa().getNomeSquadra());
+		rs.getLblNewLabelNomeTrasferta2()
 				.setText(g.getPartite().getPartite().get(1).getSquadraTrasferta().getNomeSquadra());
-		homeGUI.getLblNewLabelRis2().setText(g.getPartite().getPartite().get(1).getRisultato());
+		rs.getLblNewLabelRis2().setText(g.getPartite().getPartite().get(1).getRisultato());
 
 		img = new ImageIcon(g.getPartite().getPartite().get(2).getSquadraCasa().getPathLogo());
-		homeGUI.getLblNewLabelLogoCasa3().setIcon(img);
+		rs.getLblNewLabelLogoCasa3().setIcon(img);
 		img = new ImageIcon(g.getPartite().getPartite().get(2).getSquadraTrasferta().getPathLogo());
-		homeGUI.getLblNewLabelLogoTrasferta3().setIcon(img);
-		homeGUI.getLblNewLabelNomeCasa3().setText(g.getPartite().getPartite().get(2).getSquadraCasa().getNomeSquadra());
-		homeGUI.getLblNewLabelNomeTrasferta3()
+		rs.getLblNewLabelLogoTrasferta3().setIcon(img);
+		rs.getLblNewLabelNomeCasa3().setText(g.getPartite().getPartite().get(2).getSquadraCasa().getNomeSquadra());
+		rs.getLblNewLabelNomeTrasferta3()
 				.setText(g.getPartite().getPartite().get(2).getSquadraTrasferta().getNomeSquadra());
-		homeGUI.getLblNewLabelRis3().setText(g.getPartite().getPartite().get(2).getRisultato());
+		rs.getLblNewLabelRis3().setText(g.getPartite().getPartite().get(2).getRisultato());
 	}
-
+	
+	
+	/** Metodo che pemette di giocare la partita che coinvolge l'utente e le rimanenti partite della gironata
+	 * @param f formazione schierata dall'utente per giocare la partita 
+	 * @param numeroGiornata numero della giornata che si deve disputare 
+	 * @param s Squadra  dell'utente
+	 * @return true se tutte le partite vengono giocate, false altrimenti
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	public static boolean giocaGiornata(Formazione f, int numeroGiornata, Squadra s)
 			throws IOException, ClassNotFoundException {
 		File file = new File("src/torneo.dat");
@@ -307,7 +339,14 @@ public class Giornata implements Serializable {
 		Classifica.updateClassifica(g);
 		return true;
 	}
-
+	
+	
+	/** Metodo che salva nel file la giornata giocata s
+	 * @param g Giornata da aggiornare nel file
+	 * @param giornata numero della giornata da aggiornare
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	public static void salvaGiornata(Giornata g, int giornata) throws ClassNotFoundException, IOException {
 		File f = new File("src/torneo.dat");
 		FileInputStream fis;

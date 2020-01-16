@@ -18,7 +18,7 @@ import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 
-/**
+/** GUI che permette l'inserimento della formazione con modulo 3-5-2
  * @author Salvatore Calderaro
  * @author Gaspare Casano
  */
@@ -27,7 +27,9 @@ public class GUI352 extends JFrame {
 	private JPanel contentPane;
 
 	/**
-	 * Create the frame.
+	 * @param username dell'utente che deve schierare la formazione
+	 * @param s squadra  da cui prendere i giocatori per schierare la formazione 
+	 * @param numeroGiornata numero della giornata da giocare s
 	 */
 	public GUI352(String username,Squadra s,int numeroGiornata) {
 		super("Inserimento formazione");

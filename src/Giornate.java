@@ -11,12 +11,16 @@ import javax.swing.JPanel;
 
 public class Giornate implements Serializable {
 
-	/**
-	 * 
+	/** Classe per la gestione delle Giornate del torneo
+	 * @author Salvatore Calderaro
+	 * @author Gaspare Casano 
 	 */
 	private static final long serialVersionUID = -2567694931019254675L;
 	private ArrayList<Giornata> giornate;
 
+	/**
+	 * @param squadre che partecipano al torneo
+	 */
 	public Giornate(ArrayList<Squadra> squadre) {
 		this.giornate = new ArrayList<Giornata>();
 		creaGiornate(squadre);
@@ -29,7 +33,14 @@ public class Giornate implements Serializable {
 	public void setGiornate(ArrayList<Giornata> giornate) {
 		this.giornate = giornate;
 	}
-
+	
+	
+	
+	/**Metodo che sostituisce l'ultimo elemento delle squadre selezionate per giocare in casa  con l'ultimo elemento delle squadre che giocano in trasferta
+	 * @param squadreCasa ArrayList delle squadre che sono state selezionate per giocare in casa
+	 * @param riporto ultimo elemento dell'ArrayList delle squadre di trasferta
+	 * @return ArrayList di squadre
+	 */
 	public ArrayList<Squadra> shiftLeft(ArrayList<Squadra> squadreCasa, Squadra riporto) {
 		ArrayList<Squadra> aus = new ArrayList<Squadra>();
 		for (int i = 0; i < squadreCasa.size() - 1; i++) {
@@ -40,7 +51,14 @@ public class Giornate implements Serializable {
 		aus.add(n, riporto);
 		return aus;
 	}
+	
 
+	/**
+	 * Metodo che sostituisce il primo elemento delle squadre selezionate per giocare in trasferta con primo elemento delle squadre che giocano in casa
+	 * @param squadreTraferta ArrayList delle squadre che sono state selezionate per giocare in trasferta
+	 * @param pivot primo elemento dell'ArrayList delle squadre di casa 
+	 * @return ArrayList di squadre
+	 */
 	public ArrayList<Squadra> shiftRight(ArrayList<Squadra> squadreTraferta, Squadra pivot) {
 		ArrayList<Squadra> aus = new ArrayList<Squadra>();
 		for (int i = 1; i < squadreTraferta.size(); i++) {
@@ -51,7 +69,10 @@ public class Giornate implements Serializable {
 		return aus;
 	}
 
-	// Algoritmo di Berger
+	
+	/** Metodo che tramite l'algorimto di Berger, crea campionato strutturato in giornate con la formula del girone all'italiana 
+	 * @param squadre ArrayList delle squadre che parteciperanno al campionato.
+	 */
 	public void creaGiornate(ArrayList<Squadra> squadre) {
 		int numeroSquadre = squadre.size();
 		int numeroGiornate = numeroSquadre - 1;

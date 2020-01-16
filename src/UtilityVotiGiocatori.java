@@ -9,7 +9,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-/**
+/** Classe per la gestione dei file contenenti i voti dei giocatori
  * @author Salvatore Calderaro
  * @author Gaspare Casano
  */
@@ -21,6 +21,13 @@ public class UtilityVotiGiocatori {
 	private static String pathVotiGiornata4 = "src/Voti/votiQuartaGiornata.csv";
 	private static String pathVotiGiornata5 = "src/Voti/votiQuintaGiornata.csv";
 
+	/** Metodo che controlla se può essere effettuato un cambio, ed in caso affermativo lo effettua
+	 * @param tipo stringa che rappresenta il tipo del giocatore 
+	 * @param giocatori ArrayList dove sono contenuti i nomi dei giocatori titolari e delle riserve 
+	 * @param numeroGiornata che si sta giocando 
+	 * @param cambi ArrayList che contiene dei flag che indicano se un determinato giocatore è già subentrato o meno 
+	 * @return HashMap contenente il nome e il voto del giocatore sostiuito
+	 */
 	public static HashMap<String,Double> effettuaCambio(String tipo, ArrayList<String[]> giocatori, int numeroGiornata,boolean[] cambi) {
 		HashMap<String,Double> voto = new HashMap<>();
 		double aus=0.0;
@@ -147,6 +154,11 @@ public class UtilityVotiGiocatori {
 		return voto;
 	}
 
+	/** Metodo che assegna i voti ai giocatori
+	 * @param giocatori a cui devono essere assegnati i voti 
+	 * @param numeroGiornata numero della giornata per la quale si devono assegnare i voti 
+	 * @return HashMap contenente i nomi e i voti dei giocatori 
+	 */
 	public static HashMap<String, Double> assegnaVoti(ArrayList<String[]> giocatori, int numeroGiornata) {
 		HashMap<String, Double> voti = new HashMap<>();
 		HashMap<String, Double> votiRiserva = new HashMap<>();
@@ -320,6 +332,11 @@ public class UtilityVotiGiocatori {
 
 	}
 
+	/** Metodo che crea una panoramica dei voti 
+	 * @param giocatori da cui deve essere estratto il nome ed il voto
+	 * @param giornata intero che rappresenta la giornata che si sta giocando 
+	 * @return ArrayList di stringhe contenente il nome del giocatore e il voto
+	 */
 	public static ArrayList<String> creaPanoramicaVoti(ArrayList<String[]> giocatori, int giornata) {
 		ArrayList<String> panoramica = new ArrayList<String>();
 		List<String> aus = new ArrayList<>();
@@ -331,6 +348,11 @@ public class UtilityVotiGiocatori {
 		return panoramica;
 	}
 
+	/** Metodo che estrae i punteggi ottenuti da un determinato giocatore in una determinata giornata
+	 * @param giocatore nome del giocatore di cui devono essere estratti i punteggi
+	 * @param giornata intero che rappresnta la giornata che si sta giocando 
+	 * @return
+	 */
 	public static List<String> estraiPunteggi(String giocatore, int giornata) {
 		String path = "";
 		List<String> ris = new ArrayList<>();
@@ -378,6 +400,10 @@ public class UtilityVotiGiocatori {
 		return ris;
 	}
 
+	/** Metodo che in base ai punteggi passati in input calcola il voto finale del calciatore
+	 * @param punteggi del calciatore
+	 * @return voto
+	 */
 	public static double calcolaVoto(List<String> punteggi) {
 		double voto = 0.0;
 		if (punteggi.size() != 0) {

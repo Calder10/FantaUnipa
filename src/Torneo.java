@@ -10,7 +10,9 @@ import java.util.ArrayList;
 
 public class Torneo implements Serializable {
 	/**
-	 * 
+	 * Classe per la gestione dell'entità torneo
+	 * @author Salvatore Calderaro
+	 * @author Gaspare Casano
 	 */
 	private static final long serialVersionUID = 7858483060552979173L;
 	private String nomeTorneo;
@@ -22,6 +24,11 @@ public class Torneo implements Serializable {
 	private Torneo() {
 	}
 
+	/** Metodo che restituisce il torneo
+	 * @return torneo
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	public static Torneo getTorneo() throws ClassNotFoundException, IOException {
 		if (torneo == null) {
 			torneo = new Torneo();
@@ -67,6 +74,10 @@ public class Torneo implements Serializable {
 		this.classifica = classifica;
 	}
 
+	/** Metodo che carica da file le squadre che devono partecipare al torneo
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	public void uploadSquadre() throws IOException, ClassNotFoundException {
 		this.squadre = new ArrayList<>();
 		File f = new File("src/Squadre");
@@ -83,6 +94,9 @@ public class Torneo implements Serializable {
 		fis.close();
 	}
 
+	/**
+	 *  Metodo che salva il torneo su file
+	 */
 	public void saveTorneo() {
 		File f = new File("src/torneo.dat");
 		FileOutputStream fos;
@@ -97,6 +111,9 @@ public class Torneo implements Serializable {
 		}
 	}
 	
+	/** Metodo che cancella file torneo, i file delle squadre in modo da poter inziiare un nuovo torneo 
+	 * @throws IOException
+	 */
 	public static void resetTorneo() throws IOException {
 		File dir = new File("src/Squadre");
 		File [] files = dir.listFiles();

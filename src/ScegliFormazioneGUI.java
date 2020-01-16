@@ -20,13 +20,20 @@ import java.awt.Font;
 import javax.swing.JComboBox;
 import java.awt.Color;
 
+/* GUI che consente all'utente gli scegliere il modulo con cui schierare la formazione 
+ * @author Salvatore Calderaro
+ * @author Gaspare Casano 
+ */
 public class ScegliFormazioneGUI extends JFrame {
 
 	private JPanel contentPane;
 
 
+	
 	/**
-	 * 
+	 * @param username dell'utene loggato in quel momento
+	 * @param squadra squadra associata all'utente
+	 * @param numeroGiornata numero della giornata che si deve giocare
 	 */
 	public ScegliFormazioneGUI(String username,Squadra squadra,int numeroGiornata) {
 		super("Schiera Formazione");

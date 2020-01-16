@@ -23,13 +23,20 @@ import java.awt.*;
  
 
 
+/** GUI per la visualizzazione dei voti dei voti ottenuti dai giocatori in una determinata partita
+ * @author Calvatore Calderaro
+ *
+ */
 public class ResocontoVotiGUI extends JFrame{
 
 	private JPanel contentPane;
 	private String username;
+	
 	/**
-	 * Create the frame.
-	 * @throws ClassNotFoundException 
+	 * @param numeroGiornata numero della giornata a cui fa riferimento la partita
+	 * @param numeroPartita numero della partita 
+	 * @param username dell'utente loggato in quel momento
+	 * @throws ClassNotFoundException
 	 */
 	public ResocontoVotiGUI(int numeroGiornata,int numeroPartita,String username) throws ClassNotFoundException {
 		super("Resoconto Voti");

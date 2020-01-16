@@ -17,6 +17,10 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 
+/** GUI per la gestioen della schermata di registrazione dell'utente.
+ * @author Salvatore Calderaro
+ * @author Gapsare Casano
+ */
 public class RegistrazioneGUI extends JFrame {
 
 	private JPanel contentPane;

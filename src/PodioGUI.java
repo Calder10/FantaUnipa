@@ -13,15 +13,21 @@ import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.SwingConstants;
 
+
+/** GUI che visualizza i primi tre classificati al torneo.
+ * @author Salvatore Calderaro
+ * @author Gaspare Casano
+ *
+ */
 public class PodioGUI extends JFrame {
 
 	private JPanel contentPane;
 
 	
 	/**
-	 * Create the frame.
-	 * @throws IOException 
-	 * @throws ClassNotFoundException 
+	 * @param username dell'utente che è loggato al sistema
+	 * @throws ClassNotFoundException
+	 * @throws IOException
 	 */
 	public PodioGUI(String username) throws ClassNotFoundException, IOException {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -24,9 +24,10 @@ import java.nio.file.Files;
 import java.nio.file.*;
 
 public class Squadra implements Serializable {
-	/**
-	 * 
-	 */
+	/** Classe per la gestione dell'entità squadra
+	 *  @author Salvatore Calderaro
+	 *  @author Gaspare Casano
+	 */ 
 	private static final long serialVersionUID = 1772300263662162498L;
 	protected Fantallenatore fantallenatore;
 	protected String nomeSquadra;
@@ -83,6 +84,11 @@ public class Squadra implements Serializable {
 		return attaccanti;
 	}
 
+	/** Metodo che aggiunge al file csv il nome della squadra scelto dall'utente
+	 * @param username alla quale deve essere associato il nome del file
+	 * @param nomeSquadra che deve essere scritto sul file 
+	 * @throws IOException
+	 */
 	public void addNomeSquadraToCsv(String username, String nomeSquadra) throws IOException {
 		try {
 			File f = new File("src/dati.csv");
@@ -123,7 +129,11 @@ public class Squadra implements Serializable {
 			System.out.println("Errore nella scrittura su file !");
 		}
 	}
-
+	
+	
+	/** Metodo che salva nella cartella dei loghi il logo della squadra scelto dall'utente
+	 * @param f file da salvare 
+	 */
 	public void salvaLogo(File f) {
 		BufferedImage i = null;
 		try {
@@ -138,6 +148,9 @@ public class Squadra implements Serializable {
 		}
 	}
 
+	/** Metodo che salva la squadra su file 
+	 * @throws IOException
+	 */
 	public void salvaSquadraSuFile() throws IOException {
 		boolean dest = new File("src/Squadre").mkdir();
 		String pathDest = ("src/Squadre/" + this.nomeSquadra.trim() + ".dat").trim();
@@ -154,6 +167,10 @@ public class Squadra implements Serializable {
 		}
 	}
 
+	/** Metodo che aggiunge un giocatore nel suo corrispettivo ArrayList 
+	 * @param g giocatore da aggiungere
+	 * @param tipo intero che rappresenta il ruolo del giocatore
+	 */
 	public void addGiocatore(Giocatore g, int tipo) {
 		switch (tipo) {
 		case 0:
@@ -183,6 +200,9 @@ public class Squadra implements Serializable {
 				+ ", attaccanti=" + attaccanti + "]";
 	}
 
+	/** Metodo cha aggiorna il file di una determinata squadra
+	 * @throws IOException
+	 */
 	public void updateSquadra() throws IOException {
 		String path = "src/Squadre/" + this.getNomeSquadra() + ".dat";
 		String path1 = "src/Squadre/" + this.getNomeSquadra() + "1.dat";
@@ -200,6 +220,11 @@ public class Squadra implements Serializable {
 		f1.renameTo(f);
 	}
 
+	/** Metodo che estrae la squara dal file 
+	 * @param username dell'utente 
+	 * @return squadra associata all'username
+	 * @throws IOException
+	 */
 	public static Squadra getSquadraFromFile(String username) throws IOException {
 		String nomeSquadra;
 		String pathSquadra;
@@ -235,6 +260,11 @@ public class Squadra implements Serializable {
 		return squadra;
 	}
 	
+	/** Metodo che estrae le squadre virtuali dai rispettivi file.
+	 * @param nomeSquadra nome della squadra dell'utente
+	 * @return ArrayList di squadre virtuali
+	 * @throws ClassNotFoundException
+	 */
 	public static ArrayList<Squadra> getSquadreVirtualiFromFile(String nomeSquadra) throws ClassNotFoundException{
 		ArrayList<Squadra> squadre = new ArrayList<>();
 		List<String> paths=null;

@@ -17,10 +17,18 @@ import javax.swing.JTextArea;
 import java.awt.Color;
 import javax.swing.UIManager;
 
+/** GUI che permette di visualizzare la rosa di una determinata squadra
+ * @author Salvatore Calderaro
+ * @author Gaspare Casano
+ */
 public class RosaGUI extends JFrame {
+	
 
 	private JPanel contentPane;
 
+	/**
+	 * @param Squadra di cui si vuole visualizzare la rosa 
+	 */
 	public RosaGUI(Squadra s) {
 		super(s.getNomeSquadra());
 		setResizable(false);
