@@ -136,6 +136,66 @@ Attore principale: \textbf{Fantallenatore}\\
 \item l'utente dopo aver scelto sia i titolari che le riserve clicca su conferma;
 \item il sistema viusualizza una finestra contenente i risultati della giornata e dei bottoni (visualizza voti) che permettono all'utente di visualizzare i voti ottenuti dai giocatori in una determinata partita;
 \item se l'utente clicca su visualizza voti il sistema mostra una finestra con i voti dei giocatori per quella determinata partita;
-\item 
+\item l'utente dopo aver chiuso la finestra ritorna al punto 1.
 \end{enumerate}
+\textbf{ESTENSIONI}
+\begin{itemize}
+\item se l'utente inserisce un giocatore più di una volta oppure lascia uno o più campo vuoti, il sistema visualizza un messaggio di errore e ritorna al punto 4;
+\end{itemize}
+\subsubsection{Visualizzare il calendario del torneo}
+Attore principale: \textbf{Fantallenatore}\\
+\newline
+\textbf{PASSI}
+\begin{enumerate}
+\item l'utente nella schermata home clicca sul bottone calendario;
+\item il sistema mostra una finestra contenente dei bottoni inerenti le cinque giornate;
+\item l'utente clicca su uno dei cinque bottoni;
+\item il sistema mostra una finestra in cui sono contenute le partite della giornata con il risultato e un tasto che permette di visualizzare le informazioni, qualora la giornata si fosse già giocata;
+\item quando l'utente chiude la finestra il sistema ritorna al punto 1;
+\end{enumerate}
+\subsection{Visualizzare la propria rosa}
+Attore principale: \textbf{Fantallenatore}\\
+\newline
+\textbf{PASSI}
+\begin{enumerate}
+\item l'utente dalla schermata home clicca sul bottone visualizza la mia rosa;
+\item il sistema visualizza una finestra contenente la lista di tutti i giocatori che compongono la rosa dell'utente;
+\end{enumerate}
+\subsection{Visualizzare la rosa delle altre squadre}
+Attore principale: \textbf{Fantallenatore}\\
+\newline
+\textbf{PASSI}
+\begin{enumerate}
+\item l'utente dalla schermata home clicca sul bottone visualizza la mia rosa;
+\item il sistema visualizza una finestra contenente i loghi di tutte le altre squadre che partecipano al torneo;
+\item l'utente clicca su uno dei loghi;
+\item il sistema visualizza una finestra che mostra la rosa della squadra corrispondente al logo su cui ha cliccato l'utente.
+\end{enumerate}
+\subsection{Visualizzare i voti e i risultati delle partite precedenti}
+Attore principale: \textbf{Fantallenatore}\\
+\newline
+\textbf{PASSI}
+\begin{enumerate}
+\item l'utente dalla schermata home clicca sul bottone calendario;
+\item il sistema mostra una finestra contenente dei bottoni inerenti le cinque giornate;
+\item l'utente clicca sul bottone corrispondente alla giornata di cui intende visualizzare le informazioni;
+\item il sistema mostra una finestra contenente i risultati delle partite e qualora le partite fossero state già giocate un tasto info;
+\item l'utente clicca sul tasto info;
+\item il sistema mostra una finestra contenente i voti ottenuti dai giocatori in quella determinata partita; 
+\end{enumerate}
+\subsection{Visualizza classifica}
+Attore principale: \textbf{Fantallenatore}\\
+\newline
+\textbf{PASSI}
+\begin{enumerate}
+\item l'utente dalla schermata home clicca sul bottone classifica;
+\item il sistema mostra una finestra contenente la classifica corrente del torneo.
+\end{enumerate}
+\subsection{Diagrammi dei casi d'uso}
+Attore principale: \textbf{Fantallenatore}
+\begin{figure}[h]
+\centering
+\includegraphics[width=15 cm,keepaspectratio]{diagrammaCasiUso.jpg}
+\caption{Diagramma dei casi d'uso}
+\end{figure}
 \end{document}
