@@ -1,10 +1,16 @@
+/.DS_Store
+/Immagini/
+/Lista/
+/Loghi/
 /Asta.class
+/AstaAttaccantiGUI.class
+/META-INF/
+/Voti/
 /AstaAttaccantiGUI$1.class
 /AstaAttaccantiGUI$2.class
 /AstaAttaccantiGUI$3.class
 /AstaAttaccantiGUI$4.class
 /AstaAttaccantiGUI$5.class
-/AstaAttaccantiGUI.class
 /AstaCentrocampistiGUI$1.class
 /AstaCentrocampistiGUI$2.class
 /AstaCentrocampistiGUI$3.class
