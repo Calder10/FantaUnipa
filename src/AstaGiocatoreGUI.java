@@ -145,6 +145,7 @@ public class AstaGiocatoreGUI extends JFrame {
 		btnNewButton.addActionListener(
 				e->{
 					textArea.setText("");
+					boolean flag=true;
 					int p=0;
 					try {
 						p = Integer.parseInt(textField.getText());
@@ -155,15 +156,21 @@ public class AstaGiocatoreGUI extends JFrame {
 					if(p==0) {
 						JOptionPane.showMessageDialog(textField, "Caratteri non ammessi !");
 						textField.setText("");
+						flag=false;
 					}
-					if (p > fantaCrediti) {
-						JOptionPane.showMessageDialog(textField, "Non hai abbastanza FantaCrediti !");
-						textField.setText("");
+					if(p!=0) {
+						if (p > fantaCrediti) {
+							JOptionPane.showMessageDialog(textField, "Non hai abbastanza FantaCrediti !");
+							textField.setText("");
+							flag=false;
+						}
 					}
 					if(textField.getText()=="") {
 						JOptionPane.showMessageDialog(textField, "Inserisci la puntata !");
 						textField.setText("");
+						flag=false;
 					}
+					if(flag==true)
 					a.eseguiAsta(astaGUI, getAstaGiocatoreGUI(), textField, getUsername(), textArea,
 							btnNewButtonRinuncia);
 				

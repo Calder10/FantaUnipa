@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.12.14)  18 JAN 2020 02:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.12.14)  20 JAN 2020 22:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -472,70 +472,69 @@ File: diagrammaCasiUso.jpg Graphic file (type jpg)
 <use diagrammaCasiUso.jpg>
 Package pdftex.def Info: diagrammaCasiUso.jpg  used on input line 204.
 (pdftex.def)             Requested size: 426.79134pt x 229.99257pt.
-<FANTAUNIPA.png, id=251, 4103.33pt x 2006.49625pt>
+<FANTAUNIPA.png, id=251, 4133.4425pt x 2010.51125pt>
 File: FANTAUNIPA.png Graphic file (type png)
 <use FANTAUNIPA.png>
 Package pdftex.def Info: FANTAUNIPA.png  used on input line 211.
-(pdftex.def)             Requested size: 426.79134pt x 208.68294pt.
- [10 <./diagrammaCasiUso.jpg> <./FANTAUNIPA.png>]
-<Singleton.jpg, id=260, 350.30875pt x 405.515pt>
+(pdftex.def)             Requested size: 426.79134pt x 207.56662pt.
+ [10 <./diagrammaCasiUso.jpg> <./FANTAUNIPA.png (PNG copy)>]
+<Singleton.jpg, id=258, 350.30875pt x 405.515pt>
 File: Singleton.jpg Graphic file (type jpg)
 <use Singleton.jpg>
 Package pdftex.def Info: Singleton.jpg  used on input line 221.
 (pdftex.def)             Requested size: 312.9803pt x 362.33035pt.
  [11 <./Singleton.jpg>]
-<Builder.jpg, id=267, 1316.92pt x 658.46pt>
+<Builder.jpg, id=264, 1316.92pt x 658.46pt>
 File: Builder.jpg Graphic file (type jpg)
 <use Builder.jpg>
-Package pdftex.def Info: Builder.jpg  used on input line 230.
+Package pdftex.def Info: Builder.jpg  used on input line 231.
 (pdftex.def)             Requested size: 426.79134pt x 213.39413pt.
-
-[12 <./Builder.jpg>]
-<Factory.jpg, id=273, 2828.5675pt x 1218.5525pt>
+ [12 <./Builder.jpg>]
+<Factory.jpg, id=271, 2828.5675pt x 1218.5525pt>
 File: Factory.jpg Graphic file (type jpg)
 <use Factory.jpg>
-Package pdftex.def Info: Factory.jpg  used on input line 247.
+Package pdftex.def Info: Factory.jpg  used on input line 248.
 (pdftex.def)             Requested size: 512.1496pt x 220.63153pt.
 
-Overfull \hbox (28.45273pt too wide) in paragraph at lines 247--248
+Overfull \hbox (28.45273pt too wide) in paragraph at lines 248--249
  [][] 
  []
 
 [13 <./Factory.jpg>]
-<Observer.jpg, id=280, 1011.78pt x 738.76pt>
+<Observer.jpg, id=278, 1011.78pt x 738.76pt>
 File: Observer.jpg Graphic file (type jpg)
 <use Observer.jpg>
-Package pdftex.def Info: Observer.jpg  used on input line 267.
+Package pdftex.def Info: Observer.jpg  used on input line 268.
 (pdftex.def)             Requested size: 512.1496pt x 373.95573pt.
 
-Overfull \hbox (28.45273pt too wide) in paragraph at lines 267--268
+Overfull \hbox (28.45273pt too wide) in paragraph at lines 268--269
  [][] 
  []
 
 [14 <./Observer.jpg>]
-<Strategy.jpg, id=286, 1046.91125pt x 645.41125pt>
+<Strategy.jpg, id=284, 1046.91125pt x 645.41125pt>
 File: Strategy.jpg Graphic file (type jpg)
 <use Strategy.jpg>
-Package pdftex.def Info: Strategy.jpg  used on input line 282.
+Package pdftex.def Info: Strategy.jpg  used on input line 283.
 (pdftex.def)             Requested size: 512.1496pt x 315.74217pt.
 
-Overfull \hbox (28.45273pt too wide) in paragraph at lines 282--283
+Overfull \hbox (28.45273pt too wide) in paragraph at lines 283--284
  [][] 
  []
 
 [15 <./Strategy.jpg>]
-<Facade.jpg, id=292, 1334.9875pt x 1365.1pt>
+<Facade.jpg, id=290, 1334.9875pt x 1365.1pt>
 File: Facade.jpg Graphic file (type jpg)
 <use Facade.jpg>
-Package pdftex.def Info: Facade.jpg  used on input line 300.
+Package pdftex.def Info: Facade.jpg  used on input line 301.
 (pdftex.def)             Requested size: 455.24408pt x 465.50262pt.
  [16 <./Facade.jpg>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 321.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 322.
  [17]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 321.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 322.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 321.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 321.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 322.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 322.
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: EC8EFE8794CDEE3BBD6E63BCF2CFE712;2250.
  ) 
@@ -546,7 +545,7 @@ Here is how much of TeX's memory you used:
  11171 multiletter control sequences out of 15000+600000
  13358 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 28i,6n,28p,930b,419s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 28i,6n,28p,938b,419s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></
@@ -554,10 +553,10 @@ usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></us
 r/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/
 local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/l
 ocal/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on main.pdf (17 pages, 1906807 bytes).
+Output written on main.pdf (17 pages, 2337227 bytes).
 PDF statistics:
- 351 PDF objects out of 1000 (max. 8388607)
- 312 compressed objects within 4 object streams
+ 349 PDF objects out of 1000 (max. 8388607)
+ 311 compressed objects within 4 object streams
  106 named destinations out of 1000 (max. 500000)
  281 words of extra memory for PDF output out of 10000 (max. 10000000)
 

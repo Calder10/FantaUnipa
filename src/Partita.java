@@ -154,11 +154,7 @@ public class Partita implements Serializable{
 			}
 		}
 		
-		
-		
-		System.out.println(casa+ " - " +trasferta);
 		this.risultato=numeriGolCasa+ " - " +numeriGolTrasferta;
-		System.out.println(this.risultato);
 	}
 	
 	

@@ -118,16 +118,23 @@ public class CreazioneSquadraGUI extends JFrame {
 		});
 
 		btnNewButtonContinua.addActionListener(e -> {
+			boolean flagNome = false;
+			boolean flagLogo=false;
 			if (textFieldNomeSquadra.getText().equalsIgnoreCase("")) {
 				JOptionPane.showMessageDialog(textFieldNomeSquadra, "Nome Squadra non può essere vuoto");
 			} else {
-
 				s.setNomeSquadra(textFieldNomeSquadra.getText());
-				f = fc.getSelectedFile();
-				if (f == null) {
+				flagNome=true;
+			}
+			f = fc.getSelectedFile();
+			if (f == null) {
 					JOptionPane.showMessageDialog(btnNewButtonScegli, "Inserire il logo della squadra !");
-				}
+			}
+			else {
 				s.salvaLogo(f);
+				flagLogo=true;
+			}
+			if(flagNome==true && flagLogo==true) {
 				try {
 					s.addNomeSquadraToCsv(username, textFieldNomeSquadra.getText());
 					s.salvaSquadraSuFile();
@@ -137,11 +144,14 @@ public class CreazioneSquadraGUI extends JFrame {
 					nextFrame = new AstaPortieriGUI(username);
 					nextFrame.setVisible(true);
 					nextFrame.toFront();
-					setVisible(false);
+					dispose();
+					flagNome=false;
+					flagLogo=false;
 
 				} catch (IOException e2) {
 					e2.printStackTrace();
 				}
+				
 			}
 		});
 

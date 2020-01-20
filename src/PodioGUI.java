@@ -30,7 +30,6 @@ public class PodioGUI extends JFrame {
 	 * @throws IOException
 	 */
 	public PodioGUI(String username) throws ClassNotFoundException, IOException {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 661, 546);
 		setResizable(false);
 		contentPane = new JPanel();

@@ -13,12 +13,12 @@ public class SquadraVirtuale extends Squadra {
 	private static final long serialVersionUID = -8111726822249143937L;
 	private static String[] nomiSquadra = { "FantaInter", "FantaFiorentina", "FantaJuventus", "FantaMilan",
 			"FantaSassuolo", "FantaRoma", "FantaLazio" };
-	private static boolean[] isFree = { false, false, false, false, false, false, false };
 
 	/** Metodo che crea le squadre virtuali
 	 * @throws IOException
 	 */
 	public static void creaSquadreVirtuali() throws IOException {
+		boolean[] isFree = { false, false, false, false, false, false, false };
 		String line = "";
 		FileReader f = new FileReader("src/dati.csv");
 		BufferedReader br = new BufferedReader(f);
@@ -48,6 +48,5 @@ public class SquadraVirtuale extends Squadra {
 		}
 		br.close();
 		f.close();
-
 	}
 }

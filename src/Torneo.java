@@ -124,6 +124,17 @@ public class Torneo implements Serializable {
 		File t = new File("src/torneo.dat");
 		t.delete();
 		Registrazione.resetDati();
+		
+		File p = new File("src/Lista/portieri.csv");
+		p.delete();
+		File d = new File("src/Lista/difensori.csv");
+		d.delete();
+		File c = new File("src/Lista/centrocampisti.csv");
+		c.delete();
+		File a = new File("src/Lista/attaccanti.csv");
+		a.delete();
+		UtilityListaGiocatori.creaListe();
+		Torneo.torneo=null;
 	}
 
 }

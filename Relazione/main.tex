@@ -23,7 +23,7 @@ FantaUnipa è un software che è stato creato per simulare il gioco del fantacal
 \newpage
 \selectlanguage{italian}
 \section{Introduzione}
-FantaUnipa è un software che permette la simulazione di un torneo del famoso gioco del fantacalcio. Il fantacalcio è un gioco che consiste nel creare e gestire squadre virtuali formate da calciatori reali, scelti fra quelli che giocano il campionato a cui il gioco si riferisce (ad esempio Serie A, Premier League, etc). Il software, dopo che l'utente ha effettuato la registrazione al sistema, crea gli altri cinque utenti virtuali che parteciperanno al torneo. La creazione degli utenti (virtuali e non) è stata implementata mediante l'utilizzo del design pattern strutturale \textit{Builder}. Questa scelta è giustificata dal fatto che,essendo la classe Fantallenatore formata da diversi attributi, il suo metodo costruttore avrebbe avuto troppi  passati a parametro; l'utilizzo del Builder ci ha permesso di costruire l'oggetto tramite l'utilizzo di appositi metodi per ogni singolo attributo.\\
+FantaUnipa è un software che permette la simulazione di un torneo del famoso gioco del fantacalcio. Il fantacalcio è un gioco che consiste nel creare e gestire squadre virtuali formate da calciatori reali, scelti fra quelli che giocano il campionato a cui il gioco si riferisce (ad esempio Serie A, Premier League, etc). Il software, dopo che l'utente ha effettuato la registrazione al sistema, crea gli altri cinque utenti virtuali che parteciperanno al torneo. La creazione degli utenti (virtuali e non) è stata implementata mediante l'utilizzo del design pattern creazionale  \textit{Builder}. Questa scelta è giustificata dal fatto che,essendo la classe Fantallenatore formata da diversi attributi, il suo metodo costruttore avrebbe avuto troppi  valori passati a parametro; l'utilizzo del Builder ci ha permesso di costruire l'oggetto tramite l'utilizzo di appositi metodi per ogni singolo attributo.\\
 Dopo avere effettuato la registrazione, l'utente dovrà inserire il nome e il logo della sua fantasquadra e parallelamente viene effettuata la stessa operazione per gli utenti virtuali. Una volta che tutti gli utenti hanno scelto il nome e il logo della loro fantasquadra inizia l'asta per l'acquisto dei giocatori. Ogni fantallenatore deve acquistare:
 \begin{itemize}
 \item 3 portieri;
@@ -33,8 +33,8 @@ Dopo avere effettuato la registrazione, l'utente dovrà inserire il nome e il lo
 \end{itemize}
 Durante le diverse sessioni dell'asta ogni partecipante può puntare, rilanciare o rinuciare a quel determinato giocatore.\\
 L'asta è stata implementata mediante l'utilizzo dei design pattern comportamentali \textit{Observer} e \textit{Strategy}. In particolare Observer è stato utilizzato per notificare a tutti i fantallenatori (gli observer) il cambiamento di stato (valore della puntata, o un'eventuale rinuncia) dell'oggetto osservabile (sessione di asta per un determinato calciatore). In questo modo, in ogni momento, ogni fantallenatore è a conoscenza dello stato dell'asta e può decidere se rilanciare o abbandonare l'asta; strategy è stato utilizzato per implementare diverse strategie di rilancio utilizzate dagli utenti virtuali. In particolare è stato possibile cambiare a runtime il tipo di algoritmo da utilizzare in base alla strategia che ha deciso di adottare l'utente virtuale.\\
-Dopo che tutti gli utenti hanno completato la creazione della propria rosa, il software genera il torneo composto da sei squadre che si sfideranno secondo la modalità del girone all'italiana. Per la creazione del torneo è stato utilizzato il pattern  Singleton ed il pattern strutturale Facade. Il pattern \textit{Singleton} è stato utilizzato per rendere l'entità torneo istanziabile una e una sola volta; \textit{Facade} è stato utilizzato per nascondere ai fantallenatori la   dell'entità torneo e per rendere più facile l'utilizzo dei sottosistemi da cui esso è composto.\\
-Una volta creato il torneo, per ogni giornata, l'utente dovrà inserire la propria formazione scegliendo fra quattro diversi moduli disponibili (4-4-2, 4-3-3, 3-4-4, 3-5-2); la creazione della formazione per tutti gli utenti è stato implementato utilizzando il design pattern creazionale \textit{Factory method} il quale ci ha permesso di creare una classe (FormazioneFactory) che in base al tipo di modulo scelto dall'utente delega la creazione dell'oggetto alla sottoclasse corrispondente al modulo scelto.\\
+Dopo che tutti gli utenti hanno completato la creazione della propria rosa, il software genera il torneo composto da sei squadre che si sfideranno secondo la modalità del girone all'italiana. Per la creazione del torneo è stato utilizzato il pattern  Singleton ed il pattern strutturale Facade. Il pattern \textit{Singleton} è stato utilizzato per rendere l'entità torneo istanziabile una e una sola volta; \textit{Facade} è stato utilizzato per nascondere ai fantallenatori la complessità  dell'entità torneo e per rendere più facile l'utilizzo dei sottosistemi da cui esso è composto.\\
+Una volta creato il torneo, per ogni giornata, l'utente dovrà inserire la propria formazione scegliendo fra quattro diversi moduli disponibili (4-4-2, 4-3-3, 3-4-3, 3-5-2); la creazione della formazione per tutti gli utenti è stato implementato utilizzando il design pattern creazionale \textit{Factory method} il quale ci ha permesso di creare una classe (FormazioneFactory) che in base al tipo di modulo scelto dall'utente delega la creazione dell'oggetto alla sottoclasse corrispondente al modulo scelto.\\
 Alla fine di ogni giornata l'utente avrà accesso ad una serie di informazioni inerenti il torneo (ad esempio classifica, risultati delle partite giocate etc).\\ Quando si conclude il torneo verranno visualizzate le squadre che si sono classificate nelle prime tre posizioni.
 \section{Analisi e specifica dei requisiti}
 \subsection{Stakeholder principali}
@@ -215,12 +215,13 @@ Di seguito è riportato il diagramma UML delle classi completo.
  In questa sezione vengono mostrati i design pattern utilizzati per lo sviluppo del software.
  \subsection{Pattern creazionali}
  \subsubsection{Singleton}
- Il design pattern Singleton crea e gestisce un'istanza di una classe che si vuole rendere istanziabile una sola volta. Ciò si ottiene marcando il costruttore come private in modo tale che non possano essere creati oggetti da classi esterne  e poiché l'oggetto è statico per quella classe, l'unico modo per ottenere l'accesso ad esso è  mediante  un metodo static \textit{getIstance()}.
+ Il design pattern Singleton crea e gestisce un'istanza di una classe che si vuole rendere istanziabile una sola volta. Ciò si ottiene marcando il costruttore come private in modo tale che non possano essere creati oggetti da classi esterne  e poiché l'oggetto è statico per quella classe, l'unico modo per ottenere l'accesso ad esso è  mediante  un metodo static \textit{getIstance()}.\\
  \begin{figure}[h]
 \centering
 \includegraphics[width=11 cm,keepaspectratio]{Singleton.jpg}
 \caption{Classe Singleton Torneo}
 \end{figure}
+\newline
 Nello sviluppo di  questo software è stato utilizzato tale pattern per la creazione della classe \textbf{Torneo}, la quale deve essere istanziata una sola volta e  deve poter essere non istanziabile da classi esterne ad essa, in quanto nel gioco del fantacalcio non possono coesistere due o più tornei per volta.
 \newpage
 \subsubsection{Builder}
@@ -311,7 +312,7 @@ Nello sviluppo di questo software tale pattern è stato utilizzato per l'impleme
 \item \textbf{Partita}: classe per la gestione di una singola partita.
 \end{itemize}
 \section{Conclusioni}
-FantaUnipa è un software che può definirsi una simulazione del gioco del FantaCalcio, in quanto chi utilizza il software può partecipare ad un torneo competendo soltanto con utenti virtuali. Tuttavia, grazia alle tecniche utilizzate durante l'implementazione, sarà possibile in futuro aggiunge diverse nuove funzionalità per ampliare le funzionalità come:
+FantaUnipa è un software che può definirsi una simulazione del gioco del FantaCalcio, in quanto chi utilizza il software può partecipare ad un torneo competendo soltanto con utenti virtuali. Tuttavia, grazie alle tecniche utilizzate durante l'implementazione, sarà possibile in futuro aggiungere diverse nuove funzionalità per ampliare le funzionalità come:
 \begin{itemize}
 \item creazione di una web API per far partecipare al gioco solamente utenti reali;
 \item ampliazione del torneo con simulazione dell'intero campionato di riferimento scelto;
