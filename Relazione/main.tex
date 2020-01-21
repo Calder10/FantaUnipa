@@ -6,8 +6,13 @@
 \usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
-\title{FantaUnipa}
-\author{Salvatore Calderaro \and Gaspare Casano}
+\title{%
+\includegraphics[width=0.6\textwidth]{unipa.jpg}{\centering}~
+\\[2cm]
+FantaUnipa
+\\[2cm]
+}
+\author{Salvatore Calderaro 0704378 \and Gaspare Casano}
 \usepackage{hyperref}
 \begin{document}
 \date  {}
@@ -204,13 +209,22 @@ Il diagramma dei casi d'uso di seguito riportato rappresenta la mappa riassuntiv
 \includegraphics[width=15 cm,keepaspectratio]{diagrammaCasiUso.jpg}
 \caption{Diagramma dei casi d'uso}
 \end{figure}
-\subsection{Diagramma UML delle classi}
-Di seguito è riportato il diagramma UML delle classi completo.
+\subsection{Diagramma UML delle GUI}
+Di seguito è riportato il diagramma UML delle GUI.\\
 \begin{figure}[h]
 \centering
-\includegraphics[width=15 cm,keepaspectratio]{FANTAUNIPA.png}
-\caption{Diagramma UML}
+\includegraphics[width=14 cm,keepaspectratio]{UMLGui.png}
+\caption{Diagramma UML delle GUI}
 \end{figure}
+\newpage
+\subsection{Diagramma UML delle classi}
+Di seguito è riportato il diagramma UML delle classi completo.\\
+\begin{figure}[h]
+\centering
+\includegraphics[width=14 cm,keepaspectratio]{UML.jpg}
+\caption{Diagramma UML delle classi completo}
+\end{figure}
+\newpage
 \section{Design pattern utilizzati}
  In questa sezione vengono mostrati i design pattern utilizzati per lo sviluppo del software.
  \subsection{Pattern creazionali}
@@ -218,7 +232,7 @@ Di seguito è riportato il diagramma UML delle classi completo.
  Il design pattern Singleton crea e gestisce un'istanza di una classe che si vuole rendere istanziabile una sola volta. Ciò si ottiene marcando il costruttore come private in modo tale che non possano essere creati oggetti da classi esterne  e poiché l'oggetto è statico per quella classe, l'unico modo per ottenere l'accesso ad esso è  mediante  un metodo static \textit{getIstance()}.\\
  \begin{figure}[h]
 \centering
-\includegraphics[width=11 cm,keepaspectratio]{Singleton.jpg}
+\includegraphics[width=8 cm,keepaspectratio]{Singleton}
 \caption{Classe Singleton Torneo}
 \end{figure}
 \newline
@@ -228,7 +242,7 @@ Nello sviluppo di  questo software è stato utilizzato tale pattern per la creaz
 Il design pattern Builder viene utilizzato  per la costruzione di un oggetto complesso,  in particolar separa quest'ultimo dalla sua rappresentazione in modo tale che il processo costruzione stesso possa creare diverse rappresentazioni. Esso rappresenta una valida alternativa ai costruttori. Esso si realizza creando un oggetto \textbf{Director}  che viene configurato con gli oggetti 	\textbf{Builder} che si intendono costruire. Il Director notifica al Builder se una parte del prodotto deve essere costruita, e il Builder ricevuta la richiesta aggiunge la parte al prodotto. \\
  \begin{figure}[h]
 \centering
-\includegraphics[width=15 cm,keepaspectratio]{Builder.jpg}
+\includegraphics[width=15 cm,keepaspectratio]{Builder.png}
 \caption{Classi coinvolte nell'implementazione del Builder}
 \end{figure}
 \newline
@@ -245,7 +259,7 @@ Nello sviluppo di questo software tale pattern è stato utilizzato per la costru
 Il pattern FactoryMethod consiste nel delegare la costruzione di un oggetto ad una factory; viene definita una classe astratta o interfaccia per la creazione dell'oggetto e di conseguenza le sue concretizzazioni possono decidere quale classe istanziare.
 \begin{figure}[h]
 \centering
-\includegraphics[width=18 cm ,keepaspectratio]{Factory.jpg}
+\includegraphics[width=18 cm ,keepaspectratio]{FactoryMethod.png}
 \caption{Classi coinvolte nell'implementazione del Factory method}
 \end{figure}
 \newline
@@ -265,7 +279,7 @@ Nello sviluppo di questo software tale pattern è stato utilizzato per la costru
 Il pattern comportamentale Observer definisce una dipendenza uno a molti tra gli oggetti in modo che quando un oggetto cambia stato, tutti i suoi osservatori vengono avvisati e aggiornati automaticamente. Il cambiamento di stato di un oggetto osservabile viene notificato agli oggetti che sono registrati dall'osservatore. Esso si realizza   mediante un'interfaccia Subject che dichiara i metodi dell'oggetto osservabile e un'interfaccia Observer che dichiara i metodi degli osservatori. Quest'ultime vengono concretizzate in due rispettive classi ConcreteSubject e ConcreteObserver; sarà compito della classe  ConcreteSubject notificare il cambio di stato dell'oggetto a tutti gli osservatori ad essa registrati, mentre sarà compito della classe ConcreteObserver definire il comportamento in caso di cambio di stato dell'oggetto osservato.
 \begin{figure}[h]
 \centering
-\includegraphics[width=18 cm ,keepaspectratio]{Observer}
+\includegraphics[width=18 cm ,keepaspectratio]{Observer.png}
 \caption{Classi coinvolte nell'implementazione dell'Observer}
 \end{figure}
 \newline
@@ -280,7 +294,7 @@ Nello sviluppo di questo software tale pattern è stato utilizzato per implement
 Il pattern comportamentale Strategy serve a definire una famiglia di algoritmi da utilizzare per una stessa famiglia di oggetti rendendoli intercambiabili fra di loro. Strategy consente all'algoritmo di variare indipendentemente dai client che lo utilizzano. Tale pattern viene utilizzato quando è utile cambiare a dinamicamente  gli algoritmi utilizzati da un'applicazione. 
 \begin{figure}[h]
 \centering
-\includegraphics[width=18 cm ,keepaspectratio]{Strategy}
+\includegraphics[width=18 cm ,keepaspectratio]{Strategy.png}
 \caption{Classi coinvolte nell'implementazione di Strategy}
 \end{figure}
 \newline
@@ -298,7 +312,7 @@ Nello sviluppo di questo software tale pattern è stato utilizzato per implement
 Il pattern strutturale Facade si utilizza per nascondere la complessità di un sottosistema complesso al client. Esso fornisce un'interfaccia unificata a un set di interfacce in un sottosistema. Facade definisce un'interfaccia di alto livello che semplifica l'utilizzo del sottosistema.
 \begin{figure}[h]
 \centering
-\includegraphics[width=16 cm ,keepaspectratio]{Facade.jpg}
+\includegraphics[width=16 cm ,keepaspectratio]{Facade.png}
 \caption{Classi coinvolte nell'implementazione di Facade}
 \end{figure}
 \newline
@@ -311,6 +325,7 @@ Nello sviluppo di questo software tale pattern è stato utilizzato per l'impleme
 \item \textbf{Partite}: classe per la gestione di tutte le partite di una giornata;
 \item \textbf{Partita}: classe per la gestione di una singola partita.
 \end{itemize}
+\newpage
 \section{Conclusioni}
 FantaUnipa è un software che può definirsi una simulazione del gioco del FantaCalcio, in quanto chi utilizza il software può partecipare ad un torneo competendo soltanto con utenti virtuali. Tuttavia, grazie alle tecniche utilizzate durante l'implementazione, sarà possibile in futuro aggiungere diverse nuove funzionalità per ampliare le funzionalità come:
 \begin{itemize}
@@ -318,5 +333,15 @@ FantaUnipa è un software che può definirsi una simulazione del gioco del Fanta
 \item ampliazione del torneo con simulazione dell'intero campionato di riferimento scelto;
 \item aggiunta di due aste di riparazione per il mercato estivo ed invernale;
 \item aggiornamento live dei voti durante le partite reali.
+\end{itemize}
+\section{Referenze}
+Questo software è stato sviluppato con l'ausilio di:
+\begin{itemize}
+\item materiale didattico del corso;
+\item Java Design Patterns A Hands-On Experience withReal-World Examples Second Edition;
+\item Eclipse: IDE utilizzato per lo sviluppo;
+\item StarUml: per la creazione dei diagrammi UML e dei casi d'uso;
+\item ObjectAid: per la generazione del diagramma UML delle GUI;
+\item GitHub: per la condivisione del codice e tutto il materiale inerente il progetto.
 \end{itemize}
 \end{document}
