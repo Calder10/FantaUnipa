@@ -12,7 +12,7 @@
 \contentsline {subsubsection}{\numberline {2.4.2}Effettuare il login}{6}{subsubsection.2.4.2}% 
 \contentsline {subsubsection}{\numberline {2.4.3}Creazione squadra}{6}{subsubsection.2.4.3}% 
 \contentsline {subsubsection}{\numberline {2.4.4}Partecipazione all'asta}{7}{subsubsection.2.4.4}% 
-\contentsline {subsubsection}{\numberline {2.4.5}Gioca partita}{7}{subsubsection.2.4.5}% 
+\contentsline {subsubsection}{\numberline {2.4.5}Giocare la partita virtuale}{7}{subsubsection.2.4.5}% 
 \contentsline {subsubsection}{\numberline {2.4.6}Visualizzare il calendario del torneo}{8}{subsubsection.2.4.6}% 
 \contentsline {subsubsection}{\numberline {2.4.7}Visualizzare la propria rosa}{8}{subsubsection.2.4.7}% 
 \contentsline {subsubsection}{\numberline {2.4.8}Visualizzare la rosa delle altre squadre}{8}{subsubsection.2.4.8}% 

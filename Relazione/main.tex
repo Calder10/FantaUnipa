@@ -12,7 +12,7 @@
 FantaUnipa
 \\[2cm]
 }
-\author{Salvatore Calderaro 0704378 \and Gaspare Casano}
+\author{Salvatore Calderaro 0704378 \and Gaspare Casano 0708533}
 \usepackage{hyperref}
 \begin{document}
 \date  {}
@@ -23,35 +23,48 @@ FantaUnipa
 \newpage
 \selectlanguage{english}
 \begin{abstract} 
-FantaUnipa è un software che è stato creato per simulare il gioco del fantacalcio, scritto in linguaggio Java attraverso l'uso dell'IDE Eclipse e l'ausilio delle librerie Swing per l'implementazione delle interfacce grafiche. Per lo sviluppo sono stati utilizzati diversi Design Pattern e tramite l'utilizzo di essi è stato possibile creare un software funzionale e facilmente utilizzabile. 
+FantaUnipa è un software sviluppato come progetto d'esame per l'insegnamento Metodi avanzati per la programmazione. Tale software ha lo scopo di simulare il gioco del fantacalcio; è stato sviluppato in linguaggio Java attraverso l'uso dell'IDE Eclipse e l'ausilio delle librerie Swing per l'implementazione delle interfacce grafiche. Dopo una breve analisi dei requisiti, si è progettato il diagramma UML del progetto mediante l'utilizzo di vari design pattern per poi concludere con l'implementazione del codice.
 \end{abstract}
 \newpage
 \selectlanguage{italian}
 \section{Introduzione}
-FantaUnipa è un software che permette la simulazione di un torneo del famoso gioco del fantacalcio. Il fantacalcio è un gioco che consiste nel creare e gestire squadre virtuali formate da calciatori reali, scelti fra quelli che giocano il campionato a cui il gioco si riferisce (ad esempio Serie A, Premier League, etc). Il software, dopo che l'utente ha effettuato la registrazione al sistema, crea gli altri cinque utenti virtuali che parteciperanno al torneo. La creazione degli utenti (virtuali e non) è stata implementata mediante l'utilizzo del design pattern creazionale  \textit{Builder}. Questa scelta è giustificata dal fatto che,essendo la classe Fantallenatore formata da diversi attributi, il suo metodo costruttore avrebbe avuto troppi  valori passati a parametro; l'utilizzo del Builder ci ha permesso di costruire l'oggetto tramite l'utilizzo di appositi metodi per ogni singolo attributo.\\
-Dopo avere effettuato la registrazione, l'utente dovrà inserire il nome e il logo della sua fantasquadra e parallelamente viene effettuata la stessa operazione per gli utenti virtuali. Una volta che tutti gli utenti hanno scelto il nome e il logo della loro fantasquadra inizia l'asta per l'acquisto dei giocatori. Ogni fantallenatore deve acquistare:
+FantaUnipa è un software che permette la simulazione di un torneo del famoso gioco del fantacalcio. Il fantacalcio è un gioco che consiste nel creare e gestire squadre virtuali formate da calciatori reali, scelti fra quelli che militano nel campionato a cui il gioco si riferisce (ad esempio Serie A, Premier League, etc). Il software, dopo che l'utente ha effettuato la registrazione al sistema inserendo: nome, cognome, username e password (di almeno lunghezza sei e con almeno un carattere maiuscolo), crea gli altri cinque utenti virtuali che parteciperanno al torneo.
+Dopo avere effettuato la registrazione ed essersi loggato al sistema,  l'utente dovrà inserire il nome e il logo (di dimensione non superiore a 50x50 px) della sua fantasquadra e parallelamente viene effettuata la stessa operazione per gli utenti virtuali. Una volta che tutti gli utenti hanno scelto il nome e il logo della loro fantasquadra inizia l'asta per l'acquisto dei giocatori. Ogni fantallenatore deve acquistare:
 \begin{itemize}
 \item 3 portieri;
 \item 8 difensori;
 \item 8 centrocampisti;
 \item 6 attaccanti.
 \end{itemize}
+L'utente per selezionare il giocatore oggetto d'asta può ricercarlo per nome o mediante una lista completa contenente tutti i giocatori per quel determinato ruolo.
 Durante le diverse sessioni dell'asta ogni partecipante può puntare, rilanciare o rinuciare a quel determinato giocatore.\\
-L'asta è stata implementata mediante l'utilizzo dei design pattern comportamentali \textit{Observer} e \textit{Strategy}. In particolare Observer è stato utilizzato per notificare a tutti i fantallenatori (gli observer) il cambiamento di stato (valore della puntata, o un'eventuale rinuncia) dell'oggetto osservabile (sessione di asta per un determinato calciatore). In questo modo, in ogni momento, ogni fantallenatore è a conoscenza dello stato dell'asta e può decidere se rilanciare o abbandonare l'asta; strategy è stato utilizzato per implementare diverse strategie di rilancio utilizzate dagli utenti virtuali. In particolare è stato possibile cambiare a runtime il tipo di algoritmo da utilizzare in base alla strategia che ha deciso di adottare l'utente virtuale.\\
-Dopo che tutti gli utenti hanno completato la creazione della propria rosa, il software genera il torneo composto da sei squadre che si sfideranno secondo la modalità del girone all'italiana. Per la creazione del torneo è stato utilizzato il pattern  Singleton ed il pattern strutturale Facade. Il pattern \textit{Singleton} è stato utilizzato per rendere l'entità torneo istanziabile una e una sola volta; \textit{Facade} è stato utilizzato per nascondere ai fantallenatori la complessità  dell'entità torneo e per rendere più facile l'utilizzo dei sottosistemi da cui esso è composto.\\
-Una volta creato il torneo, per ogni giornata, l'utente dovrà inserire la propria formazione scegliendo fra quattro diversi moduli disponibili (4-4-2, 4-3-3, 3-4-3, 3-5-2); la creazione della formazione per tutti gli utenti è stato implementato utilizzando il design pattern creazionale \textit{Factory method} il quale ci ha permesso di creare una classe (FormazioneFactory) che in base al tipo di modulo scelto dall'utente delega la creazione dell'oggetto alla sottoclasse corrispondente al modulo scelto.\\
-Alla fine di ogni giornata l'utente avrà accesso ad una serie di informazioni inerenti il torneo (ad esempio classifica, risultati delle partite giocate etc).\\ Quando si conclude il torneo verranno visualizzate le squadre che si sono classificate nelle prime tre posizioni.
+Dopo che tutti gli utenti hanno completato la creazione della propria rosa, il software genera il torneo composto da sei squadre che si sfideranno secondo la modalità del girone all'italiana.
+Una volta creato il torneo, per ogni giornata, l'utente dovrà inserire la propria formazione scegliendo fra quattro diversi moduli disponibili:
+\begin{itemize}
+\item 4-3-3;
+\item 4-4-2;
+\item 3-5-2;
+\item 3-4-3.
+\end{itemize}
+Alla fine di ogni giornata viene mostrata all'utente una schermata contenente i risultati delle partite e i voti ottenuti dai giocatori nella partita appena giocata.Dalla schermata home l'utente avrà inoltre accesso ad una serie di informazioni, quali:
+\begin{itemize}
+\item visualizzare la propria rosa;
+\item visualizzare la rosa delle altre fantasquadre;
+\item visualizzare il calendario del torneo e i relativi risultati delle partite e i voti qualora la giornata si fosse già giocata;
+\item visualizzare la classifica del torneo.
+\end{itemize} 
+Quando si conclude il torneo verranno visualizzate le squadre che si sono classificate nelle prime tre posizioni e verrà data la possibilità all'utente di partecipare ad un nuovo torneo creando una nuova fantasquadra.
 \section{Analisi e specifica dei requisiti}
 \subsection{Stakeholder principali}
 L'unico stakeholder del software FantaUnipa è il fantallenatore, che è colui che utilizza il software per simulare un torneo di fantacalcio. 
 \subsection{Specifica dei requisiti funzionali}
 Di seguito viene riportato l'elenco dei requisiti funzionali del fantallenatore:
 \begin{itemize}
-\item registrarsi al sistema;
+\item registrazione al sistema;
 \item effettuare il login;
 \item creare la propria fantasquadra;
 \item partecipare all'asta per l'acquisto dei giocatori;
-\item gioca partita;
+\item giocare la partita virtuale;
 \item visualizzare il calendario del torneo;
 \item visualizzare la propria rosa;
 \item visualizzare la rosa degli altri fantallenatori;
@@ -59,7 +72,7 @@ Di seguito viene riportato l'elenco dei requisiti funzionali del fantallenatore:
 \item visualizzare la classifica del torneo.
 \end{itemize}
 \subsection{Specifica dei requisiti NON funzionali}
-Di seguito è riportata l'elenco dei requisiti non funzionali del sistema:
+Di seguito è riportato l'elenco dei requisiti non funzionali del sistema:
 \begin{itemize}
 \item usabilità: l'interfaccia utente è stata implementata cercando di garantire la massima usabilità ed una facile localizzazione dei comandi da utilizzare;
 \item velocità: il software è stato progettato in modo tale da avere tempi di risposta brevi fra un'operazione ed un'altra;
@@ -72,44 +85,44 @@ Attore principale: \textbf{Fantallenatore}\\
 \textbf{PASSI}
 \begin{enumerate}
 \item clicca sul bottone registrati;
-\item il sistema visualizza il modulo per la registrazione;
+\item il sistema visualizza la schermata di registrazione;
 \item l'utente compila tutti campi e preme il tasto registrati;
 \item il sistema acquisisce e controlla i dati;
 \item il sistema mostra un messaggio di conferma e visualizza il modulo di login.
 \end{enumerate}
 \textbf{ESTENSIONI}
-\begin{enumerate}
+\begin{itemize}
 \item uno o più campi vuoti: in questo caso viene mostrato all'utente un messaggio di errore e il sistema ritorna al passo 2;
-\item la password non rispetta gli standard definiti dal sistema: in questo verrà mostrato all'utente un messaggio di errore e il sistema ritorna al passo 2;
+\item la password non rispetta gli standard definiti dal sistema: in questo caso verrà mostrato all'utente un messaggio di errore e il sistema ritorna al passo 2;
 \item l'username è stato già utilizzato: in questo caso verrà mostrato all'utente un messaggio di errore e il sistema ritorna al passo 2;
-\end{enumerate}
+\end{itemize}
 \subsubsection{Effettuare il login}
 Attore principale: \textbf{Fantallenatore}\\
 \newline
 \textbf{PASSI}
 \begin{enumerate}
-\item il sistema mostra all'utente il modulo per effettuare il login;
-\item l'utente compila il modulo e clicca sul bottone login;
+\item il sistema mostra all'utente la schermata di login;
+\item l'utente compila tutti i campi e clicca sul bottone login;
 \item il sistema acquisisce e controlla i dati;
-\item il sistema visualizza la schermata home del software nel caso in cui il fantallenatore avesse già creato la sua squadra, altrimenti viene visualizzata la schermata per la creazione della squadra.
+\item il sistema visualizza la schermata home del software nel caso in cui il fantallenatore avesse già creato la sua squadra altrimenti viene visualizzata la schermata per la creazione della squadra.
 \end{enumerate}
 \textbf{ESTENSIONI}
 \begin{itemize}
-\item campi non validi: in questo caso il sistema visualizza un messaggio d'errore e torna al punto 1.
+\item campi non validi: in questo caso il sistema visualizza un messaggio d'errore e torna al passo 1.
 \end{itemize}
 \subsubsection{Creazione squadra}
 Attore principale: \textbf{Fantallenatore}\\
 \newline
 \textbf{PASSI}
 \begin{enumerate}
-\item il sistema visualizza il modulo per la creazione della squadra;
-\item l'utente compila il modulo inserendo il nome della squadra ed il logo;
+\item il sistema visualizza la schermata per la creazione della squadra;
+\item l'utente inserisce il nome ed il logo della propria fantasquadra;
 \item il sistema acquisisce i dati;
 \item il sistema visualizza la finestra che permetterà all'utente di iniziare l'asta per la creazione della rosa.
 \end{enumerate}
 \textbf{ESTENSIONI}
 \begin{itemize}
-\item campi vuoti: il sistema visualizza un messaggio di errore e torna al punto 1.
+\item campi vuoti: il sistema visualizza un messaggio di errore e torna al passo 1.
 \end{itemize}
 \subsubsection{Partecipazione all'asta}
 Attore principale: \textbf{Fantallenatore}\\
@@ -119,21 +132,21 @@ Attore principale: \textbf{Fantallenatore}\\
 \item il sistema visualizza una finestra che consente all'utente di ricercare i giocatori che intende acquistare
 \item l'utente  a questo punto può:
 \begin{itemize}
-\item inserire il nome del giocatore nell'apposito campo e premere il bottone cerca: in questo caso gli verrà mostrato il nome del giocatore e il bottone scegli
+\item inserire il nome del giocatore nell'apposito campo e premere il bottone cerca: in questo caso gli verrà mostrato il nome del giocatore e il bottone scegli se il giocatore è stato trovato nella lista;
 \item premere il bottone Mostra Tutti e cliccare su uno dei giocatori della lista.
 \end{itemize}
-\item in entrambi i casi precedenti dopo il click il sistema visualizzerà una finestra in cui si svolgeranno le operazioni per l'asta;
+\item in entrambi i casi precedenti,dopo il click, il sistema visualizzerà una finestra in cui si svolgeranno le operazioni per l'asta;
 \item l'utente inserisce la puntata e clicca su punta;
 \item il sistema visualizza le puntate degli altri giocatori;
 \item l'utente può decidere se rinunciare cliccando sul bottone rinuncia o se effettuare una nuova puntata.
 \end{enumerate}
 \textbf{ESTENSIONI}
 \begin{itemize}
-\item il giocatore scelto è stato già acquistato oppure l'utente non ha inserito il nome di alcun giocatore: in questo caso viene mostrata una finestra di notifica e il sistema ritorna la punto 1;
-\item puntata non consentita: il sistema mostra una finestra di errore e ritorna al punto 3;
-\item l'utente si aggiudica il giocatore: il sistema visualizza un messaggio di conferma e torna al punto 1.
+\item il giocatore scelto è stato già acquistato oppure l'utente non ha inserito il nome di alcun giocatore: in questo caso viene mostrata una finestra di notifica e il sistema ritorna al passo 1;
+\item puntata non consentita: il sistema mostra una finestra di errore e ritorna al passo 3;
+\item l'utente si aggiudica il giocatore: il sistema visualizza un messaggio di conferma e torna al passo 1.
 \end{itemize}
-\subsubsection{Gioca partita}
+\subsubsection{Giocare la partita virtuale}
 Attore principale: \textbf{Fantallenatore}\\
 \newline
 \textbf{PASSI}
@@ -143,13 +156,13 @@ Attore principale: \textbf{Fantallenatore}\\
 \item l'utente clicca su una delle voci del menù a tendina;
 \item il sistema visualizza una finestra dove l'utente potrà scegliere i singoli giocatori da schierare;
 \item l'utente dopo aver scelto sia i titolari che le riserve clicca su conferma;
-\item il sistema  una finestra contenente i risultati della giornata e dei bottoni (visualizza voti) che permettono all'utente di visualizzare i voti ottenuti dai giocatori in una determinata partita;
-\item se l'utente clicca su visualizza voti il sistema mostra una finestra con i voti dei giocatori per quella determinata partita;
-\item l'utente dopo aver chiuso la finestra ritorna al punto 1.
+\item il sistema mostra una finestra contenente i risultati della giornata e dei bottoni (visualizza voti) che permettono all'utente di visualizzare i voti ottenuti dai giocatori in una determinata partita;
+\item l'utente clicca sul bottone visualizza voti;
+\item il sistema mostra una finestra con i voti dei giocatori per quella determinata partita;
 \end{enumerate}
 \textbf{ESTENSIONI}
 \begin{itemize}
-\item se l'utente inserisce un giocatore più di una volta oppure lascia uno o più campo vuoti, il sistema visualizza un messaggio di errore e ritorna al punto 4;
+\item se l'utente inserisce un giocatore più di una volta o lascia uno o più campi vuoti, il sistema visualizza un messaggio di errore e ritorna al passo 4;
 \end{itemize}
 \subsubsection{Visualizzare il calendario del torneo}
 Attore principale: \textbf{Fantallenatore}\\
@@ -160,7 +173,7 @@ Attore principale: \textbf{Fantallenatore}\\
 \item il sistema mostra una finestra contenente dei bottoni inerenti le cinque giornate;
 \item l'utente clicca su uno dei cinque bottoni;
 \item il sistema mostra una finestra in cui sono contenute le partite della giornata con il risultato e un tasto che permette di visualizzare le informazioni, qualora la giornata si fosse già giocata;
-\item quando l'utente chiude la finestra il sistema ritorna al punto 1;
+\item quando l'utente chiude la finestra il sistema ritorna al passo 1;
 \end{enumerate}
 \subsubsection{Visualizzare la propria rosa}
 Attore principale: \textbf{Fantallenatore}\\
@@ -168,7 +181,7 @@ Attore principale: \textbf{Fantallenatore}\\
 \textbf{PASSI}
 \begin{enumerate}
 \item l'utente dalla schermata home clicca sul bottone visualizza la mia rosa;
-\item il sistema visualizza una finestra contenente la lista di tutti i giocatori che compongono la rosa dell'utente;
+\item il sistema visualizza una finestra contenente la lista di tutti i giocatori che compongono la rosa dell'utente suddivisi per ruolo;
 \end{enumerate}
 \subsubsection{Visualizzare la rosa delle altre squadre}
 Attore principale: \textbf{Fantallenatore}\\
@@ -178,7 +191,7 @@ Attore principale: \textbf{Fantallenatore}\\
 \item l'utente dalla schermata home clicca sul bottone visualizza la mia rosa;
 \item il sistema visualizza una finestra contenente i loghi di tutte le altre squadre che partecipano al torneo;
 \item l'utente clicca su uno dei loghi;
-\item il sistema visualizza una finestra che mostra la rosa della squadra corrispondente al logo su cui ha cliccato l'utente.
+\item il sistema visualizza una finestra che mostra la rosa della squadra suddivisa per ruolo.
 \end{enumerate}
 \subsubsection{Visualizzare i voti e i risultati delle partite precedenti}
 Attore principale: \textbf{Fantallenatore}\\
@@ -202,8 +215,9 @@ Attore principale: \textbf{Fantallenatore}\\
 \end{enumerate}
 \newpage
 \section{Diagrammi UML dell'architettura software}
+In allegato a questa relazione, è presentè una cartella (Diagrammi UML) contenente tutti diagrammi di seguito riportati per una più facile consulatzione.
 \subsection{Diagrammi dei casi d'uso}
-Il diagramma dei casi d'uso di seguito riportato rappresenta la mappa riassuntiva dei casi d'uso  e riporta per l'unico l'attore (il fantallenatore) tutte le azioni che esso può compiere.
+Il diagramma dei casi d'uso di seguito riportato rappresenta la mappa riassuntiva dei casi d'uso  e riporta per l'unico l'attore (il fantallenatore) tutte le azioni che esso può compiere.\\
 \begin{figure}[h]
 \centering
 \includegraphics[width=15 cm,keepaspectratio]{diagrammaCasiUso.jpg}
@@ -213,12 +227,12 @@ Il diagramma dei casi d'uso di seguito riportato rappresenta la mappa riassuntiv
 Di seguito è riportato il diagramma UML delle GUI.\\
 \begin{figure}[h]
 \centering
-\includegraphics[width=14 cm,keepaspectratio]{UMLGui.png}
+\includegraphics[width=11 cm,keepaspectratio]{UMLGui.png}
 \caption{Diagramma UML delle GUI}
 \end{figure}
 \newpage
 \subsection{Diagramma UML delle classi}
-Di seguito è riportato il diagramma UML delle classi completo.\\
+Di seguito è riportato il diagramma UML completo delle classi.\\
 \begin{figure}[h]
 \centering
 \includegraphics[width=14 cm,keepaspectratio]{UML.jpg}
@@ -226,11 +240,11 @@ Di seguito è riportato il diagramma UML delle classi completo.\\
 \end{figure}
 \newpage
 \section{Design pattern utilizzati}
- In questa sezione vengono mostrati i design pattern utilizzati per lo sviluppo del software.
+In questa sezione vengono mostrati i design pattern utilizzati per lo sviluppo del software.
  \subsection{Pattern creazionali}
  \subsubsection{Singleton}
- Il design pattern Singleton crea e gestisce un'istanza di una classe che si vuole rendere istanziabile una sola volta. Ciò si ottiene marcando il costruttore come private in modo tale che non possano essere creati oggetti da classi esterne  e poiché l'oggetto è statico per quella classe, l'unico modo per ottenere l'accesso ad esso è  mediante  un metodo static \textit{getIstance()}.\\
- \begin{figure}[h]
+Il design pattern Singleton crea e gestisce un'istanza di una classe che si vuole rendere istanziabile una sola volta. Ciò si ottiene marcando il costruttore come private in modo tale che non possano essere creati oggetti da classi esterne e poiché l'oggetto è statico per quella classe, l'unico modo per ottenere l'accesso ad esso è  mediante  un metodo static \textit{getIstance()}.\\
+\begin{figure}[h]
 \centering
 \includegraphics[width=8 cm,keepaspectratio]{Singleton}
 \caption{Classe Singleton Torneo}
@@ -239,8 +253,8 @@ Di seguito è riportato il diagramma UML delle classi completo.\\
 Nello sviluppo di  questo software è stato utilizzato tale pattern per la creazione della classe \textbf{Torneo}, la quale deve essere istanziata una sola volta e  deve poter essere non istanziabile da classi esterne ad essa, in quanto nel gioco del fantacalcio non possono coesistere due o più tornei per volta.
 \newpage
 \subsubsection{Builder}
-Il design pattern Builder viene utilizzato  per la costruzione di un oggetto complesso,  in particolar separa quest'ultimo dalla sua rappresentazione in modo tale che il processo costruzione stesso possa creare diverse rappresentazioni. Esso rappresenta una valida alternativa ai costruttori. Esso si realizza creando un oggetto \textbf{Director}  che viene configurato con gli oggetti 	\textbf{Builder} che si intendono costruire. Il Director notifica al Builder se una parte del prodotto deve essere costruita, e il Builder ricevuta la richiesta aggiunge la parte al prodotto. \\
- \begin{figure}[h]
+Il design pattern Builder viene utilizzato  per la costruzione di un oggetto complesso,  in particolar modo separa quest'ultimo dalla sua rappresentazione in modo tale che il processo di costruzione stesso possa creare diverse rappresentazioni. Esso rappresenta una valida alternativa ai costruttori, si realizza creando un oggetto \textbf{Director}  che viene configurato con gli oggetti 	\textbf{Builder} che si intendono costruire. Il Director notifica al Builder se una parte del prodotto deve essere costruita, e il Builder ricevuta la richiesta aggiunge la parte al prodotto. \\
+\begin{figure}[h]
 \centering
 \includegraphics[width=15 cm,keepaspectratio]{Builder.png}
 \caption{Classi coinvolte nell'implementazione del Builder}
@@ -256,17 +270,17 @@ Nello sviluppo di questo software tale pattern è stato utilizzato per la costru
 \end{itemize}
 \newpage
 \subsubsection{Factory method}
-Il pattern FactoryMethod consiste nel delegare la costruzione di un oggetto ad una factory; viene definita una classe astratta o interfaccia per la creazione dell'oggetto e di conseguenza le sue concretizzazioni possono decidere quale classe istanziare.
+Il pattern FactoryMethod consiste nel delegare la costruzione di un oggetto ad una factory; viene definita una classe astratta o interfaccia  \textbf{Creator} per la creazione dell'oggetto \textbf{Product} e di conseguenza le sue concretizzazioni possono decidere quale classe istanziare.
 \begin{figure}[h]
 \centering
 \includegraphics[width=18 cm ,keepaspectratio]{FactoryMethod.png}
 \caption{Classi coinvolte nell'implementazione del Factory method}
 \end{figure}
 \newline
-Nello sviluppo di questo software tale pattern è stato utilizzato per la costruzione dell'oggetto \textbf{Formazione}; data la necessità di avere diversi moduli per la formazione tramite la factory è stato possibile creare l'oggetto formazione delegandone la costruzione alle sue sottoclassi. Le classi coinvolte sono:  
+Nello sviluppo di questo software tale pattern è stato utilizzato per la costruzione dell'oggetto \textbf{Formazione}; data la necessità di avere diversi moduli per la scelta della formazione, tramite la factory è stato possibile creare l'oggetto formazione delegandone la costruzione alle sue sottoclassi. Le classi coinvolte sono:  
 \begin{itemize}
 \item \textbf{FormazioneFactory}: classe che contiene il factory method per la costruzione dell'oggetto formazione (Creator);
-\item \textbf{Formazione}: classe astratta dell'oggetto concreto che il factory method genera, che dichiara il metodo per il settaggio della formazione (Product);
+\item \textbf{Formazione}: classe astratta dell'oggetto concreto che il factory method genera che dichiara il metodo per il settaggio della formazione (Product);
 \item \textbf{Formazione442}: concretizzazione della classe Formazione  (ConcreteProduct);
 \item \textbf{Formazione433}: concretizzazione della classe Formazione  (ConcreteProduct);
 \item \textbf{Formazione343}: concretizzazione della classe Formazione  (ConcreteProduct);
@@ -276,14 +290,14 @@ Nello sviluppo di questo software tale pattern è stato utilizzato per la costru
 \newpage
 \subsection{Pattern comportamentali}
 \subsubsection{Observer}
-Il pattern comportamentale Observer definisce una dipendenza uno a molti tra gli oggetti in modo che quando un oggetto cambia stato, tutti i suoi osservatori vengono avvisati e aggiornati automaticamente. Il cambiamento di stato di un oggetto osservabile viene notificato agli oggetti che sono registrati dall'osservatore. Esso si realizza   mediante un'interfaccia Subject che dichiara i metodi dell'oggetto osservabile e un'interfaccia Observer che dichiara i metodi degli osservatori. Quest'ultime vengono concretizzate in due rispettive classi ConcreteSubject e ConcreteObserver; sarà compito della classe  ConcreteSubject notificare il cambio di stato dell'oggetto a tutti gli osservatori ad essa registrati, mentre sarà compito della classe ConcreteObserver definire il comportamento in caso di cambio di stato dell'oggetto osservato.
+Il pattern comportamentale Observer definisce una dipendenza uno a molti tra gli oggetti in modo che quando un oggetto cambia stato tutti i suoi osservatori vengono avvisati e aggiornati automaticamente. Il cambiamento di stato di un oggetto osservabile viene notificato agli oggetti che sono registrati dall'osservatore. Esso si realizza mediante un'interfaccia \textbf{Subject} che dichiara i metodi dell'oggetto osservabile e un'interfaccia \textbf{Observer} che dichiara i metodi degli osservatori. Quest'ultime vengono concretizzate in due rispettive classi \textbf{ConcreteSubject} e \textbf{ConcreteObserver}; sarà compito della classe  ConcreteSubject notificare il cambio di stato dell'oggetto a tutti gli osservatori ad essa registrati, mentre sarà compito della classe ConcreteObserver definire il comportamento in caso di cambio di stato dell'oggetto osservato.
 \begin{figure}[h]
 \centering
 \includegraphics[width=18 cm ,keepaspectratio]{Observer.png}
 \caption{Classi coinvolte nell'implementazione dell'Observer}
 \end{figure}
 \newline
-Nello sviluppo di questo software tale pattern è stato utilizzato per implementare l'asta tra i fantallenatori  per la composizione della rosa. Grazie a tale pattern ogni fantallenatore, durante l'asta, è a conoscenza dei fantallenatori  che stanno partecipando  e delle loro rispettive puntate. Ogni volta che un fantallenatore effettua una nuova puntata, rinuncia all'asta o si aggiudica un giocatore queste informazioni vengono notificate a tutti gli osservatori.  Le classi coinvolte sono:
+Nello sviluppo di questo software tale pattern è stato utilizzato per implementare l'asta tra i fantallenatori  per la composizione della rosa. Grazie a tale pattern ogni fantallenatore, durante l'asta, è a conoscenza dei fantallenatori  che stanno partecipando e delle loro rispettive puntate. Ogni volta che un fantallenatore effettua una nuova puntata, rinuncia all'asta o si aggiudica un giocatore queste informazioni vengono notificate a tutti gli osservatori.  Le classi coinvolte sono:
 \begin{itemize}
 \item \textbf{SubjectAsta}: interfaccia che dichiara i metodi per caricare i fantallentori che parteciperanno all'asta e un metodo che notifica le informazioni inerenti l'asta a tutti gli osservatori registrati;
 \item \textbf{Asta}: concretizzazione di SubjectAsta, usata per la gestione delle operazioni inerenti l'asta;
@@ -291,7 +305,7 @@ Nello sviluppo di questo software tale pattern è stato utilizzato per implement
 \item \textbf{ConcreteObserverAsta}: concretizzazione di ObserverAsta contenente le principali operazioni svolte dal Fantallenatore durante l'asta.
 \end{itemize}
 \subsubsection{Strategy}
-Il pattern comportamentale Strategy serve a definire una famiglia di algoritmi da utilizzare per una stessa famiglia di oggetti rendendoli intercambiabili fra di loro. Strategy consente all'algoritmo di variare indipendentemente dai client che lo utilizzano. Tale pattern viene utilizzato quando è utile cambiare a dinamicamente  gli algoritmi utilizzati da un'applicazione. 
+Il pattern comportamentale Strategy serve a definire una famiglia di algoritmi da utilizzare per una stessa famiglia di oggetti rendendoli intercambiabili fra di loro. Strategy consente all'algoritmo di variare indipendentemente dai client che lo utilizzano. Tale pattern viene utilizzato quando è utile cambiare dinamicamente  gli algoritmi utilizzati da un'applicazione. Si implementa mediante un'interfaccia \textbf{Strategy} che contiene l'algorimto che si intende implementare e delle classi \textbf{ConcreteStrategy} che la implementano.
 \begin{figure}[h]
 \centering
 \includegraphics[width=18 cm ,keepaspectratio]{Strategy.png}
@@ -300,10 +314,10 @@ Il pattern comportamentale Strategy serve a definire una famiglia di algoritmi d
 \newline
 Nello sviluppo di questo software tale pattern è stato utilizzato per implementare diverse strategie che un fantallenatore virtuale può adottare durante una sessione d'asta. Le classi coinvolte sono:
 \begin{itemize}
-\item \textbf{AstaStrategy}: interfaccia che dichiara il metodo \textit{puntaVirtuale} che consente ai fantallenatori virtuali di effettuare la puntata;
-\item \textbf{SoftStrategy}: concretizzazione di AstaStrategy in cui il metodo \textit{puntaVirtuale} viene implementato in modo tale che il fantallenatore rilanci di uno rispetto all'offerta massima;
-\item \textbf{MediumStrategy}: concretizzazione di AstaStrategy in cui il metodo \textit{puntaVirtuale} viene implementato in modo tale che il fantallenatore rilanci di cinque rispetto all'offerta massima;
-\item \textbf{HardStrategy}: concretizzazione di AstaStrategy in cui il metodo \textit{puntaVirtuale} viene implementato in modo tale che il fantallenatore rilanci di dieci rispetto all'offerta massima;
+\item \textbf{AstaStrategy}: interfaccia che dichiara il metodo \textit{puntaVirtuale} che consente ai fantallenatori virtuali di effettuare la puntata (Strategy);
+\item \textbf{SoftStrategy}: concretizzazione di AstaStrategy in cui il metodo \textit{puntaVirtuale} viene implementato in modo tale che il fantallenatore rilanci di uno rispetto all'offerta massima (ConcreteStrategy);
+\item \textbf{MediumStrategy}: concretizzazione di AstaStrategy in cui il metodo \textit{puntaVirtuale} viene implementato in modo tale che il fantallenatore rilanci di cinque rispetto all'offerta massima (ConcreteStrategy);
+\item \textbf{HardStrategy}: concretizzazione di AstaStrategy in cui il metodo \textit{puntaVirtuale} viene implementato in modo tale che il fantallenatore rilanci di dieci rispetto all'offerta massima (ConcreteStrategy);
 \item \textbf{ConcreteObserverAsta}: osservatore che partecipa all'asta che a runtime utilizza una di queste strategie.
 
 \end{itemize}
@@ -316,7 +330,7 @@ Il pattern strutturale Facade si utilizza per nascondere la complessità di un s
 \caption{Classi coinvolte nell'implementazione di Facade}
 \end{figure}
 \newline
-Nello sviluppo di questo software tale pattern è stato utilizzato per l'implementazione del sistema Torneo , il quale rappresenta un'entità complessa. In particolar modo è stato usato per la nascondere la complessità dei sottosistemi al client. Le classi coinvolte sono:
+Nello sviluppo di questo software tale pattern è stato utilizzato per l'implementazione del sistema Torneo , il quale rappresenta un'entità complessa. Si implementa mediante una classe \textbf{Facade} che conosce il Sistema e da delle classi \textbf{Subsystem} che compongono il sistema. In particolar modo è stato usato per la nascondere la complessità dei sottosistemi al client. Le classi coinvolte sono:
 \begin{itemize}
 \item \textbf{Torneo}: classe Facade che contiene i vari metodi per la gestione del torneo;
 \item \textbf{Classifica}: classe per la gestione della Classifica del torneo;
@@ -327,7 +341,7 @@ Nello sviluppo di questo software tale pattern è stato utilizzato per l'impleme
 \end{itemize}
 \newpage
 \section{Conclusioni}
-FantaUnipa è un software che può definirsi una simulazione del gioco del FantaCalcio, in quanto chi utilizza il software può partecipare ad un torneo competendo soltanto con utenti virtuali. Tuttavia, grazie alle tecniche utilizzate durante l'implementazione, sarà possibile in futuro aggiungere diverse nuove funzionalità per ampliare le funzionalità come:
+FantaUnipa è un software che simula il gioco del fantacalcio, in quanto permette a chi utilizza il software di partecipare ad un torneo competendo  con utenti virtuali. Tuttavia, grazie alle tecniche utilizzate durante l'implementazione, sarà possibile in futuro aggiungere diverse nuove funzionalità come:
 \begin{itemize}
 \item creazione di una web API per far partecipare al gioco solamente utenti reali;
 \item ampliazione del torneo con simulazione dell'intero campionato di riferimento scelto;
@@ -342,6 +356,6 @@ Questo software è stato sviluppato con l'ausilio di:
 \item Eclipse: IDE utilizzato per lo sviluppo;
 \item StarUml: per la creazione dei diagrammi UML e dei casi d'uso;
 \item ObjectAid: per la generazione del diagramma UML delle GUI;
-\item GitHub: per la condivisione del codice e tutto il materiale inerente il progetto.
+\item Git: per la condivisione del codice e tutto il materiale inerente il progetto.
 \end{itemize}
 \end{document}
