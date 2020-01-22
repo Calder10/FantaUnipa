@@ -92,7 +92,7 @@ public class Squadra implements Serializable {
 	public void addNomeSquadraToCsv(String username, String nomeSquadra) throws IOException {
 		try {
 			File f = new File("src/dati.csv");
-			File f1 = new File("dat1.csv");
+			File f1 = new File("src/dat1.csv");
 			FileReader fr = new FileReader(f);
 			BufferedReader br = new BufferedReader(fr);
 			FileWriter fw = new FileWriter(f1, true);
@@ -124,6 +124,7 @@ public class Squadra implements Serializable {
 			}
 			br.close();
 			fw.close();
+			fr.close();
 			f1.renameTo(f);
 		} catch (Exception e) {
 			System.out.println("Errore nella scrittura su file !");
